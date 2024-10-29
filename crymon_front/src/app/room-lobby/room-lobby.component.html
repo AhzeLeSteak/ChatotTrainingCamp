@@ -1,0 +1,70 @@
+<div class="grid">
+    <div class="col-4">
+        <img [src]="room.currentPlayer.profilePictureSrc" (click)="op.toggle($event)" class="cursor-pointer" width="250"/>
+        
+    </div>
+    <div class="col-8 flex justify-content-center align-items-center">
+        <h3>{{room.currentPlayer.name}}</h3>
+    </div>
+    <div class="col-12 gap-2">
+        <p-divider> 
+            Room Parameters
+        </p-divider>
+        
+        <div class="grid">
+            <div class="col-3 flex align-items-center">Generations</div>
+            <div class="col-9 flex justify-content-end">
+                <p-selectButton
+                    [disabled]="!room.currentPlayer.isCreator"
+                    [options]="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+                    [multiple]="true"
+                    [ngModel]="room.params.generations"
+                    (ngModelChange)="updateParams('generations', $event)"
+                    [allowEmpty]="false"
+                ></p-selectButton>
+            </div>
+
+            <div class="col-3 flex align-items-center">Round count</div>
+            <div class="col-9 flex justify-content-end">
+                <p-selectButton
+                    [disabled]="!room.currentPlayer.isCreator"
+                    [options]="[10, 25, 50]"
+                    [ngModel]="room.params.nbRounds"
+                    (ngModelChange)="updateParams('nbRounds', $event)"
+                    [allowEmpty]="false"
+                />
+            </div>    
+
+            <div class="col-3 flex align-items-center">Round duration (s)</div>
+            <div class="col-9 flex justify-content-end">
+                <p-selectButton
+                    [disabled]="!room.currentPlayer.isCreator"
+                    [options]="[10, 20, 30]"
+                    [ngModel]="room.params.roundDurationSeconds"
+                    (ngModelChange)="updateParams('roundDurationSeconds', $event)"
+                    [allowEmpty]="false"
+                />
+            </div>  
+
+            <div class="col-3 flex align-items-center">Total duration</div>
+            <div class="col-9 flex justify-content-end align-items-center">
+                {{totalDurationText}}
+            </div>  
+            
+            
+            <div class="col-6 col-offset-3" *ngIf="room.currentPlayer.isCreator">
+                <button (click)="play()" pButton label="Play !" class="w-full mt-4"></button>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<p-overlayPanel #op>
+    <div class="flex">
+        <p-carousel [value]="pp" [numVisible]="3" [numScroll]="3" styleClass="custom-carousel">
+            <ng-template let-index pTemplate="item">
+                <img (click)="hub.changePP(index)" [src]="'https://raw.githubusercontent.com/PMDCollab/SpriteCollab/master/portrait/'+index.toString().padStart(4, '0')+'/Normal.png'" width="100" class="cursor-pointer"/>
+            </ng-template>
+        </p-carousel>
+    </div>
+</p-overlayPanel>

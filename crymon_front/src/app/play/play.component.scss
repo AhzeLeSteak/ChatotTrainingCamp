@@ -1,0 +1,19 @@
+.correct{
+    background-color: greenyellow;
+}
+
+.wrong{
+    background-color: red;
+}
+
+.timer{
+    background-color: red;
+    animation: timer var(--duration) linear forwards;
+    transform-origin: left center;
+}
+
+@keyframes timer {
+    to{
+        transform: scaleX(0);
+    }
+}

@@ -1,0 +1,11 @@
+<div class="flex flex-column-reverse gap-3 h-full overflow-y-scroll">
+
+    <p-inputGroup>
+        <input pInputText [(ngModel)]="user_message" (keydown.enter)="sendMessage()"/>
+        <button pButton icon="pi pi-send" (click)="sendMessage()"></button>
+        </p-inputGroup>
+
+    <div *ngFor="let message of messages">
+        {{message.playerName}} : {{message.content}}
+    </div>
+</div>
