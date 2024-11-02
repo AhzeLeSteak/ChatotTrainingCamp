@@ -1,0 +1,21 @@
+<div class="grid" *ngIf="$room | async as room">
+    <div class="col-2 col-offset-2 bordered">
+        <app-players-list [room]="room"></app-players-list>
+    </div>
+    <div class="col-4 bordered">
+        <app-room-lobby [room]="room" *ngIf="room.inLobby"></app-room-lobby>
+        <app-play [room]="room" *ngIf="room.IsPlaying || room.isBeetweenRound"></app-play>
+        <app-scores [room]="room" *ngIf="room.isInScores"/>
+    </div>
+    <div class="col-2 bordered">
+        <app-chatbox [room]="room"></app-chatbox>
+    </div>
+
+    <div style="display: none;">
+        <div *ngFor="let player of room.players">
+            <div *ngFor="let emotion of emotions">
+                <img [src]="player.profilePictureSrcWithEmotion(emotion)">
+            </div>
+        </div>
+    </div>
+</div>

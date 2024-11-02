@@ -1,4 +1,4 @@
-﻿namespace Crymon.Models
+﻿namespace ChatotTrainingCamp.Models
 {
     public class RoomParams
     {

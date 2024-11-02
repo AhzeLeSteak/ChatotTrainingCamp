@@ -1,0 +1,15 @@
+<div class="flex flex-column gap-2">
+    <div class="flex justify-content-between">
+        <h3>ROOM {{room.code}}</h3>
+        <button pButton icon="pi pi-copy" (click)="copyUrl()"></button>
+    </div>
+    <div *ngFor="let player of players" class="flex justify-content-between" [ngClass]="{greyed: !player.connected}">
+        <div>
+            <img [src]="player.profilePictureSrc"/>
+        {{player.name}}
+        </div>
+        <span class="flex align-items-end px-3">
+            {{player.points}}
+        </span>
+    </div>
+</div>

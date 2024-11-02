@@ -1,6 +1,6 @@
-﻿using Crymon.Services;
+﻿using ChatotTrainingCamp.Services;
 
-namespace Crymon.Models
+namespace ChatotTrainingCamp.Models
 {
     public class Question
     {

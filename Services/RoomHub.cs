@@ -1,8 +1,8 @@
-﻿using Crymon.Models;
+﻿using ChatotTrainingCamp.Models;
 using Microsoft.AspNetCore.SignalR;
 
 
-namespace Crymon.Services
+namespace ChatotTrainingCamp.Services
 {
     public class RoomHub: Hub
     {
@@ -121,21 +121,28 @@ namespace Crymon.Services
 
         #endregion
 
-
         #region Game management
     
         public async Task StartRoom()
         {
-            CurrentRoom.GenerateRounds();
+            CurrentRoom.Reset();
             await NextQuestion();
         }
 
-        public async Task Answer(int pkid)
+        public async Task Replay()
         {
-            if (CurrentPlayer.Answers[CurrentRoom.QuestionIndex] > 0) return;
+            CurrentRoom.Reset();
+            await UpdateRoom();
+        }
+
+        public async Task Answer(int pkid, int timeInMs)
+        {
             Room currentRoom = CurrentRoom;
-            CurrentPlayer.Answers[currentRoom.QuestionIndex] = pkid;
-            if (currentRoom.Players.All(player => !player.Connected || player.Answers[currentRoom.QuestionIndex] > 0))
+            var questionId = currentRoom.QuestionIndex;
+            if (CurrentPlayer.Answers[questionId] != null) return;
+            CurrentPlayer.Answer(currentRoom.QuestionIndex, pkid, timeInMs);
+            CurrentPlayer.Emotion = pkid == currentRoom.CurrentQuestion!.Answer ? Emotion.Happy : Emotion.Sad;
+            if (currentRoom.Players.All(player => !player.Connected || player.Answers[questionId] != null))
                 NextQuestion(currentRoom);
             else
                 UpdateRoom(currentRoom);
@@ -152,7 +159,8 @@ namespace Crymon.Services
             }
             room.NextQuestion();
             await UpdateRoom(room);
-            new Thread(new ThreadStart(() => GoToNextQuestionIfNeeded(room))).Start();
+            //if(!room.IsOver)
+            //    new Thread(new ThreadStart(() => GoToNextQuestionIfNeeded(room))).Start();
         }
 
         private async void GoToNextQuestionIfNeeded(Room room)

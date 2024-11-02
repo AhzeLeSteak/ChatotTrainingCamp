@@ -1,4 +1,4 @@
-using Crymon.Services;
+using ChatotTrainingCamp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

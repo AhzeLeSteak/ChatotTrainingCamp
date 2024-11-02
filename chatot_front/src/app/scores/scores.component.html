@@ -1,0 +1,12 @@
+<div class="flex w-full h-full justify-content-center align-item-center">
+    <div class="flex flex-column">
+        <div *ngFor="let player of playerSorted; let i = index" >
+            {{i+1}}.
+            <img [src]="player.profilePictureSrcWithEmotion(emotions[i])"/>
+            {{player.points}}
+            {{player.name}}
+        </div>
+        <button (click)="replay()" pButton class="mt-4" label="Replay"></button>
+
+    </div>
+</div>

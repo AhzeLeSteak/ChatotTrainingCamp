@@ -1,6 +1,6 @@
-﻿using Crymon.Models;
+﻿using ChatotTrainingCamp.Models;
 
-namespace Crymon.Services
+namespace ChatotTrainingCamp.Services
 {
     public static class RandomService
     {

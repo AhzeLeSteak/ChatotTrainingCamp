@@ -1,8 +1,8 @@
-using Crymon.Models;
-using Crymon.Services;
+using ChatotTrainingCamp.Models;
+using ChatotTrainingCamp.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Crymon.Controllers
+namespace ChatotTrainingCamp.Controllers
 {
     [ApiController]
     [Route("[controller]")]
