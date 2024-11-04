@@ -13,13 +13,12 @@
     </div>
     <div class="col-2"></div>
     
-    <ng-container *ngFor="let proposition of room.currentQuestion.propositions">
-        <div class="col-6 flex justify-content-center cursor-pointer"
-            (click)="sendAnwser(proposition)"
-            [ngClass]="{correct : answer > 0 && proposition === room.currentQuestion.answer, wrong : proposition === answer && answer !== room.currentQuestion.answer}"
-        >
-            <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/'+proposition+'.png'"/>
-        </div>
+    <ng-container *ngFor="let pkid of room.currentQuestion.propositions">
+        <app-guess-card [pkid]="pkid" 
+            [correct]="answer > 0 && pkid === room.currentQuestion.answer"
+            [wrong]=" pkid === answer && answer !== room.currentQuestion.answer"
+            (onClick)="sendAnwser(pkid)"
+        ></app-guess-card>
     </ng-container>
 
     <div class="col-12">

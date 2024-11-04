@@ -3,7 +3,11 @@
     <div class="col-4"></div>
 </div>
 
-<ng-container *ngIf="hub.connected">
+<div style="width: 300px;">
+    <app-guess-card [pkid]="69"></app-guess-card>
+</div>
+
+<ng-container *ngIf="false && hub.connected">
     <router-outlet></router-outlet>
 </ng-container>
 

@@ -2,11 +2,12 @@ import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { Room } from '../../models/room';
 import { CommonModule } from '@angular/common';
 import { HubService } from '../hub.service';
+import { GuessCardComponent } from "../guess-card/guess-card.component";
 
 @Component({
   selector: 'app-play',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GuessCardComponent],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss'
 })

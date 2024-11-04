@@ -1,0 +1,6 @@
+<div class="guess-card cursor-pointer" 
+    (click)="onClick.emit(null!)"
+    [ngClass]="{correct, wrong}"
+>
+    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/'+pkid+'.png'"/>
+</div>
