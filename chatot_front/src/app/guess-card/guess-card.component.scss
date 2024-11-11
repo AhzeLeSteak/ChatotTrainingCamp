@@ -1,0 +1,65 @@
+.guess-card{
+    width: 100%;
+    --width: 118;
+    --height: 70;
+    aspect-ratio: var(--width) / var(--height);
+    position: relative;
+    cursor: pointer;
+
+    #background{
+        position: absolute;
+        width: 100%;    
+        image-rendering: pixelated;
+    }
+    &.disabled:not(.correct) #background{
+        filter: grayscale(100%);
+    }
+
+    &.wrong #background{
+        filter: hue-rotate(245deg) !important;
+    }
+
+    .disabled{
+        filter: grayscale(100%)
+    }
+
+    span#name{
+        position: absolute;
+        font-size: 1.5em;
+        color: white;
+        text-shadow: -2px 2px 0 black;
+        bottom: calc(100% * 6 / var(--height));
+        left: calc(100% * 8 / var(--width));
+    }
+
+    img#pk{
+        position: absolute;
+        width: calc(100% * 44 / var(--width));
+        aspect-ratio: 1 / 1 ;
+        top: calc(100% * 16 / var(--height));
+        right: calc(100% * 10 / var(--width));
+    }
+
+    img#select{
+        width: 100%;
+        transform: scale(1.01);
+        display: none;
+    }
+
+    &:hover img#select:not(.disabled){
+        display: block;
+        animation: wiggle 0.5s linear infinite;
+    }
+}
+
+@keyframes wiggle {
+    0%{
+        transform: scale(1.01);
+    }
+    50%{
+        transform: scale(1.03);
+    }
+    100%{
+        transform: scale(1.01);
+    }
+}

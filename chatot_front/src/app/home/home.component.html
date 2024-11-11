@@ -1,25 +1,21 @@
-<div class="grid">
-    <div class="col-4 col-offset-4">    
-      
-      <div class="flex flex-column align-items-center gap-3">
-        <p-selectButton *ngIf="!url_mode" class="w-full" styleClass="w-full"
-        [options]="create_join"
-        [(ngModel)]="join"
-        optionLabel="label" 
-        allowEmpty="false"
-        optionValue="value" />
-  
-        <input [(ngModel)]="player_name" pInputText placeholder="Enter your name" class="w-full" (keydown.enter)="letsgo()"/>
-  
-        <ng-container *ngIf="join && !url_mode  ">
-          <input [(ngModel)]="room_code" pInputText placeholder="Enter room code" class="w-full"/>
-        </ng-container>
-  
-        <p-button #go (onClick)="letsgo()" [disabled]="player_name.length === 0" class="w-full" styleClass="w-full" >
-            Let's go !
-        </p-button>
-  
-      </div>
-      
-    </div>
-  </div>
+<div class="box flex flex-column align-items-center gap-3">
+  <app-select-button
+    name="create-join" ngDefaultControl
+    *ngIf="!url_mode"
+    [options]="create_join"
+    [(ngModel)]="join"
+    optionLabel="label" 
+    optionValue="value" 
+  />
+
+  <input [(ngModel)]="player_name" pInputText placeholder="Enter your name" class="w-full" (keydown.enter)="letsgo()"/>
+
+  <ng-container *ngIf="join && !url_mode  ">
+    <input [(ngModel)]="room_code" pInputText placeholder="Enter room code" class="w-full"/>
+  </ng-container>
+
+  <button #go (click)="letsgo()" [disabled]="player_name.length === 0" class="w-full">
+      Let's go !
+  </button>
+
+</div>

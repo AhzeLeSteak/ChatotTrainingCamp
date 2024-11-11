@@ -34,6 +34,7 @@ namespace ChatotTrainingCamp.Models
 
         public void Reset() {
             this.QuestionIndex = -1;
+            this.Questions = new List<Question>();
             this.Status = RoomStatus.Waiting;
 
             var pool = Params.GetPokemonPool();
@@ -70,7 +71,7 @@ namespace ChatotTrainingCamp.Models
         {
             var maxPoints = (Players.Count + 1) * 100;
             var correctAnswer = CurrentQuestion!.Answer;
-            this.Players.Where(p => p.Answers[QuestionIndex].PkId == correctAnswer)
+            this.Players.Where(p => p.Answers[QuestionIndex] != null && p.Answers[QuestionIndex].PkId == correctAnswer)
                 .OrderBy(p => p.Answers[QuestionIndex].TimeInMs)
                 .ToList()
                 .ForEach(p =>

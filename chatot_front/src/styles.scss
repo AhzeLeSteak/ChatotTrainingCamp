@@ -4,6 +4,56 @@
 @import "primeflex/primeflex.css";
 @import "primeicons/primeicons.css";
 
+body{
+    font-family: 'PMD';
+    background-image: url(../public/background.png);
+    min-height: 98vh;
+}
+
+.box{
+    border: 20px solid transparent;
+    border-image: url(../public/ui/border.png) calc(100*6/44) calc(100*7/44) fill;
+    padding: 10px;
+    border-radius: 20px;
+
+    color: white;
+    text-shadow: 2px 2px 0 black;
+    font-size: 1.5em;
+
+}
+
+button{
+    background-color: unset;
+    color: unset;
+    font-family: unset;
+    font-size: 1em;
+    padding: 4px;
+    background-color: rgba(255, 248, 220, .1);
+    border-radius: 4px;
+
+    &:hover:not(:disabled){
+        color: #D7DE25;
+    }
+    
+    &:disabled{
+        background: none;
+    }
+}
+
+.divider {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+ } 
+ 
+ .divider span { 
+     background: #202020; 
+     padding:0 10px; 
+ }
+
+
 div.p-selectbutton.w-full > div {
     width: 50%;
 }
@@ -14,4 +64,11 @@ img{
 
 .custom-carousel{
     width: 460px;
+}
+
+@font-face{
+    font-family: 'PMD';
+    src: url(../public/PKMN-Mystery-Dungeon.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }

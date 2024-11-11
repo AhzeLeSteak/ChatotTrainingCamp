@@ -2,11 +2,17 @@ import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { Room } from '../../models/room';
 import { CommonModule } from '@angular/common';
 import { HubService } from '../hub.service';
+import { GuessCardComponent } from '../guess-card/guess-card.component';
+import { map, shareReplay, timer } from 'rxjs';
+
+
+const time = timer(0, 100)
+  .pipe(map(() => new Date()), shareReplay(1));
 
 @Component({
   selector: 'app-play',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GuessCardComponent],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss'
 })
@@ -18,6 +24,8 @@ export class PlayComponent implements OnInit{
 
   answer = 0;
   startTimer = new Date();
+
+  readonly barNb = 15;
   
 
   ngOnInit() {
@@ -35,5 +43,16 @@ export class PlayComponent implements OnInit{
     this.answer = pkid;
   }
 
+  get barsArray$(){
+    return time.pipe(map(now => {
+      const elapsedMs = now.getTime() - this.room.currentQuestion.startDate.getTime();
+      const roomDurationMs = this.room.params.roundDurationSeconds * 1000;
+      const ratio = 1 - Math.min(elapsedMs, roomDurationMs) / roomDurationMs; // € [0, 1]
+      const step = Math.round(ratio * this.barNb);
+      return new Array(this.barNb)
+        .fill(1, 0, step)
+        .fill(0, step, this.barNb);
+    }))
+  }
 
 }

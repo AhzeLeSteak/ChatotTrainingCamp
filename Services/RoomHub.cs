@@ -155,12 +155,12 @@ namespace ChatotTrainingCamp.Services
             {
                 room.Status = RoomStatus.BeetweenRounds;
                 await UpdateRoom(room);
-                await Task.Delay(3000);
+                await Task.Delay(2000);
             }
             room.NextQuestion();
             await UpdateRoom(room);
-            //if(!room.IsOver)
-            //    new Thread(new ThreadStart(() => GoToNextQuestionIfNeeded(room))).Start();
+            if(!room.IsOver)
+                new Thread(new ThreadStart(() => GoToNextQuestionIfNeeded(room))).Start();
         }
 
         private async void GoToNextQuestionIfNeeded(Room room)

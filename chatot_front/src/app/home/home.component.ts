@@ -6,11 +6,12 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { HubService, PLAYER_NAME } from '../hub.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SelectButtonComponent } from "../components/select-button/select-button.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SelectButtonModule, FormsModule, InputTextModule, CommonModule, ButtonModule],
+  imports: [SelectButtonModule, FormsModule, InputTextModule, CommonModule, ButtonModule, SelectButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

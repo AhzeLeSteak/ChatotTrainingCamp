@@ -1,13 +1,13 @@
-<div class="grid" *ngIf="$room | async as room">
-    <div class="col-2 col-offset-2 bordered">
+<div id="room" *ngIf="$room | async as room">
+    <div class="box">
         <app-players-list [room]="room"></app-players-list>
     </div>
-    <div class="col-4 bordered">
+    <div class="box">
         <app-room-lobby [room]="room" *ngIf="room.inLobby"></app-room-lobby>
         <app-play [room]="room" *ngIf="room.IsPlaying || room.isBeetweenRound"></app-play>
         <app-scores [room]="room" *ngIf="room.isInScores"/>
     </div>
-    <div class="col-2 bordered">
+    <div class="box">
         <app-chatbox [room]="room"></app-chatbox>
     </div>
 

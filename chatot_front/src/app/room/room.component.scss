@@ -1,4 +1,6 @@
-.bordered{
-    border: 2px solid grey;
-    
+#room{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 4px;
 }

@@ -1,9 +1,10 @@
-<div class="grid w-full">
-    <h1 class="col-4 col-offset-4 text-center">Chatot training camp</h1>
-    <div class="col-4"></div>
+<div class="w-full flex justify-content-center">
+    <h1 class="text-center">Chatot training camp</h1>
 </div>
 
-<ng-container *ngIf="hub.connected">
-    <router-outlet></router-outlet>
-</ng-container>
+<div id="main-container" *ngIf="hub.connected">
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
 

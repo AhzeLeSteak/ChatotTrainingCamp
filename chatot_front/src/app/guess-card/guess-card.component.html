@@ -1,0 +1,6 @@
+<div (click)="onClick.emit()" class="guess-card" [ngClass]="{correct, wrong, disabled}">
+    <img src="/ui/guess_card_2.png" alt="" id="background">
+    <span id="name">{{pk_name}}</span>
+    <img id="pk" [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/'+pkid+'.png'"/>
+    <img id="select" [ngClass]="{disabled}" src="/ui/selected.png"/>
+</div>

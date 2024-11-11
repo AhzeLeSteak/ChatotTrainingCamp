@@ -1,0 +1,6 @@
+<div class="select-button">
+    <span *ngFor="let option of options" (click)="click(option)" [ngClass]="{selected: optionSelected(option)}">
+        {{optionLabel ? option[optionLabel] : option}}
+        <img src="/ui/arrow.png" alt="" class="arrow">
+    </span>
+</div>
