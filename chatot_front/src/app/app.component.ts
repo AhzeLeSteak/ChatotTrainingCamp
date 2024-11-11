@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HubService } from './hub.service';
+import { GuessCardComponent } from "./guess-card/guess-card.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, GuessCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

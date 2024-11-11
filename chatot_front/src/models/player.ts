@@ -43,3 +43,5 @@ export enum Emotion
 
 export const EMOTIONS = Object.keys(Emotion)
     .filter(key => isNaN(Number(key)))
+    //@ts-ignore
+    .map((key) => Emotion[key]);
