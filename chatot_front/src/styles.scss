@@ -11,10 +11,15 @@ body{
 }
 
 .box{
-    border: 20px solid transparent;
-    border-image: url(../public/ui/border.png) calc(100*6/44) calc(100*7/44) fill;
-    padding: 10px;
-    border-radius: 20px;
+    border-image-source: url(../public/ui/border.png);
+    border-image-slice: 5 8 5 8 fill;
+    border-image-width: 16px 20px 20px 16px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-style: solid;
+
+    padding: 20px;
+    image-rendering: pixelated;
 
     color: white;
     text-shadow: 2px 2px 0 black;
@@ -40,6 +45,10 @@ button{
     }
 }
 
+input[type="text"]{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .divider {
     width: 100%; 
     text-align: center; 
@@ -52,11 +61,6 @@ button{
      background: #202020; 
      padding:0 10px; 
  }
-
-
-div.p-selectbutton.w-full > div {
-    width: 50%;
-}
 
 img{
     image-rendering: pixelated;

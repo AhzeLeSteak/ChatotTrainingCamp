@@ -2,15 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { Room } from '../../models/room';
 import { HubService } from '../hub.service';
 import { CommonModule } from '@angular/common';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chatbox',
   standalone: true,
-  imports: [CommonModule, FormsModule, InputTextModule, InputGroupModule, ButtonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.scss'
 })
