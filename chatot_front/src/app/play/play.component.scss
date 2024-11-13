@@ -1,6 +1,5 @@
 #propositions{
     width: 100%;
-    padding: 1em;
     display: grid;
     grid-template: 1fr 1fr / 1fr 1fr;
     grid-gap: 1em;
@@ -11,7 +10,7 @@
     display: grid;
     grid-template: 1fr / calc(1fr * 16/7) repeat(15, 1fr);
     grid-gap: 4px;
-    
+
     & img{
         width: 100%;
     }

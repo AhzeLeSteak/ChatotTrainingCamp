@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnInit, } from '@angular/core';
 import { Room } from '../../models/room';
 import { CommonModule } from '@angular/common';
 import { HubService } from '../hub.service';
@@ -26,7 +26,7 @@ export class PlayComponent implements OnInit{
   startTimer = new Date();
 
   readonly barNb = 15;
-  
+
 
   ngOnInit() {
     this.hub.$onNewQuestion.subscribe(() => this.onNewQuestion());

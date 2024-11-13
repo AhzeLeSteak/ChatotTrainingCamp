@@ -1,20 +1,18 @@
-<div class="box flex flex-column align-items-center gap-3">
+<div id="home" class="box">
   <app-select-button
     name="create-join" ngDefaultControl
     *ngIf="!url_mode"
     [options]="create_join"
     [(ngModel)]="join"
-    optionLabel="label" 
-    optionValue="value" 
+    optionLabel="label"
+    optionValue="value"
   />
 
-  <input [(ngModel)]="player_name" pInputText placeholder="Enter your name" class="w-full" (keydown.enter)="letsgo()"/>
+  <input type="text" [(ngModel)]="player_name" pInputText placeholder="Enter your name" class="w-full" (keydown.enter)="letsgo()"/>
 
-  <ng-container *ngIf="join && !url_mode  ">
-    <input [(ngModel)]="room_code" pInputText placeholder="Enter room code" class="w-full"/>
-  </ng-container>
+  <input type="text" [(ngModel)]="room_code" pInputText placeholder="Enter room code" class="w-full" *ngIf="join && !url_mode"/>
 
-  <button #go (click)="letsgo()" [disabled]="player_name.length === 0" class="w-full">
+  <button (click)="letsgo()" [disabled]="player_name.length === 0" class="w-full">
       Let's go !
   </button>
 

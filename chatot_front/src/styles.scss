@@ -1,8 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
-@import "primeflex/primeflex.css";
-@import "primeicons/primeicons.css";
 
 body{
     font-family: 'PMD';
@@ -18,7 +14,7 @@ body{
     border-image-repeat: stretch stretch;
     border-style: solid;
 
-    padding: 20px;
+    padding: 25px;
     image-rendering: pixelated;
 
     color: white;
@@ -39,7 +35,7 @@ button{
     &:hover:not(:disabled){
         color: #D7DE25;
     }
-    
+
     &:disabled{
         background: none;
     }
@@ -47,19 +43,27 @@ button{
 
 input[type="text"]{
     background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: 'PMD';
+    font-size: 1em;
+    border-radius: 0;
+
+  &:focus{
+    border: none;
+  }
 }
 
 .divider {
-    width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid #000; 
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #000;
     line-height: 0.1em;
-    margin: 10px 0 20px; 
- } 
- 
- .divider span { 
-     background: #202020; 
-     padding:0 10px; 
+    margin: 10px 0 20px;
+ }
+
+ .divider span {
+     background: #202020;
+     padding:0 10px;
  }
 
 img{
@@ -75,4 +79,34 @@ img{
     src: url(../public/PKMN-Mystery-Dungeon.ttf) format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+
+// polyfill primeflex
+.w-full{
+  width: 100% !important;
+}
+.h-full{
+  height: 100% !important;
+}
+.flex{
+  display: flex;
+}
+.flex-column{
+  flex-direction: column;
+}
+.flex-column-reverse{
+  flex-direction: column-reverse;
+}
+.justify-content-center{
+  justify-content: center;
+}
+.justify-content-between{
+  justify-content: space-between;
+}
+.align-items-end{
+  align-items: flex-end;
+}
+.align-items-center{
+  align-items: center;
 }

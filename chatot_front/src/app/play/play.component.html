@@ -1,5 +1,5 @@
-<div class="grid">
-    <div class="col-12 flex justify-content-center align-items-center gap-4">
+<div class="flex flex-column" style="gap: 1em">
+    <div class="flex justify-content-center align-items-center" style="gap: 2em">
         <h3 style="margin: 0;">Round {{room.questionIndex+1}} / {{room.params.nbRounds}}</h3>
         <audio controls autoplay *ngIf="room.IsPlaying; else fakeAudio">
             <source [src]="'/sounds/'+room.currentQuestion.answer.toString().padStart(4, '0')+'.ogg'" type="audio/ogg">
@@ -11,7 +11,7 @@
             </audio>
         </ng-template>
     </div>
-    
+
     <div id="propositions">
         <app-guess-card *ngFor="let proposition of room.currentQuestion.propositions"
             [pkid]="proposition"

@@ -167,7 +167,7 @@ namespace ChatotTrainingCamp.Services
         {
             var questionIndex = room.QuestionIndex;
             await Task.Delay(room.Params.RoundDurationSeconds * 1000);
-            if (room.QuestionIndex == questionIndex && room.Status == RoomStatus.Playing)
+            if (false && room.QuestionIndex == questionIndex && room.Status == RoomStatus.Playing)
                 await NextQuestion(room);
         }
 

@@ -3,18 +3,15 @@ import { Room } from '../../models/room';
 import { HubService } from '../hub.service';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { CarouselModule } from 'primeng/carousel';
-import { DividerModule } from 'primeng/divider';
-import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
 import { RoomParams } from '../../models/room-params';
-import { ButtonModule } from 'primeng/button';
 import { SelectButtonComponent } from '../components/select-button/select-button.component';
 
 
 @Component({
   selector: 'app-room-lobby',
   standalone: true,
-  imports: [FormsModule, OverlayPanelModule, CarouselModule, DividerModule, SelectButtonModule, ButtonModule, SelectButtonComponent],
+  imports: [FormsModule, OverlayPanelModule, CarouselModule, SelectButtonComponent],
   templateUrl: './room-lobby.component.html',
   styleUrl: './room-lobby.component.scss'
 })
@@ -40,5 +37,5 @@ export class RoomLobbyComponent {
     const seconds = totalSeconds % 60;
     return `${minutes ? minutes + 'm' : ''}${seconds ? seconds +'s' : ''}`
   }
-  
+
 }

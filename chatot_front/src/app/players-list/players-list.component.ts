@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Room } from '../../models/room';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-players-list',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule],
   templateUrl: './players-list.component.html',
   styleUrl: './players-list.component.scss'
 })
