@@ -1,9 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from "primeng/button";
-import { InputTextModule } from 'primeng/inputtext';
-import { SelectButtonModule } from 'primeng/selectbutton';
 import { HubService, PLAYER_NAME } from '../hub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectButtonComponent } from "../components/select-button/select-button.component";
@@ -11,12 +7,12 @@ import { SelectButtonComponent } from "../components/select-button/select-button
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SelectButtonModule, FormsModule, InputTextModule, CommonModule, ButtonModule, SelectButtonComponent],
+  imports: [FormsModule, SelectButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  
+
   create_join = [{value: false, label: 'Create a room'}, {value: true, label: 'Join a room'}];
   join = false;
   url_mode = false;
@@ -51,5 +47,5 @@ export class HomeComponent implements OnInit {
     if(joined)
       this.router.navigate(['play']);
   }
-  
+
 }

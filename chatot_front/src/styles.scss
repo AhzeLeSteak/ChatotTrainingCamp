@@ -38,6 +38,7 @@ button{
 
     &:disabled{
         background: none;
+        color: gray;
     }
 }
 
@@ -47,10 +48,11 @@ input[type="text"]{
     font-family: 'PMD';
     font-size: 1em;
     border-radius: 0;
+    outline: none !important;
 
-  &:focus{
-    border: none;
-  }
+    &:focus-visible{
+      outline: #D7DE25 1px solid !important;
+    }
 }
 
 .divider {

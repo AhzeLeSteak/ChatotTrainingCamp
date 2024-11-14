@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
 import { Emotion, EMOTIONS } from '../../models/player';
 import { Room } from '../../models/room';
 import { HubService } from '../hub.service';
@@ -8,18 +7,18 @@ import { HubService } from '../hub.service';
 @Component({
   selector: 'app-scores',
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule],
   templateUrl: './scores.component.html',
   styleUrl: './scores.component.scss'
 })
 export class ScoresComponent implements OnInit{
 
   hub = inject(HubService);
-  
+
   @Input({required: true}) room !: Room;
 
   emotions: string[];
-  
+
   ngOnInit(): void {
     if(this.room.players.length === 1){
       this.emotions = [Emotion.Joyous];
