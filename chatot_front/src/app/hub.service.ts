@@ -9,7 +9,6 @@ export const PLAYER_NAME = 'player_name';
 const ROOM_CODE = 'room_code';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,9 +22,12 @@ export class HubService {
   private readonly _onNewQuestion = new BehaviorSubject<never>(null!);
   
   constructor() {
+    const url = window.location.hostname === 'localhost'
+      ? "http://localhost:5237/room"
+      : window.location.origin + '/api/room';
     this.hub = new signalR.HubConnectionBuilder()
-    .withUrl("http://localhost:5237/room")
-    .build();
+      .withUrl(url)
+      .build();
   }
   
   public async createConnection(){

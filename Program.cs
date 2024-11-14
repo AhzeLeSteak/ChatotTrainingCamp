@@ -4,9 +4,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+#if DEBUG
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("oui", policy =>
@@ -18,6 +18,7 @@ builder.Services.AddCors(options =>
                           .AllowCredentials();
                       });
 });
+#endif
 builder.Services.AddSignalR();
 
 
@@ -33,6 +34,9 @@ var app = builder.Build();
 //app.UseAuthorization();
 
 app.MapHub<RoomHub>("/room");
+
+#if DEBUG
 app.UseCors("oui");
+#endif
 
 app.Run();
