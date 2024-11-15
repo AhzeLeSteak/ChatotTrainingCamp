@@ -8,3 +8,43 @@
         height: 600px;
     }
 }
+
+#sound-settings{
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+
+  input {
+    -webkit-appearance: none;
+    background: #202020;
+    border-radius: 15px;
+    height: 25px;
+
+    padding: 0;
+    border-width: 2px 4px 4px 2px;
+    margin-left: 1.5em;
+    width: 200px;
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #5c995c;
+      border: 1px solid black;
+      border-radius: 15px;
+      cursor: pointer; /* Cursor on hover */
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #d7de25;
+      border: #202020 2px solid;
+      border-radius: 15px;
+      cursor: pointer; /* Cursor on hover */
+    }
+  }
+}

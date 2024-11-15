@@ -1,15 +1,21 @@
 <div class="flex flex-column" style="gap: 1em">
     <div class="flex justify-content-center align-items-center" style="gap: 2em">
         <h3 style="margin: 0;">Round {{room.questionIndex+1}} / {{room.params.nbRounds}}</h3>
-        <audio controls autoplay *ngIf="room.IsPlaying; else fakeAudio">
+        <ng-container *ngIf="room.IsPlaying; else fakeReplay">
+          <img id="play" src="/ui/replay.png" alt="" width="40" (click)="audio.play()" [ngClass]="{disabled: soundPlaying}">
+
+          <audio #audio
+                 appVolumeBinder autoplay
+                 style="display: none"
+                 (play)="soundPlaying = true"
+                 (pause)="soundPlaying = false"
+          >
             <source [src]="'/sounds/'+room.currentQuestion.answer.toString().padStart(4, '0')+'.ogg'" type="audio/ogg">
-            Your browser does not support the audio element.
-        </audio>
-        <ng-template #fakeAudio>
-            <audio controls>
-                <source src="prout" type="audio/ogg">
-            </audio>
-        </ng-template>
+          </audio>
+        </ng-container>
+      <ng-template #fakeReplay>
+        <img src="/ui/replay.png" alt="" width="40" class="disabled">
+      </ng-template>
     </div>
 
     <div id="propositions">

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HubService } from '../hub.service';
 import { GuessCardComponent } from '../guess-card/guess-card.component';
 import { map, shareReplay, timer } from 'rxjs';
+import {VolumeBinderDirective} from '../volume-binder.directive';
 
 
 const time = timer(0, 100)
@@ -12,7 +13,7 @@ const time = timer(0, 100)
 @Component({
   selector: 'app-play',
   standalone: true,
-  imports: [CommonModule, GuessCardComponent],
+  imports: [CommonModule, GuessCardComponent, VolumeBinderDirective],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss'
 })
@@ -22,6 +23,7 @@ export class PlayComponent implements OnInit{
 
   @Input({required: true}) room !: Room;
 
+  soundPlaying = true;
   answer = 0;
   startTimer = new Date();
 

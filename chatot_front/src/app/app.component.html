@@ -8,3 +8,10 @@
     </div>
 </div>
 
+<div id="sound-settings">
+  <img (click)="test_audio.play()" src="/ui/music_note.png" style="width: 2em; cursor: pointer"/>
+  <input type="range" min="1" max="100" [(ngModel)]="soundManager.volume" class="box">
+  <audio #test_audio appVolumeBinder style="display: none">
+    <source src="/sounds/0441.ogg" type="audio/ogg">
+  </audio>
+</div>

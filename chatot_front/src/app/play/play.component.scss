@@ -15,3 +15,11 @@
         width: 100%;
     }
 }
+
+#play{
+  cursor: pointer;
+}
+.disabled{
+  filter: brightness(.4);
+  cursor: not-allowed;
+}

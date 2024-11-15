@@ -1,14 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { HubService } from './hub.service';
-import { GuessCardComponent } from "./guess-card/guess-card.component";
-
+import {CommonModule} from '@angular/common';
+import {Component, inject, OnInit} from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
+import {HubService} from './hub.service';
+import {FormsModule} from '@angular/forms';
+import {SoundManagerService} from './sound-manager.service';
+import {VolumeBinderDirective} from './volume-binder.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, GuessCardComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit{
 
   hub = inject(HubService);
   router = inject(Router);
+  soundManager = inject(SoundManagerService);
 
   async ngOnInit() {
     await this.hub.createConnection();
@@ -24,6 +26,6 @@ export class AppComponent implements OnInit{
     if(rejoined)
       this.router.navigate(['play']);
   }
-  
+
 
 }
