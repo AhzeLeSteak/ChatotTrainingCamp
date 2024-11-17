@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PK_NAMES } from '../consts/pokemon-names';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
+import {LanguageService} from '../language.service';
+import {Room} from '../../models/room';
 
 @Component({
   selector: 'app-guess-card',
@@ -11,15 +12,31 @@ import { PK_NAMES } from '../consts/pokemon-names';
 })
 export class GuessCardComponent {
 
+  @Input({required: true}) room  !: Room;
   @Input({required: true}) pkid !: number;
-  @Input({required: true}) correct = false; 
-  @Input({required: true}) wrong = false; 
+  @Input({required: true}) correct = false;
+  @Input({required: true}) wrong = false;
   @Input({required: true}) disabled !: boolean;
 
   @Output() onClick = new EventEmitter();
 
+  languageManager = inject(LanguageService);
+
   get pk_name(){
-    return PK_NAMES[this.pkid-1];
+    return this.languageManager.name(this.pkid);
+  }
+
+  get players(){
+    const i =this.room.questionIndex;
+    return this.room.players
+      .filter(p => p.answers[i].pkId === this.pkid)
+      .toSorted((a, b) => a.answers[i].timeInMs - b.answers[i].timeInMs);
+  }
+
+  get fontSize(){
+    return 'ko' === this.languageManager.selected_language
+      ? '.8em'
+      : '1.2em';
   }
 
 }

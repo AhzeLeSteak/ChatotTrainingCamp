@@ -28,8 +28,8 @@ export class SelectButtonComponent {
   }
 
   click(option: any){
+    if(this.disabled) return;
     const value = this.optionValue ? option[this.optionValue] : option;
-    console.log(option, value);
     if(this.multiple){
       let array = this.ngModel as any[];
       if(array.includes(value))

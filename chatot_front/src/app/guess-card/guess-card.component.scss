@@ -6,9 +6,21 @@
     position: relative;
     cursor: pointer;
 
+  #responses{
+    position: absolute;
+    display: flex;
+    gap: 4px;
+    top: 10px;
+    left: 10px;
+    width: 130px;
+    img{
+      border-radius: 4px;
+    }
+  }
+
     #background{
         position: absolute;
-        width: 100%;    
+        width: 100%;
         image-rendering: pixelated;
     }
     &.disabled:not(.correct) #background{
@@ -25,11 +37,11 @@
 
     span#name{
         position: absolute;
-        font-size: 1.5em;
         color: white;
         text-shadow: -2px 2px 0 black;
         bottom: calc(100% * 6 / var(--height));
         left: calc(100% * 8 / var(--width));
+        max-width: calc(100% * 52 / var(--width));
     }
 
     img#pk{

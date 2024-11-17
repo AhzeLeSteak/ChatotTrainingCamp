@@ -1,8 +1,30 @@
 .greyed{
-    background-color: ghostwhite;
+    background-color: rgba(#fff, .1);
 }
 
 #room-code{
     display: flex;
     justify-content: space-between;
 }
+
+.player_line{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 4px;
+}
+
+.pp_name{
+  display: flex;
+  gap: 6px;
+}
+
+.player_name{
+  display: flex;
+  align-items: center;
+  color: var(--blue);
+  &.creator{
+    color: var(--yellow);
+  }
+}
+

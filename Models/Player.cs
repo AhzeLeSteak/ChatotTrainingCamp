@@ -7,7 +7,7 @@
         public bool Connected { get; set; } = true;
         public string ConnectionId { get; set; }
 
-        public Answer[] Answers;
+        public Answer[] Answers{ get; set; }
         public int Points { get; set; } = 0;
 
 
@@ -28,21 +28,21 @@
 
     public enum Emotion
     {
-        Angry,
-        Crying,
-        Determined,
-        Dizzy,
+        Joyous,
         Happy,
         Inspired,
-        Joyous,
         Normal,
+        Determined,
+        Sigh,
+        Worried,
         Pain,
         Sad,
         Shouting,
-        Sigh,
         Stunned,
+        Dizzy,
         Surprised,
+        Angry,
         TearyEyed,
-        Worried
+        Crying,
     }
 }

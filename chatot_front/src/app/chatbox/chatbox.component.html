@@ -5,7 +5,14 @@
         <button style="padding-left: 8px; padding-right: 8px" (click)="sendMessage()">Send</button>
     </div>
 
-    <div *ngFor="let message of messages">
-        <span>{{message.playerName}}</span> : {{message.content}}
-    </div>
+  <div class="flex flex-column-reverse h-full" style="overflow-y: scroll; scrollbar-width: none; max-height: 490px;">
+    <ng-container *ngFor="let message of messages">
+      <ng-container *ngIf="message.fromServer; else player_msg">
+        <div><span>{{message.content}}</span></div>
+      </ng-container>
+      <ng-template #player_msg>
+        <div><span>{{message.playerName}}</span> : {{message.content}}</div>
+      </ng-template>
+    </ng-container>
+  </div>
 </div>

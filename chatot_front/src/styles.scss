@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+  --yellow: #D7DE25;
+  --grayish: #202020;
+  --blue: #00F8F8;
+  --green: #68D068;
+}
+
 body{
     font-family: 'PMD';
     background-image: url(../public/background.png);
@@ -18,8 +25,9 @@ body{
     image-rendering: pixelated;
 
     color: white;
-    text-shadow: 2px 2px 0 black;
+    text-shadow: 0 0.2ch 0 black, 0.2ch 0 0 black;
     font-size: 1.5em;
+  letter-spacing: 1px;
 
 }
 
@@ -33,7 +41,7 @@ button{
     border-radius: 4px;
 
     &:hover:not(:disabled){
-        color: #D7DE25;
+        color: var(--yellow);
     }
 
     &:disabled{
@@ -51,7 +59,7 @@ input[type="text"]{
     outline: none !important;
 
     &:focus-visible{
-      outline: #D7DE25 1px solid !important;
+      outline: var(--yellow) 1px solid !important;
     }
 }
 
@@ -64,7 +72,7 @@ input[type="text"]{
  }
 
  .divider span {
-     background: #202020;
+     background: var(--grayish);
      padding:0 10px;
  }
 
@@ -78,7 +86,14 @@ img{
 
 @font-face{
     font-family: 'PMD';
-    src: url(../public/PKMN-Mystery-Dungeon.ttf) format('truetype');
+    src: url(../public/wondermail.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'PMDTitle';
+    src: url(../public/HouseofTerror.otf) format('truetype');
     font-weight: normal;
     font-style: normal;
 }

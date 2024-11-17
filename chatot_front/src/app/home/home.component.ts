@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { HubService, PLAYER_NAME } from '../hub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectButtonComponent } from "../components/select-button/select-button.component";
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, SelectButtonComponent],
+  imports: [CommonModule, FormsModule, SelectButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

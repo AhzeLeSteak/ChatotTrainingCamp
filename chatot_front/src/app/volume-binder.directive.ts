@@ -11,7 +11,6 @@ export class VolumeBinderDirective {
     const audio = elementRef.nativeElement as HTMLAudioElement;
     audio.volume = volumeService.volume / 100;
     volumeService.onVolumeChange.subscribe(volume => {
-      console.log(volume, audio);
       audio.volume = volume / 100;
     });
   }

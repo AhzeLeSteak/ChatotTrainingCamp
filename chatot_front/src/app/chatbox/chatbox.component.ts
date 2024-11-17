@@ -21,6 +21,7 @@ export class ChatboxComponent {
   readonly text_limit = 50;
 
   sendMessage(){
+    if(this.user_message.length === 0) return;
     this.hub.sendMessage(this.user_message.substring(0, this.text_limit));
     this.user_message = '';
   }
@@ -28,5 +29,5 @@ export class ChatboxComponent {
   get messages(){
     return this.room.messages;
   }
-  
+
 }

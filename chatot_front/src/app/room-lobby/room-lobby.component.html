@@ -1,17 +1,17 @@
 <div class="flex flex-column h-full">
   <div style="display: grid; grid-template: 1fr / 1fr 2fr">
-    <img [src]="room.currentPlayer.profilePictureSrc" class="cursor-pointer" width="250"/>
+    <img [src]="room.currentPlayer.profilePictureSrc" width="250"/>
     <div class="flex flex-column align-items-center">
       <h3>{{room.currentPlayer.name}}</h3>
       <div class="flex align-items-center" style="gap: 20px">
         <button [disabled]="pp_index === 0" (click)="pp_index = pp_index - 9">&lt;</button>
-        <div style="display: grid; grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr; gap: 4px; background-color: white; padding: 4px">
+        <div id="pp_grid">
           <img
             *ngFor="let i of one_to_nine"
-            [ngClass]="{disabled: PPs[pp_index]+i !== room.currentPlayer.profilePicture}"
-            (click)="hub.changePP(PPs[pp_index+i])"
+            [ngClass]="{disabled: PPs[pp_index+i] !== room.currentPlayer.profilePicture, unavailable: isPPUnavailable(PPs[pp_index+i])}"
+            (click)="changePP(PPs[pp_index+i])"
             [src]="'https://raw.githubusercontent.com/PMDCollab/SpriteCollab/master/portrait/'+(PPs[pp_index]+i).toString().padStart(4, '0')+'/Normal.png'"
-            class="cursor-pointer" width="50"
+            width="50"
           />
         </div>
         <button [disabled]="pp_index + 9 === PPs.length" (click)="pp_index = pp_index + 9">&gt;</button>

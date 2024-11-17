@@ -8,6 +8,7 @@ namespace ChatotTrainingCamp.Services
     {
         const string ROOM_CODE = "room_code";
         const string PLAYER = "player";
+        private static SemaphoreSlim roomSemaphore = new(1, 1);
 
         private static Dictionary<string, Room> rooms = new();
         private Player CurrentPlayer
@@ -21,14 +22,15 @@ namespace ChatotTrainingCamp.Services
         private IHubContext<RoomHub> HubContext;
 
         public RoomHub(IHubContext<RoomHub> hubContext) {
-            HubContext= hubContext;
+            HubContext = hubContext;
         }
 
 
         #region Create/join room management
-        public async Task<Room> CreateRoom(string playerName)
-        {
+        public async Task<Room> CreateRoom(string playerName){
+            await roomSemaphore.WaitAsync();
             var room = new Room(RandomService.GenerateRoomCode(rooms.Values.ToList()));
+            roomSemaphore.Release();
             rooms.Add(room.Code, room);
             await JoinRoom(room.Code, playerName);
             CurrentPlayer.IsCreator = true;
@@ -49,19 +51,48 @@ namespace ChatotTrainingCamp.Services
                 player.Connected = true;
                 CurrentPlayer = player;
             }
-            else
-            {
+            else{
+                await CurrentRoom.Semaphore.WaitAsync();
                 CurrentPlayer = new Player()
                 {
                     Name = playerName,
                     ConnectionId = Context.ConnectionId,
-                    ProfilePicture = 2
+                    ProfilePicture = RandomService.GetRandomPP(CurrentRoom)
                 };
                 CurrentRoom.Players.Add(CurrentPlayer);
+                CurrentRoom.Messages.Add(new Message()
+                {
+                    Content = $"{playerName} joined the room",
+                    FromServer = true,
+                });
+                CurrentRoom.Semaphore.Release();
             }
+#if DEBUG
             Console.WriteLine($"Player {CurrentPlayer.Name} {(rejoin ? "re" : "")}joined room {CurrentRoom.Code}");
+#endif
             await Groups.AddToGroupAsync(CurrentPlayer.ConnectionId, roomCode);
+            await UpdateRoom(CurrentRoom);
             return CurrentRoom;
+        }
+
+        public async Task Quit(){
+            var room = CurrentRoom;
+            var player = CurrentPlayer;
+            Context.Items.Clear();
+
+            room.Players.Remove(player);
+            if (room.Players.Any())
+            {
+                room.Players[0].IsCreator = true;
+                room.Messages.Add(new Message
+                {
+                    FromServer = true,
+                    Content = $"{player.Name} left the room"
+                });
+                await UpdateRoom(room);
+            }
+            else
+                rooms.Remove(room.Code);
         }
 
 
@@ -78,17 +109,11 @@ namespace ChatotTrainingCamp.Services
         {
             if (CurrentPlayer != null)
             {
-#if !DEBUG
-                if (CurrentRoom.Status == RoomStatus.Waiting)
-                {
-                    CurrentRoom.Players.Remove(CurrentPlayer);
-                    if (CurrentRoom.Players.Count == 0)
-                        rooms.Remove(CurrentRoom.Code);
+                if (CurrentRoom.Status == RoomStatus.Waiting){
+                    await Quit();
                 }
                 else
-#endif
                     CurrentPlayer.Connected = false;
-                Console.WriteLine($"Player {CurrentPlayer.Name} exited room {CurrentRoom.Code}");
                 await UpdateRoom();
             }
             Context.Items.Clear();
@@ -97,9 +122,11 @@ namespace ChatotTrainingCamp.Services
         #endregion
 
         #region Room lobby
-        public async Task ChangePP(int pp)
-        {
-            CurrentPlayer.ProfilePicture = pp;
+        public async Task ChangePP(int pp){
+            await CurrentRoom.Semaphore.WaitAsync();
+            if(!CurrentRoom.Players.Any(p => p.ProfilePicture == pp))
+                CurrentPlayer.ProfilePicture = pp;
+            CurrentRoom.Semaphore.Release();
             await UpdateRoom();
         }
 
@@ -108,7 +135,8 @@ namespace ChatotTrainingCamp.Services
             CurrentRoom.Messages.Insert(0, new Message()
             {
                 PlayerName = CurrentPlayer.Name,
-                Content = message
+                Content = message,
+                FromServer = false,
             });
             await UpdateRoom();
         }
@@ -160,18 +188,19 @@ namespace ChatotTrainingCamp.Services
             room.NextQuestion();
             await UpdateRoom(room);
             if(!room.IsOver)
-                new Thread(new ThreadStart(() => GoToNextQuestionIfNeeded(room))).Start();
+                new Thread(() => GoToNextQuestionIfNeeded(room)).Start();
         }
 
         private async void GoToNextQuestionIfNeeded(Room room)
         {
             var questionIndex = room.QuestionIndex;
             await Task.Delay(room.Params.RoundDurationSeconds * 1000);
+            await room.Semaphore.WaitAsync();
 #if !DEBUG
             if (room.QuestionIndex == questionIndex && room.Status == RoomStatus.Playing)
                 await NextQuestion(room);
 #endif
-
+            room.Semaphore.Release();
         }
 
         #endregion

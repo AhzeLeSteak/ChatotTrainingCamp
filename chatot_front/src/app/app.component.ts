@@ -5,6 +5,7 @@ import {HubService} from './hub.service';
 import {FormsModule} from '@angular/forms';
 import {SoundManagerService} from './sound-manager.service';
 import {VolumeBinderDirective} from './volume-binder.directive';
+import {LanguageService} from './language.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit{
   hub = inject(HubService);
   router = inject(Router);
   soundManager = inject(SoundManagerService);
+  languageManager = inject(LanguageService);
 
   async ngOnInit() {
     await this.hub.createConnection();

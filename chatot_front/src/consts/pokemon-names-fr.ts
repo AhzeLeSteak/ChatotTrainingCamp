@@ -1,4 +1,4 @@
-export const PK_NAMES = [
+export const NAMES_FR = [
     "Bulbizarre",
     "Herbizarre",
     "Florizarre",

@@ -20,6 +20,7 @@
 
     <div id="propositions">
         <app-guess-card *ngFor="let proposition of room.currentQuestion.propositions"
+            [room]="room"
             [pkid]="proposition"
             [correct]="answer > 0 && proposition === room.currentQuestion.answer"
             [wrong]="proposition === answer && answer !== room.currentQuestion.answer"

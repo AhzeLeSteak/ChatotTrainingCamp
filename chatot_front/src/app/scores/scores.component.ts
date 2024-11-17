@@ -20,14 +20,15 @@ export class ScoresComponent implements OnInit{
   emotions: string[];
 
   ngOnInit(): void {
-    if(this.room.players.length === 1){
+    if(this.players.length === 1){
       this.emotions = [Emotion.Joyous];
       return;
     }
 
     this.emotions = [...EMOTIONS];
-    for(let i = this.room.players.length; i < EMOTIONS.length; i++)
+    for(let i = this.players.length; i < EMOTIONS.length; i++){
       this.emotions.splice(Math.floor(this.emotions.length/2), 1);
+    }
   }
 
   replay(){
@@ -35,8 +36,11 @@ export class ScoresComponent implements OnInit{
   }
 
   get playerSorted(){
-    return this.room.players.toSorted((p1, p2) => p2.points - p1.points)
-    //return emotions.map((_, i) => new Player({name: 'Frite '+i, profilePicture: 3}))
+    return this.players.toSorted((p1, p2) => p2.points - p1.points)
+  }
+
+  get players(){
+    return this.room.players;
   }
 
 

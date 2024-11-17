@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Room } from '../models/room';
 import { RoomParams } from '../models/room-params';
+import {Router} from '@angular/router';
 
 
 export const PLAYER_NAME = 'player_name';
@@ -13,14 +14,16 @@ const ROOM_CODE = 'room_code';
   providedIn: 'root'
 })
 export class HubService {
-  
+
+  private router = inject(Router);
+
   private hub: signalR.HubConnection;
 
   private _connected = false;
   private _inRoom = false;
   private readonly roomSubject = new BehaviorSubject<Room>(null!);
   private readonly _onNewQuestion = new BehaviorSubject<never>(null!);
-  
+
   constructor() {
     const url = window.location.hostname === 'localhost'
       ? "http://localhost:5237/room"
@@ -29,7 +32,7 @@ export class HubService {
       .withUrl(url)
       .build();
   }
-  
+
   public async createConnection(){
     await this.hub.start();
     this._connected = true;
@@ -55,12 +58,11 @@ export class HubService {
 
   public async createRoom(playerName: string){
     const room = await this.hub.invoke<object>('CreateRoom', playerName);
-    if(!room) return false; 
+    if(!room) return false;
     this._inRoom = true;
     this.processRoomFromHub(room);
     localStorage.setItem(PLAYER_NAME, playerName);
     this.subscribeUpdate();
-    this.sendMessage(`${playerName} joined the room`);
     return true;
   }
 
@@ -74,15 +76,19 @@ export class HubService {
     localStorage.setItem(PLAYER_NAME, playerName);
     this.subscribeUpdate();
     this.processRoomFromHub(room);
-    if(!rejoin)
-      this.sendMessage(`${playerName} joined the room`);
     return true;
   }
 
-  public async sendMessage(content: string){
-    this.hub.invoke('SendMessage', content);
+  public async quitRoom(){
+    await this.hub.invoke('Quit');
+    this._inRoom = false;
+    return this.router.navigate(['']);
   }
-  
+
+  public sendMessage(content: string){
+    return this.hub.invoke<void>('SendMessage', content);
+  }
+
   async tryRejoin() {
     const roomCode = localStorage.getItem(ROOM_CODE);
     const playerName = localStorage.getItem(PLAYER_NAME);
@@ -94,7 +100,7 @@ export class HubService {
     return this.hub.invoke('ChangePP', index);
   }
 
-  
+
   updateParams(params: RoomParams) {
     return this.hub.invoke('UpdateParam', params)
   }
@@ -111,7 +117,7 @@ export class HubService {
     this.hub.invoke('Answer', pkid, milliseconds);
   }
 
-  
+
   public nextQuestion(){
     this.hub.invoke('NextQuestion');
   }
@@ -132,5 +138,5 @@ export class HubService {
   public get inRoom(){
     return this._inRoom;
   }
-  
+
 }

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import { Room } from '../../models/room';
 import { HubService } from '../hub.service';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import {CommonModule} from '@angular/common';
   templateUrl: './room-lobby.component.html',
   styleUrl: './room-lobby.component.scss'
 })
-export class RoomLobbyComponent {
+export class RoomLobbyComponent implements OnInit{
 
   hub = inject(HubService);
 
@@ -24,12 +24,27 @@ export class RoomLobbyComponent {
 
   @Input({required: true}) room !: Room;
 
+  ngOnInit() {
+    const ppIndex = this.PPs.findIndex(pp => pp === this.room.currentPlayer.profilePicture);
+    this.pp_index = ppIndex - ppIndex%9;
+  }
+
+  changePP(pp: number){
+    if(!this.room.players.some(p => p.profilePicture === pp))
+      this.hub.changePP(pp);
+  }
+
   updateParams<K extends keyof RoomParams>(key: K, value: RoomParams[K]){
+    //console.log(this.PPs);
     this.hub.updateParams({...this.room.params, [key]: value});
   }
 
   play() {
     this.hub.startRoom();
+  }
+
+  isPPUnavailable(pp: number){
+    return this.room.players.some(p => p.connectionId !== this.room.currentPlayer.connectionId && p.profilePicture === pp);
   }
 
   get totalDurationText(){

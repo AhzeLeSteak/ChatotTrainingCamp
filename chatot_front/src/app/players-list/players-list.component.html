@@ -1,14 +1,17 @@
-<div class="flex flex-column gap-2">
+<div class="flex flex-column" style="gap: 4px">
     <div id="room-code" (click)="copyUrl()">
-        <h3 style="margin: 0;">ROOM {{room.code}}</h3>
-        <button>Invite</button>
-    </div>
-    <div *ngFor="let player of players" class="flex justify-content-between" [ngClass]="{greyed: !player.connected}">
-        <div style="color: #00F8F8">
-            <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
-            {{player.name}}
+        <h2 style="margin: 0">ROOM <span style="letter-spacing: 3px">{{room.code}}</span></h2>
+        <div style="display: flex; gap: 4px">
+          <button *ngIf="room.inLobby || room.isInScores" (click)="hub.quitRoom()">Quit</button>
+          <button (click)="copyUrl()">Invite</button>
         </div>
-        <span class="flex align-items-end px-3">
+    </div>
+    <div *ngFor="let player of players" class="player_line" [ngClass]="{greyed: !player.connected}">
+        <div class="pp_name">
+            <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
+            <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
+        </div>
+        <span>
             {{player.points}}
         </span>
     </div>

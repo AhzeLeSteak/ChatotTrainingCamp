@@ -22,9 +22,11 @@ namespace ChatotTrainingCamp.Models
         public List<Question> Questions { get; set; } = new();
         public int QuestionIndex { get; set; } = -1;
 
-        public Question? CurrentQuestion => this.Status == RoomStatus.Waiting || this.Status == RoomStatus.Scores
-            ? null 
-            : this.Questions[this.QuestionIndex];
+        public readonly SemaphoreSlim Semaphore = new (1, 1);
+
+        public Question? CurrentQuestion => this.Questions != null && this.Questions.Count > this.QuestionIndex && QuestionIndex >= 0
+            ? this.Questions[this.QuestionIndex] 
+            : null;
         public bool IsOver => this.QuestionIndex == this.Questions.Count;
 
         public Room(string code)
@@ -36,6 +38,7 @@ namespace ChatotTrainingCamp.Models
             this.QuestionIndex = -1;
             this.Questions = new List<Question>();
             this.Status = RoomStatus.Waiting;
+            this.Players = this.Players.Where(p => p.Connected).ToList();
 
             var pool = Params.GetPokemonPool();
             var pouet = RandomService.GetNRandomElementsFromList(pool, this.Params.NbRounds * 4);
@@ -51,8 +54,8 @@ namespace ChatotTrainingCamp.Models
             }
         }
 
-        public void NextQuestion()
-        {
+        public void NextQuestion(){
+            this.Semaphore.Wait();
             if(this.QuestionIndex >= 0)
                 this.CalcPoints();
 
@@ -65,6 +68,7 @@ namespace ChatotTrainingCamp.Models
                 this.Status = RoomStatus.Playing;
                 this.CurrentQuestion!.StartDate = DateTime.UtcNow;
             }
+            this.Semaphore.Release();
         }
 
         private void CalcPoints()
