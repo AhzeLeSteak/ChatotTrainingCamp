@@ -107,14 +107,14 @@ namespace ChatotTrainingCamp.Services
 
         public override async Task OnDisconnectedAsync(Exception? exception)
         {
-            if (CurrentPlayer != null)
-            {
-                if (CurrentRoom.Status == RoomStatus.Waiting){
+            if (CurrentPlayer != null && CurrentRoom != null){
+                var room = CurrentRoom;
+                if (room.Status == RoomStatus.Waiting){
                     await Quit();
                 }
                 else
                     CurrentPlayer.Connected = false;
-                await UpdateRoom();
+                await UpdateRoom(room);
             }
             Context.Items.Clear();
             await base.OnDisconnectedAsync(exception);

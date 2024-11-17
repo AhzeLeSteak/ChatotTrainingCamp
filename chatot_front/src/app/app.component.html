@@ -25,11 +25,18 @@
 
     <div id="sound-settings">
       <img (click)="test_audio.play()" src="/ui/music_note.png" style="width: 2em; cursor: pointer"/>
-      <input type="range" min="0" max="100" step="5" [(ngModel)]="soundManager.volume">
+      <input type="range" min="0" max="100" step="5"
+             [(ngModel)]="soundManager.volume"
+             [ngStyle]="{'background-image': 'url(/sound_bar/'+(soundManager.volume / 5)+'.png)'}">
+
       <audio #test_audio appVolumeBinder style="display: none">
         <source src="/sounds/0441.ogg" type="audio/ogg">
       </audio>
     </div>
   </div>
 
+</div>
+
+<div style="display: none">
+  <img *ngFor="let i of zero_to_20" [src]="'/sound_bar/'+ i +'.png'"/>
 </div>

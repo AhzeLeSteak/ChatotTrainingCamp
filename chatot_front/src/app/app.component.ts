@@ -22,6 +22,8 @@ export class AppComponent implements OnInit{
   soundManager = inject(SoundManagerService);
   languageManager = inject(LanguageService);
 
+  readonly zero_to_20 = new Array(21).fill(0).map((_, i) => i);
+
   async ngOnInit() {
     await this.hub.createConnection();
     const rejoined = await this.hub.tryRejoin();
