@@ -39,8 +39,15 @@ export class RoomLobbyComponent implements OnInit{
     this.hub.updateParams({...this.room.params, [key]: value});
   }
 
+  other_players_ready(){
+    return this.room.players.filter(p => !p.isCreator).every(p => p.ready);
+  }
+
   play() {
-    this.hub.startRoom();
+    if(this.room.currentPlayer.isCreator)
+      this.hub.startRoom();
+    else
+      this.hub.ready();
   }
 
   isPPUnavailable(pp: number){

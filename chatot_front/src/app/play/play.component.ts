@@ -40,7 +40,7 @@ export class PlayComponent implements OnInit{
   }
 
   sendAnwser(pkid: number){
-    if(this.answer > 0) return;
+    if(this.answer > 0 || !this.room.IsPlaying) return;
     this.hub.answer(pkid, new Date().getTime() - this.startTimer.getTime());
     this.answer = pkid;
   }

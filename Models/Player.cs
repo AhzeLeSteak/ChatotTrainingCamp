@@ -6,6 +6,7 @@
         public string Name { get; set; }
         public bool Connected { get; set; } = true;
         public string ConnectionId { get; set; }
+        public bool Ready { get; set; } = false;
 
         public Answer[] Answers{ get; set; }
         public int Points { get; set; } = 0;

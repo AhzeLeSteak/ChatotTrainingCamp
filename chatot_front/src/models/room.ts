@@ -23,15 +23,19 @@ export class Room {
     }
 
     get inLobby(){
-        return this.status === RoomStatus.Waiting;
+        return this.status === RoomStatus.Lobby;
     }
 
     get IsPlaying(){
         return this.status === RoomStatus.Playing;
     }
 
-    get isBeetweenRound(){
-        return this.status === RoomStatus.BetweenRounds;
+    get isInAnswers(){
+      return this.status === RoomStatus.Answers;
+    }
+
+    get isInTimer(){
+        return this.status === RoomStatus.Timer;
     }
 
     get isInScores(){
@@ -40,8 +44,9 @@ export class Room {
 }
 
 export enum RoomStatus{
-    Waiting,
-    Playing,
-    BetweenRounds,
-    Scores
+  Lobby,
+  Playing,
+  Answers,
+  Timer,
+  Scores,
 }

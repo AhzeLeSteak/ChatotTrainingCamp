@@ -5,17 +5,20 @@ namespace ChatotTrainingCamp.Models
 
     public enum RoomStatus
     {
-        Waiting,
+        Lobby,
         Playing,
-        BeetweenRounds,
+        Answers,
+        Timer,
         Scores,
     }
 
 
     public class Room
     {
+        public static readonly int TIMER_DURATION = 3000;
+        
         public string Code { get; set; }
-        public RoomStatus Status { get; set; } = RoomStatus.Waiting;
+        public RoomStatus Status { get; set; } = RoomStatus.Lobby;
         public List<Player> Players { get; set; } = new();
         public List<Message> Messages { get; set; } = new();
         public RoomParams Params { get; set; } = new();
@@ -37,7 +40,7 @@ namespace ChatotTrainingCamp.Models
         public void Reset() {
             this.QuestionIndex = -1;
             this.Questions = new List<Question>();
-            this.Status = RoomStatus.Waiting;
+            this.Status = RoomStatus.Lobby;
             this.Players = this.Players.Where(p => p.Connected).ToList();
 
             var pool = Params.GetPokemonPool();
@@ -49,13 +52,13 @@ namespace ChatotTrainingCamp.Models
             this.Players = this.Players.Where(p => p.Connected).ToList();
             foreach(var player  in this.Players)
             {
+                player.Ready = false;
                 player.Answers = new Answer[this.Params.NbRounds];
                 player.Points = 0;
             }
         }
 
         public void NextQuestion(){
-            this.Semaphore.Wait();
             if(this.QuestionIndex >= 0)
                 this.CalcPoints();
 
@@ -65,10 +68,9 @@ namespace ChatotTrainingCamp.Models
                 this.Status = RoomStatus.Scores;
             else
             {
-                this.Status = RoomStatus.Playing;
-                this.CurrentQuestion!.StartDate = DateTime.UtcNow;
+                this.Status = RoomStatus.Timer;
+                this.CurrentQuestion!.StartDate = DateTime.UtcNow.AddMilliseconds(TIMER_DURATION);
             }
-            this.Semaphore.Release();
         }
 
         private void CalcPoints()

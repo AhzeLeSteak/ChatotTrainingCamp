@@ -1,18 +1,27 @@
 <div class="flex flex-column" style="gap: 4px">
-    <div id="room-code" (click)="copyUrl()">
-        <h2 style="margin: 0">ROOM <span style="letter-spacing: 3px">{{room.code}}</span></h2>
-        <div style="display: flex; gap: 4px">
-          <button *ngIf="room.inLobby || room.isInScores" (click)="hub.quitRoom()">Quit</button>
-          <button (click)="copyUrl()">Invite</button>
-        </div>
+  <div id="room-code" (click)="copyUrl()">
+    <h2 style="margin: 0">ROOM <span style="letter-spacing: 3px">{{room.code}}</span></h2>
+    <div style="display: flex; gap: 4px">
+      <button *ngIf="room.inLobby || room.isInScores" (click)="hub.quitRoom()">Quit</button>
+      <button *ngIf="room.inLobby" (click)="copyUrl()">Invite</button>
     </div>
-    <div *ngFor="let player of players" class="player_line" [ngClass]="{greyed: !player.connected}">
-        <div class="pp_name">
-            <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
-            <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
-        </div>
-        <span>
-            {{player.points}}
-        </span>
+  </div>
+  <div *ngFor="let player of players" class="player_line" [ngClass]="{greyed: !player.connected}">
+    <div class="pp_name">
+      <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
+      <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
     </div>
+    <ng-container *ngIf="room.inLobby; else score">
+      <img src="/blue_ribbon.png" alt="Blue ribbon" *ngIf="player.isCreator; else ready">
+      <ng-template #ready>
+        <span [ngStyle]="{color: player.ready ? 'var(--blue)' : 'var(--red)'}">{{player.ready ? 'Ready' : 'Not ready'}}</span>
+      </ng-template>
+    </ng-container>
+    <ng-template #score>
+      <span>
+        {{player.points}}
+        <img src="/poke_dollar.png" alt="Poke Dollar">
+      </span>
+    </ng-template>
+  </div>
 </div>

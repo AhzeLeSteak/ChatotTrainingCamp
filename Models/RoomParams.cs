@@ -4,7 +4,7 @@
     {
         public int NbRounds { get; set; } = 10;
         public List<int> Generations { get; set; } = new() { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        public int RoundDurationSeconds { get; set; } = 10;
+        public int RoundDurationSeconds { get; set; } = 15;
 
         public List<int> GetPokemonPool()
         {

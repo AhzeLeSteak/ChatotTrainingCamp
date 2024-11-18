@@ -105,6 +105,9 @@ export class HubService {
     return this.hub.invoke('UpdateParam', params)
   }
 
+  ready(){
+    return this.hub.invoke('Ready');
+  }
   startRoom(){
     return this.hub.invoke('StartRoom');
   }

@@ -57,11 +57,7 @@ namespace ChatotTrainingCamp.Services
         };
 
         public static int GetRandomPP(Room room){
-            var pp = 0;
-            do{
-                pp = GetNRandomElementsFromList(PPs).First();
-            } while (room.Players.Any(p => p.ProfilePicture == pp));
-            return pp;
+            return RandomElementFromList(PPs.Where(pp => room.Players.All(player => player.ProfilePicture != pp)).ToList());
         }
 
 
@@ -77,25 +73,14 @@ namespace ChatotTrainingCamp.Services
                 code = "";
                 for (int i = 0; i < roomCodeLength; i++)
                     code += candaidateChars[rng.Next(candaidateChars.Length)];
-                valid = !rooms.Any(r => r.Code == code);
+                valid = rooms.All(r => r.Code != code);
             }
             return code;
         }
 
-        public static List<T> GetNRandomElementsFromList<T>(List<T> list, int n = 1)
+        public static List<T> GetNRandomElementsFromList<T>(List<T> list, int howMany = 1)
         {
-            if (n > list.Count) throw new ArgumentException($"Can not take {n} random elements from a list of size {list.Count}");
-            List<T> result = new List<T>();
-            for(int i = 0; i < n; i++)
-            {
-                T newElem;
-                do
-                {
-                    newElem = RandomElementFromList(list);
-                } while (result.Contains(newElem));
-                result.Add(newElem);
-            }
-            return result;
+            return list.OrderBy(el => rng.Next()).Take(howMany).ToList();
         }
 
         public static T RandomElementFromList<T>(List<T> list) {

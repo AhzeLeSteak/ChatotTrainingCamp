@@ -4,7 +4,7 @@
     </div>
     <div class="box">
         <app-room-lobby [room]="room" *ngIf="room.inLobby"></app-room-lobby>
-        <app-play [room]="room" *ngIf="room.IsPlaying || room.isBeetweenRound"></app-play>
+        <app-play [room]="room" *ngIf="room.IsPlaying || room.isInAnswers || room.isInTimer"></app-play>
         <app-scores [room]="room" *ngIf="room.isInScores"/>
     </div>
     <div class="box">

@@ -47,6 +47,8 @@ export class HomeComponent implements OnInit {
       joined = await this.hub.createRoom(this.player_name);
     if(joined)
       this.router.navigate(['play']);
+    //else if(this.join)
+    //  this.router.navigate(['']);
   }
 
 }

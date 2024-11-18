@@ -3,6 +3,7 @@ export class Player{
   connected: boolean;
   connectionId: string;
   isCreator: boolean;
+  ready: boolean;
   points: number;
   answers: {pkId: number, timeInMs:number}[];
 

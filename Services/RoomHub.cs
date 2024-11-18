@@ -109,7 +109,7 @@ namespace ChatotTrainingCamp.Services
         {
             if (CurrentPlayer != null && CurrentRoom != null){
                 var room = CurrentRoom;
-                if (room.Status == RoomStatus.Waiting){
+                if (room.Status == RoomStatus.Lobby){
                     await Quit();
                 }
                 else
@@ -150,6 +150,12 @@ namespace ChatotTrainingCamp.Services
         #endregion
 
         #region Game management
+
+        public async Task Ready()
+        {
+            CurrentPlayer.Ready = true;
+            await UpdateRoom();
+        }
     
         public async Task StartRoom()
         {
@@ -171,7 +177,11 @@ namespace ChatotTrainingCamp.Services
             CurrentPlayer.Answer(currentRoom.QuestionIndex, pkid, timeInMs);
             CurrentPlayer.Emotion = pkid == currentRoom.CurrentQuestion!.Answer ? Emotion.Happy : Emotion.Sad;
             if (currentRoom.Players.All(player => !player.Connected || player.Answers[questionId] != null))
-                NextQuestion(currentRoom);
+            {
+                await currentRoom.Semaphore.WaitAsync();
+                ShowAnswers(currentRoom);
+                currentRoom.Semaphore.Release();
+            }
             else
                 UpdateRoom(currentRoom);
         }
@@ -179,16 +189,24 @@ namespace ChatotTrainingCamp.Services
         private async Task NextQuestion(Room? room = null)
         {
             room ??= CurrentRoom;
-            if (room.QuestionIndex >= 0)
-            {
-                room.Status = RoomStatus.BeetweenRounds;
-                await UpdateRoom(room);
-                await Task.Delay(2000);
-            }
             room.NextQuestion();
             await UpdateRoom(room);
-            if(!room.IsOver)
+            if (room.Status == RoomStatus.Timer)
+            {
+                await Task.Delay(Room.TIMER_DURATION);
+                room.Status = RoomStatus.Playing;
+                await UpdateRoom(room);
                 new Thread(() => GoToNextQuestionIfNeeded(room)).Start();
+            }
+        }
+
+        private async Task ShowAnswers(Room? room = null)
+        {
+            room ??= CurrentRoom;
+            room.Status = RoomStatus.Answers;
+            await UpdateRoom(room);
+            await Task.Delay(5000);
+            await NextQuestion(room);
         }
 
         private async void GoToNextQuestionIfNeeded(Room room)
@@ -196,10 +214,8 @@ namespace ChatotTrainingCamp.Services
             var questionIndex = room.QuestionIndex;
             await Task.Delay(room.Params.RoundDurationSeconds * 1000);
             await room.Semaphore.WaitAsync();
-#if !DEBUG
             if (room.QuestionIndex == questionIndex && room.Status == RoomStatus.Playing)
-                await NextQuestion(room);
-#endif
+                await ShowAnswers(room);
             room.Semaphore.Release();
         }
 

@@ -22,9 +22,9 @@
         <app-guess-card *ngFor="let proposition of room.currentQuestion.propositions"
             [room]="room"
             [pkid]="proposition"
-            [correct]="answer > 0 && proposition === room.currentQuestion.answer"
+            [correct]="(answer > 0 || room.isInAnswers) && proposition === room.currentQuestion.answer"
             [wrong]="proposition === answer && answer !== room.currentQuestion.answer"
-            [disabled]=" answer > 0"
+            [disabled]=" answer > 0 || !room.IsPlaying"
             (onClick)="sendAnwser(proposition)"
         ></app-guess-card>
     </div>
@@ -34,8 +34,13 @@
             <img src="/ui/timer.png" alt="">
             <img *ngFor="let bar of barsArray$ |async" [src]="'/ui/' + (bar ? 'green' : 'red') + '_bar.png'">
         </div>
-        <ng-container *ngIf="room.isBeetweenRound">
+        <ng-container *ngIf="room.isInTimer">
             New round starting soon ...
         </ng-container>
     </div>
+</div>
+
+<div style="display: none">
+  <img *ngFor="let proposition of room.currentQuestion.propositions"
+       [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/'+proposition+'.png'"/>
 </div>

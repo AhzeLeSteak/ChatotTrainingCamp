@@ -23,13 +23,21 @@ export class GuessCardComponent {
   languageManager = inject(LanguageService);
 
   get pk_name(){
-    return this.languageManager.name(this.pkid);
+    return this.room.isInTimer
+      ? '?'
+      : this.languageManager.name(this.pkid);
+  }
+
+  get img_url(){
+    return this.room.isInTimer
+      ? '/questionmark.png'
+      : `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.pkid}.png`;
   }
 
   get players(){
     const i =this.room.questionIndex;
     return this.room.players
-      .filter(p => p.answers[i].pkId === this.pkid)
+      .filter(p => p.answers[i] && p.answers[i].pkId === this.pkid)
       .toSorted((a, b) => a.answers[i].timeInMs - b.answers[i].timeInMs);
   }
 
