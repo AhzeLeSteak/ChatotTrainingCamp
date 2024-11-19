@@ -35,7 +35,7 @@ export class GuessCardComponent {
   }
 
   get players(){
-    const i =this.room.questionIndex;
+    const i = this.room.questionIndex;
     return this.room.players
       .filter(p => p.answers[i] && p.answers[i].pkId === this.pkid)
       .toSorted((a, b) => a.answers[i].timeInMs - b.answers[i].timeInMs);

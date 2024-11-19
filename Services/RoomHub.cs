@@ -39,12 +39,13 @@ namespace ChatotTrainingCamp.Services
 
         public async Task<Room?> JoinRoom(string roomCode, string playerName, bool rejoin = false)
         {
-            if(!rooms.ContainsKey(roomCode))
+            if(!rooms.TryGetValue(roomCode, out Room? room) || room.Status != RoomStatus.Lobby || room.Players.Count > 15)
                 return null;
+            
             Context.Items[ROOM_CODE] = roomCode;
             if (rejoin)
             {
-                var player = CurrentRoom.Players.Find(p => p.Name == playerName);
+                var player = room.Players.Find(p => p.Name == playerName);
                 if (player == null)
                     return null;
                 player.ConnectionId = Context.ConnectionId;
@@ -52,27 +53,27 @@ namespace ChatotTrainingCamp.Services
                 CurrentPlayer = player;
             }
             else{
-                await CurrentRoom.Semaphore.WaitAsync();
+                await room.Semaphore.WaitAsync();
                 CurrentPlayer = new Player()
                 {
                     Name = playerName,
                     ConnectionId = Context.ConnectionId,
-                    ProfilePicture = RandomService.GetRandomPP(CurrentRoom)
+                    ProfilePicture = RandomService.GetRandomPP(room)
                 };
-                CurrentRoom.Players.Add(CurrentPlayer);
-                CurrentRoom.Messages.Add(new Message()
+                room.Players.Add(CurrentPlayer);
+                room.Messages.Add(new Message()
                 {
                     Content = $"{playerName} joined the room",
                     FromServer = true,
                 });
-                CurrentRoom.Semaphore.Release();
+                room.Semaphore.Release();
             }
 #if DEBUG
-            Console.WriteLine($"Player {CurrentPlayer.Name} {(rejoin ? "re" : "")}joined room {CurrentRoom.Code}");
+            Console.WriteLine($"Player {CurrentPlayer.Name} {(rejoin ? "re" : "")}joined room {room.Code}");
 #endif
             await Groups.AddToGroupAsync(CurrentPlayer.ConnectionId, roomCode);
-            await UpdateRoom(CurrentRoom);
-            return CurrentRoom;
+            await UpdateRoom(room);
+            return room;
         }
 
         public async Task Quit(){

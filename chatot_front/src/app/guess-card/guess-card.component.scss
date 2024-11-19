@@ -6,13 +6,23 @@
     position: relative;
     cursor: pointer;
 
+
+  img{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+
   #responses{
     position: absolute;
-    display: flex;
-    gap: 4px;
-    top: 10px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 2px;
+    top: 8px;
     left: 10px;
-    width: 130px;
     img{
       border-radius: 4px;
     }
