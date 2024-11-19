@@ -1,4 +1,12 @@
 <div class="flex flex-column h-full">
+  <input type="text" readonly
+         [value]="room.url"
+         [ngClass]="{blue: url_copied}"
+         style="cursor: pointer; margin-bottom: 1em;"
+         (click)="copyUrl()"
+         ngDefaultControl name="url"
+  />
+
   <div style="display: grid; grid-template: 1fr / 1fr 2fr">
     <img [src]="room.currentPlayer.profilePictureSrc" width="250"/>
     <div class="flex flex-column align-items-center">
@@ -71,7 +79,7 @@
       </div>
     </div>
 
-    <div class="flex justify-content-center">
+    <div class="flex flex-column align-items-center">
       <button (click)="play()" style="width: 50%" [disabled]="room.currentPlayer.isCreator ? !other_players_ready() : room.currentPlayer.ready ">
         {{room.currentPlayer.isCreator ? 'Play !' : 'Ready !'}}
       </button>

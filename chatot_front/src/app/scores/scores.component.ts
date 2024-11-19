@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Emotion, EMOTIONS } from '../../models/player';
+import {Emotion, EMOTIONS, Player} from '../../models/player';
 import { Room } from '../../models/room';
 import { HubService } from '../hub.service';
 
@@ -39,7 +39,9 @@ export class ScoresComponent implements OnInit{
     return this.players.toSorted((p1, p2) => p2.points - p1.points)
   }
 
-  get players(){
+  get players(): Player[]{
+    const p = this.room.players[0];
+    return new Array(9).fill(p);
     return this.room.players;
   }
 

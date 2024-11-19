@@ -39,7 +39,7 @@ namespace ChatotTrainingCamp.Services
 
         public async Task<Room?> JoinRoom(string roomCode, string playerName, bool rejoin = false)
         {
-            if(!rooms.TryGetValue(roomCode, out Room? room) || room.Status != RoomStatus.Lobby || room.Players.Count > 15)
+            if(!rooms.TryGetValue(roomCode, out Room? room) || (!rejoin && (room.Status != RoomStatus.Lobby || room.Players.Count > 15)))
                 return null;
             
             Context.Items[ROOM_CODE] = roomCode;

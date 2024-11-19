@@ -31,5 +31,11 @@ export class AppComponent implements OnInit{
       this.router.navigate(['play']);
   }
 
+  async home(){
+    if(this.hub.inRoom && confirm("Leave room ?"))
+      await this.hub.quitRoom();
+    this.router.navigate(['']);
+  }
+
 
 }

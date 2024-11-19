@@ -1,7 +1,7 @@
 <div class="flex flex-column-reverse h-full" style="gap: 0.5em">
 
     <div class="flex">
-        <input type="text" style="flex-grow: 1" [(ngModel)]="user_message" (keydown.enter)="sendMessage()"/>
+        <input type="text" style="flex-grow: 1" [(ngModel)]="user_message" (keydown.enter)="sendMessage()" ngDefaultControl name="msg"/>
         <button style="padding-left: 8px; padding-right: 8px" (click)="sendMessage()">Send</button>
     </div>
 

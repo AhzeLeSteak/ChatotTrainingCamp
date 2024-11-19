@@ -1,0 +1,29 @@
+#score-grid{
+  display: grid;
+  grid-template: repeat(var(--nb-players), 1fr) / 2em 2em 6em 40px ;
+  grid-gap: 4px;
+  grid-row-gap: 10px;
+
+  overflow-y: scroll; scrollbar-width: none; max-height: 490px;
+
+  & > * {
+    display: flex;
+    align-items: end;
+  }
+
+  & > :nth-child(4n+1) {
+    justify-content: end;
+  }
+
+  & > :nth-child(4n+2){
+    justify-content: start;
+  }
+
+  & > :nth-child(4n+3), & > :nth-child(4n+4){
+    justify-content: center;
+  }
+
+  span img {
+    padding-bottom: 5px;
+  }
+}

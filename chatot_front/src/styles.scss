@@ -8,6 +8,14 @@
   --red: #fd0000;
 }
 
+.blue{
+  color: var(--blue) !important;
+}
+
+.red{
+  color: var(--red) !important;
+}
+
 body{
     font-family: 'PMD';
     background-image: url(../public/background.png);

@@ -16,10 +16,6 @@ export class PlayersListComponent {
 
   hub = inject(HubService);
 
-  copyUrl(){
-    navigator.clipboard && navigator.clipboard.writeText(`${window.location.origin}/join/${this.room.code}`)
-  }
-
   get players(){
     return this.room.players;
   }

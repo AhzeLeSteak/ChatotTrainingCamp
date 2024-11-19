@@ -41,6 +41,10 @@ export class Room {
     get isInScores(){
         return this.status === RoomStatus.Scores;
     }
+
+    get url(){
+      return `${window.location.origin}/join/${this.code}`
+    }
 }
 
 export enum RoomStatus{

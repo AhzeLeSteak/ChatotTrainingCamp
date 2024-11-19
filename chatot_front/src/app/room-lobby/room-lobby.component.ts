@@ -22,6 +22,8 @@ export class RoomLobbyComponent implements OnInit{
   readonly one_to_nine = new Array(9).fill(0).map((_, i) => i);
   pp_index = 0;
 
+  url_copied = false;
+
   @Input({required: true}) room !: Room;
 
   ngOnInit() {
@@ -43,6 +45,11 @@ export class RoomLobbyComponent implements OnInit{
     return this.room.players.filter(p => !p.isCreator).every(p => p.ready);
   }
 
+  async copyUrl(){
+    await navigator.clipboard.writeText(this.room.url);
+    this.url_copied = true;
+  }
+
   play() {
     if(this.room.currentPlayer.isCreator)
       this.hub.startRoom();
@@ -61,4 +68,5 @@ export class RoomLobbyComponent implements OnInit{
     return `${minutes ? minutes + 'm' : ''}${seconds ? seconds +'s' : ''}`
   }
 
+  protected readonly window = window;
 }

@@ -1,14 +1,14 @@
-<div class="flex w-full h-full justify-content-center align-item-center">
-    <div class="flex flex-column justify-content-between">
-        <div>
-          <div *ngFor="let player of playerSorted; let i = index" >
-            {{i+1}}.
-            <img [src]="player.profilePictureSrcWithEmotion(emotions[i])"/>
+<div class="flex flex-column justify-content-between align-items-center w-full h-full">
+    <div id="score-grid" [ngStyle]="{'--nb-players' : players.length}">
+        <ng-container *ngFor="let player of playerSorted; let i = index" >
+          <span>{{i+1}}.</span>
+          <img [src]="player.profilePictureSrcWithEmotion(emotions[i])"/>
+          <span class="blue">{{player.name}}</span>
+          <span>
             {{player.points}}
-            {{player.name}}
-          </div>
-        </div>
-        <button (click)="replay()" class="mt-4">Replay</button>
-
+            <img src="/poke_dollar.png" alt="Poke Dollar">
+          </span>
+        </ng-container>
     </div>
+    <button (click)="replay()" class="mt-4">Replay</button>
 </div>
