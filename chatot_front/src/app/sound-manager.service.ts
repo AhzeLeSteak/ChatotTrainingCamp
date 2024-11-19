@@ -8,7 +8,7 @@ const key = 'VOLUME';
 })
 export class SoundManagerService {
 
-  private _volume = parseInt(localStorage.getItem(key) ?? '100'); // [0; 100]
+  private _volume = parseInt(localStorage.getItem(key) ?? '50'); // [0; 100]
   public readonly onVolumeChange = new BehaviorSubject(this._volume);
 
   get volume() {
