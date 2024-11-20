@@ -7,7 +7,7 @@
          ngDefaultControl name="url"
   />
 
-  <div style="display: grid; grid-template: 1fr / 1fr 2fr">
+  <div id="player_details">
     <img [src]="room.currentPlayer.profilePictureSrc" width="250"/>
     <div class="flex flex-column align-items-center">
       <h3>{{room.currentPlayer.name}}</h3>
@@ -26,15 +26,16 @@
       </div>
     </div>
   </div>
+
   <div class="divider">
     <span>Room parameters</span>
   </div>
 
   <div class="flex flex-column justify-content-between" style="flex-grow: 1">
     <div class="flex flex-column justify-content-between" style="gap: 1em">
-      <div class="flex justify-content-between">
-        <div class="flex align-items-center">Generations</div>
-        <div class="flex justify-content-end">
+      <div class="option-group">
+        <div class="option-label">Generations</div>
+        <div class="option-choice">
           <app-select-button
             name="generations" ngDefaultControl
             [disabled]="!room.currentPlayer.isCreator"
@@ -42,13 +43,14 @@
             [multiple]="true"
             [ngModel]="room.params.generations"
             (ngModelChange)="updateParams('generations', $event)"
+            [grid]="true"
           />
         </div>
       </div>
 
-      <div class="flex justify-content-between">
-        <div class="flex align-items-center">Round count</div>
-        <div class=" flex justify-content-end">
+      <div class="option-group">
+        <div class="option-label">Round count</div>
+        <div class="option-choice">
           <app-select-button
             name="round-count" ngDefaultControl
             [disabled]="!room.currentPlayer.isCreator"
@@ -59,9 +61,9 @@
         </div>
       </div>
 
-      <div class="flex justify-content-between">
-        <div class="flex align-items-center">Round duration (s)</div>
-        <div class="flex justify-content-end">
+      <div class="option-group">
+        <div class="option-label">Round duration (s)</div>
+        <div class="option-choice">
           <app-select-button
             [disabled]="!room.currentPlayer.isCreator"
             [options]="[15, 30, 45]"
@@ -71,9 +73,9 @@
         </div>
       </div>
 
-      <div class="flex justify-content-between">
-        <div class="flex align-items-center">Total duration</div>
-        <div class="flex justify-content-end align-items-center">
+      <div class="option-group">
+        <div class="option-label">Total duration</div>
+        <div class="option-choice">
           {{totalDurationText}}
         </div>
       </div>

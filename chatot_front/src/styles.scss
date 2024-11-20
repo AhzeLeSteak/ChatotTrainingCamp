@@ -6,6 +6,8 @@
   --blue: #00F8F8;
   --green: #68D068;
   --red: #fd0000;
+
+  --aspect-ratio: 3 / 4;
 }
 
 .blue{
@@ -17,94 +19,95 @@
 }
 
 body{
-    font-family: 'PMD';
-    background-image: url(../public/background.png);
-    min-height: 98vh;
+  font-family: 'PMD';
+  background-image: url(../public/background.png);
+  min-height: 98vh;
 }
 
 .box{
-    border-image-source: url(../public/ui/border.png);
-    border-image-slice: 5 8 5 8 fill;
-    border-image-width: 16px 20px 20px 16px;
-    border-image-outset: 0px 0px 0px 0px;
-    border-image-repeat: stretch stretch;
-    border-style: solid;
+  border-image-source: url(../public/ui/border.png);
+  border-image-slice: 5 8 5 8 fill;
+  border-image-width: 16px 20px 20px 16px;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
+  border-style: solid;
 
-    padding: 25px;
-    image-rendering: pixelated;
+  padding: 25px;
+  min-width: 300px;
+  image-rendering: pixelated;
 
-    color: white;
-    text-shadow: 0 0.2ch 0 black, 0.2ch 0 0 black;
-    font-size: 1.5em;
+  color: white;
+  text-shadow: 0 0.2ch 0 black, 0.2ch 0 0 black;
+  font-size: 1.5em;
   letter-spacing: 1px;
 
 }
 
 button{
-    background-color: unset;
-    color: unset;
-    font-family: unset;
-    font-size: 1em;
-    padding: 4px;
-    background-color: rgba(255, 248, 220, .1);
-    border-radius: 4px;
+  background-color: unset;
+  color: unset;
+  font-family: unset;
+  font-size: 1em;
+  padding: 4px;
+  background-color: rgba(255, 248, 220, .1);
+  border-radius: 4px;
 
-    &:hover:not(:disabled){
-        color: var(--yellow);
-    }
+  &:hover:not(:disabled){
+    color: var(--yellow);
+  }
 
-    &:disabled{
-        background: none;
-        color: gray;
-    }
+  &:disabled{
+    background: none;
+    color: gray;
+  }
 }
 
 input[type="text"]{
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
-    font-family: 'PMD';
-    font-size: 1em;
-    border-radius: 0;
-    outline: none !important;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  font-family: 'PMD';
+  font-size: 1em;
+  border-radius: 0;
+  outline: none !important;
 
-    &:focus-visible{
-      outline: var(--yellow) 1px solid !important;
-    }
+  &:focus-visible{
+    outline: var(--yellow) 1px solid !important;
+  }
 }
 
 .divider {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #000;
-    line-height: 0.1em;
-    margin: 10px 0 20px;
- }
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 20px 0 20px;
+}
 
- .divider span {
-     background: var(--grayish);
-     padding:0 10px;
- }
+.divider span {
+  background: var(--grayish);
+  padding:0 10px;
+}
 
 img{
-    image-rendering: pixelated;
+  image-rendering: pixelated;
 }
 
 .custom-carousel{
-    width: 460px;
+  width: 460px;
 }
 
 @font-face{
-    font-family: 'PMD';
-    src: url(../public/wondermail.ttf) format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'PMD';
+  src: url(../public/wondermail.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face{
-    font-family: 'PMDTitle';
-    src: url(../public/HouseofTerror.otf) format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'PMDTitle';
+  src: url(../public/HouseofTerror.otf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 

@@ -12,31 +12,31 @@ import {Room} from '../../models/room';
 })
 export class GuessCardComponent {
 
-  @Input({required: true}) room  !: Room;
+  @Input() room  ?: Room;
   @Input({required: true}) pkid !: number;
-  @Input({required: true}) correct = false;
-  @Input({required: true}) wrong = false;
-  @Input({required: true}) disabled !: boolean;
+  @Input() correct = false;
+  @Input() wrong = false;
+  @Input() disabled !: boolean;
 
   @Output() onClick = new EventEmitter();
 
   languageManager = inject(LanguageService);
 
   get pk_name(){
-    return this.room.isInTimer
+    return this.room?.isInTimer
       ? '?'
       : this.languageManager.name(this.pkid);
   }
 
   get img_url(){
-    return this.room.isInTimer
+    return this.room?.isInTimer
       ? '/questionmark.png'
       : `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.pkid}.png`;
   }
 
   get players(){
-    const i = this.room.questionIndex;
-    return this.room.players
+    const i = this.room!.questionIndex;
+    return this.room!.players
       .filter(p => p.answers[i] && p.answers[i].pkId === this.pkid)
       .toSorted((a, b) => a.answers[i].timeInMs - b.answers[i].timeInMs);
   }

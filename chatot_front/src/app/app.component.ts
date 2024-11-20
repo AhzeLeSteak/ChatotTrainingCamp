@@ -6,11 +6,12 @@ import {FormsModule} from '@angular/forms';
 import {SoundManagerService} from './sound-manager.service';
 import {VolumeBinderDirective} from './volume-binder.directive';
 import {LanguageService} from './language.service';
+import {GuessCardComponent} from './guess-card/guess-card.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective],
+  imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, GuessCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

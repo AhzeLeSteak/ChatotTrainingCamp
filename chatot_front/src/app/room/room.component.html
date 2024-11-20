@@ -7,7 +7,7 @@
         <app-play [room]="room" *ngIf="room.IsPlaying || room.isInAnswers || room.isInTimer"></app-play>
         <app-scores [room]="room" *ngIf="room.isInScores"/>
     </div>
-    <div class="box">
+    <div class="box" id="chatbox-container">
         <app-chatbox [room]="room"></app-chatbox>
     </div>
 

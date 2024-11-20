@@ -40,8 +40,8 @@ export class ScoresComponent implements OnInit{
   }
 
   get players(): Player[]{
-    const p = this.room.players[0];
-    return new Array(9).fill(p);
+    //const p = this.room.players[0];
+    //return new Array(9).fill(p);
     return this.room.players;
   }
 

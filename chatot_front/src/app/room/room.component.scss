@@ -1,6 +1,18 @@
 #room{
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template: 1fr / 1fr 2fr 1fr;
     grid-gap: 4px;
+}
+
+
+@media (max-aspect-ratio: 1.4) {
+
+  #room{
+    grid-template: auto 1fr / 1fr;
+  }
+
+  #chatbox-container{
+    display: none;
+  }
 }

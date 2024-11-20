@@ -1,9 +1,12 @@
 <div (click)="onClick.emit()" class="guess-card" [ngClass]="{correct, wrong, disabled}">
     <img src="/ui/guess_card_2.png" alt="" id="background">
     <span id="name" [ngStyle]="{'font-size' : fontSize}">{{pk_name}}</span>
-    <img id="pk" [src]="img_url"/>
-    <img id="select" [ngClass]="{disabled}" src="/ui/selected.png"/>
-    <div id="responses" *ngIf="room.isInAnswers">
+    <div id="pk">
+      <img src="/ui/window.png" alt="">
+      <img [src]="img_url"/>
+    </div>
+    <div id="select" [ngClass]="{disabled}"></div>
+    <div id="responses" *ngIf="room?.isInAnswers">
       <img *ngFor="let p of players" [src]="p.profilePictureSrc"/>
     </div>
 </div>

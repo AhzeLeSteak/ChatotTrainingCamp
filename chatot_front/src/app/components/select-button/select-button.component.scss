@@ -1,39 +1,46 @@
 .select-button{
-    display: flex;
-    gap: 25px;
+  display: flex;
+  gap: 25px;
 
-    &:not(.disabled) span:hover{
-      cursor: pointer;
+  @media (max-aspect-ratio: 1.4) {
+    &.grid{
+      display: grid;
+      grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    }
+  }
+
+  &:not(.disabled) span:hover{
+    cursor: pointer;
+    color: var(--yellow)
+  }
+
+  &.disabled span{
+    &{
+      color: rgba(255, 255, 255, .8);
+    }
+    &.selected{
+      color: rgba(215, 222, 37, 0.7)
+    }
+  }
+
+  span{
+    position: relative;
+    padding-left: 14px;
+
+    &.selected{
       color: var(--yellow)
     }
 
-    &.disabled span{
-      &{
-        color: rgba(255, 255, 255, .8);
-      }
-      &.selected{
-        color: rgba(215, 222, 37, 0.7)
-      }
+    .arrow{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      display: none;
     }
 
-    span{
-        position: relative;
-        padding-left: 14px;
-
-        &.selected{
-            color: var(--yellow)
-        }
-
-        .arrow{
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            display: none;
-        }
-
-        &.selected .arrow{
-            display: block;
-        }
+    &.selected .arrow{
+      display: block;
     }
+  }
 }

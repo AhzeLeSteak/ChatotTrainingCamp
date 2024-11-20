@@ -17,6 +17,7 @@ export class SelectButtonComponent {
   @Input() multiple = false;
   @Input() optionLabel?: string;
   @Input() optionValue?: string;
+  @Input() grid = false;
 
   @Output() ngModelChange = new EventEmitter<any>();
 

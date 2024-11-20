@@ -1,3 +1,21 @@
+#player_details{
+  display: grid;
+  grid-template: 1fr / 1fr 2fr;
+
+  h3{
+    margin: 4px;
+  }
+
+  @media (max-aspect-ratio: 1.4) {
+    &{
+      grid-template: 1fr / 1fr;
+    }
+    & > img {
+      display: none;
+    }
+  }
+}
+
 #pp_grid{
   display: grid;
   grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
@@ -25,3 +43,30 @@
 
   }
 }
+
+
+.option-group{
+  display: flex;
+  justify-content: space-between;
+  @media (max-aspect-ratio: 1.4) {
+    & {
+      flex-direction: column;
+    }
+  }
+}
+
+.option-label{
+  display: flex;
+  align-items: center;
+}
+
+.option-choice{
+  display: flex;
+  justify-content: end;
+  @media (max-aspect-ratio: 1.4) {
+    & {
+      justify-content: end;
+    }
+  }
+}
+
