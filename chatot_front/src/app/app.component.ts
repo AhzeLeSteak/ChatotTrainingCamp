@@ -7,11 +7,13 @@ import {SoundManagerService} from './sound-manager.service';
 import {VolumeBinderDirective} from './volume-binder.directive';
 import {LanguageService} from './language.service';
 import {GuessCardComponent} from './guess-card/guess-card.component';
+import {map, take} from 'rxjs';
+import {SnackbarComponent} from './snackbar/snackbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, GuessCardComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, GuessCardComponent, SnackbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -37,10 +39,12 @@ export class AppComponent implements OnInit{
     this.router.navigate(['']);
   }
 
-  get array(){
-    return new Array(20)
-      .fill(0)
-      .map((_, i) => i < this.soundManager.volume / 5);
+  get soundBar$(){
+    return this.soundManager.onVolumeChange.pipe(map(volume =>
+      new Array(20)
+        .fill(0)
+        .map((_, i) => i < volume / 5)
+    ));
   }
 
 }
