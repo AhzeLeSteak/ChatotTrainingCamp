@@ -7,10 +7,16 @@
       </h1>
     </div>
 
-    <div id="main-container" *ngIf="hub.connected">
-      <div>
+    <div id="main-container">
+      <div *ngIf="hub.connected; else loading">
         <router-outlet></router-outlet>
       </div>
+      <ng-template #loading>
+        <div class="box" style="display: flex; align-items: center; flex-direction: column">
+          Unable to connect to server
+          <img src="/sleep.gif" width="250">
+        </div>
+      </ng-template>
     </div>
   </div>
 
@@ -24,10 +30,18 @@
     </div>
 
     <div id="sound-settings">
-      <img (click)="test_audio.play()" src="/ui/music_note.png" style="width: 2em; cursor: pointer"/>
-      <input type="range" min="0" max="100" step="5"
-             [(ngModel)]="soundManager.volume"
-             [ngStyle]="{'background-image': 'url(/sound_bar/'+(soundManager.volume / 5)+'.png)'}">
+      <img (click)="test_audio.play()" src="/ui/music_note.png"
+           [ngStyle]="{width: '2em', cursor: 'pointer', filter: soundManager.volume === 0 ? 'grayscale(1)' : ''}"
+      />
+      <div id="range">
+        <div id="grid">
+          <img *ngFor="let bar of soundBar$ | async" [src]="bar ? '/ui/green_bar.png' : '/ui/black_bar.png'">
+        </div>
+        <input type="range"
+               min="0" max="100" step="5"
+               [(ngModel)]="soundManager.volume"
+        >
+      </div>
 
       <audio #test_audio appVolumeBinder style="display: none">
         <source src="/sounds/0441.ogg" type="audio/ogg">
@@ -37,6 +51,4 @@
 
 </div>
 
-<div style="display: none">
-  <img *ngFor="let i of zero_to_20" [src]="'/sound_bar/'+ i +'.png'"/>
-</div>
+<app-snackbar/>

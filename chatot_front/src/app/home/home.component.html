@@ -12,7 +12,7 @@
 
   <input type="text" [(ngModel)]="room_code" pInputText placeholder="Enter room code" class="w-full" *ngIf="join && !url_mode"/>
 
-  <button (click)="letsgo()" [disabled]="player_name.length === 0" class="w-full">
+  <button (click)="letsgo()" [disabled]="player_name.length === 0 || (join && room_code.length === 0)" class="w-full">
       Let's go !
   </button>
 

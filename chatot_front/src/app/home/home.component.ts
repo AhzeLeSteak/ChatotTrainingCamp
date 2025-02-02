@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HubService, PLAYER_NAME } from '../hub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectButtonComponent } from "../components/select-button/select-button.component";
 import {CommonModule} from '@angular/common';
+import {SnackbarService} from '../snackbar.service';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,8 @@ import {CommonModule} from '@angular/common';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
+
+  snackbar = inject(SnackbarService);
 
   create_join = [{value: false, label: 'Create a room'}, {value: true, label: 'Join a room'}];
   join = false;
@@ -47,8 +50,8 @@ export class HomeComponent implements OnInit {
       joined = await this.hub.createRoom(this.player_name);
     if(joined)
       this.router.navigate(['play']);
-    //else if(this.join)
-    //  this.router.navigate(['']);
+    else if(this.join)
+      this.snackbar.onNewMessage$.next(`Unable to join room`);
   }
 
 }
