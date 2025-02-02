@@ -9,7 +9,9 @@
 @media (max-aspect-ratio: 1.4) {
 
   #room{
-    grid-template: auto 1fr / 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 4px;
   }
 
   #chatbox-container{

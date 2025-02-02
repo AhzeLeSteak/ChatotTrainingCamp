@@ -41,6 +41,10 @@ body{
   font-size: 1.5em;
   letter-spacing: 1px;
 
+  @media (max-aspect-ratio: 1.4) {
+    padding: 20px;
+  }
+
 }
 
 button{

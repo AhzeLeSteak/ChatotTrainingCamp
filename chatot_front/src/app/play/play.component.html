@@ -29,7 +29,7 @@
         ></app-guess-card>
     </div>
 
-    <div class="col-12 flex justify-content-center">
+    <div class="flex justify-content-center">
         <div *ngIf="room.IsPlaying" class="timer">
             <img src="/ui/timer.png" alt="">
             <img *ngFor="let bar of barsArray$ |async" [src]="'/ui/' + (bar ? 'green' : 'red') + '_bar.png'">

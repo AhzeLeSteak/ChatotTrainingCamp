@@ -206,7 +206,7 @@ namespace ChatotTrainingCamp.Services
             room ??= CurrentRoom;
             room.Status = RoomStatus.Answers;
             await UpdateRoom(room);
-            await Task.Delay(5000);
+            await Task.Delay(3000);
             await NextQuestion(room);
         }
 

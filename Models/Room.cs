@@ -15,7 +15,7 @@ namespace ChatotTrainingCamp.Models
 
     public class Room
     {
-        public static readonly int TIMER_DURATION = 3000;
+        public static readonly int TIMER_DURATION = 2000;
         
         public string Code { get; set; }
         public RoomStatus Status { get; set; } = RoomStatus.Lobby;

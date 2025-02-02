@@ -7,18 +7,23 @@
   cursor: pointer;
 
 
-  border-image-source: url(/ui/guess_card_empty.png);
-  border-image-slice: 9 9 9 9 fill;
-  border-image-width: 16px;
-  border-image-outset: 0px 0px 0px 0px;
-  border-image-repeat: stretch stretch;
-  border-style: solid;
+  #background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-image-source: url(/ui/guess_card_empty.png);
+    border-image-slice: 9 9 9 9 fill;
+    border-image-width: 16px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    border-style: solid;
+  }
 
 
   @media (max-aspect-ratio: 1.4) {
     & {
       aspect-ratio: unset;
-      height: 15vh;
+      height: 14vh;
     }
   }
 
@@ -50,17 +55,15 @@
     }
   }
 
-  &.disabled:not(.correct){
-    filter: grayscale(100%);
-    & > * {
-      filter: grayscale(0);
+  &.disabled:not(.correct) {
+    & #background, & #window{
+      filter: grayscale(100%);
     }
   }
 
-  &.wrong{
-    filter: hue-rotate(245deg) !important;
-    & > * {
-      filter: hue-rotate(-245deg) !important;
+  &.wrong {
+    & #background, & #window{
+      filter: hue-rotate(245deg) !important;
     }
   }
 

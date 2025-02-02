@@ -7,7 +7,7 @@
   @media (max-aspect-ratio: 1.4) {
     &{
       grid-template: repeat(4, 1fr) / 1fr;
-      gap: 2px;
+      grid-gap: 6px;
     }
   }
 }
@@ -17,6 +17,10 @@
     display: grid;
     grid-template: 1fr / calc(1fr * 16/7) repeat(15, 1fr);
     grid-gap: 4px;
+
+    @media (max-aspect-ratio: 1.4) {
+      width: 80%;
+    }
 
     & img{
         width: 100%;
