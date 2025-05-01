@@ -15,8 +15,24 @@ export class LanguageService {
 
   public readonly languages = ['jap', 'en', 'fr', 'ko', 'de'] as const;
   private _language_id = parseInt(localStorage.getItem(key) ?? '1');
+
   public name(pkid: number){
-    return LANGUAGES[this.language_id][pkid-1];
+    return this.LANGUAGE[pkid-1];
+  }
+
+  public dexId(name: string){
+    name = name.toLowerCase();
+    name = this.LANGUAGE.find(n => n.toLowerCase() === name) ?? '';
+    return this.LANGUAGE.indexOf(name) + 1;
+  }
+
+  public get_propositions(name: string){
+    name = name.toLowerCase();
+    return this.LANGUAGE.filter(n => n.toLowerCase().includes(name));
+  }
+
+  get LANGUAGE(){
+    return LANGUAGES[this.language_id];
   }
 
   get selected_language(){

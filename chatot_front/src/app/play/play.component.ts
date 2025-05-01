@@ -1,10 +1,10 @@
-import { Component, inject, Input, OnInit, } from '@angular/core';
-import { Room } from '../../models/room';
-import { CommonModule } from '@angular/common';
-import { HubService } from '../hub.service';
-import { GuessCardComponent } from '../guess-card/guess-card.component';
-import { map, shareReplay, timer } from 'rxjs';
-import {VolumeBinderDirective} from '../volume-binder.directive';
+import {Component, inject, Input, OnInit,} from '@angular/core';
+import {Room} from '../../models/room';
+import {CommonModule} from '@angular/common';
+import {HubService} from '../hub.service';
+import {GuessCardComponent} from '../guess-card/guess-card.component';
+import {map, shareReplay, timer} from 'rxjs';
+import {SoundPlayerComponent} from '../sound-player/sound-player.component';
 
 
 const time = timer(0, 100)
@@ -13,7 +13,7 @@ const time = timer(0, 100)
 @Component({
   selector: 'app-play',
   standalone: true,
-  imports: [CommonModule, GuessCardComponent, VolumeBinderDirective],
+  imports: [CommonModule, GuessCardComponent, SoundPlayerComponent],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss'
 })
@@ -23,7 +23,6 @@ export class PlayComponent implements OnInit{
 
   @Input({required: true}) room !: Room;
 
-  soundPlaying = true;
   answer = 0;
   startTimer = new Date();
 

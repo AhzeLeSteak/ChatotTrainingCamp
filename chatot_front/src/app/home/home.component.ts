@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private hub: HubService,
               private route: ActivatedRoute,
-              private router: Router
+              protected router: Router
   ){
 
   }

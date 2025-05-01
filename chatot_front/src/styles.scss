@@ -32,12 +32,14 @@ body{
   border-image-repeat: stretch stretch;
   border-style: solid;
 
+  --shadow-color: black;
+
   padding: 25px;
   min-width: 300px;
   image-rendering: pixelated;
 
   color: white;
-  text-shadow: 0 0.2ch 0 black, 0.2ch 0 0 black;
+  text-shadow: 0 0.2ch 0 var(--shadow-color), 0.2ch 0 0 var(--shadow-color);
   font-size: 1.5em;
   letter-spacing: 1px;
 
@@ -66,8 +68,8 @@ button{
   }
 }
 
-input[type="text"]{
-  background-color: rgba(0, 0, 0, 0.2);
+input[type="text"], select{
+  background-color: #1A1A1A;
   color: white;
   font-family: 'PMD';
   font-size: 1em;

@@ -1,0 +1,52 @@
+<div class="main">
+  <div class="box flex flex-column align-items-center" style="gap: 1em; padding-bottom: 2em">
+
+    <h2 style="margin: 0">Guess the Pokémon !</h2>
+
+    <app-sound-player [dexId]="dexId"></app-sound-player>
+
+    <div class="flex">
+      <ng-container *ngIf="!found else foundTemplate">
+        <div style="position: relative">
+          <input type="text" [ngModel]="input" (ngModelChange)="input = $event; showPropositions = true" (keydown.enter)="try()"/>
+          <div id="propositions" *ngIf="input.length && showPropositions && languageManager.get_propositions(input).length">
+            <div *ngFor="let proposition of languageManager.get_propositions(input)" (click)="input = proposition; showPropositions = false">
+              {{proposition}}
+            </div>
+          </div>
+        </div>
+        <button style="padding-left: 8px; padding-right: 8px" (click)="try()">Submit</button>
+      </ng-container>
+      <ng-template #foundTemplate>
+        <h4 class="flex flex-column align-items-center">
+          <span>You won !</span>
+          <span>The Pokémon was {{languageManager.name(dexId)}}</span>
+        </h4>
+      </ng-template>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="box flex flex-column align-items-center">
+    <div class="divider">
+      <span>Hint</span>
+    </div>
+
+    <canvas id="pk_canvas" width="96" height="96" [ngClass]="{displayNone: tries.length === 0 && !found}"></canvas>
+    <img src="/questionmark.png" width="96" [ngClass]="{displayNone: tries.length > 0 || found}">
+
+    <ng-container *ngIf="tries.length">
+      <div class="divider">
+        <span>History</span>
+      </div>
+      <div class="flex flex-column">
+        <span *ngFor="let try of tries; let i = index">{{i+1}}. {{languageManager.name(try)}}</span>
+      </div>
+    </ng-container>
+
+  </div>
+
+</div>
