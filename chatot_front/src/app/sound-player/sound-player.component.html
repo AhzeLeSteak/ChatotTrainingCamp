@@ -1,7 +1,8 @@
 <img id="play" src="/ui/replay.png" alt="" width="40" (click)="audio.play()" [ngClass]="{disabled: soundPlaying}">
 
 <audio #audio
-       appVolumeBinder [autoplay]="autoplay"
+       appVolumeBinder
+       autoplay
        style="display: none"
        (play)="soundPlaying = true"
        (pause)="soundPlaying = false"

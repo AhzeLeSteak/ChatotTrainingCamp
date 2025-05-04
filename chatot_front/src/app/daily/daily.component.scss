@@ -1,14 +1,16 @@
 #pk_canvas{
   border: 1px solid white;
+  display: flex;
 }
 
 .displayNone{
-  display: none;
+  display: none !important;
 }
 
 
 .main{
   display: flex;
+  gap: 1em;
   margin-top: 2em;
   @media (max-aspect-ratio: 1.4) {
     flex-direction: column;

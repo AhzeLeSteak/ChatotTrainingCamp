@@ -12,7 +12,6 @@ import {CommonModule} from '@angular/common';
 export class SoundPlayerComponent {
 
   @Input({required: true}) dexId!: number;
-  @Input({required: false}) autoplay = false;
 
   soundPlaying = false;
 

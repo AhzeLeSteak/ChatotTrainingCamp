@@ -16,6 +16,9 @@ import {SnackbarService} from '../snackbar.service';
 export class HomeComponent implements OnInit {
 
   snackbar = inject(SnackbarService);
+  hub = inject(HubService);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
 
   create_join = [{value: false, label: 'Create a room'}, {value: true, label: 'Join a room'}];
   join = false;
@@ -23,13 +26,6 @@ export class HomeComponent implements OnInit {
 
   player_name = localStorage.getItem(PLAYER_NAME) ?? '';
   room_code = '';
-
-  constructor(private hub: HubService,
-              private route: ActivatedRoute,
-              protected router: Router
-  ){
-
-  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

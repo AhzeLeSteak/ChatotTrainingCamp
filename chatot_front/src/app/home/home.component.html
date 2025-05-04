@@ -1,4 +1,10 @@
-<div id="home" class="box">
+<ng-template #loading>
+  <div class="box" style="display: flex; align-items: center; flex-direction: column">
+    Unable to connect to server
+    <img src="/sleep.gif" width="250">
+  </div>
+</ng-template>
+<div id="home" class="box" *ngIf="hub.connected; else loading">
   <app-select-button
     name="create-join" ngDefaultControl
     *ngIf="!url_mode"
@@ -16,8 +22,9 @@
       Let's go !
   </button>
 
-  <hr class="w-full" style="margin-top: 2em; margin-bottom: 0.5em">
+</div>
 
+<div class="box" style="margin-top: 1em">
   <button (click)="router.navigate(['daily'])" class="w-full">
     Try daily !
   </button>

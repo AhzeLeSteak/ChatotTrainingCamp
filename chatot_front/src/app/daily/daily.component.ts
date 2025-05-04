@@ -5,6 +5,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {SnackbarService} from '../snackbar.service';
 import {RNGSeedService} from '../rngseed.service';
+import {SaveManagerService} from '../save-manager.service';
+import {TimerTomorowComponent} from '../timer-tomorow/timer-tomorow.component';
 
 type Pixel = [number, number, number, number];
 type Row = Array<Pixel>;
@@ -15,6 +17,12 @@ type SizedBMP = {
   height: number,
 };
 
+enum SearchStatus {
+  Searching,
+  Found,
+  Failed,
+}
+
 @Component({
   selector: 'app-daily',
   standalone: true,
@@ -23,54 +31,48 @@ type SizedBMP = {
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
+    TimerTomorowComponent,
   ],
   templateUrl: './daily.component.html',
   styleUrl: './daily.component.scss'
 })
 export class DailyComponent implements AfterViewInit {
+  protected readonly SearchStatus = SearchStatus;
 
   dexId = 2;
 
-  tries: number[] = [];
-  found = false;
   input = '';
   showPropositions = false;
 
-  origImg!: SizedBMP;
-  canvas!: HTMLCanvasElement;
 
+  saveManager = inject(SaveManagerService);
   languageManager = inject(LanguageService);
   snackService = inject(SnackbarService);
   rng = inject(RNGSeedService);
 
-  async ngAfterViewInit() {
-    const now = new Date();
-    // @ts-ignore
-    const fullDaysSinceEpoch = Math.floor(now/8.64e7);
-    this.rng.seed(fullDaysSinceEpoch);
-    this.dexId = this.rng.nextRange(1, this.languageManager.LANGUAGE.length+1);
+  readonly levels = [96, 48, 32, 24, 16, 12, 8, 6, 4, 3, 2];
 
-    this.canvas = document.getElementById('pk_canvas') as HTMLCanvasElement;
-    const url = `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId}.png`;
-    const blob = await fetch(url).then(response => response.blob());
+  async ngAfterViewInit() {
+    this.rng.seed(this.saveManager.daysSinceEpoch + 1);
+    this.dexId = this.rng.nextRange(1, this.languageManager.LANGUAGE.length + 1);
+
+
+    const blob = await fetch(this.imgUrl).then(response => response.blob());
     const base64 = await this.blobToBase64(blob);
-    this.origImg = await this.base64ToPixels(base64);
+    const img = await this.base64ToPixels(base64);
+    for (let i = 0; i < this.levels.length; i++) {
+      setTimeout(() => this.drawSplitImageWithLevel(img, i), 500*(i+1));
+    }
   }
 
 
   try() {
     const dexId = this.languageManager.dexId(this.input);
-    if(dexId <= 0) return this.snackService.onNewMessage$.next('Pokémon not found');
-    if(this.tries.includes(dexId)) return;
+    if (dexId <= 0) return this.snackService.onNewMessage$.next('Pokémon not found');
+    if(!dexId || this.tries.includes(dexId)) return;
 
-    if(dexId !== this.dexId){
-      this.tries.push(dexId);
-      this.input = '';
-    }
-    else{
-      this.found = true;
-    }
-    this.drawSplitImageWithLevel();
+    this.saveManager.addTry(dexId);
+    this.input = '';
   }
 
   private blobToBase64(blob: Blob) {
@@ -85,7 +87,7 @@ export class DailyComponent implements AfterViewInit {
     })
   }
 
-   base64ToPixels(base64: string) {
+  base64ToPixels(base64: string) {
     return new Promise<SizedBMP>(resolve => {
 
       const img = new Image();
@@ -111,8 +113,8 @@ export class DailyComponent implements AfterViewInit {
     })
   }
 
-  split(level = 1) {
-    const original_width = this.origImg.width, original_height = this.origImg.height;
+  split(origImg: SizedBMP, level = 1) {
+    const original_width = origImg.width, original_height = origImg.height;
     const width = Math.floor(original_width / level);
     const height = Math.floor(original_height / level);
 
@@ -130,7 +132,7 @@ export class DailyComponent implements AfterViewInit {
         let pixel_count = 0;
         for (let y_chunk = 0; y_chunk < chunk_height; y_chunk++) {
           for (let x_chunk = 0; x_chunk < chunk_width; x_chunk++) {
-            const pixel = this.origImg.pixels[y_chunk + y][x_chunk + x];
+            const pixel = origImg.pixels[y_chunk + y][x_chunk + x];
             if (pixel[3] === 0) continue;
             r += pixel[0];
             g += pixel[1];
@@ -157,16 +159,15 @@ export class DailyComponent implements AfterViewInit {
     }
   }
 
-  drawSplitImageWithLevel() {
-    const levels = [1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96].reverse();
-    const lvl = this.found ? levels.pop() : levels[this.tries.length - 1];
-    const newImg = this.split(lvl);
+  drawSplitImageWithLevel(img: SizedBMP, i: number) {
+    const lvl = this.levels[i];
+    const newImg = this.split(img, lvl);
     if (!newImg) return;
 
-    const canvas = this.canvas;
+    const canvas = document.querySelector(`#pk_canvas canvas:nth-of-type(${i + 1})`) as HTMLCanvasElement;
     const context = canvas.getContext("2d")!;
-    canvas.width = this.origImg.width;
-    canvas.height = this.origImg.height;
+    canvas.width = img.width;
+    canvas.height = img.height;
     for (let y = 0; y < newImg.height; y++) {
       for (let x = 0; x < newImg.width; x++) {
         const pixel = newImg.pixels[y][x];
@@ -183,6 +184,20 @@ export class DailyComponent implements AfterViewInit {
         }
       }
     }
+  }
+
+  get searchStatus(): SearchStatus {
+    if(this.tries[this.tries.length - 1] === this.dexId) return SearchStatus.Found;
+    if (this.tries.length < 9) return SearchStatus.Searching;
+    return SearchStatus.Failed;
+  }
+
+  get tries() {
+    return this.saveManager.tries;
+  }
+
+  get imgUrl(){
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId}.png`
   }
 
 }

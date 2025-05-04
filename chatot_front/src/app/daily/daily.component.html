@@ -6,9 +6,14 @@
     <app-sound-player [dexId]="dexId"></app-sound-player>
 
     <div class="flex">
-      <ng-container *ngIf="!found else foundTemplate">
+      <ng-container *ngIf="searchStatus === SearchStatus.Searching else foundTemplate">
         <div style="position: relative">
-          <input type="text" [ngModel]="input" (ngModelChange)="input = $event; showPropositions = true" (keydown.enter)="try()"/>
+          <input type="text"
+                 [ngModel]="input"
+                 (ngModelChange)="input = $event; showPropositions = true"
+                 (keydown.enter)="try()"
+                 style="padding: 4px;"
+          />
           <div id="propositions" *ngIf="input.length && showPropositions && languageManager.get_propositions(input).length">
             <div *ngFor="let proposition of languageManager.get_propositions(input)" (click)="input = proposition; showPropositions = false">
               {{proposition}}
@@ -19,15 +24,13 @@
       </ng-container>
       <ng-template #foundTemplate>
         <h4 class="flex flex-column align-items-center">
-          <span>You won !</span>
-          <span>The Pokémon was {{languageManager.name(dexId)}}</span>
+          <span>You {{searchStatus === SearchStatus.Found ? "won" : "failed"}}!</span>
+          <span>The secret  Pokémon was <span class="yellow">{{languageManager.name(dexId)}}</span></span>
+          <span style="margin-top: .5em">Try to guess the next pokémon in</span>
+          <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
         </h4>
       </ng-template>
     </div>
-
-
-
-
   </div>
 
   <div class="box flex flex-column align-items-center">
@@ -35,8 +38,14 @@
       <span>Hint</span>
     </div>
 
-    <canvas id="pk_canvas" width="96" height="96" [ngClass]="{displayNone: tries.length === 0 && !found}"></canvas>
-    <img src="/questionmark.png" width="96" [ngClass]="{displayNone: tries.length > 0 || found}">
+    <div id="pk_canvas" [ngClass]="{displayNone: tries.length === 0}">
+      <canvas *ngFor="let level of levels; let i = index"
+              [ngClass]="{displayNone: searchStatus !== SearchStatus.Searching || tries.length !== i + 1}"
+              width="96" height="96"
+      ></canvas>
+      <img [src]="imgUrl" width="96" [ngClass]="{displayNone: searchStatus === SearchStatus.Searching}">
+    </div>
+    <img src="/questionmark.png" width="96" [ngClass]="{displayNone: tries.length > 0}">
 
     <ng-container *ngIf="tries.length">
       <div class="divider">
