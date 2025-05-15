@@ -33,29 +33,6 @@
     </div>
   </div>
 
-  <div class="box flex flex-column align-items-center">
-    <div class="divider">
-      <span>Hint</span>
-    </div>
-
-    <div id="pk_canvas" [ngClass]="{displayNone: tries.length === 0}">
-      <canvas *ngFor="let level of levels; let i = index"
-              [ngClass]="{displayNone: searchStatus !== SearchStatus.Searching || tries.length !== i + 1}"
-              width="96" height="96"
-      ></canvas>
-      <img [src]="imgUrl" width="96" [ngClass]="{displayNone: searchStatus === SearchStatus.Searching}">
-    </div>
-    <img src="/questionmark.png" width="96" [ngClass]="{displayNone: tries.length > 0}">
-
-    <ng-container *ngIf="tries.length">
-      <div class="divider">
-        <span>History</span>
-      </div>
-      <div class="flex flex-column">
-        <span *ngFor="let try of tries; let i = index">{{i+1}}. {{languageManager.name(try)}}</span>
-      </div>
-    </ng-container>
-
-  </div>
+  <app-daily-hints *ngIf="dexId" [dexId]="dexId" [searchStatus]="searchStatus"></app-daily-hints>
 
 </div>
