@@ -49,7 +49,6 @@ export class DailyComponent implements AfterViewInit {
   async ngAfterViewInit() {
     this.rng.seed(this.saveManager.daysSinceEpoch - 1);
     this.dexId = this.rng.nextRange(1, this.languageManager.LANGUAGE.length + 1);
-    this.dexId = 287;
   }
 
 

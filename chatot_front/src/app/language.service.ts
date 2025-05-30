@@ -34,7 +34,7 @@ export class LanguageService {
   public entry(pkId: number){
     const name = this.name(pkId);
     const entry = ENTRIES[pkId-1][this.selected_language] ?? ENTRIES[pkId]['en'];
-    return entry.replaceAll(name.toUpperCase(), '???');
+    return entry.replaceAll(new RegExp(name, 'gi'), '???');
   }
 
   public size(pkId: number){
