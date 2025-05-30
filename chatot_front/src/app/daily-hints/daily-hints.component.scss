@@ -1,8 +1,203 @@
-#pk_canvas{
-  border: 1px solid white;
+#pk_canvas {
   display: flex;
+  & > canvas, & > img {
+    width: 100%;
+    padding: 0 6px 6px 0;
+  }
 }
 
-.displayNone{
+.shadow{
+  box-shadow: 6px 6px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.fine-border{
+  border: 1px solid #585858;
+  border-radius: 4px;
+
+}
+
+.dex {
+  color: #585858;
+  --shadow-color: #B0B0B0;
+  font-size: 1.5rem;
+  text-shadow: 0 1px 0 var(--shadow-color), 1px 0 0 var(--shadow-color);
+}
+
+.displayNone {
   display: none !important;
+}
+
+.text-at-bottom{
+  display: flex;
+  align-items: end;
+}
+
+.hint-container {
+  background-color: #F8F8F8 !important;
+  width: 100%;
+  border:  4px solid #901020;
+  border-top: none;
+}
+
+.hint-grid {
+  background-size: 56px 56px;
+  background-position: top;
+  background-image: linear-gradient(to right, #A8A8A8 1px, transparent 1px),
+  linear-gradient(to bottom, #A8A8A8 1px, transparent 1px);
+
+  display: grid;
+  aspect-ratio: 284 / 211;
+  grid-template-rows: 18fr 5fr 34fr 7fr 16fr 7fr 34fr 13fr 52fr 20fr;
+  grid-template-columns: 20fr 1fr 96fr 40fr 106fr 1fr 20fr;
+  /*
+  ROWS
+  TOP GAP NAME GAP TYPES GAP SIZE GAP FLAVOR BOTTOM
+  COLUMNS
+  LEFT 1PX_FLAVOR PHOTO NAME_LEFT TYPES/SIZE 1PX_FLAVOR RIGHT
+   */
+  grid-template-areas:
+    "top    top     top     top     top         top   top"
+    "left   gap4    gap4    gap4    gap4        edgeR right"
+    "left   photo   photo   name    name        edgeR right"
+    "left   photo   photo   gap1    gap1        edgeR right"
+    "left   photo   photo   empt1   types       edgeR right"
+    "left   photo   photo   gap2    gap2        edgeR right"
+    "left   photo   photo   empt2   height-size edgeR right"
+    "left   gap3    gap3    gap3    gap3        edgeR right"
+    "left   flavor  flavor  flavor  flavor      flavor right"
+    "bottom bottom  bottom  bottom  bottom      bottom  bottom";
+}
+
+.top{
+  grid-area: top;
+  width: 100%;
+
+  background-image: url("/ui/info_background.png");
+  background-size: 100%;
+}
+
+.unit{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 8px;
+
+
+  & > div {
+    display: flex;
+    height: 80%;
+    gap: 4px;
+    justify-content: end;
+    width: 100%;
+    & > span {
+      padding: 0 4px;
+      border: 1px solid white;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
+
+.pk-picture{
+  grid-area: photo;
+  & > * {
+    width: 100%;
+  }
+}
+
+.name-and-genera {
+  grid-area: name;
+  color: #D0D8D8;
+  --shadow-color: #585858;
+  text-shadow: 0 1px 0 var(--shadow-color),
+  1px 0 0 var(--shadow-color),
+  -1px 0 0 var(--shadow-color),
+  0 -1px 0 var(--shadow-color);
+  background-image: url(/ui/background_name_genera.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+
+  font-size: 22px;
+
+  &.ko {
+    font-size: 1rem !important;
+  }
+
+  .name {
+    display: grid;
+    grid-template-columns: 20fr 126fr;
+  }
+
+  .genera {
+    text-align: end;
+    margin-right: 12px;
+  }
+}
+
+.height-size {
+  grid-area: height-size;
+
+  background-image: url(/ui/size_weight_border.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  display: grid;
+  grid-template: 1fr / 2fr 3fr 2fr;
+
+  & > div:nth-child(3n+1), & > div:nth-child(3n+2) {
+    text-align: right;
+  }
+
+}
+
+.flavor-text {
+
+  grid-area: flavor;
+  border: 1px solid #585858;
+  border-radius: 6px;
+
+  background-image: url(/ui/border_flavor_text.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  display: grid;
+  grid-template-rows: 3fr 46fr 3fr;
+  grid-template-columns: 12fr 220fr 12fr;
+
+  grid-template-areas:
+    "top    top     top"
+    "left   text    right"
+    "bottom bottom  bottom";
+
+  position: relative;
+
+  div {
+    position: absolute;
+    text-wrap: auto;
+    grid-area: text;
+    overflow-wrap: break-word;
+    inline-size: 100%;
+    max-height: 99%;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.types {
+  grid-area: types;
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  gap: 4px;
+
+  & > * {
+    width: 100%;
+  }
 }

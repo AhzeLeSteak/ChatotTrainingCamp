@@ -16,7 +16,6 @@
 .yellow{
   color: var(--yellow) !important;
 }
-
 .red{
   color: var(--red) !important;
 }
@@ -139,6 +138,9 @@ img{
 .justify-content-center{
   justify-content: center;
 }
+.justify-content-end{
+  justify-content: end;
+}
 .justify-content-between{
   justify-content: space-between;
 }
@@ -147,4 +149,7 @@ img{
 }
 .align-items-center{
   align-items: center;
+}
+.flex-grow{
+  flex-grow: 1;
 }

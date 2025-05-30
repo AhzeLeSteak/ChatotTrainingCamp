@@ -1,9 +1,10 @@
-import {Component, inject, Inject, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {SaveManagerService} from '../save-manager.service';
 import {LanguageService} from '../language.service';
 import {SearchStatus} from '../daily/daily.component';
+import {TYPES} from '../../consts/pokemon-types';
 
 type Pixel = [number, number, number, number];
 type Row = Array<Pixel>;
@@ -19,11 +20,13 @@ type SizedBMP = {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,],
+    FormsModule,
+  ],
   templateUrl: './daily-hints.component.html',
   styleUrl: './daily-hints.component.scss'
 })
 export class DailyHintsComponent {
+  TYPES = TYPES;
 
   @Input({required: true}) dexId: number;
   @Input({required: true}) searchStatus: SearchStatus;
@@ -161,6 +164,30 @@ export class DailyHintsComponent {
 
   get tries() {
     return this.saveManager.tries;
+  }
+
+  get over(){
+    return this.searchStatus !== SearchStatus.Searching;
+  }
+
+  get displayHeight(){
+    return this.over || this.tries.length > 0;
+  }
+
+  get displayFlavor(){
+    return this.over || this.tries.length > 1;
+  }
+
+  get displayGenera(){
+    return this.over || this.tries.length > 2;
+  }
+
+  get displayDexId(){
+    return this.over || this.tries.length > 3;
+  }
+
+  get displayTypes(){
+    return this.over || this.tries.length > 4;
   }
 
 }

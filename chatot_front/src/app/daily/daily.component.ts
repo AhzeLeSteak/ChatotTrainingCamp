@@ -47,9 +47,9 @@ export class DailyComponent implements AfterViewInit {
 
 
   async ngAfterViewInit() {
-    this.rng.seed(this.saveManager.daysSinceEpoch + 1);
+    this.rng.seed(this.saveManager.daysSinceEpoch - 1);
     this.dexId = this.rng.nextRange(1, this.languageManager.LANGUAGE.length + 1);
-
+    this.dexId = 287;
   }
 
 
@@ -65,7 +65,7 @@ export class DailyComponent implements AfterViewInit {
 
   get searchStatus(): SearchStatus {
     if(this.tries[this.tries.length - 1] === this.dexId) return SearchStatus.Found;
-    if (this.tries.length < 9) return SearchStatus.Searching;
+    if (this.tries.length < 7) return SearchStatus.Searching;
     return SearchStatus.Failed;
   }
 
