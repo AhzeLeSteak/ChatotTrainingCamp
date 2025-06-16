@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {AfterViewInit, Component, computed, inject, Input, Signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {SaveManagerService} from '../save-manager.service';
@@ -25,11 +25,20 @@ type SizedBMP = {
   templateUrl: './daily-hints.component.html',
   styleUrl: './daily-hints.component.scss'
 })
-export class DailyHintsComponent {
+export class DailyHintsComponent implements AfterViewInit {
   TYPES = TYPES;
 
   @Input({required: true}) dexId: number;
-  @Input({required: true}) searchStatus: SearchStatus;
+  @Input({required: true}) searchStatus: Signal<SearchStatus>;
+
+
+  over = computed(() => this.searchStatus() !== SearchStatus.Searching);
+
+  displayHeight = computed(() => this.over() || this.tries$().length > 0);
+  displayFlavor = computed(() => this.over() || this.tries$().length > 1);
+  displayGenera = computed(() => this.over() || this.tries$().length > 2);
+  displayDexId = computed(() => this.over() || this.tries$().length > 3);
+  displayTypes = computed(() => this.over() || this.tries$().length > 4);
 
   saveManager = inject(SaveManagerService);
   languageManager = inject(LanguageService);
@@ -42,7 +51,7 @@ export class DailyHintsComponent {
     const base64 = await this.blobToBase64(blob);
     const img = await this.base64ToPixels(base64);
     for (let i = 0; i < this.levels.length; i++) {
-      setTimeout(() => this.drawSplitImageWithLevel(img, i), 500*(i+1));
+      setTimeout(() => this.drawSplitImageWithLevel(img, i), 500 * (i + 1));
     }
   }
 
@@ -158,36 +167,64 @@ export class DailyHintsComponent {
     }
   }
 
-  get imgUrl(){
+  get imgUrl() {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId}.png`
   }
 
-  get tries() {
-    return this.saveManager.tries;
+  get tries$() {
+    return this.saveManager.tries$;
   }
 
-  get over(){
-    return this.searchStatus !== SearchStatus.Searching;
+  wheel(event: Event) {
+    console.log(event);
+    let delta = 0;
+    if ('wheelDelta' in event && typeof event.wheelDelta === 'number') {
+      (delta = event.wheelDelta / 120);
+    } else if ('detail' in event && typeof event.detail === 'number') {
+      (delta = -event.detail / 3);
+    }
+
+    this.handle(delta, event.srcElement as HTMLElement);
+    if (event.preventDefault) {
+      (event.preventDefault());
+    }
+    event.returnValue = false;
   }
 
-  get displayHeight(){
-    return this.over || this.tries.length > 0;
-  }
+  id : any;
 
-  get displayFlavor(){
-    return this.over || this.tries.length > 1;
-  }
+  handle(sentido: number, el: HTMLElement) {
+    const inicial = el.scrollTop;
+    const time = 1000;
+    const distance = 50;
+    clearInterval(this.id);
+    this.id = animate({
+      delay: 0,
+      duration: time,
+      step: function (progress: number) {
+        el.scrollTo(0, inicial - distance * progress * sentido);
+      }
+    });
 
-  get displayGenera(){
-    return this.over || this.tries.length > 2;
-  }
-
-  get displayDexId(){
-    return this.over || this.tries.length > 3;
-  }
-
-  get displayTypes(){
-    return this.over || this.tries.length > 4;
+    function animate(opts: {
+      delay: number,
+      duration: number,
+      step: (delta: number) => void
+    }) {
+      const start = new Date().getTime();
+      const id = setInterval(function () {
+        const timePassed = new Date().getTime() - start;
+        let progress = (timePassed / opts.duration);
+        if (progress > 1) {
+          progress = 1;
+        }
+        opts.step(progress);
+        if (progress == 1) {
+          clearInterval(id);
+        }
+      }, opts.delay || 10);
+      return id;
+    }
   }
 
 }

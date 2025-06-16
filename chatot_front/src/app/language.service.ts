@@ -14,6 +14,10 @@ const NAMES = [NAMES_JAP, NAMES_EN, NAMES_FR, NAMES_KO, NAMES_DE];
 
 type Units = 'mKg' | 'lbsFt';
 
+function* chunk(str: string, size = 3) {
+  for(let i = 0; i < str.length; i+= size ) yield str.slice(i, i + size);
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,7 +38,26 @@ export class LanguageService {
   public entry(pkId: number){
     const name = this.name(pkId);
     const entry = ENTRIES[pkId-1][this.selected_language] ?? ENTRIES[pkId]['en'];
-    return entry.replaceAll(new RegExp(name, 'gi'), '???');
+    const words = entry.replaceAll(new RegExp(name, 'gi'), '???').replaceAll('\n', ' ').split(' ');
+    if(this.selected_language === 'ko') return [...chunk(words.join(' '), 17)].join(' ')
+
+    const lines: string[][] = [[]];
+    const treshold = 26;
+    let length = 0;
+    for(let word of words){
+      if(length + word.length > treshold){
+        lines.push([]);
+        length = 0;
+      }
+      length += word.length;
+      lines[lines.length - 1].push(word);
+    }
+    let res = '';
+    for(let line of lines){
+      res += line.join(' ');
+      res += ' ';
+    }
+    return res;
   }
 
   public size(pkId: number){

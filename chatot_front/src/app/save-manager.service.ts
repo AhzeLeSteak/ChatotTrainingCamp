@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 
 const DAYS_SINCE_EPOCH = 'DAYS_SINCE_EPOCH';
 const TRIES = 'TRIES';
@@ -8,26 +8,24 @@ const TRIES = 'TRIES';
 })
 export class SaveManagerService {
 
-  private _tries: number[];
+  public tries$ = signal<number[]>([]);
 
   addTry(dexId: number) {
-    this._tries.push(dexId);
+    this.tries$.update(t => [...t, dexId]);
     localStorage.setItem(DAYS_SINCE_EPOCH, this.daysSinceEpoch.toString());
-    localStorage.setItem(TRIES, JSON.stringify(this._tries));
+    localStorage.setItem(TRIES, JSON.stringify(this.tries$()));
   }
 
-  get tries() : readonly number[] {
-    if(!this._tries){
-      this._tries = [];
+  init() : void {
+      let tries: number[] = [];
       const daysSinceEpoch = this.daysSinceEpoch;
       if(+(localStorage.getItem(DAYS_SINCE_EPOCH) ?? 0) === daysSinceEpoch){
         const savedTries = JSON.parse(localStorage.getItem(TRIES) ?? '[]');
         if(Array.isArray(savedTries) && savedTries.every(el => typeof el === 'number')){
-          this._tries = savedTries;
+          tries = savedTries;
         }
       }
-    }
-    return this._tries;
+      this.tries$.set(tries);
   }
 
   get daysSinceEpoch(){

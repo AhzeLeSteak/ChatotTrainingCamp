@@ -6,6 +6,7 @@
        style="display: none"
        (play)="soundPlaying = true"
        (pause)="soundPlaying = false"
+       (ended)="soundPlaying = false"
 >
   <source [src]="'/sounds/'+dexId.toString().padStart(4, '0')+'.ogg'" type="audio/ogg">
 </audio>

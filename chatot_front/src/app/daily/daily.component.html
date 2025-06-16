@@ -6,7 +6,7 @@
     <app-sound-player [dexId]="dexId"></app-sound-player>
 
     <div class="flex">
-      <ng-container *ngIf="searchStatus === SearchStatus.Searching else foundTemplate">
+      <ng-container *ngIf="searchStatus() === SearchStatus.Searching else foundTemplate">
         <div style="position: relative">
           <input type="text"
                  [ngModel]="input"
@@ -24,10 +24,12 @@
       </ng-container>
       <ng-template #foundTemplate>
         <h4 class="flex flex-column align-items-center">
-          <span>You {{searchStatus === SearchStatus.Found ? "won" : "failed"}}!</span>
+          <span>You {{searchStatus() === SearchStatus.Found ? "won" : "failed"}}!</span>
           <span>The secret  Pokémon was <span class="yellow">{{languageManager.name(dexId)}}</span></span>
           <span style="margin-top: .5em">Try to guess the next pokémon in</span>
           <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
+
+          <button style="margin-top: 10px" (click)="share()">Share your result</button>
         </h4>
       </ng-template>
     </div>

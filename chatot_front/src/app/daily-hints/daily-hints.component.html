@@ -18,13 +18,13 @@
 
 
       <div class="pk-picture">
-        <div id="pk_canvas" [ngClass]="{displayNone: tries.length === 0}">
+        <div id="pk_canvas" [ngClass]="{displayNone: tries$().length === 0}">
           <canvas *ngFor="let level of levels; let i = index"
-                  [ngClass]="{displayNone: searchStatus !== SearchStatus.Searching || tries.length !== i + 1}"
+                  [ngClass]="{displayNone: searchStatus() !== SearchStatus.Searching || tries$().length !== i + 1}"
           ></canvas>
-          <img [src]="imgUrl" width="96" [ngClass]="{displayNone: searchStatus === SearchStatus.Searching}">
+          <img [src]="imgUrl" width="96" [ngClass]="{displayNone: searchStatus() === SearchStatus.Searching}">
         </div>
-        <img src="/questionmark.png" [ngClass]="{displayNone: tries.length > 0}">
+        <img src="/questionmark.png" [ngClass]="{displayNone: tries$().length > 0}">
       </div>
 
 
@@ -32,32 +32,32 @@
         <div class="name">
           <div></div>
           <div class="text-at-bottom">
-            {{ displayDexId ? dexId.toString().padStart(4, '0') : '???' }}
-            {{ over ? languageManager.name(dexId) : '???' }}</div>
+            {{ displayDexId() ? dexId.toString().padStart(4, '0') : '???' }}
+            {{ over() ? languageManager.name(dexId) : '???' }}</div>
         </div>
         <div class="genera text-at-bottom justify-content-end">
-          {{ displayGenera ? languageManager.genera(dexId) : '???' }}
+          {{ displayGenera() ? languageManager.genera(dexId) : '???' }}
         </div>
       </div>
 
       <div class="types">
-          <img *ngFor="let type of displayTypes ? TYPES[dexId-1] : ['UNKNOWN']" [src]="'/types/'+type+'.png'" style="width: 100%">
+          <img *ngFor="let type of displayTypes() ? TYPES[dexId-1] : ['UNKNOWN']" [src]="'/types/'+type+'.png'" style="width: 100%">
       </div>
 
 
       <div class="height-size fine-border shadow dex">
         <div>HT</div>
-        <div>{{ displayHeight ? languageManager.size(dexId) : '???'}}</div>
+        <div>{{ displayHeight() ? languageManager.size(dexId) : '???'}}</div>
         <div>{{ languageManager.sizeUnit }}</div>
         <div>WT</div>
-        <div>{{ displayHeight ? languageManager.weight(dexId) : '???' }}</div>
+        <div>{{ displayHeight() ? languageManager.weight(dexId) : '???' }}</div>
         <div>{{ languageManager.weightUnit }}</div>
       </div>
 
 
-      <div class="flavor-text shadow dex">
+      <div class="flavor-text shadow dex" [ngStyle]="languageManager.selected_language !== 'ko' ? {} : {'font-size': '16px'}">
         <div>
-          {{ displayFlavor ? languageManager.entry(dexId) : '???' }}
+          {{ displayFlavor() ? languageManager.entry(dexId) : '???' }}
         </div>
       </div>
 
@@ -67,13 +67,13 @@
   </div>
 
 
-  <ng-container *ngIf="tries.length">
+  <ng-container *ngIf="tries$().length">
     <div class="divider">
       <div>History</div>
     </div>
     <div class="flex flex-column">
-      <div *ngFor="let try of tries; let i = index"
-           [ngClass]="i < tries.length - 1 ? {} : {red: searchStatus === SearchStatus.Failed, blue: searchStatus === SearchStatus.Found}"
+      <div *ngFor="let try of tries$(); let i = index"
+           [ngClass]="i < tries$().length - 1 ? {} : {red: searchStatus() === SearchStatus.Failed, blue: searchStatus() === SearchStatus.Found}"
       >
         {{ i + 1 }}. {{ languageManager.name(try) }}
       </div>
