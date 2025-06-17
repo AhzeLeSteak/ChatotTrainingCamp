@@ -18,7 +18,7 @@
 
 
       <div class="pk-picture">
-        <div id="pk_canvas" [ngClass]="{displayNone: tries$().length === 0}">
+        <div id="pk_canvas" [ngClass]="{displayNone: !loaded || tries$().length === 0}">
           <canvas *ngFor="let level of levels; let i = index"
                   [ngClass]="{displayNone: searchStatus() !== SearchStatus.Searching || tries$().length !== i + 1}"
           ></canvas>
@@ -55,7 +55,7 @@
       </div>
 
 
-      <div class="flavor-text shadow dex" [ngStyle]="languageManager.selected_language !== 'ko' ? {} : {'font-size': '16px'}">
+      <div class="flavor-text shadow dex" [ngStyle]="['ko', 'jap'].includes(languageManager.selected_language)?{'font-size': '16px'}:{}">
         <div>
           {{ displayFlavor() ? languageManager.entry(dexId) : '???' }}
         </div>

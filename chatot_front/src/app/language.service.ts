@@ -104,6 +104,10 @@ export class LanguageService {
   set language_id(value: number){
     this._language_id = value;
     localStorage.setItem(language_key, value.toString());
+    if(this.selected_language === 'en')
+      this.setUnits('lbsFt')
+    else
+      this.setUnits('mKg');
   }
 
   setUnits(units: Units){

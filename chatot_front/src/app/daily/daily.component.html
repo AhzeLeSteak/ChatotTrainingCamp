@@ -29,7 +29,10 @@
           <span style="margin-top: .5em">Try to guess the next pokémon in</span>
           <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
 
-          <button style="margin-top: 10px" (click)="share()">Share your result</button>
+          <div style="margin-top: 10px">
+            <button (click)="share(true)">Share with spoilers</button>
+            <button (click)="share(false)">Share without spoilers</button>
+          </div>
         </h4>
       </ng-template>
     </div>

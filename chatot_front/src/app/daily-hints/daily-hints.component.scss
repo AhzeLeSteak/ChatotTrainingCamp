@@ -89,12 +89,14 @@
     gap: 4px;
     justify-content: end;
     width: 100%;
+    padding-right: 4%;
     & > span {
+      background-color: rgba(200, 200, 200, 0.8);
       padding: 0 4px;
       border: 1px solid white;
       cursor: pointer;
       &:hover {
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
       }
     }
   }

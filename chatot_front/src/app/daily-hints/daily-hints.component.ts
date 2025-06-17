@@ -35,24 +35,31 @@ export class DailyHintsComponent implements AfterViewInit {
   over = computed(() => this.searchStatus() !== SearchStatus.Searching);
 
   displayHeight = computed(() => this.over() || this.tries$().length > 0);
-  displayFlavor = computed(() => this.over() || this.tries$().length > 1);
-  displayGenera = computed(() => this.over() || this.tries$().length > 2);
-  displayDexId = computed(() => this.over() || this.tries$().length > 3);
-  displayTypes = computed(() => this.over() || this.tries$().length > 4);
+  displayTypes = computed(() => this.over() || this.tries$().length > 1);
+  displayDexId = computed(() => this.over() || this.tries$().length > 2);
+  displayGenera = computed(() => this.over() || this.tries$().length > 3);
+  displayFlavor = computed(() => this.over() || this.tries$().length > 4);
 
   saveManager = inject(SaveManagerService);
   languageManager = inject(LanguageService);
 
   readonly levels = [96, 48, 32, 24, 16, 12, 8, 6, 4, 3, 2];
   protected readonly SearchStatus = SearchStatus;
+  loaded = false;
 
   async ngAfterViewInit() {
     const blob = await fetch(this.imgUrl).then(response => response.blob());
     const base64 = await this.blobToBase64(blob);
     const img = await this.base64ToPixels(base64);
+    const promises: Promise<void>[] = [];
     for (let i = 0; i < this.levels.length; i++) {
-      setTimeout(() => this.drawSplitImageWithLevel(img, i), 500 * (i + 1));
+      setTimeout(() => promises.push(new Promise(resolve => {
+        this.drawSplitImageWithLevel(img, i);
+        resolve(void 0);
+      })), 1000 * i);
     }
+    await Promise.all(promises);
+    this.loaded = true;
   }
 
 

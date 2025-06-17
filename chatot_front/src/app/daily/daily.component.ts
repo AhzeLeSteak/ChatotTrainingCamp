@@ -70,17 +70,18 @@ export class DailyComponent implements AfterViewInit {
     this.input = '';
   }
 
-  async share() {
+  async share(withSpoilers: boolean) {
     if(!navigator.clipboard) return;
 
-    const numero = this.saveManager.daysSinceEpoch - 20254;
+    const spoilers = withSpoilers ? '|| ' : '';
+    const numero = 1 + this.saveManager.daysSinceEpoch - 20255 // 16/06/2025;
     const tries = this.saveManager.tries$();
     const score = this.searchStatus() === SearchStatus.Failed ? '💀' : tries.length;
 
     let text = `Chatot #${numero} - ${score}/${this.triesBeforeFail}\n`;
     let i = 1;
     for(let pkId of tries) {
-      text += `${i++}. || ${this.languageManager.name(pkId)} ||\n`
+      text += `${i++}. ${spoilers}${this.languageManager.name(pkId)} ${spoilers}\n`
     }
     await navigator.clipboard.writeText(text)
     this.snackService.onNewMessage$.next('Copied to clipboard');
