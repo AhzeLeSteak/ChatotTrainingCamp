@@ -1,10 +1,11 @@
-import {Component, inject, Input, OnInit,} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, Input, OnInit, signal,} from '@angular/core';
 import {Room} from '../../models/room';
 import {CommonModule} from '@angular/common';
 import {HubService} from '../hub.service';
 import {GuessCardComponent} from '../guess-card/guess-card.component';
-import {map, shareReplay, timer} from 'rxjs';
+import {combineLatest, combineLatestWith, filter, map, shareReplay, timer} from 'rxjs';
 import {SoundPlayerComponent} from '../sound-player/sound-player.component';
+import {toSignal} from '@angular/core/rxjs-interop';
 
 
 const time = timer(0, 100)
@@ -15,45 +16,49 @@ const time = timer(0, 100)
   standalone: true,
   imports: [CommonModule, GuessCardComponent, SoundPlayerComponent],
   templateUrl: './play.component.html',
-  styleUrl: './play.component.scss'
+  styleUrl: './play.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayComponent implements OnInit{
+export class PlayComponent implements OnInit {
 
   hub = inject(HubService);
 
-  @Input({required: true}) room !: Room;
-
-  answer = 0;
+  answer = signal(0);
   startTimer = new Date();
+
+  room = toSignal(this.hub.room$, {requireSync: true})
 
   readonly barNb = 15;
 
+  barsArray$ = time.pipe(
+    combineLatestWith(this.hub.room$),
+    map(([now, room]) => {
+      if(!room.currentQuestion) return null!
+      const elapsedMs = now.getTime() - room.currentQuestion.startDate.getTime();
+      const roomDurationMs = room.params.roundDurationSeconds * 1000;
+      const ratio = 1 - Math.min(elapsedMs, roomDurationMs) / roomDurationMs; // € [0, 1]
+      const step = Math.round(ratio * this.barNb);
+      return new Array<number>(this.barNb)
+        .fill(1, 0, step)
+        .fill(0, step, this.barNb);
+    }),
+    filter(x => !!x)
+  )
+
 
   ngOnInit() {
-    this.hub.$onNewQuestion.subscribe(() => this.onNewQuestion());
+    this.hub.onNewQuestion$.subscribe(() => this.onNewQuestion());
   }
 
-  private onNewQuestion(){
-    this.answer = 0;
+  private onNewQuestion() {
+    this.answer.set(0);
     this.startTimer = new Date();
   }
 
-  sendAnwser(pkid: number){
-    if(this.answer > 0 || !this.room.IsPlaying) return;
+  sendAnwser(pkid: number) {
+    if (this.answer() > 0 || !this.room().IsPlaying) return;
     this.hub.answer(pkid, new Date().getTime() - this.startTimer.getTime());
-    this.answer = pkid;
-  }
-
-  get barsArray$(){
-    return time.pipe(map(now => {
-      const elapsedMs = now.getTime() - this.room.currentQuestion.startDate.getTime();
-      const roomDurationMs = this.room.params.roundDurationSeconds * 1000;
-      const ratio = 1 - Math.min(elapsedMs, roomDurationMs) / roomDurationMs; // € [0, 1]
-      const step = Math.round(ratio * this.barNb);
-      return new Array(this.barNb)
-        .fill(1, 0, step)
-        .fill(0, step, this.barNb);
-    }))
+    this.answer.set(pkid);
   }
 
 }

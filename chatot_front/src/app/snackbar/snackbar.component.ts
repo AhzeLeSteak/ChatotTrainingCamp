@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {SnackbarService} from '../snackbar.service';
 import {tap} from 'rxjs';
 import {AsyncPipe, NgClass, NgIf} from '@angular/common';
@@ -12,18 +12,21 @@ import {AsyncPipe, NgClass, NgIf} from '@angular/common';
     NgIf
   ],
   templateUrl: './snackbar.component.html',
-  styleUrl: './snackbar.component.scss'
+  styleUrl: './snackbar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SnackbarComponent{
 
   snackService = inject(SnackbarService);
 
-  showMsg = false;
+  showMsg = signal(false);
+
+  timeout: any;
 
   message$ = this.snackService.onNewMessage$.pipe(tap(() => {
-    if(this.showMsg) return;
-    this.showMsg = true;
-    setTimeout(() => this.showMsg = false, 3000);
+    clearTimeout(this.timeout);
+    this.showMsg.set(true)
+    this.timeout = setTimeout(() => this.showMsg.set(false), 3000);
   }));
 
 }

@@ -52,7 +52,7 @@ export class DailyHintsComponent implements AfterViewInit {
     const base64 = await this.blobToBase64(blob);
     const img = await this.base64ToPixels(base64);
     const promises: Promise<void>[] = [];
-    for (let i = 0; i < this.levels.length; i++) {
+    for (let i = 100; i < this.levels.length; i++) {
       setTimeout(() => promises.push(new Promise(resolve => {
         this.drawSplitImageWithLevel(img, i);
         resolve(void 0);
@@ -179,59 +179,7 @@ export class DailyHintsComponent implements AfterViewInit {
   }
 
   get tries$() {
-    return this.saveManager.tries$;
-  }
-
-  wheel(event: Event) {
-    console.log(event);
-    let delta = 0;
-    if ('wheelDelta' in event && typeof event.wheelDelta === 'number') {
-      (delta = event.wheelDelta / 120);
-    } else if ('detail' in event && typeof event.detail === 'number') {
-      (delta = -event.detail / 3);
-    }
-
-    this.handle(delta, event.srcElement as HTMLElement);
-    if (event.preventDefault) {
-      (event.preventDefault());
-    }
-    event.returnValue = false;
-  }
-
-  id : any;
-
-  handle(sentido: number, el: HTMLElement) {
-    const inicial = el.scrollTop;
-    const time = 1000;
-    const distance = 50;
-    clearInterval(this.id);
-    this.id = animate({
-      delay: 0,
-      duration: time,
-      step: function (progress: number) {
-        el.scrollTo(0, inicial - distance * progress * sentido);
-      }
-    });
-
-    function animate(opts: {
-      delay: number,
-      duration: number,
-      step: (delta: number) => void
-    }) {
-      const start = new Date().getTime();
-      const id = setInterval(function () {
-        const timePassed = new Date().getTime() - start;
-        let progress = (timePassed / opts.duration);
-        if (progress > 1) {
-          progress = 1;
-        }
-        opts.step(progress);
-        if (progress == 1) {
-          clearInterval(id);
-        }
-      }, opts.delay || 10);
-      return id;
-    }
+    return this.saveManager.tries$.asReadonly();
   }
 
 }

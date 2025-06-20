@@ -11,7 +11,7 @@ namespace ChatotTrainingCamp.Services
         private static SemaphoreSlim roomSemaphore = new(1, 1);
 
         private static Dictionary<string, Room> rooms = new();
-        private Player CurrentPlayer
+        private Player? CurrentPlayer
         {
             get => Context.Items[PLAYER] as Player;
             set => Context.Items[PLAYER] = value;
@@ -33,7 +33,7 @@ namespace ChatotTrainingCamp.Services
             roomSemaphore.Release();
             rooms.Add(room.Code, room);
             await JoinRoom(room.Code, playerName);
-            CurrentPlayer.IsCreator = true;
+            CurrentPlayer!.IsCreator = true;
             return CurrentRoom;
         }
 
@@ -93,7 +93,10 @@ namespace ChatotTrainingCamp.Services
                 await UpdateRoom(room);
             }
             else
+            {
                 rooms.Remove(room.Code);
+                Console.WriteLine($"Room {room.Code} deleted");
+            }
         }
 
 

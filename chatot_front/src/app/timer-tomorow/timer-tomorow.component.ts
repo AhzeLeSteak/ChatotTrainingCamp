@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {interval, map, timer} from 'rxjs';
 import {AsyncPipe} from '@angular/common';
 
@@ -13,7 +13,8 @@ nextMidnight.setHours(24, 0,0,0);
     AsyncPipe
   ],
   templateUrl: './timer-tomorow.component.html',
-  styleUrl: './timer-tomorow.component.scss'
+  styleUrl: './timer-tomorow.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimerTomorowComponent {
 

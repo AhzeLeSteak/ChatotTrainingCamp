@@ -1,6 +1,6 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, filter, map, Observable, shareReplay, tap} from 'rxjs';
 import { Room } from '../models/room';
 import { RoomParams } from '../models/room-params';
 import {Router} from '@angular/router';
@@ -19,10 +19,10 @@ export class HubService {
 
   private hub: signalR.HubConnection;
 
-  private _connected = false;
-  private _inRoom = false;
-  private readonly roomSubject = new BehaviorSubject<Room>(null!);
-  private readonly _onNewQuestion = new BehaviorSubject<never>(null!);
+  private _connected = signal(false);
+  private _inRoom = signal(false);
+  private _room$: Observable<Room>;
+  private _onNewQuestion$: Observable<void>
 
   constructor() {
     const url = window.location.hostname === 'localhost'
@@ -35,34 +35,42 @@ export class HubService {
 
   public async createConnection(){
     await this.hub.start();
-    this._connected = true;
+    this._connected.set(true);
     console.log("Connection started");
-    this.hub.onclose(() => this._connected = false);
+    this.hub.onclose(() => this._connected.set(false));
   }
 
-  private processRoomFromHub(roomObject: object){
-    let oldQuestionId = -1;
-    if(this.roomSubject.value)
-      oldQuestionId = this.roomSubject.value.questionIndex;
-    const room = new Room(roomObject, this.hub.connectionId!);
-    localStorage.setItem(ROOM_CODE, room.code);
-    console.log('UpdateRoom', room);
-    this.roomSubject.next(room);
-    if(room.questionIndex === oldQuestionId + 1)
-      this._onNewQuestion.next(null!);
-  }
+  private subscribeUpdate(playerName: string, roomObject: object){
+    this._inRoom.set(true);
+    localStorage.setItem(PLAYER_NAME, playerName);
 
-  private subscribeUpdate(){
-    this.hub.on('UpdateRoom', (roomObject: object) => this.processRoomFromHub(roomObject));
+    this._room$ = new Observable<object>(observer => {
+      observer.next(roomObject);
+      this.hub.on('UpdateRoom', (roomObject: object) => observer.next(roomObject));
+    }).pipe(
+      map((roomObject) => new Room(roomObject, this.hub.connectionId!)),
+      tap(room => console.log('Update room', room)),
+      tap(room => localStorage.setItem(ROOM_CODE, room.code)),
+      shareReplay({refCount: true})
+    );
+
+    let questionId = -1;
+    this._onNewQuestion$ = this._room$.pipe(
+      filter(room => {
+        let res= false;
+        if(room.questionIndex === questionId + 1)
+          res = true;
+        questionId = room.questionIndex;
+        return res;
+      }),
+      map(() => void 0)
+    )
   }
 
   public async createRoom(playerName: string){
     const room = await this.hub.invoke<object>('CreateRoom', playerName);
     if(!room) return false;
-    this._inRoom = true;
-    this.processRoomFromHub(room);
-    localStorage.setItem(PLAYER_NAME, playerName);
-    this.subscribeUpdate();
+    this.subscribeUpdate(playerName, room);
     return true;
   }
 
@@ -72,16 +80,14 @@ export class HubService {
       localStorage.removeItem(ROOM_CODE);
       return false;
     }
-    this._inRoom = true;
-    localStorage.setItem(PLAYER_NAME, playerName);
-    this.subscribeUpdate();
-    this.processRoomFromHub(room);
+    this.subscribeUpdate(playerName, room);
     return true;
   }
 
   public async quitRoom(){
     await this.hub.invoke('Quit');
-    this._inRoom = false;
+    this._room$ = undefined!;
+    this._inRoom.set(false);
     return this.router.navigate(['']);
   }
 
@@ -126,20 +132,20 @@ export class HubService {
   }
 
 
-  get $room(){
-    return this.roomSubject.asObservable();
+  get room$(){
+    return this._room$;
   }
 
-  get $onNewQuestion(){
-    return this._onNewQuestion.asObservable();
+  get onNewQuestion$(){
+    return this._onNewQuestion$;
   }
 
   public get connected(){
-    return this._connected;
+    return this._connected.asReadonly();
   }
 
   public get inRoom(){
-    return this._inRoom;
+    return this._inRoom();
   }
 
 }

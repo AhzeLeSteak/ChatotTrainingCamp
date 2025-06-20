@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
-import {Component, inject, OnInit} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
+import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
 import {HubService} from './hub.service';
 import {FormsModule} from '@angular/forms';
 import {SoundManagerService} from './sound-manager.service';
@@ -14,7 +14,8 @@ import {SnackbarComponent} from './snackbar/snackbar.component';
   standalone: true,
   imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, SnackbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit{
 
@@ -24,12 +25,20 @@ export class AppComponent implements OnInit{
   soundManager = inject(SoundManagerService);
   languageManager = inject(LanguageService);
 
+  loading = signal(true);
+
 
   async ngOnInit() {
     await this.hub.createConnection();
     const rejoined = await this.hub.tryRejoin();
-    if(rejoined)
-      this.router.navigate(['play']);
+    if(rejoined){
+      console.log('Rejoined room');
+      await this.router.navigate(['play']);
+    }
+    else if(this.router.url === '/play'){
+      await this.router.navigate(['']);
+    }
+    this.loading.set(false);
   }
 
   async home(){

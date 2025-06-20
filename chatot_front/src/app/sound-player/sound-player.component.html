@@ -1,12 +1,12 @@
-<img id="play" src="/ui/replay.png" alt="" width="40" (click)="audio.play()" [ngClass]="{disabled: soundPlaying}">
+<img id="play" src="/ui/replay.png" alt="" width="40" (click)="audio.play()" [ngClass]="{disabled: soundPlaying()}">
 
 <audio #audio
        appVolumeBinder
-       autoplay
        style="display: none"
-       (play)="soundPlaying = true"
-       (pause)="soundPlaying = false"
-       (ended)="soundPlaying = false"
+       (loadeddata)="play(audio, $event)"
+       (play)="soundPlaying.set(true)"
+       (pause)="soundPlaying.set(false)"
+       (ended)="soundPlaying.set(false)"
 >
   <source [src]="'/sounds/'+dexId.toString().padStart(4, '0')+'.ogg'" type="audio/ogg">
 </audio>

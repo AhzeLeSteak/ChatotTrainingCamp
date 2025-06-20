@@ -1,18 +1,18 @@
-<div id="room" *ngIf="$room | async as room">
+<div id="room">
     <div class="box">
-        <app-players-list [room]="room"></app-players-list>
+        <app-players-list></app-players-list>
     </div>
     <div class="box">
-        <app-room-lobby [room]="room" *ngIf="room.inLobby"></app-room-lobby>
-        <app-play [room]="room" *ngIf="room.IsPlaying || room.isInAnswers || room.isInTimer"></app-play>
-        <app-scores [room]="room" *ngIf="room.isInScores"/>
+        <app-room-lobby *ngIf="room().inLobby"></app-room-lobby>
+        <app-play *ngIf="room().IsPlaying || room().isInAnswers || room().isInTimer"></app-play>
+        <app-scores *ngIf="room().isInScores"/>
     </div>
     <div class="box" id="chatbox-container">
-        <app-chatbox [room]="room"></app-chatbox>
+        <app-chatbox></app-chatbox>
     </div>
 
     <div style="display: none;">
-        <div *ngFor="let player of room.players">
+        <div *ngFor="let player of room().players">
             <div *ngFor="let emotion of emotions">
                 <img [src]="player.profilePictureSrcWithEmotion(emotion)">
             </div>

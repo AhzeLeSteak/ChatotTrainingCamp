@@ -6,7 +6,7 @@
     </div>
 
   <div class="flex flex-column-reverse h-full" style="overflow-y: scroll; scrollbar-width: none; max-height: 490px;">
-    <ng-container *ngFor="let message of messages">
+    <ng-container *ngFor="let message of messages$ | async">
       <ng-container *ngIf="message.fromServer; else player_msg">
         <div><span>{{message.content}}</span></div>
       </ng-container>
