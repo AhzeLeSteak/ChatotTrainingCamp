@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
-import {VolumeBinderDirective} from "../volume-binder.directive";
 import {CommonModule} from '@angular/common';
+import {VolumeBinderDirective} from '../volume-binder.directive';
 
 @Component({
   selector: 'app-sound-player',

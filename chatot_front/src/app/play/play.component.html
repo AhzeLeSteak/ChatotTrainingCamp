@@ -13,6 +13,7 @@
                     [correct]="(answer() > 0 || room().isInAnswers) && proposition === room().currentQuestion.answer"
                     [wrong]="proposition === answer() && answer() !== room().currentQuestion.answer"
                     [disabled]=" answer() > 0 || !room().IsPlaying"
+                    [room]="room()"
                     (onClick)="sendAnwser(proposition)"
     ></app-guess-card>
   </div>

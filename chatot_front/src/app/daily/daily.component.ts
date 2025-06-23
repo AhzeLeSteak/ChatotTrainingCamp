@@ -1,13 +1,13 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {SoundPlayerComponent} from '../sound-player/sound-player.component';
-import {LanguageService} from '../language.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {SnackbarService} from '../snackbar.service';
-import {RNGSeedService} from '../rngseed.service';
-import {SaveManagerService} from '../save-manager.service';
 import {TimerTomorowComponent} from '../timer-tomorow/timer-tomorow.component';
 import {DailyHintsComponent} from '../daily-hints/daily-hints.component';
+import {SaveManagerService} from '../../services/save-manager.service';
+import {LanguageService} from '../../services/language.service';
+import {SnackbarService} from '../../services/snackbar.service';
+import {RNGSeedService} from '../../services/rngseed.service';
 
 export enum SearchStatus {
   Searching,
@@ -33,6 +33,11 @@ export enum SearchStatus {
 export class DailyComponent implements AfterViewInit {
   protected readonly SearchStatus = SearchStatus;
 
+  saveManager = inject(SaveManagerService);
+  languageManager = inject(LanguageService);
+  snackService = inject(SnackbarService);
+  rng = inject(RNGSeedService);
+
   dexId = 0;
 
   input = '';
@@ -40,19 +45,12 @@ export class DailyComponent implements AfterViewInit {
 
   readonly triesBeforeFail = 7;
 
-
   searchStatus = computed(() => {
     const tries = this.saveManager.tries$();
     if(tries[tries.length - 1] === this.dexId) return SearchStatus.Found;
     if (tries.length < this.triesBeforeFail) return SearchStatus.Searching;
     return SearchStatus.Failed;
   })
-
-
-  saveManager = inject(SaveManagerService);
-  languageManager = inject(LanguageService);
-  snackService = inject(SnackbarService);
-  rng = inject(RNGSeedService);
 
 
   async ngAfterViewInit() {

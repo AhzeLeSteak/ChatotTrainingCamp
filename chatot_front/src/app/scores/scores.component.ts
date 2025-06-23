@@ -1,10 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, Input, OnInit} from '@angular/core';
 import {Emotion, EMOTIONS, Player} from '../../models/player';
-import {Room} from '../../models/room';
-import {HubService} from '../hub.service';
 import {map} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {HubService} from '../../services/hub.service';
 
 @Component({
   selector: 'app-scores',

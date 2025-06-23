@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
-import { HubService } from '../hub.service';
 import { CommonModule } from '@angular/common';
 import { RoomLobbyComponent } from "../room-lobby/room-lobby.component";
 import { ChatboxComponent } from "../chatbox/chatbox.component";
@@ -9,6 +8,7 @@ import { Router } from '@angular/router';
 import { ScoresComponent } from "../scores/scores.component";
 import { EMOTIONS } from '../../models/player';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {HubService} from '../../services/hub.service';
 
 @Component({
   selector: 'app-room',

@@ -1,13 +1,13 @@
 import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
-import {ActivatedRoute, Router, RouterOutlet} from '@angular/router';
-import {HubService} from './hub.service';
+import {Router, RouterOutlet} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {SoundManagerService} from './sound-manager.service';
 import {VolumeBinderDirective} from './volume-binder.directive';
-import {LanguageService} from './language.service';
 import {map} from 'rxjs';
 import {SnackbarComponent} from './snackbar/snackbar.component';
+import {HubService} from '../services/hub.service';
+import {LanguageService} from '../services/language.service';
+import {SoundManagerService} from '../services/sound-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -29,16 +29,20 @@ export class AppComponent implements OnInit{
 
 
   async ngOnInit() {
-    await this.hub.createConnection();
-    const rejoined = await this.hub.tryRejoin();
-    if(rejoined){
-      console.log('Rejoined room');
-      await this.router.navigate(['play']);
+    try{
+      await this.hub.createConnection();
+      const rejoined = await this.hub.tryRejoin();
+      if(rejoined){
+        console.log('Rejoined room');
+        await this.router.navigate(['play']);
+      }
+      else if(this.router.url === '/play'){
+        await this.router.navigate(['']);
+      }
     }
-    else if(this.router.url === '/play'){
-      await this.router.navigate(['']);
+    finally {
+      this.loading.set(false);
     }
-    this.loading.set(false);
   }
 
   async home(){

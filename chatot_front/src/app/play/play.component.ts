@@ -1,11 +1,10 @@
-import {ChangeDetectionStrategy, Component, inject, input, Input, OnInit, signal,} from '@angular/core';
-import {Room} from '../../models/room';
+import {ChangeDetectionStrategy, Component, inject, OnInit, signal,} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HubService} from '../hub.service';
 import {GuessCardComponent} from '../guess-card/guess-card.component';
-import {combineLatest, combineLatestWith, filter, map, shareReplay, timer} from 'rxjs';
+import {combineLatestWith, filter, map, shareReplay, timer} from 'rxjs';
 import {SoundPlayerComponent} from '../sound-player/sound-player.component';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {HubService} from '../../services/hub.service';
 
 
 const time = timer(0, 100)

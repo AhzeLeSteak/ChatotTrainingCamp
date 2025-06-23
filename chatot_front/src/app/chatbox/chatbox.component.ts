@@ -1,9 +1,8 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {Room} from '../../models/room';
-import {HubService} from '../hub.service';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {map} from 'rxjs';
+import {HubService} from '../../services/hub.service';
 
 @Component({
   selector: 'app-chatbox',

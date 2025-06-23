@@ -1,5 +1,5 @@
-import {Directive, ElementRef, inject} from '@angular/core';
-import {SoundManagerService} from './sound-manager.service';
+import {Directive, ElementRef} from '@angular/core';
+import {SoundManagerService} from '../services/sound-manager.service';
 
 @Directive({
   selector: '[appVolumeBinder]',

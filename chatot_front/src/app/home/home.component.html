@@ -4,7 +4,7 @@
     <img src="/sleep.gif" width="250">
   </div>
 </ng-template>
-<div id="home" class="box" *ngIf="hub.connected; else loading">
+<div id="home" class="box" *ngIf="hub.connected(); else loading">
   <app-select-button
     name="create-join" ngDefaultControl
     *ngIf="!url_mode"

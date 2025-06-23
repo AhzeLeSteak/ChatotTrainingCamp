@@ -1,10 +1,10 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HubService, PLAYER_NAME } from '../hub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectButtonComponent } from "../components/select-button/select-button.component";
 import {CommonModule} from '@angular/common';
-import {SnackbarService} from '../snackbar.service';
+import {SnackbarService} from '../../services/snackbar.service';
+import {HubService, PLAYER_NAME} from '../../services/hub.service';
 
 @Component({
   selector: 'app-home',

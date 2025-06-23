@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
-import {HubService} from '../hub.service';
 import {FormsModule} from '@angular/forms';
 import {RoomParams} from '../../models/room-params';
 import {SelectButtonComponent} from '../components/select-button/select-button.component';
 import {CommonModule} from '@angular/common';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {HubService} from '../../services/hub.service';
 
 
 @Component({

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
-import {SnackbarService} from '../snackbar.service';
 import {tap} from 'rxjs';
 import {AsyncPipe, NgClass, NgIf} from '@angular/common';
+import {SnackbarService} from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-snackbar',

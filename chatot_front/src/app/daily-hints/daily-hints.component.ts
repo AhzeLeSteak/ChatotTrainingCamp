@@ -1,10 +1,10 @@
-import {AfterViewInit, Component, computed, inject, Input, Signal} from '@angular/core';
+import {AfterViewInit, Component, computed, effect, inject, Input, Signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {SaveManagerService} from '../save-manager.service';
-import {LanguageService} from '../language.service';
 import {SearchStatus} from '../daily/daily.component';
 import {TYPES} from '../../consts/pokemon-types';
+import {LanguageService} from '../../services/language.service';
+import {SaveManagerService} from '../../services/save-manager.service';
 
 type Pixel = [number, number, number, number];
 type Row = Array<Pixel>;
@@ -26,11 +26,17 @@ type SizedBMP = {
   styleUrl: './daily-hints.component.scss'
 })
 export class DailyHintsComponent implements AfterViewInit {
-  TYPES = TYPES;
-
   @Input({required: true}) dexId: number;
   @Input({required: true}) searchStatus: Signal<SearchStatus>;
 
+  saveManager = inject(SaveManagerService);
+  languageManager = inject(LanguageService);
+
+  protected readonly SearchStatus = SearchStatus;
+  protected readonly TYPES = TYPES;
+  readonly levels = [96, 48, 32, 24, 16, 12, 8, 6, 4, 3, 2];
+  loaded = false;
+  img: SizedBMP;
 
   over = computed(() => this.searchStatus() !== SearchStatus.Searching);
 
@@ -40,25 +46,18 @@ export class DailyHintsComponent implements AfterViewInit {
   displayGenera = computed(() => this.over() || this.tries$().length > 3);
   displayFlavor = computed(() => this.over() || this.tries$().length > 4);
 
-  saveManager = inject(SaveManagerService);
-  languageManager = inject(LanguageService);
-
-  readonly levels = [96, 48, 32, 24, 16, 12, 8, 6, 4, 3, 2];
-  protected readonly SearchStatus = SearchStatus;
-  loaded = false;
+  constructor() {
+    effect(() => {
+      this.drawSplitImageWithLevel(this.saveManager.tries$().length);
+    });
+  }
 
   async ngAfterViewInit() {
     const blob = await fetch(this.imgUrl).then(response => response.blob());
     const base64 = await this.blobToBase64(blob);
-    const img = await this.base64ToPixels(base64);
-    const promises: Promise<void>[] = [];
-    for (let i = 100; i < this.levels.length; i++) {
-      setTimeout(() => promises.push(new Promise(resolve => {
-        this.drawSplitImageWithLevel(img, i);
-        resolve(void 0);
-      })), 1000 * i);
-    }
-    await Promise.all(promises);
+    this.img = await this.base64ToPixels(base64);
+    this.drawSplitImageWithLevel(this.saveManager.tries$().length - 1);
+    this.drawSplitImageWithLevel(this.saveManager.tries$().length);
     this.loaded = true;
   }
 
@@ -147,29 +146,31 @@ export class DailyHintsComponent implements AfterViewInit {
     }
   }
 
-  drawSplitImageWithLevel(img: SizedBMP, i: number) {
+  drawSplitImageWithLevel(i: number) {
     const lvl = this.levels[i];
-    const newImg = this.split(img, lvl);
+    console.log({i});
+    if (!lvl) return;
+    const newImg = this.split(this.img, lvl);
     if (!newImg) return;
 
     const canvas = document.querySelector(`#pk_canvas canvas:nth-of-type(${i + 1})`) as HTMLCanvasElement;
     const context = canvas.getContext("2d")!;
-    canvas.width = img.width;
-    canvas.height = img.height;
+    canvas.width = this.img.width;
+    canvas.height = this.img.height;
     for (let y = 0; y < newImg.height; y++) {
       for (let x = 0; x < newImg.width; x++) {
         const pixel = newImg.pixels[y][x];
+        const id = context.createImageData(newImg.chunk_width, newImg.chunk_height);
+        let j = 0;
         for (let y_chunk = 0; y_chunk < newImg.chunk_height; y_chunk++) {
           for (let x_chunk = 0; x_chunk < newImg.chunk_width; x_chunk++) {
-
-            const id = context.createImageData(1, 1);
-            id.data[0] = pixel[0];
-            id.data[1] = pixel[1];
-            id.data[2] = pixel[2];
-            id.data[3] = pixel[3];
-            context.putImageData(id, x * newImg.chunk_width + x_chunk, y * newImg.chunk_height + y_chunk);
+            id.data[j++] = pixel[0];
+            id.data[j++] = pixel[1];
+            id.data[j++] = pixel[2];
+            id.data[j++] = pixel[3];
           }
         }
+        context.putImageData(id, x * newImg.chunk_width, y * newImg.chunk_height);
       }
     }
   }
