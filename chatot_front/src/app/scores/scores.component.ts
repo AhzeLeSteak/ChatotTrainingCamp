@@ -1,8 +1,6 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, inject, Input, OnInit} from '@angular/core';
-import {Emotion, EMOTIONS, Player} from '../../models/player';
-import {map} from 'rxjs';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {Emotion, EMOTIONS} from '../../models/player';
 import {HubService} from '../../services/hub.service';
 
 @Component({
@@ -17,9 +15,7 @@ export class ScoresComponent {
 
   hub = inject(HubService);
 
-  playersSorted = toSignal(this.hub.room$.pipe(
-    map(({players}) => players.toSorted((p1, p2) => p2.points - p1.points))
-  ), {requireSync: true});
+  playersSorted = computed(() => this.hub.room$().players.toSorted((p1, p2) => p2.points - p1.points));
 
   emotions$ = computed(() => {
     const players = this.playersSorted();

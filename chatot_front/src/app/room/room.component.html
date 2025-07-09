@@ -1,21 +1,31 @@
 <div id="room">
-    <div class="box">
-        <app-players-list></app-players-list>
-    </div>
-    <div class="box">
-        <app-room-lobby *ngIf="room().inLobby"></app-room-lobby>
-        <app-play *ngIf="room().IsPlaying || room().isInAnswers || room().isInTimer"></app-play>
-        <app-scores *ngIf="room().isInScores"/>
-    </div>
-    <div class="box" id="chatbox-container">
-        <app-chatbox></app-chatbox>
-    </div>
+  <div class="box">
+    <app-players-list></app-players-list>
+  </div>
+  <div class="box">
+    @if (room().inLobby) {
+      <app-room-lobby></app-room-lobby>
+    }
+    @if (room().IsPlaying || room().isInAnswers || room().isInTimer) {
+      <app-play></app-play>
+    }
+    @if (room().isInScores) {
+      <app-scores/>
+    }
+  </div>
+  <div class="box" id="chatbox-container">
+    <app-chatbox></app-chatbox>
+  </div>
 
-    <div style="display: none;">
-        <div *ngFor="let player of room().players">
-            <div *ngFor="let emotion of emotions">
-                <img [src]="player.profilePictureSrcWithEmotion(emotion)">
-            </div>
-        </div>
-    </div>
+  <div style="display: none;">
+    @for (player of room().players; track player) {
+      <div>
+        @for (emotion of emotions; track emotion) {
+          <div>
+            <img [src]="player.profilePictureSrcWithEmotion(emotion)">
+          </div>
+        }
+      </div>
+    }
+  </div>
 </div>

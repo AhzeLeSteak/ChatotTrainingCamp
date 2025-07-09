@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {tap} from 'rxjs';
-import {AsyncPipe, NgClass, NgIf} from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import {SnackbarService} from '../../services/snackbar.service';
 
 @Component({
@@ -8,9 +8,8 @@ import {SnackbarService} from '../../services/snackbar.service';
   standalone: true,
   imports: [
     AsyncPipe,
-    NgClass,
-    NgIf
-  ],
+    NgClass
+],
   templateUrl: './snackbar.component.html',
   styleUrl: './snackbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

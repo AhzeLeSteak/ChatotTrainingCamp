@@ -1,23 +1,25 @@
-<div class="flex flex-column" style="gap: 4px" *ngIf="room$ | async as room">
+<div class="flex flex-column" style="gap: 4px">
   <div id="room-code">
-    <h2 style="margin: 0">ROOM <span style="letter-spacing: 3px">{{room.code}}</span></h2>
+    <h2 style="margin: 0">ROOM <span style="letter-spacing: 3px">{{room().code}}</span></h2>
   </div>
-  <div *ngFor="let player of players$ | async" class="player_line" [ngClass]="{greyed: !player.connected}">
-    <div class="pp_name">
-      <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
-      <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
+  @for (player of players(); track player) {
+    <div class="player_line" [ngClass]="{greyed: !player.connected}">
+      <div class="pp_name">
+        <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
+        <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
+      </div>
+      @if (room().inLobby) {
+        @if (player.isCreator) {
+          <img src="/blue_ribbon.png" alt="Blue ribbon">
+        } @else {
+          <span [ngClass]="{blue: player.ready, red: !player.ready}">{{player.ready ? 'Ready' : 'Not ready'}}</span>
+        }
+      } @else {
+        <span>
+          {{player.points}}
+          <img src="/poke_dollar.png" alt="Poke Dollar">
+        </span>
+      }
     </div>
-    <ng-container *ngIf="room.inLobby; else score">
-      <img src="/blue_ribbon.png" alt="Blue ribbon" *ngIf="player.isCreator; else ready">
-      <ng-template #ready>
-        <span [ngClass]="{blue: player.ready, red: !player.ready}">{{player.ready ? 'Ready' : 'Not ready'}}</span>
-      </ng-template>
-    </ng-container>
-    <ng-template #score>
-      <span>
-        {{player.points}}
-        <img src="/poke_dollar.png" alt="Poke Dollar">
-      </span>
-    </ng-template>
-  </div>
+  }
 </div>

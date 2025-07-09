@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import {RoomParams} from '../../models/room-params';
 import {SelectButtonComponent} from '../components/select-button/select-button.component';
 import {CommonModule} from '@angular/common';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {HubService} from '../../services/hub.service';
 
 
@@ -25,7 +24,7 @@ export class RoomLobbyComponent implements OnInit{
   pp_index = signal(0);
   url_copied = signal(false);
 
-  room = toSignal(this.hub.room$, {requireSync: true});
+  room = this.hub.room$;
 
 
   ngOnInit() {

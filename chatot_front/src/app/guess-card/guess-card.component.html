@@ -6,7 +6,11 @@
     <img [src]="img_url"/>
   </div>
   <div id="select" [ngClass]="{disabled}"></div>
-  <div id="responses" *ngIf="room?.isInAnswers">
-    <img *ngFor="let p of players" [src]="p.profilePictureSrc"/>
-  </div>
+  @if (room?.isInAnswers) {
+    <div id="responses">
+      @for (p of players; track p) {
+        <img [src]="p.profilePictureSrc"/>
+      }
+    </div>
+  }
 </div>

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {map} from 'rxjs';
@@ -16,6 +16,8 @@ export class ChatboxComponent {
 
   hub = inject(HubService);
 
+  messages = computed(() => this.hub.room$().messages);
+
   user_message = '';
   readonly text_limit = 50;
 
@@ -23,10 +25,6 @@ export class ChatboxComponent {
     if (this.user_message.length === 0) return;
     this.hub.sendMessage(this.user_message.substring(0, this.text_limit));
     this.user_message = '';
-  }
-
-  get messages$() {
-    return this.hub.room$.pipe(map(room => room.messages))
   }
 
 }

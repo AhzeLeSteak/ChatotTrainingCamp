@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, Input, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {VolumeBinderDirective} from '../volume-binder.directive';
 
@@ -12,12 +12,11 @@ import {VolumeBinderDirective} from '../volume-binder.directive';
 })
 export class SoundPlayerComponent {
 
-  @Input({required: true}) dexId!: number;
-
+  dexId = input.required<number>();
   soundPlaying = signal(false);
 
   play(audio: HTMLAudioElement, e: Event) {
-    console.log(audio, e);
     setTimeout(() => audio.play(), 2000);
   }
+
 }

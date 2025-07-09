@@ -2,14 +2,14 @@ import {Component, inject, OnInit} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SelectButtonComponent } from "../components/select-button/select-button.component";
-import {CommonModule} from '@angular/common';
+
 import {SnackbarService} from '../../services/snackbar.service';
 import {HubService, PLAYER_NAME} from '../../services/hub.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, SelectButtonComponent],
+  imports: [FormsModule, SelectButtonComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -1,4 +1,4 @@
-import {Directive, ElementRef} from '@angular/core';
+import {Directive, effect, ElementRef} from '@angular/core';
 import {SoundManagerService} from '../services/sound-manager.service';
 
 @Directive({
@@ -9,9 +9,8 @@ export class VolumeBinderDirective {
 
   constructor(volumeService: SoundManagerService, elementRef: ElementRef) {
     const audio = elementRef.nativeElement as HTMLAudioElement;
-    audio.volume = volumeService.volume / 100;
-    volumeService.onVolumeChange.subscribe(volume => {
-      audio.volume = volume / 100;
+    effect(() => {
+      audio.volume = volumeService.volume() / 100;
     });
   }
 

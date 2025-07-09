@@ -8,7 +8,7 @@ const TRIES = 'TRIES';
 })
 export class SaveManagerService {
 
-  public tries$ = signal<number[]>([]);
+  private tries$ = signal<number[]>([]);
 
   addTry(dexId: number) {
     this.tries$.update(t => [...t, dexId]);
@@ -32,5 +32,9 @@ export class SaveManagerService {
     let now = new Date().getTime();
     now -= new Date().getTimezoneOffset() * 60 * 1000;
     return Math.floor(now/8.64e7);
+  }
+
+  public get tries(){
+    return this.tries$.asReadonly();
   }
 }

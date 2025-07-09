@@ -1,26 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
+import {SaveManagerService} from './save-manager.service';
 
 @Injectable({
   providedIn: 'platform'
 })
-export class RNGSeedService {
+export class DexIdService {
+
+  public dexId = signal(-1);
 
   // LCG using GCC's constants
-  m = 0x80000000; // 2**31;
-  a = 1103515245;
-  c = 12345;
-  state: number = 0;
+  private m = 0x80000000; // 2**31;
+  private a = 1103515245;
+  private c = 12345;
+  private state: number = 0;
 
-  seed(seed: number) {
+  constructor(sm: SaveManagerService) {
+    this.seed(sm.daysSinceEpoch);
+    this.dexId.set(this.nextRange(1, 1025 + 1));
+  }
+
+
+  private seed(seed: number) {
     this.state = seed ? seed : Math.floor(Math.random() * (this.m - 1));
   }
-  nextInt() {
+
+  private nextInt() {
     this.state = (this.a * this.state + this.c) % this.m;
     return this.state;
-  }
-  nextFloat() {
-    // returns in range [0,1]
-    return this.nextInt() / (this.m - 1);
   }
 
   nextRange(start: number, end: number) {
@@ -29,8 +35,5 @@ export class RNGSeedService {
     var rangeSize = end - start;
     var randomUnder1 = this.nextInt() / this.m;
     return start + Math.floor(randomUnder1 * rangeSize);
-  }
-  choice(array: number[]) {
-    return array[this.nextRange(0, array.length)];
   }
 }

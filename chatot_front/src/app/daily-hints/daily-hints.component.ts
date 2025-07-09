@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, computed, effect, inject, Input, Signal} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  Input,
+  Signal
+} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {SearchStatus} from '../daily/daily.component';
@@ -23,11 +33,13 @@ type SizedBMP = {
     FormsModule,
   ],
   templateUrl: './daily-hints.component.html',
-  styleUrl: './daily-hints.component.scss'
+  styleUrl: './daily-hints.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DailyHintsComponent implements AfterViewInit {
-  @Input({required: true}) dexId: number;
-  @Input({required: true}) searchStatus: Signal<SearchStatus>;
+
+  dexId = input.required<number>();
+  searchStatus = input.required<SearchStatus>();
 
   saveManager = inject(SaveManagerService);
   languageManager = inject(LanguageService);
@@ -38,17 +50,19 @@ export class DailyHintsComponent implements AfterViewInit {
   loaded = false;
   img: SizedBMP;
 
+  tries = this.saveManager.tries;
+
   over = computed(() => this.searchStatus() !== SearchStatus.Searching);
 
-  displayHeight = computed(() => this.over() || this.tries$().length > 0);
-  displayTypes = computed(() => this.over() || this.tries$().length > 1);
-  displayDexId = computed(() => this.over() || this.tries$().length > 2);
-  displayGenera = computed(() => this.over() || this.tries$().length > 3);
-  displayFlavor = computed(() => this.over() || this.tries$().length > 4);
+  displayHeight = computed(() => this.over() || this.tries().length > 0);
+  displayTypes = computed(() => this.over() || this.tries().length > 1);
+  displayDexId = computed(() => this.over() || this.tries().length > 2);
+  displayGenera = computed(() => this.over() || this.tries().length > 3);
+  displayFlavor = computed(() => this.over() || this.tries().length > 4);
 
   constructor() {
     effect(() => {
-      this.drawSplitImageWithLevel(this.saveManager.tries$().length);
+      this.drawSplitImageWithLevel(this.saveManager.tries().length);
     });
   }
 
@@ -56,8 +70,8 @@ export class DailyHintsComponent implements AfterViewInit {
     const blob = await fetch(this.imgUrl).then(response => response.blob());
     const base64 = await this.blobToBase64(blob);
     this.img = await this.base64ToPixels(base64);
-    this.drawSplitImageWithLevel(this.saveManager.tries$().length - 1);
-    this.drawSplitImageWithLevel(this.saveManager.tries$().length);
+    this.drawSplitImageWithLevel(this.saveManager.tries().length - 1);
+    this.drawSplitImageWithLevel(this.saveManager.tries().length);
     this.loaded = true;
   }
 
@@ -149,7 +163,7 @@ export class DailyHintsComponent implements AfterViewInit {
   drawSplitImageWithLevel(i: number) {
     const lvl = this.levels[i];
     console.log({i});
-    if (!lvl) return;
+    if (!lvl || !this.img) return;
     const newImg = this.split(this.img, lvl);
     if (!newImg) return;
 
@@ -176,11 +190,7 @@ export class DailyHintsComponent implements AfterViewInit {
   }
 
   get imgUrl() {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId}.png`
-  }
-
-  get tries$() {
-    return this.saveManager.tries$.asReadonly();
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId()}.png`
   }
 
 }

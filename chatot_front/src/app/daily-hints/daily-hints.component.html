@@ -10,74 +10,83 @@
 
         <div class="unit">
           <div>
-            <span (click)="languageManager.setUnits('mKg')">m/Kg</span>
-            <span (click)="languageManager.setUnits('lbsFt')">ft/lbs</span>
+            <span (click)="languageManager.units.set('mKg')">m/Kg</span>
+            <span (click)="languageManager.units.set('lbsFt')">ft/lbs</span>
           </div>
         </div>
       </div>
 
 
       <div class="pk-picture">
-        <div id="pk_canvas" [ngClass]="{displayNone: !loaded || tries$().length === 0}">
-          <canvas *ngFor="let level of levels; let i = index"
-                  [ngClass]="{displayNone: searchStatus() !== SearchStatus.Searching || tries$().length !== i + 1}"
-          ></canvas>
+        <div id="pk_canvas" [ngClass]="{displayNone: !loaded || tries().length === 0}">
+          @for (level of levels; track level; let i = $index) {
+            <canvas
+              [ngClass]="{displayNone: searchStatus() !== SearchStatus.Searching || tries().length !== i + 1}"
+            ></canvas>
+          }
           <img [src]="imgUrl" width="96" [ngClass]="{displayNone: searchStatus() === SearchStatus.Searching}">
         </div>
-        <img src="/questionmark.png" [ngClass]="{displayNone: tries$().length > 0}">
+        <img src="/questionmark.png" [ngClass]="{displayNone: tries().length > 0}">
       </div>
 
 
-      <div class="name-and-genera fine-border shadow dex" [ngClass]="[languageManager.selected_language]">
+      <div class="name-and-genera fine-border shadow dex" [ngClass]="[languageManager.selected_language()]">
         <div class="name">
           <div></div>
           <div class="text-at-bottom">
-            {{ displayDexId() ? dexId.toString().padStart(4, '0') : '???' }}
-            {{ over() ? languageManager.name(dexId) : '???' }}</div>
+            {{ displayDexId() ? dexId().toString().padStart(4, '0') : '???' }}
+            {{ over() ? languageManager.dailyName() : '???' }}
+          </div>
         </div>
         <div class="genera text-at-bottom justify-content-end">
-          {{ displayGenera() ? languageManager.genera(dexId) : '???' }}
+          {{ displayGenera() ? languageManager.dailyGenera() : '???' }}
         </div>
       </div>
 
       <div class="types">
-          <img *ngFor="let type of displayTypes() ? TYPES[dexId-1] : ['UNKNOWN']" [src]="'/types/'+type+'.png'" style="width: 100%">
+        @for (type of displayTypes() ? TYPES[dexId() - 1] : ['UNKNOWN']; track type) {
+          <img [src]="'/types/'+type+'.png'" style="width: 100%">
+        }
       </div>
 
 
       <div class="height-size fine-border shadow dex">
         <div>HT</div>
-        <div>{{ displayHeight() ? languageManager.size(dexId) : '???'}}</div>
-        <div>{{ languageManager.sizeUnit }}</div>
+        <div>{{ displayHeight() ? languageManager.dailySize() : '???' }}</div>
+        <div>{{ languageManager.sizeUnit() }}</div>
         <div>WT</div>
-        <div>{{ displayHeight() ? languageManager.weight(dexId) : '???' }}</div>
-        <div>{{ languageManager.weightUnit }}</div>
+        <div>{{ displayHeight() ? languageManager.dailyWeight() : '???' }}</div>
+        <div>{{ languageManager.weightUnit() }}</div>
       </div>
 
 
-      <div class="flavor-text shadow dex" [ngStyle]="['ko', 'jap'].includes(languageManager.selected_language)?{'font-size': '16px'}:{}">
+      <div class="flavor-text shadow dex"
+           [ngStyle]="['ko', 'jap'].includes(languageManager.selected_language()) ? {'font-size': '16px'} : {}">
         <div>
-          {{ displayFlavor() ? languageManager.entry(dexId) : '???' }}
+          {{ displayFlavor() ? languageManager.dailyEntry() : '???' }}
         </div>
       </div>
 
     </div>
-
-
   </div>
 
 
-  <ng-container *ngIf="tries$().length">
+  @if (tries().length) {
     <div class="divider">
       <div>History</div>
     </div>
     <div class="flex flex-column">
-      <div *ngFor="let try of tries$(); let i = index"
-           [ngClass]="i < tries$().length - 1 ? {} : {red: searchStatus() === SearchStatus.Failed, blue: searchStatus() === SearchStatus.Found}"
-      >
-        {{ i + 1 }}. {{ languageManager.name(try) }}
-      </div>
+      @for (_try of tries(); track _try; let i = $index) {
+        <div
+          [ngClass]="i < tries().length - 1 ? {} : {
+            red: searchStatus() === SearchStatus.Failed,
+            blue: searchStatus() === SearchStatus.Found
+          }"
+        >
+          {{ i + 1 }}. {{ languageManager.name(_try) }}
+        </div>
+      }
     </div>
-  </ng-container>
+  }
 
 </div>

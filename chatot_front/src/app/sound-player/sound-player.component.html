@@ -8,5 +8,5 @@
        (pause)="soundPlaying.set(false)"
        (ended)="soundPlaying.set(false)"
 >
-  <source [src]="'/sounds/'+dexId.toString().padStart(4, '0')+'.ogg'" type="audio/ogg">
+  <source [src]="'/sounds/'+dexId().toString().padStart(4, '0')+'.ogg'" type="audio/ogg">
 </audio>

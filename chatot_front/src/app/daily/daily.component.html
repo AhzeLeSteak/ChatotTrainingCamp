@@ -6,38 +6,40 @@
     <app-sound-player [dexId]="dexId"></app-sound-player>
 
     <div class="flex">
-      <ng-container *ngIf="searchStatus() === SearchStatus.Searching else foundTemplate">
+      @if (searchStatus() === SearchStatus.Searching) {
         <div style="position: relative">
           <input type="text"
-                 [ngModel]="input"
-                 (ngModelChange)="input = $event; showPropositions = true"
-                 (keydown.enter)="try()"
-                 style="padding: 4px;"
-          />
-          <div id="propositions" *ngIf="input.length && showPropositions && languageManager.get_propositions(input).length">
-            <div *ngFor="let proposition of languageManager.get_propositions(input)" (click)="input = proposition; showPropositions = false">
-              {{proposition}}
+            [ngModel]="input"
+            (ngModelChange)="input = $event; showPropositions = true"
+            (keydown.enter)="try()"
+            style="padding: 4px;"
+            />
+            @if (input.length && showPropositions && languageManager.get_propositions(input).length) {
+              <div id="propositions">
+                @for (proposition of languageManager.get_propositions(input); track proposition) {
+                  <div (click)="input = proposition; showPropositions = false">
+                    {{proposition}}
+                  </div>
+                }
+              </div>
+            }
+          </div>
+          <button style="padding-left: 8px; padding-right: 8px" (click)="try()">Submit</button>
+        } @else {
+          <h4 class="flex flex-column align-items-center">
+            <span>You {{searchStatus() === SearchStatus.Found ? "won" : "failed"}}!</span>
+            <span>The secret  Pokémon was <span class="yellow">{{languageManager.name(dexId)}}</span></span>
+            <span style="margin-top: .5em">Try to guess the next pokémon in</span>
+            <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
+            <div style="margin-top: 10px">
+              <button (click)="share(true)">Share with spoilers</button>
+              <button (click)="share(false)">Share without spoilers</button>
             </div>
-          </div>
-        </div>
-        <button style="padding-left: 8px; padding-right: 8px" (click)="try()">Submit</button>
-      </ng-container>
-      <ng-template #foundTemplate>
-        <h4 class="flex flex-column align-items-center">
-          <span>You {{searchStatus() === SearchStatus.Found ? "won" : "failed"}}!</span>
-          <span>The secret  Pokémon was <span class="yellow">{{languageManager.name(dexId)}}</span></span>
-          <span style="margin-top: .5em">Try to guess the next pokémon in</span>
-          <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
-
-          <div style="margin-top: 10px">
-            <button (click)="share(true)">Share with spoilers</button>
-            <button (click)="share(false)">Share without spoilers</button>
-          </div>
-        </h4>
-      </ng-template>
+          </h4>
+        }
+      </div>
     </div>
+
+    <app-daily-hints [dexId]="dexId" [searchStatus]="searchStatus()"></app-daily-hints>
+
   </div>
-
-  <app-daily-hints *ngIf="dexId" [dexId]="dexId" [searchStatus]="searchStatus"></app-daily-hints>
-
-</div>

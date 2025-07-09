@@ -42,7 +42,7 @@ export class GuessCardComponent {
   }
 
   get fontSize(){
-    return 'ko' === this.languageManager.selected_language
+    return 'ko' === this.languageManager.selected_language()
       ? '.8em'
       : '1.2em';
   }

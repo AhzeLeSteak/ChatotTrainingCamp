@@ -1,6 +1,5 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {map} from 'rxjs';
 import {HubService} from '../../services/hub.service';
 
 @Component({
@@ -15,14 +14,7 @@ export class PlayersListComponent {
 
   hub = inject(HubService);
 
-  get room$(){
-    return this.hub.room$;
-  }
-
-  get players$(){
-    return this.room$.pipe(
-      map(room => room.players),
-    );
-  }
+  room = this.hub.room$;
+  players = computed(() => this.room().players)
 
 }

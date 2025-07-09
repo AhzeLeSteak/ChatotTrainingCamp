@@ -1,13 +1,13 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {SoundPlayerComponent} from '../sound-player/sound-player.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
+
 import {TimerTomorowComponent} from '../timer-tomorow/timer-tomorow.component';
 import {DailyHintsComponent} from '../daily-hints/daily-hints.component';
 import {SaveManagerService} from '../../services/save-manager.service';
 import {LanguageService} from '../../services/language.service';
 import {SnackbarService} from '../../services/snackbar.service';
-import {RNGSeedService} from '../../services/rngseed.service';
+import {DexIdService} from '../../services/dex-id.service';
 
 export enum SearchStatus {
   Searching,
@@ -21,11 +21,10 @@ export enum SearchStatus {
   imports: [
     SoundPlayerComponent,
     ReactiveFormsModule,
-    CommonModule,
     FormsModule,
     TimerTomorowComponent,
-    DailyHintsComponent,
-  ],
+    DailyHintsComponent
+],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './daily.component.html',
   styleUrl: './daily.component.scss'
@@ -36,9 +35,8 @@ export class DailyComponent implements AfterViewInit {
   saveManager = inject(SaveManagerService);
   languageManager = inject(LanguageService);
   snackService = inject(SnackbarService);
-  rng = inject(RNGSeedService);
 
-  dexId = 0;
+  dexId = inject(DexIdService).dexId();
 
   input = '';
   showPropositions = false;
@@ -46,7 +44,7 @@ export class DailyComponent implements AfterViewInit {
   readonly triesBeforeFail = 7;
 
   searchStatus = computed(() => {
-    const tries = this.saveManager.tries$();
+    const tries = this.saveManager.tries();
     if(tries[tries.length - 1] === this.dexId) return SearchStatus.Found;
     if (tries.length < this.triesBeforeFail) return SearchStatus.Searching;
     return SearchStatus.Failed;
@@ -55,14 +53,12 @@ export class DailyComponent implements AfterViewInit {
 
   async ngAfterViewInit() {
     this.saveManager.init()
-    this.rng.seed(this.saveManager.daysSinceEpoch - 1);
-    this.dexId = this.rng.nextRange(1, this.languageManager.LANGUAGE.length + 1);
   }
 
   try() {
-    const dexId = this.languageManager.dexId(this.input);
+    const dexId = this.languageManager.get_id_from_name(this.input);
     if (dexId <= 0) return this.snackService.onNewMessage$.next('Pokémon not found');
-    if(!dexId || this.saveManager.tries$().includes(dexId)) return;
+    if(!dexId || this.saveManager.tries().includes(dexId)) return;
 
     this.saveManager.addTry(dexId);
     this.input = '';
@@ -73,7 +69,7 @@ export class DailyComponent implements AfterViewInit {
 
     const spoilers = withSpoilers ? '|| ' : '';
     const numero = 1 + this.saveManager.daysSinceEpoch - 20255 // 16/06/2025;
-    const tries = this.saveManager.tries$();
+    const tries = this.saveManager.tries();
     const score = this.searchStatus() === SearchStatus.Failed ? '💀' : tries.length;
 
     let text = `Chatot #${numero} - ${score}/${this.triesBeforeFail}\n`;

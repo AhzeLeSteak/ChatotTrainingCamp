@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, OnInit, signal} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {VolumeBinderDirective} from './volume-binder.directive';
@@ -8,6 +8,7 @@ import {SnackbarComponent} from './snackbar/snackbar.component';
 import {HubService} from '../services/hub.service';
 import {LanguageService} from '../services/language.service';
 import {SoundManagerService} from '../services/sound-manager.service';
+import {DexIdService} from '../services/dex-id.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import {SoundManagerService} from '../services/sound-manager.service';
   imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, SnackbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DexIdService, LanguageService, SoundManagerService]
 })
 export class AppComponent implements OnInit{
 
@@ -26,6 +28,11 @@ export class AppComponent implements OnInit{
   languageManager = inject(LanguageService);
 
   loading = signal(true);
+
+  soundBar = computed(() => new Array(20)
+    .fill(0)
+    .map((_, i) => i < this.soundManager.volume() / 5)
+  );
 
 
   async ngOnInit() {
@@ -49,14 +56,6 @@ export class AppComponent implements OnInit{
     if(this.hub.inRoom && confirm("Leave room ?"))
       await this.hub.quitRoom();
     this.router.navigate(['']);
-  }
-
-  get soundBar$(){
-    return this.soundManager.onVolumeChange.pipe(map(volume =>
-      new Array(20)
-        .fill(0)
-        .map((_, i) => i < volume / 5)
-    ));
   }
 
 }
