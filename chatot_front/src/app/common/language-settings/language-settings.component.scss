@@ -1,0 +1,11 @@
+#language-settings{
+  display: flex;
+  gap: 4px;
+
+  svg{
+    cursor: pointer;
+    &:not(.selected){
+      filter: grayscale(1);
+    }
+  }
+}

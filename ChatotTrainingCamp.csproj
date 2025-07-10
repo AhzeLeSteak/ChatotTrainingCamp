@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="chatot_front\src\app\common\" />
+    <Folder Include="chatot_front\src\app\multi\" />
+    <Folder Include="chatot_front\src\app\solo\" />
+  </ItemGroup>
+
 </Project>

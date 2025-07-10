@@ -1,0 +1,18 @@
+<div id="sound-settings">
+  <img (click)="test_audio.play()" src="/ui/music_note.png"
+       [ngStyle]="{width: '2em', cursor: 'pointer', filter: soundManager.volume() === 0 ? 'grayscale(1)' : ''}"/>
+  <div id="range">
+    <div id="grid">
+      @for (bar of soundBar(); track i; let i = $index) {
+        <img [src]="bar ? '/ui/green_bar.png' : '/ui/black_bar.png'">
+      }
+    </div>
+    <input type="range"
+           min="0" max="100" step="5"
+           [(ngModel)]="soundManager.volume"
+    >
+  </div>
+  <audio #test_audio appVolumeBinder style="display: none">
+    <source src="/sounds/0441.ogg" type="audio/ogg">
+  </audio>
+</div>

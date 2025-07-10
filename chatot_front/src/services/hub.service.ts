@@ -23,7 +23,8 @@ export class HubService {
   private _connected = signal(false);
   private _inRoom = signal(false);
 
-  private _room$ = signal<Room>(null!);
+  private readonly _room$ = signal<Room>(null!);
+  public readonly room$ = this._room$.asReadonly();
 
   constructor() {
     const url = window.location.hostname === 'localhost'
@@ -73,7 +74,7 @@ export class HubService {
 
   public async quitRoom() {
     await this.hub.invoke('Quit');
-    this._room$ = undefined!;
+    this._room$.set(null!);
     this._inRoom.set(false);
     return this.router.navigate(['']);
   }
@@ -117,11 +118,6 @@ export class HubService {
 
   public nextQuestion() {
     this.hub.invoke('NextQuestion');
-  }
-
-
-  get room$() {
-    return this._room$.asReadonly();
   }
 
   public get connected() {

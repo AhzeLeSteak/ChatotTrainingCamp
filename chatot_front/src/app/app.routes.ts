@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {RoomComponent} from './room/room.component';
-import {DailyComponent} from './daily/daily.component';
+import {RoomComponent} from './multi/room/room.component';
+import {DailyComponent} from './solo/daily/daily.component';
 
 export const routes: Routes = [
   {

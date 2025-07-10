@@ -1,0 +1,46 @@
+<div class="flex flex-column" style="gap: 1em">
+  <div class="flex justify-content-center align-items-center" style="gap: 2em">
+    <h3 style="margin: 0;">Round {{room().questionIndex+1}} / {{room().params.nbRounds}}</h3>
+    @if (room().IsPlaying) {
+      <app-sound-player [dexId]="room().currentQuestion.answer"></app-sound-player>
+    } @else {
+      <img src="/ui/replay.png" alt="" width="40" class="disabled">
+    }
+  </div>
+
+  <div id="propositions">
+    @for (proposition of room().currentQuestion.propositions; track proposition) {
+      <app-guess-card
+        [pkid]="proposition"
+        [correct]="(answer() > 0 || room().isInAnswers) && proposition === room().currentQuestion.answer"
+        [wrong]="proposition === answer() && answer() !== room().currentQuestion.answer"
+        [disabled]=" answer() > 0 || !room().IsPlaying"
+        (onClick)="sendAnwser(proposition)"
+      ></app-guess-card>
+    }
+  </div>
+
+  <div class="flex justify-content-center">
+    @if (room().IsPlaying) {
+      <div class="timer">
+        <img src="/ui/timer.png" alt="">
+        @for (bar of barsArray(); track bar) {
+          <img [src]="'/ui/' + (bar ? 'green' : 'red') + '_bar.png'">
+        }
+      </div>
+    }
+    @if (room().isInTimer) {
+      New round starting soon ...
+    }
+  </div>
+</div>
+
+<div style="display: none">
+  @for (proposition of room().currentQuestion.propositions; track proposition) {
+    <img
+      [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/'+proposition+'.png'"/>
+  }
+</div>
+
+{{answer()}}
+{{questionIndex()}}

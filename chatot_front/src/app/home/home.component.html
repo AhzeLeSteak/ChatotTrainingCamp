@@ -1,20 +1,19 @@
-
 @if (hub.connected()) {
   <div id="home" class="box">
-    @if (!url_mode) {
+    @if (!url_mode()) {
       <app-select-button
         name="create-join" ngDefaultControl
         [options]="create_join"
         [(ngModel)]="join"
         optionLabel="label"
         optionValue="value"
-        />
+      />
     }
     <input type="text" [(ngModel)]="player_name" placeholder="Enter your name" class="w-full" (keydown.enter)="letsgo()"/>
-    @if (join && !url_mode) {
+    @if (join() && !url_mode()) {
       <input type="text" [(ngModel)]="room_code" placeholder="Enter room code" class="w-full"/>
     }
-    <button (click)="letsgo()" [disabled]="player_name.length === 0 || (join && room_code.length === 0)" class="w-full">
+    <button (click)="letsgo()" [disabled]="player_name().length === 0 || (join() && room_code().length === 0)" class="w-full">
       Let's go !
     </button>
   </div>

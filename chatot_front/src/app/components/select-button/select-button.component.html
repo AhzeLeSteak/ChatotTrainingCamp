@@ -1,8 +1,0 @@
-<div class="select-button" [ngClass]="{disabled, grid}">
-  @for (option of options; track option) {
-    <span (click)="click(option)" [ngClass]="{selected: optionSelected(option)}">
-      {{optionLabel ? option[optionLabel] : option}}
-      <img src="/ui/arrow.png" alt="" class="arrow">
-    </span>
-  }
-</div>
