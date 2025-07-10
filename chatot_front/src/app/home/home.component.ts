@@ -7,11 +7,10 @@ import {SnackbarService} from '../../services/snackbar.service';
 import {HubService, PLAYER_NAME} from '../../services/hub.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [FormsModule, SelectButtonComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [FormsModule, SelectButtonComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
 

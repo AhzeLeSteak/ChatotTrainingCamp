@@ -8,12 +8,11 @@ import {toSignal} from '@angular/core/rxjs-interop';
 
 
 @Component({
-  selector: 'app-play',
-  standalone: true,
-  imports: [CommonModule, GuessCardComponent, SoundPlayerComponent],
-  templateUrl: './play.component.html',
-  styleUrl: './play.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-play',
+    imports: [CommonModule, GuessCardComponent, SoundPlayerComponent],
+    templateUrl: './play.component.html',
+    styleUrl: './play.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayComponent {
 

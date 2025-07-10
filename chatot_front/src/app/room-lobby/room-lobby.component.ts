@@ -7,12 +7,11 @@ import {HubService} from '../../services/hub.service';
 
 
 @Component({
-  selector: 'app-room-lobby',
-  standalone: true,
-  imports: [CommonModule, FormsModule, SelectButtonComponent],
-  templateUrl: './room-lobby.component.html',
-  styleUrl: './room-lobby.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-room-lobby',
+    imports: [CommonModule, FormsModule, SelectButtonComponent],
+    templateUrl: './room-lobby.component.html',
+    styleUrl: './room-lobby.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoomLobbyComponent implements OnInit{
 

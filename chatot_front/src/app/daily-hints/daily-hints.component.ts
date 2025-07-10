@@ -26,15 +26,14 @@ type SizedBMP = {
 };
 
 @Component({
-  selector: 'app-daily-hints',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-  ],
-  templateUrl: './daily-hints.component.html',
-  styleUrl: './daily-hints.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-daily-hints',
+    imports: [
+        CommonModule,
+        FormsModule,
+    ],
+    templateUrl: './daily-hints.component.html',
+    styleUrl: './daily-hints.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DailyHintsComponent implements AfterViewInit {
 

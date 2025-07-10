@@ -7,14 +7,13 @@ const z = (n: number) => `${n < 10 ? '0' : ''}${n}`;
 const nextMidnight = new Date();
 nextMidnight.setHours(24, 0,0,0);
 @Component({
-  selector: 'app-timer-tomorow',
-  standalone: true,
-  imports: [
-    AsyncPipe
-  ],
-  templateUrl: './timer-tomorow.component.html',
-  styleUrl: './timer-tomorow.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-timer-tomorow',
+    imports: [
+        AsyncPipe
+    ],
+    templateUrl: './timer-tomorow.component.html',
+    styleUrl: './timer-tomorow.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TimerTomorowComponent {
 

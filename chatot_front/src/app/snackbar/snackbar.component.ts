@@ -4,15 +4,14 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import {SnackbarService} from '../../services/snackbar.service';
 
 @Component({
-  selector: 'app-snackbar',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    NgClass
-],
-  templateUrl: './snackbar.component.html',
-  styleUrl: './snackbar.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-snackbar',
+    imports: [
+        AsyncPipe,
+        NgClass
+    ],
+    templateUrl: './snackbar.component.html',
+    styleUrl: './snackbar.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SnackbarComponent{
 

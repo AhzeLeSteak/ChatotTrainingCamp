@@ -11,13 +11,12 @@ import {SoundManagerService} from '../services/sound-manager.service';
 import {DexIdService} from '../services/dex-id.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, SnackbarComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [DexIdService, LanguageService, SoundManagerService]
+    selector: 'app-root',
+    imports: [RouterOutlet, CommonModule, FormsModule, VolumeBinderDirective, SnackbarComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [DexIdService, LanguageService, SoundManagerService]
 })
 export class AppComponent implements OnInit{
 

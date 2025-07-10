@@ -5,12 +5,11 @@ import {map} from 'rxjs';
 import {HubService} from '../../services/hub.service';
 
 @Component({
-  selector: 'app-chatbox',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './chatbox.component.html',
-  styleUrl: './chatbox.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-chatbox',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './chatbox.component.html',
+    styleUrl: './chatbox.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatboxComponent {
 

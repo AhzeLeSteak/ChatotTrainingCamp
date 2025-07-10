@@ -3,12 +3,11 @@ import {CommonModule} from '@angular/common';
 import {HubService} from '../../services/hub.service';
 
 @Component({
-  selector: 'app-players-list',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './players-list.component.html',
-  styleUrl: './players-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-players-list',
+    imports: [CommonModule],
+    templateUrl: './players-list.component.html',
+    styleUrl: './players-list.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayersListComponent {
 

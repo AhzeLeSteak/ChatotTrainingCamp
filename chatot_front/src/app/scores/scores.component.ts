@@ -4,12 +4,11 @@ import {Emotion, EMOTIONS} from '../../models/player';
 import {HubService} from '../../services/hub.service';
 
 @Component({
-  selector: 'app-scores',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './scores.component.html',
-  styleUrl: './scores.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-scores',
+    imports: [CommonModule],
+    templateUrl: './scores.component.html',
+    styleUrl: './scores.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScoresComponent {
 

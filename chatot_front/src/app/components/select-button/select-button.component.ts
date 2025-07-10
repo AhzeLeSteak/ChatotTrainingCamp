@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-select-button',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './select-button.component.html',
-  styleUrl: './select-button.component.scss'
+    selector: 'app-select-button',
+    imports: [CommonModule],
+    templateUrl: './select-button.component.html',
+    styleUrl: './select-button.component.scss'
 })
 export class SelectButtonComponent {
 

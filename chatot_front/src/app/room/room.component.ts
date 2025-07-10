@@ -10,12 +10,11 @@ import {EMOTIONS} from '../../models/player';
 import {HubService} from '../../services/hub.service';
 
 @Component({
-  selector: 'app-room',
-  standalone: true,
-  imports: [RoomLobbyComponent, ChatboxComponent, PlayersListComponent, PlayComponent, ScoresComponent],
-  templateUrl: './room.component.html',
-  styleUrl: './room.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-room',
+    imports: [RoomLobbyComponent, ChatboxComponent, PlayersListComponent, PlayComponent, ScoresComponent],
+    templateUrl: './room.component.html',
+    styleUrl: './room.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoomComponent implements OnInit{
 

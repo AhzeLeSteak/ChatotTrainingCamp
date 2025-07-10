@@ -16,18 +16,17 @@ export enum SearchStatus {
 }
 
 @Component({
-  selector: 'app-daily',
-  standalone: true,
-  imports: [
-    SoundPlayerComponent,
-    ReactiveFormsModule,
-    FormsModule,
-    TimerTomorowComponent,
-    DailyHintsComponent
-],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './daily.component.html',
-  styleUrl: './daily.component.scss'
+    selector: 'app-daily',
+    imports: [
+        SoundPlayerComponent,
+        ReactiveFormsModule,
+        FormsModule,
+        TimerTomorowComponent,
+        DailyHintsComponent
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './daily.component.html',
+    styleUrl: './daily.component.scss'
 })
 export class DailyComponent implements AfterViewInit {
   protected readonly SearchStatus = SearchStatus;

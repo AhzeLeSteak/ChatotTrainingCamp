@@ -4,11 +4,10 @@ import {Room} from '../../models/room';
 import {LanguageService} from '../../services/language.service';
 
 @Component({
-  selector: 'app-guess-card',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './guess-card.component.html',
-  styleUrl: './guess-card.component.scss'
+    selector: 'app-guess-card',
+    imports: [CommonModule],
+    templateUrl: './guess-card.component.html',
+    styleUrl: './guess-card.component.scss'
 })
 export class GuessCardComponent {
 
