@@ -42,7 +42,7 @@
               [disabled]="!room().currentPlayer.isCreator"
               [options]="[1, 2, 3, 4, 5, 6, 7, 8, 9]"
               [multiple]="true"
-              [ngModel]="[1, 2, 3]"
+              [ngModel]="room().params.generations"
               (ngModelChange)="$event.length && updateParams('generations', $event)"
               [grid]="true"
               />

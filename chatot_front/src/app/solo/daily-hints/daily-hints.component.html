@@ -7,7 +7,6 @@
     <div class="hint-grid">
 
       <div class="top">
-
         <div class="unit">
           <div>
             <span (click)="languageManager.units.set('mKg')">m/Kg</span>
@@ -19,12 +18,10 @@
 
       <div class="pk-picture">
         <div id="pk_canvas" [ngClass]="{displayNone: !loaded || tries().length === 0}">
-          @for (level of levels; track level; let i = $index) {
-            <canvas
-              [ngClass]="{displayNone: searchStatus() !== SearchStatus.Searching || tries().length !== i + 1}"
-            ></canvas>
+          @for (level of levelsToDisplay(); track level; let first = $first) {
+            <app-pixelized-img [img]="img()" [level]="level" [disabled]="!first"/>
           }
-          <img [src]="imgUrl" width="96" [ngClass]="{displayNone: searchStatus() === SearchStatus.Searching}">
+          <img [src]="imgUrl()" width="96" [ngClass]="{displayNone: searchStatus() === SearchStatus.Searching}">
         </div>
         <img src="/questionmark.png" [ngClass]="{displayNone: tries().length > 0}">
       </div>
@@ -83,7 +80,7 @@
             blue: searchStatus() === SearchStatus.Found
           }"
         >
-          {{ i + 1 }}. {{ languageManager.name(_try) }}
+          {{ i + 1 }}. {{ languageManager.name_from_id(_try) }}
         </div>
       }
     </div>

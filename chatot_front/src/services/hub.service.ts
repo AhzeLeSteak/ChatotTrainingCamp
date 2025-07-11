@@ -6,10 +6,8 @@ import {RoomParams} from '../models/room-params';
 import {Router} from '@angular/router';
 import {toObservable} from '@angular/core/rxjs-interop';
 
-
 export const PLAYER_NAME = 'player_name';
 const ROOM_CODE = 'room_code';
-
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +19,12 @@ export class HubService {
   private hub: signalR.HubConnection;
 
   private _connected = signal(false);
+  public readonly connected = this._connected.asReadonly()
   private _inRoom = signal(false);
+  public readonly inRoom = this._inRoom.asReadonly()
 
-  private readonly _room$ = signal<Room>(null!);
-  public readonly room$ = this._room$.asReadonly();
+  private _room = signal<Room>(null!);
+  public readonly room = this._room.asReadonly();
 
   constructor() {
     const url = window.location.hostname === 'localhost'
@@ -46,12 +46,12 @@ export class HubService {
     this._inRoom.set(true);
     localStorage.setItem(PLAYER_NAME, playerName);
 
-    this._room$.set(new Room(roomObject, this.hub.connectionId!));
+    this._room.set(new Room(roomObject, this.hub.connectionId!));
 
     this.hub.on('UpdateRoom', (roomObject: object) => {
-      this._room$.set(new Room(roomObject, this.hub.connectionId!))
-      console.log('Update room', this._room$());
-      localStorage.setItem(ROOM_CODE, this._room$().code)
+      this._room.set(new Room(roomObject, this.hub.connectionId!))
+      console.log('Update room', this._room());
+      localStorage.setItem(ROOM_CODE, this._room().code)
     });
   }
 
@@ -74,7 +74,7 @@ export class HubService {
 
   public async quitRoom() {
     await this.hub.invoke('Quit');
-    this._room$.set(null!);
+    this._room.set(null!);
     this._inRoom.set(false);
     return this.router.navigate(['']);
   }
@@ -118,14 +118,6 @@ export class HubService {
 
   public nextQuestion() {
     this.hub.invoke('NextQuestion');
-  }
-
-  public get connected() {
-    return this._connected.asReadonly();
-  }
-
-  public get inRoom() {
-    return this._inRoom();
   }
 
 }

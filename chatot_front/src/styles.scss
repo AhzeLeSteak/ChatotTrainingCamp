@@ -26,6 +26,11 @@ body{
   min-height: 98vh;
 }
 
+
+.displayNone {
+  display: none !important;
+}
+
 .box{
   border-image-source: url(../public/ui/border.png);
   border-image-slice: 5 8 5 8 fill;
@@ -41,6 +46,7 @@ body{
   image-rendering: pixelated;
 
   color: white;
+
   text-shadow: 0 0.2ch 0 var(--shadow-color), 0.2ch 0 0 var(--shadow-color);
   font-size: 1.5em;
   letter-spacing: 1px;

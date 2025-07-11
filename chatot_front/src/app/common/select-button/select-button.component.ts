@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, EventEmitter, input, Input, model, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, input, Input, model, output, Output} from '@angular/core';
 
 @Component({
   selector: 'app-select-button',
@@ -13,8 +13,9 @@ export class SelectButtonComponent<T> {
 
   disabled = input(false);
   options = input.required<any[]>();
-  ngModel = model<any>();
   multiple = input(false);
+  ngModel = input<any>();
+  ngModelChange = output<any>();
 
   optionLabel = input<string>();
   optionValue = input<string>();
@@ -36,9 +37,9 @@ export class SelectButtonComponent<T> {
         array = array.filter(el => el !== value);
       else
         array.push(value)
-      this.ngModel.set(array);
+      this.ngModelChange.emit(array);
     } else
-      this.ngModel.set(value);
+      this.ngModelChange.emit(value);
   }
 
 }

@@ -1,11 +1,14 @@
-<img id="play" src="/ui/replay.png" alt="" width="40" (click)="audio.play()" [ngClass]="{disabled: soundPlaying()}">
+<img id="play" src="/ui/music_note.png" alt="" width="40" (click)="audio()?.nativeElement?.play()" [ngClass]="{disabled: soundPlaying()}">
 
-<audio #audio
-       appVolumeBinder
-       style="display: none"
-       (play)="soundPlaying.set(true)"
-       (pause)="soundPlaying.set(false)"
-       (ended)="soundPlaying.set(false)"
->
-  <source [src]="audioSrc()" type="audio/ogg">
-</audio>
+@if (!hide()) {
+  <audio #audio
+         appVolumeBinder
+         [ngClass]="{disabled: disabled()}"
+         style="display: none"
+         (play)="soundPlaying.set(true)"
+         (pause)="soundPlaying.set(false)"
+         (ended)="soundPlaying.set(false)"
+  >
+    <source [src]="audioSrc()" type="audio/ogg">
+  </audio>
+}

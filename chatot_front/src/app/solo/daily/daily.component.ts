@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {TimerTomorowComponent} from '../timer-tomorow/timer-tomorow.component';
@@ -28,7 +28,7 @@ export enum SearchStatus {
     templateUrl: './daily.component.html',
     styleUrl: './daily.component.scss'
 })
-export class DailyComponent implements AfterViewInit {
+export class DailyComponent {
   protected readonly SearchStatus = SearchStatus;
 
   saveManager = inject(SaveManagerService);
@@ -37,8 +37,9 @@ export class DailyComponent implements AfterViewInit {
 
   dexId = inject(DexIdService).dexId();
 
-  input = '';
-  showPropositions = false;
+  input = signal('');
+  showPropositions = signal(false);
+  propositions = computed(() => this.languageManager.proposition_from_query(this.input()))
 
   readonly triesBeforeFail = 7;
 
@@ -47,20 +48,16 @@ export class DailyComponent implements AfterViewInit {
     if(tries[tries.length - 1] === this.dexId) return SearchStatus.Found;
     if (tries.length < this.triesBeforeFail) return SearchStatus.Searching;
     return SearchStatus.Failed;
-  })
+  });
 
-
-  async ngAfterViewInit() {
-    this.saveManager.init()
-  }
 
   try() {
-    const dexId = this.languageManager.get_id_from_name(this.input);
+    const dexId = this.languageManager.id_from_name(this.input());
     if (dexId <= 0) return this.snackService.onNewMessage$.next('Pokémon not found');
     if(!dexId || this.saveManager.tries().includes(dexId)) return;
 
     this.saveManager.addTry(dexId);
-    this.input = '';
+    this.input.set('');
   }
 
   async share(withSpoilers: boolean) {
@@ -74,7 +71,7 @@ export class DailyComponent implements AfterViewInit {
     let text = `Chatot #${numero} - ${score}/${this.triesBeforeFail}\n`;
     let i = 1;
     for(let pkId of tries) {
-      text += `${i++}. ${spoilers}${this.languageManager.name(pkId)} ${spoilers}\n`
+      text += `${i++}. ${spoilers}${this.languageManager.name_from_id(pkId)} ${spoilers}\n`
     }
     await navigator.clipboard.writeText(text)
     this.snackService.onNewMessage$.next('Copied to clipboard');

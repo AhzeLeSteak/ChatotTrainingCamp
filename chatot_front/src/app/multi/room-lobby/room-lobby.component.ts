@@ -23,7 +23,7 @@ export class RoomLobbyComponent implements OnInit{
   pp_index = signal(0);
   url_copied = signal(false);
 
-  room = this.hub.room$;
+  room = this.hub.room;
   other_players_ready = computed(() => this.room().players.filter(p => !p.isCreator).every(p => p.ready));
   totalDurationText = computed(() => {
     const totalSeconds = this.room().params.nbRounds * this.room().params.roundDurationSeconds;

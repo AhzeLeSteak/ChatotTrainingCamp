@@ -11,7 +11,7 @@ import {HubService} from '../../../services/hub.service';
 })
 export class PlayersListComponent {
 
-  room = inject(HubService).room$;
+  room = inject(HubService).room;
   players = computed(() => this.room().players)
 
 }

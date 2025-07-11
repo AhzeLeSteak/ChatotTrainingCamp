@@ -1,32 +1,46 @@
-import {ChangeDetectionStrategy, Component, computed, effect, inject, OnInit, signal,} from '@angular/core';
-
+import {ChangeDetectionStrategy, Component, computed, effect, inject, linkedSignal, viewChild,} from '@angular/core';
 import {GuessCardComponent} from '../guess-card/guess-card.component';
-import {map, shareReplay, timer} from 'rxjs';
+import {map, timer} from 'rxjs';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {SoundPlayerComponent} from '../../common/sound-player/sound-player.component';
 import {HubService} from '../../../services/hub.service';
+import {RoomStatus} from '../../../models/room';
 
 
 @Component({
-    selector: 'app-play',
-    imports: [GuessCardComponent, SoundPlayerComponent],
-    templateUrl: './play.component.html',
-    styleUrl: './play.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-play',
+  imports: [GuessCardComponent, SoundPlayerComponent],
+  templateUrl: './play.component.html',
+  styleUrl: './play.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayComponent {
 
   hub = inject(HubService);
+  soundPlayer = viewChild(SoundPlayerComponent);
 
-  answer = signal(0);
-  startTimer = new Date();
-
-  room = this.hub.room$;
+  room = this.hub.room;
   questionIndex = computed(() => this.room().questionIndex);
+  roomStatus = computed(() => this.room().status);
+
+  answer = linkedSignal({
+    source: () => this.questionIndex(),
+    computation: () => 0
+  }); // answer for current question, resets on new question
+  startTimer = linkedSignal({
+    source: () => this.questionIndex(),
+    computation: () => new Date(),
+  }); // starting time of current question, resets on new question
+
+  _ = effect(() => {
+    if(this.roomStatus() === RoomStatus.Playing) {
+      this.soundPlayer()?.play()
+    }
+  })
 
   timer = toSignal(
-    timer(0, 100).pipe(map(() => new Date()), shareReplay(1)),
-    { initialValue: new Date() }
+    timer(0, 100).pipe(map(() => new Date())),
+    {initialValue: new Date()}
   );
 
   readonly barNb = 15;
@@ -43,15 +57,9 @@ export class PlayComponent {
       .fill(0, step, this.barNb);
   });
 
-  _ = effect(() => {
-    console.log('qi', this.questionIndex());
-    this.answer.set(0);
-    this.startTimer = new Date();
-  })
-
   sendAnwser(pkid: number) {
     if (this.answer() > 0 || !this.room().IsPlaying) return;
-    this.hub.answer(pkid, new Date().getTime() - this.startTimer.getTime());
+    this.hub.answer(pkid, new Date().getTime() - this.startTimer().getTime());
     this.answer.set(pkid);
   }
 

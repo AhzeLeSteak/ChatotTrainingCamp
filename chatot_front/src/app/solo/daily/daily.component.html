@@ -9,15 +9,15 @@
       @if (searchStatus() === SearchStatus.Searching) {
         <div style="position: relative">
           <input type="text"
-            [ngModel]="input"
-            (ngModelChange)="input = $event; showPropositions = true"
+            [ngModel]="input()"
+            (ngModelChange)="input.set($event); showPropositions.set(true)"
             (keydown.enter)="try()"
             style="padding: 4px;"
             />
-            @if (input.length && showPropositions && languageManager.get_propositions(input).length) {
+            @if (input().length && showPropositions() && propositions().length) {
               <div id="propositions">
-                @for (proposition of languageManager.get_propositions(input); track proposition) {
-                  <div (click)="input = proposition; showPropositions = false">
+                @for (proposition of propositions(); track proposition) {
+                  <div (click)="input.set(proposition); showPropositions.set(false)">
                     {{proposition}}
                   </div>
                 }
@@ -28,7 +28,7 @@
         } @else {
           <h4 class="flex flex-column align-items-center">
             <span>You {{searchStatus() === SearchStatus.Found ? "won" : "failed"}}!</span>
-            <span>The secret  Pokémon was <span class="yellow">{{languageManager.name(dexId)}}</span></span>
+            <span>The secret  Pokémon was <span class="yellow">{{languageManager.name_from_id(dexId)}}</span></span>
             <span style="margin-top: .5em">Try to guess the next pokémon in</span>
             <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
             <div style="margin-top: 10px">

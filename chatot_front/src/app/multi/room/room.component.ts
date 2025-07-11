@@ -23,7 +23,7 @@ export class RoomComponent implements OnInit{
 
   readonly emotions = EMOTIONS;
 
-  room = this.hub.room$;
+  room = this.hub.room;
 
   ngOnInit(): void {
     if(!this.hub.inRoom)

@@ -11,14 +11,14 @@ import {LanguageSettingsComponent} from './common/language-settings/language-set
 import {SoundSettingsComponent} from './common/sound-settings/sound-settings.component';
 
 @Component({
-    selector: 'app-root',
+  selector: 'app-root',
   imports: [RouterOutlet, CommonModule, FormsModule, SnackbarComponent, LanguageSettingsComponent, SoundSettingsComponent],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [DexIdService, LanguageService, SoundManagerService]
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DexIdService, LanguageService, SoundManagerService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
 
   hub = inject(HubService);
@@ -28,24 +28,22 @@ export class AppComponent implements OnInit{
 
 
   async ngOnInit() {
-    try{
+    try {
       await this.hub.createConnection();
       const rejoined = await this.hub.tryRejoin();
-      if(rejoined){
+      if (rejoined) {
         console.log('Rejoined room');
         await this.router.navigate(['play']);
-      }
-      else if(this.router.url === '/play'){
+      } else if (this.router.url === '/play') {
         await this.router.navigate(['']);
       }
-    }
-    finally {
+    } finally {
       this.loading.set(false);
     }
   }
 
-  async home(){
-    if(this.hub.inRoom && confirm("Leave room ?"))
+  async home() {
+    if (this.hub.inRoom() && confirm("Leave room ?"))
       await this.hub.quitRoom();
     this.router.navigate(['']);
   }

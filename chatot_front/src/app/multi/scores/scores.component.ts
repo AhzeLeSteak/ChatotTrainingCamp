@@ -14,7 +14,7 @@ export class ScoresComponent {
 
   hub = inject(HubService);
 
-  playersSorted = computed(() => this.hub.room$().players.toSorted((p1, p2) => p2.points - p1.points));
+  playersSorted = computed(() => this.hub.room().players.toSorted((p1, p2) => p2.points - p1.points));
 
   emotions$ = computed(() => {
     const players = this.playersSorted();

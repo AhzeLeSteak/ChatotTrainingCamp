@@ -1,4 +1,4 @@
-import {computed, effect, inject, Injectable, signal} from '@angular/core';
+import {computed, effect, inject, Injectable, linkedSignal, signal} from '@angular/core';
 import {NAMES_JAP} from '../consts/pokemon-names-jap';
 import {NAMES_EN} from '../consts/pokemon-names-en';
 import {NAMES_FR} from '../consts/pokemon-names-fr';
@@ -11,48 +11,43 @@ import {DexIdService} from './dex-id.service';
 
 const language_key = 'LANGUAGE';
 const unit_key = 'UNITS';
+
+const languages = ['jap', 'en', 'fr', 'ko', 'de'] as const;
 const NAMES = [NAMES_JAP, NAMES_EN, NAMES_FR, NAMES_KO, NAMES_DE];
 
 type Units = 'mKg' | 'lbsFt';
 
-function* chunk(str: string, size = 3) {
-  for(let i = 0; i < str.length; i+= size ) yield str.slice(i, i + size);
-}
+let unitsTrick = 0;
 
 @Injectable({
   providedIn: 'root'
 })
 export class LanguageService {
 
-  public readonly languages = ['jap', 'en', 'fr', 'ko', 'de'] as const;
-
   language_id = signal(parseInt(localStorage.getItem(language_key) ?? '1'));
-
-  units = signal(localStorage.getItem(unit_key) as Units ?? 'lbsFt');
-  sizeUnit = computed(() => this.units() === 'mKg' ? 'm' : 'ft');
-  weightUnit = computed(() =>  this.units() === 'mKg' ? 'Kg' : 'lbs');
-
-  public LANGUAGE = computed(() => NAMES[this.language_id()]);
-
-
-  selected_language = computed(() => this.languages[this.language_id()]);
+  selected_language = computed(() => languages[this.language_id()]);
+  pokemon_names_for_selected_language = computed(() => NAMES[this.language_id()]);
 
   _ = effect(() => {
     localStorage.setItem(language_key, this.language_id().toString());
-    if(this.selected_language() === 'en')
-      this.units.set('lbsFt')
-    else
-      this.units.set('mKg');
-
     localStorage.setItem(unit_key, this.units().toString());
-  }, {
-    allowSignalWrites: true
   })
 
-
   // ### Daily Part
+  units = linkedSignal({
+    source: () => this.selected_language(),
+    computation: language =>
+      (unitsTrick++ === 0)
+        ? localStorage.getItem(unit_key) as Units ?? 'lbsFt'
+        : language === 'en'
+            ? 'lbsFt' : 'mKg'
+  });
+  sizeUnit = computed(() => this.units() === 'mKg' ? 'm' : 'ft');
+  weightUnit = computed(() =>  this.units() === 'mKg' ? 'Kg' : 'lbs');
+
+
   dexId = inject(DexIdService).dexId();
-  dailyName = computed(() => this.name(this.dexId))
+  dailyName = computed(() => this.name_from_id(this.dexId))
   dailyGenera = computed(() => GENERA[this.dexId-1][this.selected_language()] ?? GENERA[this.dexId-1]['en']);
   dailySize = computed(() => {
     const size = WEIGHT_SIZE[this.dexId-1];
@@ -88,19 +83,24 @@ export class LanguageService {
     return res;
   })
 
-  public name(pkId: number) {
-    return this.LANGUAGE()[pkId-1]
+  public name_from_id(pkId: number) {
+    return this.pokemon_names_for_selected_language()[pkId-1]
   }
 
-  public get_id_from_name(name: string){
+  public id_from_name(name: string){
     name = name.toLowerCase();
-    name = this.LANGUAGE().find(n => n.toLowerCase() === name) ?? '';
-    return this.LANGUAGE().indexOf(name) + 1;
+    name = this.pokemon_names_for_selected_language().find(n => n.toLowerCase() === name) ?? '';
+    return this.pokemon_names_for_selected_language().indexOf(name) + 1;
   }
 
-  public get_propositions(name: string){
-    name = name.toLowerCase();
-    return this.LANGUAGE().filter(n => n.toLowerCase().includes(name));
+  public proposition_from_query(query: string){
+    query = query.toLowerCase();
+    return this.pokemon_names_for_selected_language().filter(n => n.toLowerCase().includes(query));
   }
 
+}
+
+
+function* chunk(str: string, size = 3) {
+  for(let i = 0; i < str.length; i+= size ) yield str.slice(i, i + size);
 }

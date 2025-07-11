@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {NgClass} from '@angular/common';
 import {LanguageService} from '../../../services/language.service';
 
@@ -8,7 +8,8 @@ import {LanguageService} from '../../../services/language.service';
     NgClass
   ],
   templateUrl: './language-settings.component.html',
-  styleUrl: './language-settings.component.scss'
+  styleUrl: './language-settings.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LanguageSettingsComponent {
   languageManager = inject(LanguageService);

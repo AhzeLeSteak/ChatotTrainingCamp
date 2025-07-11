@@ -13,7 +13,7 @@ import {HubService} from '../../../services/hub.service';
 export class ChatboxComponent {
 
   hub = inject(HubService);
-  messages = computed(() => this.hub.room$().messages);
+  messages = computed(() => this.hub.room().messages);
 
   readonly text_limit = 50;
   user_message = signal('');

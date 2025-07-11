@@ -8,7 +8,8 @@ const TRIES = 'TRIES';
 })
 export class SaveManagerService {
 
-  private tries$ = signal<number[]>([]);
+  private tries$ = signal<number[]>(this.calc_tries());
+  public readonly tries = this.tries$.asReadonly();
 
   addTry(dexId: number) {
     this.tries$.update(t => [...t, dexId]);
@@ -16,7 +17,7 @@ export class SaveManagerService {
     localStorage.setItem(TRIES, JSON.stringify(this.tries$()));
   }
 
-  init() : void {
+  private calc_tries() {
       let tries: number[] = [];
       const daysSinceEpoch = this.daysSinceEpoch;
       if(+(localStorage.getItem(DAYS_SINCE_EPOCH) ?? 0) === daysSinceEpoch){
@@ -25,7 +26,7 @@ export class SaveManagerService {
           tries = savedTries;
         }
       }
-      this.tries$.set(tries);
+      return (tries);
   }
 
   get daysSinceEpoch(){
@@ -34,7 +35,4 @@ export class SaveManagerService {
     return Math.floor(now/8.64e7);
   }
 
-  public get tries(){
-    return this.tries$.asReadonly();
-  }
 }

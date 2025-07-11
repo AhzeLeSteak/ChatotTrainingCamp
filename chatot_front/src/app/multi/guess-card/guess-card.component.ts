@@ -19,12 +19,12 @@ export class GuessCardComponent {
   onClick = output<void>();
 
   languageManager = inject(LanguageService);
-  room = inject(HubService).room$;
+  room = inject(HubService).room;
 
   pk_name = computed(() =>
     this.room()?.isInTimer
       ? '?'
-      : this.languageManager.name(this.pkid()));
+      : this.languageManager.name_from_id(this.pkid()));
 
   players = computed(() => {
     const i = this.room().questionIndex;
