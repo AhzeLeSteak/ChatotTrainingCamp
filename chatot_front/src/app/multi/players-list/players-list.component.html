@@ -3,16 +3,16 @@
     <h2 style="margin: 0">ROOM <span style="letter-spacing: 3px">{{room().code}}</span></h2>
   </div>
   @for (player of players(); track player) {
-    <div class="player_line" [ngClass]="{greyed: !player.connected}">
+    <div class="player_line" [class.greyed]="!player.connected">
       <div class="pp_name">
         <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
-        <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
+        <span class="player_name" [class.creator]="player.isCreator">{{player.name}}</span>
       </div>
       @if (room().inLobby) {
         @if (player.isCreator) {
           <img src="/blue_ribbon.png" alt="Blue ribbon">
         } @else {
-          <span [ngClass]="{blue: player.ready, red: !player.ready}">{{player.ready ? 'Ready' : 'Not ready'}}</span>
+          <span [ngClass]="player.ready ? 'blue' : 'red'">{{player.ready ? 'Ready' : 'Not ready'}}</span>
         }
       } @else {
         <span>

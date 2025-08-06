@@ -1,4 +1,4 @@
-.main{
+.main {
   display: flex;
   gap: 1em;
   margin-top: 2em;
@@ -8,7 +8,7 @@
 }
 
 
-#propositions{
+#propositions {
   position: absolute;
   width: 100%;
   max-height: 40vh;
@@ -19,11 +19,25 @@
   & > div {
     background-color: #1A1A1A;
     padding: 4px;
-    padding-left:8px;
+    padding-left: 8px;
 
-    &:hover{
+    &:hover {
       background-color: #101010;
       color: var(--yellow);
     }
+  }
+}
+
+.date-select {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  justify-content: space-between;
+  width: 94%;
+
+  button {
+    --p: 12px;
+    padding-left: var(--p);
+    padding-right: var(--p);
   }
 }

@@ -1,5 +1,5 @@
 @if (message$ | async; as message) {
-  <div id="snackbar" [ngClass]="{box: true, show: showMsg()}">
+  <div id="snackbar" class="box" [class.show]="showMsg()">
     {{message}}
   </div>
 }

@@ -1,13 +1,9 @@
 import {ChangeDetectionStrategy, Component, computed, effect, ElementRef, input, viewChild} from '@angular/core';
 import {BMP, levels, Row, SizedBMP} from './types';
-import {NgClass} from '@angular/common';
 
 
 @Component({
   selector: 'app-pixelized-img',
-  imports: [
-    NgClass
-  ],
   templateUrl: './pixelized-img.component.html',
   styleUrl: './pixelized-img.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +21,6 @@ export class PixelizedImgComponent {
   _ = effect(() => {
     const canvas = this.canvas();
     if(canvas && this.img()){
-      console.log('drawing level', this.level());
       this.drawSplitImageWithLevel(canvas, this.level());
     }
   });
@@ -33,7 +28,6 @@ export class PixelizedImgComponent {
   drawSplitImageWithLevel(canvas: HTMLCanvasElement, i: number) {
     const lvl = levels[i];
     if (!lvl || !this.img()) return;
-    console.log('draw', i)
     const newImg = this.split(this.img(), lvl);
     if (!newImg) return;
 

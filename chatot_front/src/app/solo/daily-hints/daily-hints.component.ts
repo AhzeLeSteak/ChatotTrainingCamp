@@ -34,6 +34,7 @@ export class DailyHintsComponent implements AfterViewInit {
 
   tries = inject(SaveManagerService).tries;
 
+  imgUrl = computed(() => `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId()}.png`);
   levelsToDisplay = computed(() =>
     this.searchStatus() !== SearchStatus.Searching || !this.img()
       ? []
@@ -42,13 +43,15 @@ export class DailyHintsComponent implements AfterViewInit {
 
   over = computed(() => this.searchStatus() !== SearchStatus.Searching);
 
-  displayHeight = computed(() => this.over() || this.tries().length > 0);
-  displayTypes = computed(() => this.over() || this.tries().length > 1);
-  displayDexId = computed(() => this.over() || this.tries().length > 2);
-  displayGenera = computed(() => this.over() || this.tries().length > 3);
-  displayFlavor = computed(() => this.over() || this.tries().length > 4);
-  imgUrl = computed(() => `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId()}.png`);
+  displayHeight = this.computeDisplayForStep(0);
+  displayDexId = this.computeDisplayForStep(1);
+  displayGenera = this.computeDisplayForStep(2);
+  displayTypes = this.computeDisplayForStep(3);
+  displayFlavor = this.computeDisplayForStep(4)
 
+  private computeDisplayForStep(n: number){
+    return computed(() => this.over() || this.tries().length > n);
+  }
 
   async ngAfterViewInit() {
     const blob = await fetch(this.imgUrl()).then(response => response.blob());

@@ -1,6 +1,6 @@
 <div class="select-button" [ngClass]="{disabled: disabled(), grid: grid()}">
   @for (option of options(); track option) {
-    <span (click)="click(option)" [ngClass]="{selected: isOptionSelected(option)}">
+    <span (click)="click(option)" [class.selected]="isOptionSelected(option)">
       {{optionLabel() ? option[optionLabel()!] : option}}
       <img src="/ui/arrow.png" alt="" class="arrow">
     </span>

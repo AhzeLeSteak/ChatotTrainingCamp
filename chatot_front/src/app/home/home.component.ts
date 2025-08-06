@@ -13,7 +13,7 @@ import {SelectButtonComponent} from '../common/select-button/select-button.compo
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   readonly create_join = [{value: false, label: 'Create a room'}, {value: true, label: 'Join a room'}];
 
@@ -27,6 +27,18 @@ export class HomeComponent {
 
   player_name = signal(localStorage.getItem(PLAYER_NAME) ?? '');
   room_code = signal(this.code_from_route ?? '');
+
+
+  async ngOnInit() {
+    await this.hub.createConnection();
+    const rejoined = await this.hub.tryRejoin();
+    if (rejoined) {
+      console.log('Rejoined room');
+      await this.router.navigate(['play']);
+    } else if (this.router.url === '/play') {
+      await this.router.navigate(['']);
+    }
+  }
 
   async letsgo() {
     let joined = false;

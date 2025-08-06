@@ -17,13 +17,13 @@
 
 
       <div class="pk-picture">
-        <div id="pk_canvas" [ngClass]="{displayNone: !loaded || tries().length === 0}">
+        <div id="pk_canvas" [class.displayNone]="!loaded || tries().length === 0">
           @for (level of levelsToDisplay(); track level; let first = $first) {
             <app-pixelized-img [img]="img()" [level]="level" [disabled]="!first"/>
           }
-          <img [src]="imgUrl()" width="96" [ngClass]="{displayNone: searchStatus() === SearchStatus.Searching}">
+          <img [src]="imgUrl()" width="96" [class.displayNone]="searchStatus() === SearchStatus.Searching">
         </div>
-        <img src="/questionmark.png" [ngClass]="{displayNone: tries().length > 0}">
+        <img src="/questionmark.png" [class.displayNone]="tries().length > 0">
       </div>
 
 
@@ -66,24 +66,5 @@
 
     </div>
   </div>
-
-
-  @if (tries().length) {
-    <div class="divider">
-      <div>History</div>
-    </div>
-    <div class="flex flex-column">
-      @for (_try of tries(); track _try; let i = $index) {
-        <div
-          [ngClass]="i < tries().length - 1 ? {} : {
-            red: searchStatus() === SearchStatus.Failed,
-            blue: searchStatus() === SearchStatus.Found
-          }"
-        >
-          {{ i + 1 }}. {{ languageManager.name_from_id(_try) }}
-        </div>
-      }
-    </div>
-  }
 
 </div>

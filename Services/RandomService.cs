@@ -78,9 +78,9 @@ namespace ChatotTrainingCamp.Services
             return code;
         }
 
-        public static List<T> GetNRandomElementsFromList<T>(List<T> list, int howMany = 1)
+        public static List<T> GetNRandomElementsFromList<T>(List<T> list, int n = 1)
         {
-            return list.OrderBy(el => rng.Next()).Take(howMany).ToList();
+            return list.OrderBy(el => rng.Next()).Take(n).ToList();
         }
 
         public static T RandomElementFromList<T>(List<T> list) {

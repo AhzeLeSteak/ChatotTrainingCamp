@@ -3,43 +3,80 @@
 
     <h2 style="margin: 0">Guess the Pokémon !</h2>
 
-    <app-sound-player [dexId]="dexId"></app-sound-player>
+    <div class="date-select">
+      <button (click)="previousDay()" [disabled]="!canGoPrev()">
+        <img src="/ui/arrow.png" alt="" class="arrow" style="transform: rotateZ(180deg)">
+      </button>
+      <div style="display: flex; gap: 8px; align-items: center">
+        <app-sound-player [dexId]="dexId()"></app-sound-player>
+        {{ formatedDate() }}
+      </div>
+      <button (click)="nextDay()" [disabled]="!canGoNext()">
+        <img src="/ui/arrow.png" alt="" class="arrow">
+      </button>
+    </div>
 
     <div class="flex">
       @if (searchStatus() === SearchStatus.Searching) {
         <div style="position: relative">
           <input type="text"
-            [ngModel]="input()"
-            (ngModelChange)="input.set($event); showPropositions.set(true)"
-            (keydown.enter)="try()"
-            style="padding: 4px;"
-            />
-            @if (input().length && showPropositions() && propositions().length) {
-              <div id="propositions">
-                @for (proposition of propositions(); track proposition) {
-                  <div (click)="input.set(proposition); showPropositions.set(false)">
-                    {{proposition}}
-                  </div>
-                }
-              </div>
-            }
-          </div>
-          <button style="padding-left: 8px; padding-right: 8px" (click)="try()">Submit</button>
-        } @else {
-          <h4 class="flex flex-column align-items-center">
-            <span>You {{searchStatus() === SearchStatus.Found ? "won" : "failed"}}!</span>
-            <span>The secret  Pokémon was <span class="yellow">{{languageManager.name_from_id(dexId)}}</span></span>
-            <span style="margin-top: .5em">Try to guess the next pokémon in</span>
-            <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
-            <div style="margin-top: 10px">
-              <button (click)="share(true)">Share with spoilers</button>
-              <button (click)="share(false)">Share without spoilers</button>
+                 [ngModel]="input()"
+                 (ngModelChange)="input.set($event); showPropositions.set(true)"
+                 (keydown.enter)="try()"
+                 style="padding: 4px;"
+          />
+          @if (input().length > 2 && showPropositions() && propositions().length) {
+            <div id="propositions">
+              @for (proposition of propositions(); track proposition) {
+                <div (click)="input.set(proposition); showPropositions.set(false)">
+                  {{ proposition }}
+                </div>
+              }
             </div>
-          </h4>
-        }
-      </div>
+          }
+        </div>
+        <button style="padding-left: 8px; padding-right: 8px" (click)="try()">Submit</button>
+      } @else {
+        <h4 class="flex flex-column align-items-center">
+          <span>You {{ searchStatus() === SearchStatus.Found ? "won" : "failed" }} !</span>
+          @if (selectedDate() == saveManager.daysSinceEpoch && saveManager.streakLength() > 0) {
+            <span>You're on a streak of <span class="blue">{{ saveManager.streakLength() }}</span></span>
+          }
+          <span>The secret  Pokémon was <span class="yellow">{{ languageManager.name_from_id(dexId()) }}</span></span>
+          <span style="margin-top: .5em">Try to guess the next pokémon in</span>
+          <span class="blue"><app-timer-tomorow></app-timer-tomorow></span>
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px; --p: 12px">
+            <button style="padding-right: var(--p); padding-left: var(--p)" (click)="share(true)">Share with spoilers
+            </button>
+            <button style="padding-right: var(--p); padding-left: var(--p)" (click)="share(false)">Share without
+              spoilers
+            </button>
+          </div>
+        </h4>
+      }
     </div>
 
-    <app-daily-hints [dexId]="dexId" [searchStatus]="searchStatus()"></app-daily-hints>
-
+    @if (tries().length) {
+      <div style="width: 100%;">
+        <div class="divider">
+          <div>History</div>
+        </div>
+        <div class="flex flex-column">
+          @for (_try of tries(); track _try; let i = $index; let last = $last) {
+            <div
+              style="display: flex; gap: 10px"
+              [class.red]="last && searchStatus() === SearchStatus.Failed"
+              [class.blue]="last && searchStatus() === SearchStatus.Found"
+            >
+              <span style="width: 36%; text-align: right">{{ i + 1 }}.</span>
+              <span>{{ languageManager.name_from_id(_try) }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
   </div>
+
+  <app-daily-hints [dexId]="dexId()" [searchStatus]="searchStatus()"></app-daily-hints>
+
+</div>

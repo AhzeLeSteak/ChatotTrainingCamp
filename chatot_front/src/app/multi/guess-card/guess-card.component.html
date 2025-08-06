@@ -1,11 +1,15 @@
-<div (click)="onClick.emit()" class="guess-card" [ngClass]="{correct: correct(), wrong: wrong(), disabled: disabled()}">
+<div
+  (click)="onClick.emit()"
+  class="guess-card"
+  [ngClass]="{correct: correct(), wrong: wrong(), disabled: disabled()}"
+>
   <div id="background"></div>
   <span id="name" [ngStyle]="{'font-size' : fontSize()}">{{pk_name()}}</span>
   <div id="pk">
     <img id="window" src="/ui/window.png" alt="">
     <img [src]="img_url()"/>
   </div>
-  <div id="select" [ngClass]="{disabled}"></div>
+  <div id="select" [class.disabled]="disabled()"></div>
   @if (room().isInAnswers) {
     <div id="responses">
       @for (p of players(); track p) {

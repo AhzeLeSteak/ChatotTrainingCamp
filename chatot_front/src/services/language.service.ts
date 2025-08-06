@@ -7,7 +7,7 @@ import {NAMES_DE} from '../consts/pokemon-names-de';
 import {GENERA} from '../consts/genera';
 import {WEIGHT_SIZE} from '../consts/pokemon-weight-size';
 import {ENTRIES} from '../consts/entries';
-import {DexIdService} from './dex-id.service';
+import {SaveManagerService} from './save-manager.service';
 
 const language_key = 'LANGUAGE';
 const unit_key = 'UNITS';
@@ -46,21 +46,21 @@ export class LanguageService {
   weightUnit = computed(() =>  this.units() === 'mKg' ? 'Kg' : 'lbs');
 
 
-  dexId = inject(DexIdService).dexId();
-  dailyName = computed(() => this.name_from_id(this.dexId))
-  dailyGenera = computed(() => GENERA[this.dexId-1][this.selected_language()] ?? GENERA[this.dexId-1]['en']);
+  dexId = inject(SaveManagerService).dexId;
+  dailyName = computed(() => this.name_from_id(this.dexId()))
+  dailyGenera = computed(() => GENERA[this.dexId()-1][this.selected_language()] ?? GENERA[this.dexId()-1]['en']);
   dailySize = computed(() => {
-    const size = WEIGHT_SIZE[this.dexId-1];
+    const size = WEIGHT_SIZE[this.dexId()-1];
     return this.units() === 'mKg' ? size.m : size.ft.replaceAll('′', "'").replaceAll('″', '"');
   });
   dailyWeight = computed(() => {
-    const weight = WEIGHT_SIZE[this.dexId-1];
+    const weight = WEIGHT_SIZE[this.dexId()-1];
     return this.units() === 'mKg' ? weight.kgs : weight.lbs;
   });
 
   dailyEntry = computed(() =>{
     const name = this.dailyName();
-    const entry = ENTRIES[this.dexId-1][this.selected_language()] ?? ENTRIES[this.dexId-1]['en'];
+    const entry = ENTRIES[this.dexId()-1][this.selected_language()] ?? ENTRIES[this.dexId()-1]['en'];
     const words = entry.replaceAll(new RegExp(name, 'gi'), '???').replaceAll('\n', ' ').split(' ');
     if(this.selected_language() === 'ko') return [...chunk(words.join(' '), 17)].join(' ')
 
