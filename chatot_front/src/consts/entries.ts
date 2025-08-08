@@ -6286,384 +6286,892 @@ export const ENTRIES = [
     "de": "Ein legendärer König, der einst Galar regierte.\nCoronospa besitzt die Macht, Herzen zu\nbesänftigen und Pflanzen gedeihen zu lassen."
   },
   {
-    "en": "The black orbs shine with an uncanny light when the Pokémon is\nerecting invisible barriers. The fur shed from its beard retains\nheat well and is a highly useful material for winter clothing."
+    "en": "The black orbs shine with an uncanny light when the Pokémon is\nerecting invisible barriers. The fur shed from its beard retains\nheat well and is a highly useful material for winter clothing.",
+    "fr": "Ses boules noires émettent une inquiétante lueur lorsqu'il érige des barrières invisibles. Les poils de barbe qu'il perd servent à confectionner des vêtements d'hiver bien chauds.",
+    "de": "Die schwarzen Kugeln leuchten auf ominöse Weise, wenn es unsichtbare Wände erschafft. Das Barthaar, das es verliert, wird als Material für warme Winterkleidung hoch geschätzt.",
+    "ko": "등장하지 않음",
+    "jap": "目に見えぬ　壁を　作りしとき　黒き珠　妖しく　輝きたり。　抜け落ちし　髭は　暖かく　冬衣の　原料に　重宝す。"
   },
   {
-    "en": "A violent creature that fells towering trees with its crude axes\nand shields itself with hard stone. If one should chance upon\nthis Pokémon in the wilds, one's only recourse is to flee."
+    "en": "A violent creature that fells towering trees with its crude axes\nand shields itself with hard stone. If one should chance upon\nthis Pokémon in the wilds, one's only recourse is to flee.",
+    "fr": "Il se protège à l'aide de roches dures et abat des arbres avec ses haches frustes. Comme il possède un tempérament violent, il est préférable de fuir quand on le croise dans la nature.",
+    "de": "Ein extrem seltenes Erz, das in Vulkanregionen zu finden ist, löste seine Entwicklung aus, bei der Teile seines Körpers zu Stein wurden.",
+    "ko": "등장하지 않음",
+    "jap": "火山地帯で　ごくまれに　見つかる　鉱石によって　体の　一部が　岩へと　変わる　進化を　遂げた。"
   },
   {
-    "en": "I believe it was Hisui's swampy terrain that gave Ursaluna its\nburly physique and newfound capacity to manipulate peat\nat will."
+    "en": "I believe it was Hisui's swampy terrain that gave Ursaluna its\nburly physique and newfound capacity to manipulate peat\nat will.",
+    "fr": "Il a traversé la mer pour rejoindre un nouveau territoire. Le fait d'avoir réussi à y survivre a altéré son apparence et ses compétences.",
+    "de": "Vermutlich ist das sumpfige Gelände Hisuis der Grund für seine robuste Statur sowie die neu errungene Fähigkeit, Torf nach Belieben manipulieren zu können.",
+    "ko": "물길을 거슬러 오르는 여정에서 뜻을 이루지 못하고 죽은 동료들의 혼을 두르고 있다. 히스이에 흐르는 하천에서는 대적할 자가 없다.",
+    "jap": "ヒスイの地に　敷かれし　湿地の土こそ　頑丈なる体躯と　泥炭を　自在に　扱う　新たな　器量　もたらしたと　考察す。"
   },
   {
-    "en": "Clads itself in the souls of comrades that perished before\nfulfilling their goals of journeying upstream. No other species\nthroughout all Hisui's rivers is Basculegion's equal."
+    "en": "Clads itself in the souls of comrades that perished before\nfulfilling their goals of journeying upstream. No other species\nthroughout all Hisui's rivers is Basculegion's equal.",
+    "fr": "Ce Pokémon revêt les âmes de ses camarades qui ont péri en remontant les rivières. Dans les fleuves qui traversent Hisui, aucune autre espèce n'est à sa mesure.",
+    "de": "Es hüllt seinen Körper in die Seelen von Artgenossen, die auf dem beschwerlichen Weg zum Fluss ihrer Geburt ihr Leben ließen.",
+    "ko": "등장하지 않음",
+    "jap": "生まれた　川を　目指す　過酷な　道のりで　死んでいった　仲間の　魂を　体に　まとっている。"
   },
   {
-    "en": "Because of Sneasler's virulent poison and daunting physical\nprowess, no other species could hope to best it on the frozen\nhighlands. Preferring solitude, this species does not form packs."
+    "en": "Because of Sneasler's virulent poison and daunting physical\nprowess, no other species could hope to best it on the frozen\nhighlands. Preferring solitude, this species does not form packs.",
+    "fr": "Ce Pokémon n'a guère d'ennemis sur les hauteurs froidies, car ses aptitudes physiques sont sans égales et son poison est mortel. Il préfère la solitude à la vie en groupe.",
+    "de": "Im frostigen Hochland kann diesem Einzelgänger kein anderes Pokémon das Wasser reichen, da er neben hochwirksamem Gift über herausragende körperliche Fähigkeiten verfügt.",
+    "ko": "등장하지 않음",
+    "jap": "他種圧倒する　身体能力と　猛毒　有し　寒冷なる　高地においては　敵なし。　群れ成さず　単独を良しとする　性質。"
   },
   {
-    "en": "Its lancelike spikes and savage temperament have earned it the\nnickname ”sea fiend.” It slurps up poison to nourish itself."
+    "en": "Its lancelike spikes and savage temperament have earned it the\nnickname ”sea fiend.” It slurps up poison to nourish itself.",
+    "fr": "Ses épines semblables à des lances et sa nature violente lui valent le sobriquet « d'ogre des océans ». Il se repaît du poison qu'il aspire.",
+    "de": "Selbst im Schlaf reagieren Myriadors Giftstacheln von allein und spießen alles auf, was sich ihm nähert.",
+    "ko": "등장하지 않음",
+    "jap": "眠っているときでも　動くものが　近づくと　毒針が　無意識に　反応し　突き刺してくるぞ。"
   },
   {
-    "en": "When it flies to this land from across the sea, the bitter winter\ncomes to an end. According to legend, this Pokémon's love\ngives rise to the budding of fresh life across Hisui."
+    "en": "When it flies to this land from across the sea, the bitter winter\ncomes to an end. According to legend, this Pokémon's love\ngives rise to the budding of fresh life across Hisui.",
+    "fr": "Ce Pokémon quitte son apparence de femme et revêt cette forme avant de se révéler entre les nuages pour châtier ceux qui négligent les êtres vivants. Sa colère est implacable.",
+    "de": "Kommt es übers Meer geflogen, neigt sich der harsche Winter dem Ende zu. Der Volksmund sagt, dass dank seiner Liebe neues Leben in Hisui Knospen treibe.",
+    "ko": "등장하지 않음",
+    "jap": "海を越えて　飛来したらば　厳しき冬の　終わりを知る。　慈愛が　ヒスイの地に　新しき命　芽吹かせるとの　伝承あり。"
   },
   {
-    "en": "The sweet scent its body gives off mesmerizes those around it. The scent grows stronger when this Pokémon is in the sun."
+    "en": "The sweet scent its body gives off mesmerizes those around it. The scent grows stronger when this Pokémon is in the sun.",
+    "fr": "Ce Pokémon lave assidûment son visage pour éviter qu'il ne s'assèche. La composition de son pelage soyeux est proche de celle des plantes.",
+    "de": "Die Zusammensetzung seines weichen Fells ähnelt der von Pflanzen. Es reinigt penibel sein Gesicht, um zu verhindern, dass dieses austrocknet.",
+    "ko": "복슬복슬한 털은 식물에 가까운 성분으로 이루어져 있다. 수시로 세수를 하면서 건조해지는 것을 방지한다.",
+    "jap": "フワフワの　体毛は　植物に　近い　成分。　こまめに　顔を　洗って　乾燥を　防ぐ。"
   },
   {
-    "en": "The hardness of Floragato’s fur depends on the Pokémon’s mood. When Floragato is prepared to battle, its fur becomes pointed and needle sharp."
+    "en": "The hardness of Floragato’s fur depends on the Pokémon’s mood. When Floragato is prepared to battle, its fur becomes pointed and needle sharp.",
+    "fr": "Il manie avec habileté la liane dissimulée sous ses longs poils et frappe ses adversaires avec le bourgeon dur situé à son extrémité.",
+    "de": "Es lenkt geschickt die Ranke, die es unter seinem langen Fell verbirgt, und schleudert die harte Knospe an ihrem Ende auf Gegner.",
+    "ko": "긴 털 아래 숨긴 덩굴을 능숙하게 다뤄서 단단한 꽃봉오리로 상대를 가격한다.",
+    "jap": "長い　体毛の下に　隠した　ツタを　器用に　操り　硬い　つぼみを　敵に　叩きつける。"
   },
   {
-    "en": "With skillful misdirection, it rigs foes with pollen-packed flower bombs. Meowscarada sets off the bombs before its foes realize what’s going on."
+    "en": "With skillful misdirection, it rigs foes with pollen-packed flower bombs. Meowscarada sets off the bombs before its foes realize what’s going on.",
+    "fr": "Il se sert de la réverbération de la lumière sur la fourrure de sa cape pour camoufler sa tige, ce qui donne l'illusion que sa fleur flotte dans les airs.",
+    "de": "Es erweckt den Eindruck, als würde seine Blume schweben, indem es ihren Stiel mit der Reflexion des Fells an der Innenseite seines Mantels tarnt.",
+    "ko": "꽃이 떠 있는 것처럼 보이는 것은 망토 뒷면의 털이 빛을 반사해서 줄기를 보이지 않게 하기 때문이다.",
+    "jap": "浮いているように　見える　花は　マント裏の　毛の　反射で　茎を　カモフラージュしているのだ。"
   },
   {
-    "en": "Its flame sac is small, so energy is always leaking out. This energy is released from the dent atop Fuecoco’s head and flickers to and fro."
+    "en": "Its flame sac is small, so energy is always leaking out. This energy is released from the dent atop Fuecoco’s head and flickers to and fro.",
+    "fr": "Il s'allonge sur des pierres chaudes et produit de l'énergie de type Feu grâce à la chaleur absorbée par ses écailles rectangulaires.",
+    "de": "Es legt sich auf warme Steine und nimmt so über seine rechteckigen Schuppen Hitze auf, mit der es Feuer-Energie erzeugt.",
+    "ko": "따뜻한 바위 위에 드러누워서 네모난 비늘을 통해 흡수한 열로 불꽃 에너지를 만든다.",
+    "jap": "温かい　岩の上で　寝転び　四角い　うろこから　取り込んだ　熱で　炎エネルギーを　作る。"
   },
   {
-    "en": "The valve in Crocalor’s flame sac is closely connected to its vocal cords. This Pokémon utters a guttural cry as it spews flames every which way."
+    "en": "The valve in Crocalor’s flame sac is closely connected to its vocal cords. This Pokémon utters a guttural cry as it spews flames every which way.",
+    "fr": "La boule de feu en forme d'œuf qui surmonte sa tête résulte de la fusion entre son énergie de type Feu et son trop-plein de vitalité.",
+    "de": "Seine Feuer-Energie und sein Überschuss an Lebenskraft brachten gemeinsam den eiförmigen Feuerball auf seinem Kopf hervor.",
+    "ko": "불꽃 에너지와 남아도는 생명력이 섞여서 머리 위에 알 모양의 불덩이가 생겨났다.",
+    "jap": "炎エネルギーと　有り余る　生命力が　交じり　頭上に　タマゴ型の　火玉が　現れた。"
   },
   {
-    "en": "Skeledirge’s gentle singing soothes the souls of all that hear it. It burns its enemies to a crisp with flames of over 5,400 degrees Fahrenheit."
+    "en": "Skeledirge’s gentle singing soothes the souls of all that hear it. It burns its enemies to a crisp with flames of over 5,400 degrees Fahrenheit.",
+    "fr": "Quand il chante, son oiseau de feu change de forme. Cet oiseau serait né lorsqu'une âme a pris possession de sa boule de feu.",
+    "de": "Der feurige Vogel, der durch Skelokroks Gesang die Gestalt ändert, soll eine Seele sein, die sich in dem Feuerball auf seinem Kopf niederließ.",
+    "ko": "노랫소리에 따라 모습이 바뀌는 불새는 머리 위에 있던 불덩이에 영혼이 깃든 것이라고 한다.",
+    "jap": "歌声で　姿かたちを　変える　炎の鳥は　頭上の　火玉に　魂が　宿ったもの　だという。"
   },
   {
-    "en": "Its strong legs let it easily swim around in even fast-flowing rivers. It likes to keep things tidy and is prone to overthinking things."
+    "en": "Its strong legs let it easily swim around in even fast-flowing rivers. It likes to keep things tidy and is prone to overthinking things.",
+    "fr": "Originaire d'une contrée lointaine, il est venu s'installer dans la région il y a longtemps. Ses ailes sécrètent un gel qui repousse l'eau et les saletés.",
+    "de": "Vor langer Zeit kam es von weit her und ließ sich in Paldea nieder. Über sein Gefieder sondert es ein Gel ab, das Wasser und Schmutz abweist.",
+    "ko": "옛날에 머나먼 땅에서 찾아와 정착했다. 날개에서 분비되는 젤은 물과 먼지를 튕겨 낸다.",
+    "jap": "昔　遠い　土地から　やって来て　棲みついた。　羽から　分泌する　ジェルは　水と　汚れを　弾く。"
   },
   {
-    "en": "The hardworking Quaxwell observes people and Pokémon from various regions and incorporates their movements into its own dance routines."
+    "en": "The hardworking Quaxwell observes people and Pokémon from various regions and incorporates their movements into its own dance routines.",
+    "fr": "Ils courent dans les hauts-fonds pour renforcer les muscles de leurs pattes et rivalisent entre eux pour voir qui a le coup de pied le plus élégant.",
+    "de": "Es rennt eifrig durch seichte Gewässer, um seine Beine zu stärken, und konkurriert mit Artgenossen darum, wer die anmutigste Beinarbeit vorweist.",
+    "ko": "열심히 얕은 여울을 달리며 하반신을 단련하고, 동료들끼리 발 기술의 화려함을 겨룬다.",
+    "jap": "ひたすらに　浅瀬を　走り込んで　足腰を　鍛え　仲間同士で　足技の　華麗さを　競いあう。"
   },
   {
-    "en": "Dancing in ways that evoke far-away places, this Pokémon mesmerizes all that see it. Flourishes of its decorative water feathers slice into its foes."
+    "en": "Dancing in ways that evoke far-away places, this Pokémon mesmerizes all that see it. Flourishes of its decorative water feathers slice into its foes.",
+    "fr": "Il peut propulser un camion dans les airs d'un simple coup de pied. Ses puissantes pattes lui permettent aussi d'exécuter des danses insolites.",
+    "de": "Mit einem einzigen Tritt kann es Lastwagen umwerfen. Es nutzt seine kräftigen Beine, um Tänze aus fernen Ländern aufzuführen.",
+    "ko": "발차기 한 번에 트럭을 굴려 버릴 정도로 강한 다릿심을 활용하여 이국적인 춤을 선보인다.",
+    "jap": "ひと蹴りで　トラックを　転がす　強靭な　脚力を　駆使し　エキゾチックな　踊りを　みせる。"
   },
   {
-    "en": "This Pokémon spurns all but the finest of foods. Its body gives off an herblike scent that bug Pokémon detest."
+    "en": "This Pokémon spurns all but the finest of foods. Its body gives off an herblike scent that bug Pokémon detest.",
+    "fr": "Il possède un sens de l'odorat développé qu'il utilise uniquement pour chercher de la nourriture, ce qu'il fait à longueur de journée.",
+    "de": "Es verfügt über einen fantastischen Geruchssinn, nutzt diesen aber ausschließlich zur Futtersuche, der es sich den lieben langen Tag widmet.",
+    "ko": "하루 종일 먹이를 찾는다. 뛰어난 후각을 가졌지만 먹이를 찾는 일 외에는 사용하지 않는다.",
+    "jap": "一日中　エサを　探す。　優れた　嗅覚を　持つが　エサ探し　以外に　使わない。"
   },
   {
-    "en": "It entrances female Pokémon with the sweet, alluring scent that wafts from all over its body."
+    "en": "It entrances female Pokémon with the sweet, alluring scent that wafts from all over its body.",
+    "fr": "Il dégage un agréable parfum fleuri. Les muscles bien développés de ses jambes lui permettent de sauter des obstacles de cinq mètres avec aisance.",
+    "de": "Seine glatte, glänzende Haut ist sein ganzer Stolz. Über die Spitze seines Schwanzes setzt es einen konzentrierten Duft frei.",
+    "ko": "곱고 윤기가 흐르는 피부를 자랑한다. 꼬리 끝에서 응축된 향기를 내보낸다.",
+    "jap": "きめ細かく　艶やかな　肌が　自慢。　尻尾の　先端から　凝縮した　香りを　放つ。"
   },
   {
-    "en": "The thread it secretes from its rear is as strong as wire. The secret behind the thread’s strength is the topic of ongoing research."
+    "en": "The thread it secretes from its rear is as strong as wire. The secret behind the thread’s strength is the topic of ongoing research.",
+    "fr": "La boule de fil qui entoure son corps est assez élastique pour repousser les faux d'Insécateur, son ennemi juré.",
+    "de": "Die Fadenkugel, die seinen Körper umgibt, ist sehr elastisch. Selbst die Sicheln seines natürlichen Feindes Sichlor prallen an ihr ab.",
+    "ko": "몸을 감싸고 있는 실타래는 천적인 스라크의 낫을 튕겨 낼 정도의 탄력을 자랑한다.",
+    "jap": "体を　包みこむ　糸玉は　天敵の　ストライクの　カマを　はね返す　弾力性を　持つ。"
   },
   {
-    "en": "Spidops covers its territory in tough, sticky threads to set up traps for intruders."
+    "en": "Spidops covers its territory in tough, sticky threads to set up traps for intruders.",
+    "fr": "Ce Pokémon s'accroche aux branches ou aux plafonds grâce à son fil et se déplace en silence. Il élimine ses proies sans qu'elles le remarquent.",
+    "de": "Spinsidias hängt sich mit seinem Faden an Äste oder Decken und bewegt sich lautlos. Es erlegt seine Beute, bevor diese es bemerken kann.",
+    "ko": "나뭇가지나 천장에 실로 달라붙어 소리 없이 행동한다. 먹잇감에게 들키기 전에 쓰러뜨린다.",
+    "jap": "木の枝や　天井に　糸で　張りつき　音もなく　行動する。　獲物に　気づかれる前に　倒す。"
   },
   {
-    "en": "It’s highly skilled at a fighting style in which it uses its jumping capabilities to dodge incoming attacks while also dealing damage to opponents."
+    "en": "It’s highly skilled at a fighting style in which it uses its jumping capabilities to dodge incoming attacks while also dealing damage to opponents.",
+    "fr": "Sa troisième paire de pattes est repliée. Il possède assez de force pour sauter à plus de dix mètres lorsqu'il est en difficulté.",
+    "de": "Sein drittes Beinpaar ist eingeklappt. In einer Notlage kann es dank dessen Kraft mehr als 10 m weit springen.",
+    "ko": "제3의 다리가 접혀 있다. 위기에 처하면 10m 이상을 점프하는 다릿심을 가지고 있다.",
+    "jap": "第３の脚が　畳まれている。　ピンチになると　１０メートル以上　ジャンプする　脚力を　持つ。"
   },
   {
-    "en": "It uses its normally folded third set of legs when in Showdown Mode. This places a huge burden on its body, so it can’t stay in this mode for long."
+    "en": "It uses its normally folded third set of legs when in Showdown Mode. This places a huge burden on its body, so it can’t stay in this mode for long.",
+    "fr": "Quand les choses deviennent sérieuses, il passe en mode assaut et se tient sur son autre paire de pattes. Il neutralise ses ennemis en un clin d'œil.",
+    "de": "Macht es ernst, so stellt es sich auf sein zuvor eingeklapptes Beinpaar und schaltet in den Showdown-Modus. So bezwingt es Gegner im Nu.",
+    "ko": "진심을 다하게 되면 접었던 다리로 일어나 결전 모드로 변하여 단시간에 적을 제압한다.",
+    "jap": "本気になると　畳んでいた　脚で　立ち上がり　決戦モードになる。　短時間で　敵を　制圧する。"
   },
   {
-    "en": "The pads of its paws are electricity-discharging organs. Pawmi fires electricity from its forepaws while standing unsteadily on its hind legs."
+    "en": "The pads of its paws are electricity-discharging organs. Pawmi fires electricity from its forepaws while standing unsteadily on its hind legs.",
+    "fr": "Les poches sur ses joues sont peu développées. Elles ne produisent de l'électricité que lorsqu'il les frotte avec ses coussinets.",
+    "de": "Seine elektrischen Backentaschen sind nicht ganz ausgebildet. Um Strom zu erzeugen, muss es mit den Ballen der Vorderpfoten kräftig daran reiben.",
+    "ko": "볼의 전기 주머니가 아직 발달하지 않았다. 앞발의 볼록살을 열심히 비벼야 겨우 전기가 만들어진다.",
+    "jap": "頬の　電気袋は　未発達。　前脚の　肉球で　懸命に　擦ると　ようやく　発電できる。"
   },
   {
-    "en": "Pawmo uses a unique fighting technique in which it uses its forepaws to strike foes and zap them with electricity from its paw pads simultaneously."
+    "en": "Pawmo uses a unique fighting technique in which it uses its forepaws to strike foes and zap them with electricity from its paw pads simultaneously.",
+    "fr": "Quand on attaque son groupe, ce Pokémon est le premier à riposter. Il défait ses adversaires avec un art martial qui repose sur l'électricité.",
+    "de": "Wird seine Kolonie angegriffen, stürzt es sich sofort in den Kampf und besiegt den Feind mit Kampftechniken, die auf Elektroschocks setzen.",
+    "ko": "무리가 공격을 받으면 전격을 날리는 격투기로 먼저 싸움을 걸고 적을 쓰러뜨린다.",
+    "jap": "群れが　襲われたときは　電撃を　駆使した　格闘技で　真っ先に　戦いを　挑み　敵を　倒す。"
   },
   {
-    "en": "Pawmot’s fluffy fur acts as a battery. It can store the same amount of electricity as an electric car."
+    "en": "Pawmot’s fluffy fur acts as a battery. It can store the same amount of electricity as an electric car.",
+    "fr": "D'ordinaire, ce Pokémon est plutôt calme, mais lorsqu'il se bat, il élimine ses adversaires avec des mouvements rapides comme l'éclair.",
+    "de": "Dieses Pokémon ist für gewöhnlich sehr gelassen, doch sobald ein Kampf beginnt, streckt es den Gegner mit blitzschnellen Bewegungen zu Boden.",
+    "ko": "평소에는 느긋하지만 싸움이 시작되면 전광석화와도 같은 몸놀림으로 적을 때려눕힌다.",
+    "jap": "普段は　おっとりしているが　いざ　戦いになると　電光石火の　身のこなしで　敵を　叩きのめす。"
   },
   {
-    "en": "The pair sticks together no matter what. They split any food they find exactly in half and then eat it together."
+    "en": "The pair sticks together no matter what. They split any food they find exactly in half and then eat it together.",
+    "fr": "Ces Pokémon travaillent en équipe. À l'aide de leur incisive, ils extraient les matériaux nécessaires pour construire leur nid, puis ils les emportent.",
+    "de": "Zwieps arbeiten perfekt im Team zusammen. Sie nagen mit den Vorderzähnen Material für den Nestbau ab und tragen es dann davon.",
+    "ko": "호흡이 척척 맞는 콤비네이션으로 집의 재료가 될 만한 것을 앞니로 잘라 내어 가지고 간다.",
+    "jap": "息の合った　コンビネーションで　巣の　材料に　なりそうなものを　前歯で　切り出して　運び去る。"
   },
   {
-    "en": "The larger pair protects the little ones during battles. When facing strong opponents, the whole group will join the fight."
+    "en": "The larger pair protects the little ones during battles. When facing strong opponents, the whole group will join the fight.",
+    "fr": "Les deux grands se battent et protègent les petits. Face à des adversaires puissants, ils prennent tous part au combat.",
+    "de": "Sie bauen große Nester mit diversen Räumen, die alle unterschiedlichen Zwecken dienen, wie etwa dem Schlafen oder Essen.",
+    "ko": "어느새 아이가 2마리로 늘었다. 가족처럼 보이기도 하나 진상은 밝혀지지 않았다.",
+    "jap": "寝床や　エサを　食べる　場所など　用途に　合わせて　いくつも　部屋が　分かれた　大きな　巣を　作る。"
   },
   {
-    "en": "The yeast in Fidough’s breath is useful for cooking, so this Pokémon has been protected by people since long ago."
+    "en": "The yeast in Fidough’s breath is useful for cooking, so this Pokémon has been protected by people since long ago.",
+    "fr": "Ce Pokémon est moite et lisse au toucher. Il fait fermenter ce qui se trouve à proximité grâce à la levure que contient son souffle.",
+    "de": "Dieses Pokémon fühlt sich glatt und feucht an. Sein Atem enthält Hefe und bringt so alles in der Umgebung zum Gären.",
+    "ko": "만지면 촉촉하고 매끈매끈하다. 숨결에 포함되어 있는 효모로 주위의 것들을 발효시킨다.",
+    "jap": "しっとり　すべすべの　触り心地。　吐息に　含まれている　酵母で　まわりのものを　発酵させる。"
   },
   {
-    "en": "The surface of this Pokémon’s skin hardens when exposed to intense heat, and its body has an appetizing aroma."
+    "en": "The surface of this Pokémon’s skin hardens when exposed to intense heat, and its body has an appetizing aroma.",
+    "fr": "Il est très apprécié depuis longtemps dans les villages agricoles, car le délicieux parfum qu'il dégage aide à faire croître le blé.",
+    "de": "Da der wohlige Duft, den sein Körper verströmt, das Wachstum von Weizen begünstigt, schätzt man dieses Pokémon in Bauerndörfern sehr.",
+    "ko": "몸에서 나는 좋은 향기가 밀의 성장을 돕기 때문에 농촌에서 소중히 여겨진다.",
+    "jap": "体から　放つ　良い香りが　小麦の　成長を　助けるため　農村で　大切にされてきた。"
   },
   {
-    "en": "This Pokémon converts nutrients into oil, which it stores in the fruit on its head. It can easily go a whole week without eating or drinking."
+    "en": "This Pokémon converts nutrients into oil, which it stores in the fruit on its head. It can easily go a whole week without eating or drinking.",
+    "fr": "Le fruit qui surmonte sa tête sécrète une huile qui le protège de ses adversaires. Ce liquide a un goût si désagréable qu'il fait grimacer.",
+    "de": "Um sich vor Feinden zu schützen, sondert es aus der Frucht auf seinem Kopf Öl ab. Dieses ist so bitter, dass es einen zusammenzucken lässt.",
+    "ko": "머리의 열매에서 오일을 나오게 해서 적으로부터 몸을 지킨다. 오일은 펄쩍 뛸 만큼 떫고 쓰다.",
+    "jap": "頭の　実から　オイルを　出して　敵から　身を　守る。　オイルは　とびあがるほど　苦くて　渋い。"
   },
   {
-    "en": "It basks in the sun to its heart’s content until the fruits on its head ripen. After that, Dolliv departs from human settlements and goes on a journey."
+    "en": "It basks in the sun to its heart’s content until the fruits on its head ripen. After that, Dolliv departs from human settlements and goes on a journey.",
+    "fr": "Ce Pokémon partage volontiers son huile fraîche et délicieuse. Il vit en harmonie avec les êtres humains depuis les temps anciens.",
+    "de": "Bereitwillig teilt dieses Pokémon sein köstliches, frisch duftendes Öl mit anderen. Seit langer Zeit schon lebt es Seite an Seite mit den Menschen.",
+    "ko": "신선한 향기가 나는 맛있는 오일을 나눠 준다. 오래전부터 인간과 공존해 왔다.",
+    "jap": "フレッシュな　香りの　美味しい　オイルを　分けてくれる。　古くから　人間と　共存してきた。"
   },
   {
-    "en": "This Pokémon drives back enemies by launching its rich, aromatic oil at them with enough force to smash a boulder."
+    "en": "This Pokémon drives back enemies by launching its rich, aromatic oil at them with enough force to smash a boulder.",
+    "fr": "Calme et bienveillant, il partage son huile délicieuse et riche en nutriments avec les Pokémon affaiblis.",
+    "de": "Dieses Pokémon ist sehr friedlich und gütig. Es teilt sein leckeres, nährstoffreiches Öl mit geschwächten Pokémon.",
+    "ko": "온화하면서도 매우 자비롭다. 영양이 풍부한 맛있는 오일을 약해진 포켓몬에게 나눠 준다.",
+    "jap": "穏やかで　とても　慈悲深い。　栄養豊富な　美味しい　オイルを　弱った　ポケモンに　分け与える。"
   },
   {
-    "en": "Green-feathered flocks hold the most sway. When they’re out searching for food in the mornings and evenings, it gets very noisy."
+    "en": "Green-feathered flocks hold the most sway. When they’re out searching for food in the mornings and evenings, it gets very noisy.",
+    "fr": "Ces Pokémon préfèrent vivre en ville. Ils forment des groupes selon la couleur de leur plumage et se livrent à des luttes de territoire.",
+    "de": "Diese Pokémon leben bevorzugt in Städten. Sie bilden nach Gefiederfarbe sortierte Gruppen und tragen untereinander Revierkämpfe aus.",
+    "ko": "마을에서 사는 것을 선호한다. 깃털 색에 따라 그룹을 만들고는 영역 다툼을 벌인다.",
+    "jap": "街中で　暮らすことを　好む。　羽の　色で　グループを　作り　縄張り争いを　繰り広げる。"
   },
   {
-    "en": "The ground scrapes its body as it travels, causing it to leave salt behind. Salt is constantly being created and replenished inside Nacli’s body."
+    "en": "The ground scrapes its body as it travels, causing it to leave salt behind. Salt is constantly being created and replenished inside Nacli’s body.",
+    "fr": "Ce Pokémon est né dans des couches souterraines de sel gemme. Connu pour partager son précieux sel, il était apprécié autrefois.",
+    "de": "Es entstand in unterirdischen Salzschichten. Da es kostbares Salz mit den Menschen teilt, wurde es früher ganz besonders geschätzt.",
+    "ko": "땅속의 암염층에서 태어났다. 귀한 소금을 나눠 주기 때문에 옛날에는 특히 더 귀하게 여겨졌다.",
+    "jap": "地底の　岩塩層で　生まれた。　貴重な　塩を　分けてくれるため　昔は　とくに　大事にされた。"
   },
   {
-    "en": "It compresses rock salt inside its body and shoots out hardened salt pellets with enough force to perforate an iron sheet."
+    "en": "It compresses rock salt inside its body and shoots out hardened salt pellets with enough force to perforate an iron sheet.",
+    "fr": "Il projette du sel pour en recouvrir ses proies. Celles-ci subissent alors un processus de salaison et se déshydratent.",
+    "de": "Um seine Beute einzupökeln, überschüttet es sie mit Salz, das es auf sie spuckt. Dieser Prozess entzieht dem Körper der Beute Wasser.",
+    "ko": "분출한 소금을 먹이에게 끼얹어서 소금절이로 만들어 버린다. 체내의 수분을 빼앗는 것이다.",
+    "jap": "塩を　噴き出して　獲物に　浴びせ　塩漬けにしてしまう。　体内の　水分を　奪ってしまうのだ。"
   },
   {
-    "en": "Many Pokémon gather around Garganacl, hoping to lick at its mineral-rich salt."
+    "en": "Many Pokémon gather around Garganacl, hoping to lick at its mineral-rich salt.",
+    "fr": "Le sel dont il saupoudre les Pokémon blessés en frottant le bout de ses doigts guérit aussitôt toutes les blessures, même les plus graves.",
+    "de": "Es reibt seine Fingerspitzen aneinander, um Salz auf verwundete Pokémon zu streuen. Dieses heilt selbst schwere Verletzungen im Nu.",
+    "ko": "손끝을 문질러서 나온 소금을 다친 포켓몬에게 뿌리면 심한 상처도 금방 낫는다.",
+    "jap": "指先を　擦りあわせて　塩を　ケガした　ポケモンに　振りかけると　ひどい　傷も　たちまち　治る。"
   },
   {
-    "en": "Its firepower increases when it fights, reaching over 1,800 degrees Fahrenheit. It likes berries that are rich in fat."
+    "en": "Its firepower increases when it fights, reaching over 1,800 degrees Fahrenheit. It likes berries that are rich in fat.",
+    "fr": "Ce Pokémon est un charbon de bois consumé qui a pris vie. Il est animé par un désir de combattre qui le pousse à défier des adversaires puissants.",
+    "de": "Ein verbranntes Stück Holzkohle ist als Pokémon zum Leben erwacht. Es fordert selbst starke Gegner heraus und hat einen feurigen Kampfgeist.",
+    "ko": "불탄 숯에 영혼이 깃들어서 포켓몬이 되었다. 타오르는 투지로 강한 상대에게도 싸움을 건다.",
+    "jap": "焼けた　木炭に　命が　宿り　ポケモンになった。　燃える　闘志で　強敵にも　戦いを　挑む。"
   },
   {
-    "en": "This Pokémon clads itself in armor that has been fortified by psychic and fire energy, and it shoots blazing fireballs."
+    "en": "This Pokémon clads itself in armor that has been fortified by psychic and fire energy, and it shoots blazing fireballs.",
+    "fr": "Il a évolué grâce à l'armure d'une illustre âme guerrière. Ce Pokémon est extrêmement loyal.",
+    "de": "Es entwickelte sich durch die Rüstung eines heldenhaften Kriegers zu dieser Form. Crimanzo besitzt einen ausgeprägten Sinn für Loyalität.",
+    "ko": "많은 무공을 세운 전사의 갑옷에 의해 진화한 모습. 충성심이 강한 포켓몬이다.",
+    "jap": "多くの　武勲を　立てた　戦士の　鎧によって　進化した　姿。　忠誠心の　厚い　ポケモン。"
   },
   {
-    "en": "An old set of armor steeped in grudges caused this Pokémon’s evolution. Ceruledge cuts its enemies to pieces without mercy."
+    "en": "An old set of armor steeped in grudges caused this Pokémon’s evolution. Ceruledge cuts its enemies to pieces without mercy.",
+    "fr": "Les flammes de ses épées sont animées par la rancœur d'une âme guerrière qui a péri avant de pouvoir accomplir son but.",
+    "de": "Die Flammenschwerter an beiden Armen lodern mit dem Groll eines Schwertkämpfers, der fiel, ehe er sein Ziel erreichen konnte.",
+    "ko": "양팔의 불꽃 검은 뜻을 다 이루지 못한 채 쓰러진 검사의 원념에 의해 타오르고 있다.",
+    "jap": "両腕の　炎の剣は　志半ばで　力つきた　剣士の　怨念で　燃え上がる。"
   },
   {
-    "en": "It floats using the electricity stored in its body. When thunderclouds are around, Tadbulb will float higher off the ground."
+    "en": "It floats using the electricity stored in its body. When thunderclouds are around, Tadbulb will float higher off the ground.",
+    "fr": "Ce Pokémon produit de l'électricité en agitant sa queue. Lorsqu'il perçoit un danger, sa tête clignote pour avertir ses congénères.",
+    "de": "Es erzeugt Strom, indem es mit seinem Schwanz wedelt. Bei Gefahr warnt es seine Artgenossen, indem es seinen Kopf aufblinken lässt.",
+    "ko": "꼬리를 흔들어서 전기를 발생시킨다. 위험을 감지하면 머리를 깜빡여서 동료에게 알린다.",
+    "jap": "尻尾を　振って　発電する。　危険を　感じると　頭を　点滅させて　仲間に　伝える。"
   },
   {
-    "en": "What appear to be eyeballs are actually organs for discharging the electricity generated by Bellibolt’s belly-button dynamo."
+    "en": "What appear to be eyeballs are actually organs for discharging the electricity generated by Bellibolt’s belly-button dynamo.",
+    "fr": "Lorsque ce Pokémon allonge et contracte son corps élastique, son nombril-dynamo produit une quantité d'électricité colossale.",
+    "de": "Dehnt und kontrahiert es seinen elastischen Körper, erzeugt der Nabeldynamo in seinem Bauch große Mengen an Elektrizität.",
+    "ko": "말랑말랑한 몸을 늘였다 줄였다 하면 배에 달린 배꼽 발전기가 큰 전력을 발생시킨다.",
+    "jap": "ブヨンブヨンの　体を　伸び縮み　させると　お腹の　へそダイナモが　大電力を　発生させる。"
   },
   {
-    "en": "These Pokémon make their nests on coastal cliffs. The nests have a strange, crackling texture, and they’re a popular delicacy."
+    "en": "These Pokémon make their nests on coastal cliffs. The nests have a strange, crackling texture, and they’re a popular delicacy.",
+    "fr": "Les os de ses ailes produisent de l'électricité grâce au vent. Pour chasser, ce Pokémon plonge dans la mer et électrocute ses proies.",
+    "de": "Trifft Wind auf seine Flügel, erzeugen deren Knochen Strom. Es fängt Beute, indem es ins Meer taucht und ihr einen Stromschlag verpasst.",
+    "ko": "날개의 뼈는 바람을 받으면 전기를 만들어 낸다. 바다에 뛰어들어 먹이를 감전시켜서 잡는다.",
+    "jap": "翼の　骨は　風を　受けると　電気を　作る。　海に　飛び込み　獲物を　感電させて　捕らえる。"
   },
   {
-    "en": "It uses its throat sac to store electricity generated by its wings. There’s hardly any oil in its feathers, so it is a poor swimmer."
+    "en": "It uses its throat sac to store electricity generated by its wings. There’s hardly any oil in its feathers, so it is a poor swimmer.",
+    "fr": "Lorsqu'il gonfle son sac gulaire, l'intensité du courant électrique qu'il produit augmente. Il peut parcourir 700 km par jour en planant.",
+    "de": "Dieses Pokémon verstärkt seine Elektrizität durch Aufblasen des Kehlsacks. Es nutzt den Wind, um innerhalb eines Tages 700 km weit zu fliegen.",
+    "ko": "목의 주머니를 부풀려서 전기를 증폭시킨다. 바람을 타고 하루에 700km를 비행할 수 있다.",
+    "jap": "のど袋を　ふくらませて　電気を　増幅させる。　風に　乗って　１日で　７００キロを　飛行する。"
   },
   {
-    "en": "Its well-developed jaw and fangs are strong enough to crunch through boulders, and its thick fat makes for an excellent defense."
+    "en": "Its well-developed jaw and fangs are strong enough to crunch through boulders, and its thick fat makes for an excellent defense.",
+    "fr": "Il affiche toujours un air renfrogné pour qu'on le prenne au sérieux, mais même les enfants en pleurs éclatent de rire lorsqu'ils voient sa tête.",
+    "de": "Es blickt stets finster drein, um von anderen ernst genommen zu werden, doch selbst weinende Kinder fangen bei seinem Anblick an zu lachen.",
+    "ko": "상대에게 얕보이지 않기 위해 항상 얼굴을 찌푸리고 있지만 우는 아이는 그 모습을 보고 웃게 된다.",
+    "jap": "相手に　嘗められないように　いつも　しかめっ面をしているが　泣いている　子どもは　その顔で　笑いだす。"
   },
   {
-    "en": "Mabosstiff loves playing with children. Though usually gentle, it takes on an intimidating look when protecting its family."
+    "en": "Mabosstiff loves playing with children. Though usually gentle, it takes on an intimidating look when protecting its family.",
+    "fr": "Ce Pokémon emmagasine de l'énergie dans ses grandes bajoues. Il la libère ensuite d'un coup pour balayer ses adversaires au loin.",
+    "de": "Dieses Pokémon kann in seiner großen Wamme Energie speichern. Setzt es diese auf einen Schlag frei, werden dadurch Feinde hinfortgeblasen.",
+    "ko": "커다란 목 주머니에 에너지를 비축할 수 있다. 단숨에 이를 방출하여 적을 날려 버린다.",
+    "jap": "大きな　のど袋に　エネルギーを　蓄えることができる。　一気に　放出して　敵を　吹き飛ばす。"
   },
   {
-    "en": "To keep enemies away from its territory, it paints markings around its nest using a poisonous liquid that has an acrid odor."
+    "en": "To keep enemies away from its territory, it paints markings around its nest using a poisonous liquid that has an acrid odor.",
+    "fr": "Ce Pokémon est d'un naturel doux, mais lorsqu'il se met en colère, il mord à l'aide de ses incisives acérées et imprégnées de venin paralysant.",
+    "de": "Wer dieses friedfertige Pokémon verärgert, wird durch einen Biss mit seinen scharfen, giftgetränkten Schneidezähnen gelähmt.",
+    "ko": "온화하지만 화가 나게 하면 독이 밴 날카로운 앞니로 물어서 상대를 마비시킨다.",
+    "jap": "温厚だが　怒らせると　毒が　染みこんだ　鋭い　前歯で　咬みつき　痺れさせてくるぞ。"
   },
   {
-    "en": "Each Grafaiai paints its own individual pattern, and it will paint that same pattern over and over again throughout its life."
+    "en": "Each Grafaiai paints its own individual pattern, and it will paint that same pattern over and over again throughout its life.",
+    "fr": "Sa salive toxique change de couleur selon son alimentation. Il en enduit ses doigts pour dessiner des motifs sur les arbres de la forêt.",
+    "de": "Es beschmiert seine Finger mit giftigem Speichel, der je nach Futter anders gefärbt ist, und malt damit Muster auf die Bäume im Wald.",
+    "ko": "먹이에 따라 색이 변하는 독성의 침을 손가락에 묻혀서 숲의 나무들에 무늬를 그린다.",
+    "jap": "エサによって　色が　変化する　毒の　唾液を　指に　塗して　森の　木々に　模様を　描く。"
   },
   {
-    "en": "Not even Bramblin knows where it is headed as it tumbles across the wilderness, blown by the wind. It loathes getting wet."
+    "en": "Not even Bramblin knows where it is headed as it tumbles across the wilderness, blown by the wind. It loathes getting wet.",
+    "fr": "Ce Pokémon est né lorsque, portée par le vent, une âme incapable de trouver le repos s'est retrouvée empêtrée dans des herbes sèches.",
+    "de": "Weherba entstehen, wenn Seelen, die keinen Frieden finden, vom Wind fortgeweht werden und sich in verdorrtem Gras verheddern.",
+    "ko": "성불하지 못한 영혼이 바람에 날리다가 마른 풀과 엉키면서 포켓몬이 되었다.",
+    "jap": "成仏できない　魂が　風に　吹かれているうち　枯草を　巻き込んで　ポケモンになった。"
   },
   {
-    "en": "Brambleghast wanders around arid regions. On rare occasions, mass outbreaks of these Pokémon will bury an entire town."
+    "en": "Brambleghast wanders around arid regions. On rare occasions, mass outbreaks of these Pokémon will bury an entire town.",
+    "fr": "Il déplie ses branches pour gober ses proies. Une fois qu'il a absorbé la quantité d'énergie vitale qu'il souhaitait, il les recrache.",
+    "de": "Es öffnet die Zweige auf dem Kopf, um Beute zu verschlingen. Hat es dieser genug Lebensenergie entzogen, spuckt es sie aus und entsorgt sie so.",
+    "ko": "머리의 가지를 열어서 먹이를 삼킨다. 생기를 실컷 흡수한 다음 그대로 뱉어 버린다.",
+    "jap": "頭の　枝を　開いて　獲物を　飲みこむ。　生気を　存分に　吸い取ると　吐き出して　捨てるのだ。"
   },
   {
-    "en": "Though it looks like Tentacool, Toedscool is a completely different species. Its legs may be thin, but it can run at a speed of 30 mph."
+    "en": "Though it looks like Tentacool, Toedscool is a completely different species. Its legs may be thin, but it can run at a speed of 30 mph.",
+    "fr": "Il vit dans les forêts humides. La partie ondulée qui entoure son abdomen peut se détacher. Elle est croquante et délicieuse.",
+    "de": "Es lebt in feuchten Wäldern. Die Falten, die sich von seinem Körper lösen, sind gummiartig und sehr schmackhaft.",
+    "ko": "축축한 숲속에 산다. 떨어져 나온 몸의 하늘하늘한 부분은 쫄깃쫄깃하고 아주 맛있다.",
+    "jap": "じめじめした　森の中で　暮らす。　剥がれ落ちた　体の　ヒラヒラは　歯ごたえがあって　とても　美味しい。"
   },
   {
-    "en": "It coils its 10 tentacles around prey and sucks out their nutrients, causing the prey pain. The folds along the rim of its head are a popular delicacy."
+    "en": "It coils its 10 tentacles around prey and sucks out their nutrients, causing the prey pain. The folds along the rim of its head are a popular delicacy.",
+    "fr": "Ces Pokémon vivent en colonies au fin fond des bois. Ils détestent au plus haut point que des personnes inconnues s'approchent d'eux.",
+    "de": "Diese Pokémon gründen Kolonien, die tief im Wald leben. Sie können es nicht ausstehen, wenn ihnen Fremde zu nahe kommen.",
+    "ko": "깊은 숲속에 집단으로 살며 군체를 형성한다. 외부인이 접근하는 것을 극도로 싫어한다.",
+    "jap": "森の奥に　集団で　暮らす　コロニーを　作る。　よそ者が　近寄ることを　ひどく　嫌う。"
   },
   {
-    "en": "This Pokémon lives on sheer cliffs. It sidesteps opponents’ attacks, then lunges for their weak spots with its claws."
+    "en": "This Pokémon lives on sheer cliffs. It sidesteps opponents’ attacks, then lunges for their weak spots with its claws.",
+    "fr": "Il se poste la tête en bas sur une falaise, dans l'attente d'une proie, mais il ne peut pas rester longtemps ainsi, car le sang lui monte à la tête.",
+    "de": "Dieses Pokémon lauert seiner Beute kopfüber an Klippen hängend auf. Da ihm dabei das Blut in den Kopf steigt, kann es nicht lange so ausharren.",
+    "ko": "거꾸로 매달린 채 절벽 위에서 먹이를 노리지만, 머리에 피가 몰리기 때문에 오랫동안은 버틸 수 없다.",
+    "jap": "逆さまになって　崖の　上から　獲物を　狙うが　頭に　血が上るので　長くは　待てない。"
   },
   {
-    "en": "Traditional Paldean dishes can be extremely spicy because they include the shed front teeth of Capsakid among their ingredients."
+    "en": "Traditional Paldean dishes can be extremely spicy because they include the shed front teeth of Capsakid among their ingredients.",
+    "fr": "Plus ce Pokémon s'expose au soleil, plus son corps produit une substance piquante, ce qui apporte un peu de piment à ses capacités.",
+    "de": "Je länger es Sonnenlicht tankt, desto intensiver werden die Scharfstoffe in seinem Körper und umso pikanter fallen seine Attacken aus.",
+    "ko": "태양 빛을 쬐면 쬘수록 체내의 매운 성분이 늘어나서 기술이 점점 더 매워진다.",
+    "jap": "太陽の　光を　浴びるほど　体内で　辛み成分が　増えて　技が　どんどん　辛くなるのだ。"
   },
   {
-    "en": "The green head has turned vicious due to the spicy chemicals stimulating its brain. Once it goes on a rampage, there is no stopping it."
+    "en": "The green head has turned vicious due to the spicy chemicals stimulating its brain. Once it goes on a rampage, there is no stopping it.",
+    "fr": "Sa tête rouge convertit la substance piquante produite par son corps en énergie de type Feu et crache des flammes brûlantes.",
+    "de": "Sein roter Kopf wandelt Scharfstoffe in Feuer-Energie um und kann so feurig scharfe Flammen von sich geben.",
+    "ko": "레드 헤드가 매운 성분을 불꽃 에너지로 변환시켜 불같이 매운 화염방사를 사방에 흩뿌린다.",
+    "jap": "レッドヘッドは　辛み成分を　炎エネルギーに　変え　激辛の　火炎放射を　まき散らす。"
   },
   {
-    "en": "It rolls its mud ball around while the energy it needs for evolution matures. Eventually the time comes for it to evolve."
+    "en": "It rolls its mud ball around while the energy it needs for evolution matures. Eventually the time comes for it to evolve.",
+    "fr": "Il confectionne une boule de boue en mélangeant de la terre, du sable et de l'énergie de type Psy. À ses yeux, elle importe plus que sa propre vie.",
+    "de": "Es vermischt Erde und Sand mit Psycho-Kräften, um eine Schlammkugel zu formen. Diese schätzt es mehr als sein eigenes Leben.",
+    "ko": "에스퍼 에너지를 섞어서 흙과 모래로 진흙구슬을 만든다. 진흙구슬을 목숨보다 소중히 여긴다.",
+    "jap": "エスパーエネルギーを　混ぜこみながら　土と　砂で　泥玉を　作る。　泥玉は　命より　大切。"
   },
   {
-    "en": "An infant sleeps inside the ball. Rabsca rolls the ball soothingly with its legs to ensure the infant sleeps comfortably."
+    "en": "An infant sleeps inside the ball. Rabsca rolls the ball soothingly with its legs to ensure the infant sleeps comfortably.",
+    "fr": "Le corps qui porte la sphère bouge à peine. On se demande donc si c'est bien lui qui contrôle les actions de ce Pokémon.",
+    "de": "Der Körper, der die Kugel stützt, regt sich kaum. Daher nimmt man an, dass sich der wahre Körper des Pokémon im Inneren der Kugel befindet.",
+    "ko": "구슬을 지탱하는 몸은 거의 움직이지 않기 때문에, 구슬 안에 본체가 있는 것으로 여겨지고 있다.",
+    "jap": "玉を　支える　体は　ほとんど　動かないため　本体は　玉の中にいると　考えられている。"
   },
   {
-    "en": "It spends its time running around wastelands. If anyone steals its beloved berries, it will chase them down and exact its revenge."
+    "en": "It spends its time running around wastelands. If anyone steals its beloved berries, it will chase them down and exact its revenge.",
+    "fr": "Il lévite à un centimètre du sol grâce à l'énergie psychique qui émane des volants de son abdomen.",
+    "de": "Seine Fußspitzen schweben dank der Psycho-Kräfte, die von den Rüschen an seinem Bauch ausgehen, knapp 1 cm über dem Boden.",
+    "ko": "배의 하늘하늘한 부분에서 나오는 사이코 파워를 통해, 겨우 1cm지만 발끝이 지상에 떠 있다.",
+    "jap": "お腹の　ヒラヒラから　放射する　サイコパワーで　わずか　１センチだけ　つま先が　地面から　浮いている。"
   },
   {
-    "en": "It emits psychic power from the gaps between its multicolored frills and sprints at speeds greater than 120 mph."
+    "en": "It emits psychic power from the gaps between its multicolored frills and sprints at speeds greater than 120 mph.",
+    "fr": "Ce Pokémon immobilise ses adversaires grâce à l'énergie psychique qui émane de ses grands yeux. Il est beaucoup plus violent qu'il n'en a l'air.",
+    "de": "Es macht Gegner bewegungsunfähig, indem es Psycho-Kräfte über seine großen Augen freisetzt. Entgegen seinem Äußeren ist es ziemlich brutal.",
+    "ko": "커다란 눈동자에서 사이코 파워를 발산하여 상대를 움직일 수 없게 한다. 겉보기와 다르게 성질이 사납다.",
+    "jap": "大きな　瞳から　サイコパワーを　浴びせて　相手を　動けなくする。　見かけによらず　気性は　荒い。"
   },
   {
-    "en": "This Pokémon pounds iron scraps together to make a hammer. It will remake the hammer again and again until it’s satisfied with the result."
+    "en": "This Pokémon pounds iron scraps together to make a hammer. It will remake the hammer again and again until it’s satisfied with the result.",
+    "fr": "Il se défend en brandissant un marteau qu'il a créé lui-même, mais les Pokémon qui se nourrissent de métaux ont tendance à le lui voler.",
+    "de": "Es schwingt seinen handgeschmiedeten Hammer, um sich zu schützen. Dieser wird ihm allerdings oft von Pokémon gestohlen, die Metall fressen.",
+    "ko": "손수 만든 해머를 휘둘러 몸을 지키려 하나 금속을 먹는 포켓몬에게 자주 빼앗기고 만다.",
+    "jap": "手作りの　ハンマーを　振りまわして　身を　守るが　金属を　食べる　ポケモンには　よく　奪われる。"
   },
   {
-    "en": "These Pokémon make their homes in piles of scrap metal. They test the strength of each other’s hammers by smashing them together."
+    "en": "These Pokémon make their homes in piles of scrap metal. They test the strength of each other’s hammers by smashing them together.",
+    "fr": "Ce Pokémon attaque des cohortes de Scalpion et de Scalproie pour rassembler le métal nécessaire à la confection d'un grand marteau robuste.",
+    "de": "Es überfällt Gruppen von Gladiantri und Caesurio, um Metall zu sammeln, das es zum Herstellen seines großen, robusten Hammers benötigt.",
+    "ko": "크고 튼튼한 해머를 만들기 위해 절각참 무리를 습격해서 금속을 모은다.",
+    "jap": "大きくて　頑丈な　ハンマーを　作るために　キリキザンの　群れを　襲って　金属を　集める。"
   },
   {
-    "en": "The hammer tops 220 pounds, yet it gets swung around easily by Tinkaton as it steals whatever it pleases and carries its plunder back home."
+    "en": "The hammer tops 220 pounds, yet it gets swung around easily by Tinkaton as it steals whatever it pleases and carries its plunder back home.",
+    "fr": "Ce Pokémon très intelligent et hardi jette des rochers dans les airs puis les frappe avec son marteau en visant les Corvaillus qui volent.",
+    "de": "Es ist intelligent und verwegen. Mit seinem Hammer schlägt es Felsen in die Luft und zielt damit auf fliegende Krarmor.",
+    "ko": "지능이 높고 매우 호쾌하다. 해머로 바위를 날려서 하늘을 나는 아머까오를 노린다.",
+    "jap": "知能が　高く　とても　豪快。　ハンマーで　岩を　殴り飛ばして　空飛ぶ　アーマーガアを　狙う。"
   },
   {
-    "en": "Though it looks like Diglett, Wiglett is an entirely different species. The resemblance seems to be a coincidental result of environmental adaptation."
+    "en": "Though it looks like Diglett, Wiglett is an entirely different species. The resemblance seems to be a coincidental result of environmental adaptation.",
+    "fr": "Il détecte l'odeur de Délestin à plus de vingt mètres, ce qui lui donne le temps de s'enfouir dans le sable.",
+    "de": "Es kann den Geruch eines Agiluza auf 20 m Entfernung wahrnehmen und versteckt sich daraufhin flugs im Sand.",
+    "ko": "20m 떨어진 가비루사에게서 나는 냄새도 맡을 수 있어서 모래 속에 몸을 숨긴다.",
+    "jap": "２０メートル先の　ミガルーサが　放つ　匂いも　嗅ぎとって　砂の中に　身を　隠すのだ。"
   },
   {
-    "en": "A variety of fish Pokémon, Wugtrio was once considered to be a regional form of Dugtrio."
+    "en": "A variety of fish Pokémon, Wugtrio was once considered to be a regional form of Dugtrio.",
+    "fr": "Ce Pokémon est beaucoup plus violent qu'il n'y paraît. Il enroule son long corps autour de ses proies pour les attirer dans son nid.",
+    "de": "Entgegen seinem Äußeren ist es von grober Natur. Mit seinen langen Körpern nimmt es Beute in die Mangel und zieht sie in sein Nest.",
+    "ko": "겉보기와 다르게 성질이 사납다. 기다란 몸으로 먹잇감을 죄어서 굴 안으로 끌고 들어간다.",
+    "jap": "見かけによらず　気性が　荒い。　長い　体で　獲物を　締め上げ　巣穴に　引きずりこむぞ。"
   },
   {
-    "en": "Bombirdier uses the apron on its chest to bundle up food, which it carries back to its nest. It enjoys dropping things that make loud noises."
+    "en": "Bombirdier uses the apron on its chest to bundle up food, which it carries back to its nest. It enjoys dropping things that make loud noises.",
+    "fr": "Il aime mettre des objets dans le tablier formé de plumes qui orne son poitrail, avant de les larguer depuis une altitude élevée.",
+    "de": "Zum Spaß füllt es seine Schürze aus Brustgefieder und ausgefallenen Federn mit allerlei Dingen, nur um diese von hoch oben wieder fallen zu lassen.",
+    "ko": "가슴의 깃털과 떨어진 깃털로 만든 주머니에 물건을 넣고는 높은 곳에서 떨어뜨리며 논다.",
+    "jap": "胸の　羽毛と　抜け落ちた　羽根で　作った　袋に　物を　入れて　高いところから　落として　遊ぶ。"
   },
   {
-    "en": "Its water ring is made from seawater mixed with a sticky fluid that Finizen secretes from its blowhole."
+    "en": "Its water ring is made from seawater mixed with a sticky fluid that Finizen secretes from its blowhole.",
+    "fr": "Il aime utiliser l'anneau d'eau de sa queue quand il joue avec ses congénères et se sert d'ultrasons pour comprendre les émotions des autres.",
+    "de": "Mit dem Wasserring an der Schwanzflosse spielt es gerne mit Artgenossen. Über Ultraschallwellen kann es die Gefühle anderer Lebewesen erfassen.",
+    "ko": "꼬리지느러미에 있는 물의 고리를 가지고 동료와 노는 것을 좋아한다. 초음파로 생명체의 기분을 감지한다.",
+    "jap": "尾びれの　水のリングで　仲間と　遊ぶのが　好き。　超音波で　生き物の　気持ちを　察知する。"
   },
   {
-    "en": "Its physical capabilities are no different than a Finizen’s, but when its allies are in danger, it transforms and powers itself up."
+    "en": "Its physical capabilities are no different than a Finizen’s, but when its allies are in danger, it transforms and powers itself up.",
+    "fr": "Il change de forme dès qu'il entend les cris de détresse de ses congénères, mais il ne laissera jamais personne assister à sa transformation.",
+    "de": "Hört es die Hilferufe von Artgenossen, ändert es seine Form. Den Moment seiner Verwandlung zeigt es jedoch niemandem.",
+    "ko": "도움을 구하는 동료의 소리를 들으면 모습을 바꾼다. 그 순간은 누구에게도 보여 주지 않는다.",
+    "jap": "助けを　求める　仲間の　声を　聞くと　姿を　変える。　その　瞬間は　だれにも　見せない。"
   },
   {
-    "en": "The steel section is Varoom’s actual body. This Pokémon clings to rocks and converts the minerals within into energy to fuel its activities."
+    "en": "The steel section is Varoom’s actual body. This Pokémon clings to rocks and converts the minerals within into energy to fuel its activities.",
+    "fr": "On raconte qu'il est né lorsqu'un mystérieux Pokémon Poison a pris possession d'un moteur laissé à l'abandon dans une casse.",
+    "de": "Es soll entstanden sein, als ein unbekanntes Gift-Pokémon von einem Motor Besitz ergriff, der in einer Schrottfabrik zurückgelassen wurde.",
+    "ko": "고철 처리장에 방치된 엔진에 정체불명의 독포켓몬이 들어가 탄생한 것으로 전해지고 있다.",
+    "jap": "スクラップ工場に　放置された　エンジンに　謎の　毒ポケモンが　入り込んで　生まれたと　言われる。"
   },
   {
-    "en": "Revavroom viciously threatens others with the sound of its exhaust. It sticks its tongue out from its cylindrical mouth and sprays toxic fluids."
+    "en": "Revavroom viciously threatens others with the sound of its exhaust. It sticks its tongue out from its cylindrical mouth and sprays toxic fluids.",
+    "fr": "Il produit de l'énergie en faisant exploser dans ses huit cylindres un mélange gazeux qui contient une substance toxique et des minéraux.",
+    "de": "Mit seinen nunmehr acht Zylindern lässt es ein Gasgemisch aus Gift und Gesteinsmineralien explodieren, um daraus Energie zu gewinnen.",
+    "ko": "독소와 바위 성분이 섞인 가스를 8개로 늘어난 실린더에서 폭발시켜 에너지를 만들어 낸다.",
+    "jap": "毒素と　岩の　成分を　混ぜた　ガスを　８つに　増えた　シリンダーで　爆発させ　エネルギーを　作る。"
   },
   {
-    "en": "It can sprint at over 70 mph while carrying a human. The rider’s body heat warms Cyclizar’s back and lifts the Pokémon’s spirit."
+    "en": "It can sprint at over 70 mph while carrying a human. The rider’s body heat warms Cyclizar’s back and lifts the Pokémon’s spirit.",
+    "fr": "Des fresques vieilles de 10 000 ans laissent penser que ce Pokémon transporte des êtres humains sur son dos depuis les temps anciens.",
+    "de": "Seit uralten Zeiten soll es Menschen auf seinem Rücken reiten lassen. Darstellungen davon finden sich auf 10 000 Jahre alten Wandmalereien.",
+    "ko": "먼 옛날부터 인간을 등에 태우고 다녔다고 한다. 1만 년 전 벽화에도 그 모습이 그려져 있다.",
+    "jap": "大昔から　人を　背中に　乗せていたらしい。　１万年前の　壁画に　様子が　描かれている。"
   },
   {
-    "en": "This Pokémon lives in arid deserts. It maintains its metal body by consuming iron from the soil."
+    "en": "This Pokémon lives in arid deserts. It maintains its metal body by consuming iron from the soil.",
+    "fr": "Lorsqu'on l'attaque, ce Pokémon se sert de ses poils comme de poings pour rouer de coups ses adversaires.",
+    "de": "Wird es angegriffen, setzt es seine Borsten wie Fäuste ein, um damit einen Sturm aus Hieben zu entfesseln.",
+    "ko": "적에게 공격을 받으면 털을 주먹처럼 사용하여 폭풍같은 기세로 펀치를 날린다.",
+    "jap": "敵に　襲われると　体毛を　こぶしのように　使い　パンチの　嵐を　お見舞いするのだ。"
   },
   {
-    "en": "Glimmet’s toxic mineral crystals look just like flower petals. This Pokémon scatters poisonous powder like pollen to protect itself."
+    "en": "Glimmet’s toxic mineral crystals look just like flower petals. This Pokémon scatters poisonous powder like pollen to protect itself.",
+    "fr": "Il absorbe les nutriments qui se trouvent dans les parois des grottes. Les pétales qui recouvrent son corps sont constitués de poison cristallisé.",
+    "de": "Es absorbiert Nährstoffe von Höhlenwänden und bedeckt seinen Körper mit Blütenblättern, die aus kristallisiertem Gift bestehen.",
+    "ko": "동굴의 벽에서 영양분을 흡수한다. 독의 결정으로 만들어진 꽃잎을 몸에 두르고 있다.",
+    "jap": "洞窟の　壁から　栄養分を　吸収。　毒の　結晶で　できた　花びらを　身にまとう。"
   },
   {
-    "en": "Glimmora’s petals are made of crystallized poison energy. It has recently become evident that these petals resemble Tera Jewels."
+    "en": "Glimmora’s petals are made of crystallized poison energy. It has recently become evident that these petals resemble Tera Jewels.",
+    "fr": "Lorsqu'il détecte un danger, il ouvre ses pétales cristallins et son corps conique tire un rayon laser.",
+    "de": "Erkennt es Gefahr, öffnet es seine kristallenen Blütenblätter, um aus seinem kegelförmigen Körper Strahlen abzufeuern.",
+    "ko": "위험을 감지하면 결정으로 된 꽃잎을 펼친 뒤 원뿔 모양의 몸에서 빔을 발사한다.",
+    "jap": "危険を　察知すると　結晶の　花びらを　開いて　円錐形の　体から　ビームを　発射する。"
   },
   {
-    "en": "This friendly Pokémon doesn’t like being alone. Pay it even the slightest bit of attention, and it will follow you forever."
+    "en": "This friendly Pokémon doesn’t like being alone. Pay it even the slightest bit of attention, and it will follow you forever.",
+    "fr": "On pense qu'il est la réincarnation d'un Pokémon chien errant qui a perdu la vie sans jamais avoir eu d'interaction avec les êtres humains.",
+    "de": "Es soll die Wiedergeburt eines streunenden Hunde-Pokémon sein, das starb, ohne je in Berührung mit Menschen gekommen zu sein.",
+    "ko": "사람과의 접점 없이 숨을 거둔 들개포켓몬이 환생한 것으로 여겨지고 있다.",
+    "jap": "人と　関わることなく　命を　落とした　野良の　犬ポケモンが　生まれ変わったと　言われている。"
   },
   {
-    "en": "A lovingly mourned Pokémon was reborn as Houndstone. It doesn’t like anyone touching the protuberance atop its head."
+    "en": "A lovingly mourned Pokémon was reborn as Houndstone. It doesn’t like anyone touching the protuberance atop its head.",
+    "fr": "Il passe la majeure partie de son temps à dormir dans des cimetières. C'est le Pokémon chien le plus loyal au monde.",
+    "de": "Man findet es meist schlafend auf Friedhöfen. Friedwuff ist das loyalste aller Hunde-Pokémon.",
+    "ko": "평소에는 묘지에서 자고 있다. 수많은 개포켓몬 중에서도 가장 주인에게 충직하다.",
+    "jap": "普段は　墓場で　眠っている。　数いる　犬ポケモンの中でも　もっとも　主に　忠実だ。"
   },
   {
-    "en": "Thanks to a behavior of theirs known as “synchronizing,” an entire flock of these Pokémon can attack simultaneously in perfect harmony."
+    "en": "Thanks to a behavior of theirs known as “synchronizing,” an entire flock of these Pokémon can attack simultaneously in perfect harmony.",
+    "fr": "On pense qu'il fait un nœud à la base de son cou afin d'empêcher l'énergie qu'il accumule dans son ventre de s'échapper par son bec.",
+    "de": "Dieses Pokémon verknotet offenbar seinen Hals am Ansatz, damit die im Bauch gespeicherte Energie nicht über den Schnabel entweicht.",
+    "ko": "배에 비축해 둔 에너지가 부리를 통해 새어 나오지 않게 하기 위해 목 아래쪽을 꼬아 놓은 듯 하다.",
+    "jap": "お腹に　溜めた　エネルギーが　くちばしから　漏れないように　首を　根元で　結んでいるらしい。"
   },
   {
-    "en": "It lives in frigid regions in pods of five or so individuals. It loves the minerals found in snow and ice."
+    "en": "It lives in frigid regions in pods of five or so individuals. It loves the minerals found in snow and ice.",
+    "fr": "Ce Pokémon a quitté le milieu marin il y a fort longtemps pour s'installer sur la terre ferme. Il appartiendrait à une espèce proche des Wailmer.",
+    "de": "Vor sehr langer Zeit verließ es das Meer, um an Land zu leben. Angeblich ist es eng mit Wailmer verwandt.",
+    "ko": "먼 옛날에 바다에서 올라와 육지에 살게 되었다. 고래왕자의 근연종이라고 한다.",
+    "jap": "遥か　昔に　海から　上がって　陸地で　暮らすようになった。　ホエルコに　近い　種類らしい。"
   },
   {
-    "en": "Ice energy builds up in the horn on its upper jaw, causing the horn to reach cryogenic temperatures that freeze its surroundings."
+    "en": "Ice energy builds up in the horn on its upper jaw, causing the horn to reach cryogenic temperatures that freeze its surroundings.",
+    "fr": "Ce Pokémon arpente les étendues de neige et de glace. Ses muscles puissants et son épaisse couche de graisse protègent son corps.",
+    "de": "Es wandert in eisigen Schneegebieten umher. Mit den starken Muskeln und der dicken Fettschicht unter seiner Haut schützt es seinen Körper.",
+    "ko": "빙설 지대를 떼 지어 다닌다. 강인한 근육과 두꺼운 피하지방으로 몸을 보호한다.",
+    "jap": "氷雪地帯を　回遊する。　強靭な　筋肉と　ぶ厚い　皮下脂肪で　体を　守る。"
   },
   {
-    "en": "Veluza has excellent regenerative capabilities. It sheds spare flesh from its body to boost its agility, then charges at its prey."
+    "en": "Veluza has excellent regenerative capabilities. It sheds spare flesh from its body to boost its agility, then charges at its prey.",
+    "fr": "Pour aiguiser son esprit et renforcer ses pouvoirs psychiques, il se défait de sa chair en trop. Celle-ci a un goût léger, mais exquis.",
+    "de": "Wirft es überflüssige Teile seines Körpers ab, steigen seine Psycho-Kräfte. Der Geschmack des abgeworfenen Fleisches ist simpel, aber lecker.",
+    "ko": "불필요한 살을 분리하면 정신이 예민해져 사이코 파워가 상승한다. 떨어진 살은 담백하고 맛있다.",
+    "jap": "無駄な　肉を　捨て去ると　心が　研ぎ澄まされ　サイコパワーが　上がる。　贅肉は　淡白だが　美味しい。"
   },
   {
-    "en": "It treats Tatsugiri like its boss and follows it loyally. Though powerful, Dondozo is apparently not very smart."
+    "en": "It treats Tatsugiri like its boss and follows it loyally. Though powerful, Dondozo is apparently not very smart.",
+    "fr": "Comme il n'est pas très doué pour attraper ses proies, ce Pokémon vorace fait équipe avec Nigirigon pour chasser.",
+    "de": "Es ist zwar ein Vielfraß, doch die Jagd liegt ihm nicht. Deshalb schließt es sich mit Nigiragi zusammen, um Beute zu fangen.",
+    "ko": "대식가지만 먹이를 잡는 것이 서툴다. 싸리용과 콤비를 이뤄 먹이를 사냥한다.",
+    "jap": "大食らいだが　エサを　取るのは　苦手。　シャリタツと　コンビを　組んで　獲物を　捕らえるのだ。"
   },
   {
-    "en": "Tatsugiri is an extremely cunning Pokémon. It feigns weakness to lure in prey, then orders its partner to attack."
+    "en": "Tatsugiri is an extremely cunning Pokémon. It feigns weakness to lure in prey, then orders its partner to attack.",
+    "fr": "Très rusé, il fait mine d'être vulnérable et attire ainsi des proies qui se font ensuite attaquer par son redoutable partenaire.",
+    "de": "Dieses kleine Drachen-Pokémon lebt im Maul von Heerashai, wodurch es vor Feinden geschützt ist.",
+    "ko": "작은 몸집의 드래곤포켓몬. 어써러셔의 입안에 살며 외부의 적으로부터 몸을 지킨다.",
+    "jap": "小型の　ドラゴンポケモン。　ヘイラッシャの　口の中に　棲み　外敵から　身を　守っている。"
   },
   {
-    "en": "It imbues its fists with the power of the rage that it kept hidden in its heart. Opponents struck by these imbued fists will be shattered to their core."
+    "en": "It imbues its fists with the power of the rage that it kept hidden in its heart. Opponents struck by these imbued fists will be shattered to their core.",
+    "fr": "Quand sa colère a franchi un seuil critique, il a acquis une puissance qui l'a émancipé des limites de son corps.",
+    "de": "Als sein geballter Zorn einen kritischen Punkt überschritt, erlangte es Macht, die weit über die Grenzen seines physischen Körpers hinausgeht.",
+    "ko": "분노의 불티지가 임계점을 돌파하면서 육체라는 틀에 얽메이지 않는 파워를 손에 넣게 되었다.",
+    "jap": "怒りのボルテージが　臨界点を　超えたとき　肉体という　枠に　縛られない　パワーを　手に入れた。"
   },
   {
-    "en": "It lives at the bottom of ponds and swamps. It will carry Wooper on its back and ferry them across water from one shore to the other."
+    "en": "It lives at the bottom of ponds and swamps. It will carry Wooper on its back and ferry them across water from one shore to the other.",
+    "fr": "Quand on l'attaque, il riposte en faisant sortir de grosses épines de son tronc, une dangereuse technique qui montre qu'il est prêt à tout risquer.",
+    "de": "Wird Suelord angegriffen, wehrt es sich, indem es dicke Stacheln ausfährt. Setzt es diese riskante Attacke ein, ist es bereit, aufs Ganze zu gehen.",
+    "ko": "적에게 공격을 받으면 몸에서 굵은 가시를 내지르며 반격한다. 몸이 끊어질 각오가 필요한 위험한 기술이다.",
+    "jap": "敵に　襲われると　太い　棘を　胴体から　突き出して　反撃。　身を切る　覚悟の　危険な　技。"
   },
   {
-    "en": "The hardened head from the tail protects the head of the main body as Farigiraf whips its long neck around to headbutt enemies."
+    "en": "The hardened head from the tail protects the head of the main body as Farigiraf whips its long neck around to headbutt enemies.",
+    "fr": "Grâce à la synchronisation des ondes cérébrales de sa tête et de sa queue, ses pouvoirs psychiques sont dix fois plus puissants que ceux de Girafarig.",
+    "de": "Aufgrund der synchronisierten Gehirnströme von Kopf und Schweif sind seine Psycho-Kräfte zehnmal so stark wie die von Girafarig.",
+    "ko": "머리와 꼬리 2개의 뇌파가 동기화하여 에스퍼 파워가 키링키의 10배로 강화되었다.",
+    "jap": "頭と　尻尾の　２つの　脳波が　同期したことで　エスパーパワーは　キリンリキの　１０倍　アップした。"
   },
   {
-    "en": "It drives enemies out of its nest by sucking in enough air to fill its long, narrow lungs, then releasing the air in an intense blast."
+    "en": "It drives enemies out of its nest by sucking in enough air to fill its long, narrow lungs, then releasing the air in an intense blast.",
+    "fr": "Il se sert de sa queue pour creuser son terrier dans les profondeurs rocheuses de la terre. Celui-ci peut faire jusqu'à 10 km de long.",
+    "de": "Mit seinem harten Schweif höhlt es tief unter der Erde Felsgestein aus, um seinen Bau zu graben. Dessen Gänge können bis zu 10 km lang werden.",
+    "ko": "단단한 꼬리로 땅속 깊은 곳에 있는 암반을 뚫어서 보금자리를 만든다. 굴의 깊이는 무려 10km에 이른다.",
+    "jap": "硬い　尻尾で　地中　深くの　岩盤を　くり抜き　巣を　作る。　巣穴は　長さ１０キロに　およぶ。"
   },
   {
-    "en": "Though it commands a massive army in battle, it’s not skilled at devising complex strategies. It just uses brute strength to keep pushing."
+    "en": "Though it commands a massive army in battle, it’s not skilled at devising complex strategies. It just uses brute strength to keep pushing.",
+    "fr": "Seul un Scalproie qui s'est hissé au plus haut rang d'une grande armée peut évoluer en Scalpereur.",
+    "de": "Allein das Caesurio an der Spitze seiner riesigen Armee kann sich zu Gladimperio entwickeln.",
+    "ko": "큰 군세의 정점에 올라선 단 한 마리의 절각참만이 대도각참으로 진화할 수 있다.",
+    "jap": "ドドゲザンに　進化できるのは　大軍勢の　頂点に　立った　１匹の　キリキザンだけなのだ。"
   },
   {
-    "en": "This creature resembles a mysterious Pokémon that, according to a paranormal magazine, has lived since ancient times."
+    "en": "This creature resembles a mysterious Pokémon that, according to a paranormal magazine, has lived since ancient times.",
+    "fr": "Ce Pokémon a été aperçu à plusieurs reprises ces dernières années. Son nom s'inspire d'une créature évoquée dans un certain livre.",
+    "de": "In den letzten Jahren gab es Sichtungen dieses Pokémon. Eine Kreatur aus einem gewissen Buch stand Pate für den Namen Riesenzahn.",
+    "ko": "근년에 목격된 사례가 있다. \"위대한엄니\"라는 이름은 어떤 책에 기록된 생물에게서 따온 것이다.",
+    "jap": "近年　目撃例が　ある。　イダイナキバという　名は　ある本に　記された　生物から　取られた。"
   },
   {
-    "en": "It resembles a mysterious Pokémon described in a paranormal magazine as a Jigglypuff from one billion years ago."
+    "en": "It resembles a mysterious Pokémon described in a paranormal magazine as a Jigglypuff from one billion years ago.",
+    "fr": "Ce Pokémon n'avait été aperçu qu'une seule fois jusqu'ici. Il ressemble à une créature mystérieuse évoquée dans un vieux récit d'exploration.",
+    "de": "Bisher wurde es nur ein Mal gesichtet. Es ähnelt einer rätselhaften Kreatur, die in einem alten Expeditionsbericht beschrieben wurde.",
+    "ko": "목격된 사례는 과거에 단 1건뿐이다. 오래된 탐험기에 기록된 정체불명의 생물을 닮은 포켓몬.",
+    "jap": "目撃例は　過去　１件のみ。　古い　探検記に　記された　謎の　生物に　似た　ポケモン。"
   },
   {
-    "en": "It bears a slight resemblance to a Pokémon described in a dubious magazine as a cross between a dinosaur and a mushroom."
+    "en": "It bears a slight resemblance to a Pokémon described in a dubious magazine as a cross between a dinosaur and a mushroom.",
+    "fr": "Il est possible que ce Pokémon soit la créature évoquée sous le nom de « Fongus-Furie » dans un certain livre.",
+    "de": "Es ist gut möglich, dass es sich hierbei um jene Kreatur handelt, die in einem gewissen Buch unter dem Namen Wutpilz auftaucht.",
+    "ko": "어떤 책에 \"사나운버섯\"이라는 이름으로 기록된 생물이 이 포켓몬일 가능성이 있다.",
+    "jap": "ある本の中で　アラブルタケと　記されていた　生物は　このポケモンの　可能性がある。"
   },
   {
-    "en": "It has similar features to a ghostly pterosaur that was covered in a paranormal magazine, but the two have little else in common."
+    "en": "It has similar features to a ghostly pterosaur that was covered in a paranormal magazine, but the two have little else in common.",
+    "fr": "Ce Pokémon a des caractéristiques semblables à celles d'une créature évoquée dans un certain livre sous le nom de « Flotte-Mèche ».",
+    "de": "Einige seiner Merkmale erinnern an eine Kreatur namens Flatterhaar, die in einer gewissen Schrift erwähnt wurde.",
+    "ko": "어떤 서적에 등장하는 \"날개치는머리\"라는 생물과 비슷한 특징을 가진 포켓몬.",
+    "jap": "とある　書物に　登場する　ハバタクカミという　生物と　似た　特徴を　持つ　ポケモン。"
   },
   {
-    "en": "This Pokémon somewhat resembles an ancient form of Volcarona that was introduced in a dubious magazine."
+    "en": "This Pokémon somewhat resembles an ancient form of Volcarona that was introduced in a dubious magazine.",
+    "fr": "Ce Pokémon mystérieux présente des similitudes avec Rampe-Ailes, une créature évoquée dans un livre ancien.",
+    "de": "Dieses rätselhafte Pokémon weist Ähnlichkeit mit einer Kreatur auf, die in einem alten Buch als Kriechflügel vorgestellt wurde.",
+    "ko": "오래된 책에 \"땅을기는날개\"라는 이름으로 소개된 생물과 닮은 점이 있는 정체불명의 포켓몬.",
+    "jap": "古い　本で　チヲハウハネと　紹介されている　生物に　似た点が　ある　謎のポケモン。"
   },
   {
-    "en": "It slightly resembles a Magneton that lived for 10,000 years and was featured in an article in a paranormal magazine."
+    "en": "It slightly resembles a Magneton that lived for 10,000 years and was featured in an article in a paranormal magazine.",
+    "fr": "Ses attributs correspondent à ceux d'une créature évoquée dans un récit d'exploration. On manque de données sur lui, car nul n'en a jamais attrapé.",
+    "de": "Da es noch nie gefangen wurde, ist die Datenlage dürftig. Seine Merkmale decken sich mit einer in einem Expeditionsbericht beschriebenen Kreatur.",
+    "ko": "포획된 사례는 없으며 데이터도 부족하다. 어느 탐험기에 기록된 생물과 특징이 일치한다.",
+    "jap": "捕獲例は　ゼロ。　データ不足。　ある　探検記に　記された　生物と　特徴が　一致する。"
   },
   {
-    "en": "Sightings of this Pokémon have occurred in recent years. It resembles a mysterious object described in an old expedition journal."
+    "en": "Sightings of this Pokémon have occurred in recent years. It resembles a mysterious object described in an old expedition journal.",
+    "fr": "Il ressemble beaucoup à une arme sophistiquée qui serait d'origine extraterrestre, selon une revue consacrée aux phénomènes paranormaux.",
+    "de": "Es ähnelt stark einer wissenschaftlichen Waffe, die einer esoterischen Zeitschrift zufolge von Außerirdischen auf den Planeten geschickt wurde.",
+    "ko": "오컬트 잡지에서 소개된 적 있는 우주인이 보낸 과학 병기와 많이 닮았다.",
+    "jap": "オカルト雑誌が　紹介した　宇宙人が　送り込んできた　科学兵器に　よく　似ている。"
   },
   {
-    "en": "It resembles a mysterious object mentioned in an old book. There are only two reported sightings of this Pokémon."
+    "en": "It resembles a mysterious object mentioned in an old book. There are only two reported sightings of this Pokémon.",
+    "fr": "Sa forme est similaire à celle d'un robot créé par une civilisation antique, d'après un article d'une revue consacrée aux phénomènes paranormaux.",
+    "de": "Seine Form ähnelt der eines Roboters, der laut einem Artikel in einer esoterischen Zeitschrift von einer antiken Zivilisation erschaffen wurde.",
+    "ko": "오컬트 잡지의 기사에 실렸던 태곳적 문명이 만들어 냈다는 로봇과 모습이 닮았다.",
+    "jap": "オカルト雑誌の　記事になった　太古の　文明が　生み出した　ロボットに　形が　似ている。"
   },
   {
-    "en": "This Pokémon shares many similarities with Iron Hands, an object mentioned in a certain expedition journal."
+    "en": "This Pokémon shares many similarities with Iron Hands, an object mentioned in a certain expedition journal.",
+    "fr": "Il ressemble à l'athlète transformé en cyborg dont l'histoire avait été révélée en exclusivité dans une revue sur les phénomènes paranormaux.",
+    "de": "Es ähnelt stark einem Cyborg, der laut einer Sonderausgabe einer esoterischen Zeitschrift die modifizierte Form eines gewissen Athleten ist.",
+    "ko": "어떤 운동선수를 개조한 모습이라며 오컬트 잡지에서 대서특필했던 사이보그와 닮았다.",
+    "jap": "あるアスリートが　改造された　姿だと　オカルト雑誌が　スクープした　サイボーグに　近い。"
   },
   {
-    "en": "It’s possible that Iron Jugulis, an object described in an old book, may actually be this Pokémon."
+    "en": "It’s possible that Iron Jugulis, an object described in an old book, may actually be this Pokémon.",
+    "fr": "Il ressemble à un Pokémon qui serait l'enfant d'un Trioxhydre amoureux d'un robot, selon une revue consacrée aux phénomènes paranormaux.",
+    "de": "Es ähnelt einem Pokémon, das einer esoterischen Zeitschrift nach der Nachwuchs eines Trikephalo sein soll, welches sich in einen Roboter verliebte.",
+    "ko": "로봇과 사랑에 빠진 삼삼드래의 자식이라며 오컬트 잡지에서 다뤘던 포켓몬을 닮았다.",
+    "jap": "ロボットに　恋した　サザンドラの　子どもと　オカルト雑誌が　取り上げた　ポケモンに　似ている。"
   },
   {
-    "en": "No records exist of this species being caught. Data is lacking, but the Pokémon’s traits match up with an object described in an old book."
+    "en": "No records exist of this species being caught. Data is lacking, but the Pokémon’s traits match up with an object described in an old book.",
+    "fr": "Il ressemble à une entité étrange décrite dans une revue sur les phénomènes paranormaux. D'après celle-ci, ce serait un ovni qui épie la race humaine.",
+    "de": "Es ähnelt einem unbekannten Objekt, das einer esoterischen Zeitschrift nach ein zur Beobachtung der Menschheit entsandtes UFO sein soll.",
+    "ko": "인류를 감시하기 위한 UFO라며 오컬트 잡지에서 소개된 적 있는 미지의 물체와 닮았다.",
+    "jap": "人類を　監視する　ＵＦＯだと　オカルト雑誌が　紹介した　未知の　物体に　似ている。"
   },
   {
-    "en": "Some of its notable features match those of an object named within a certain expedition journal as Iron Thorns."
+    "en": "Some of its notable features match those of an object named within a certain expedition journal as Iron Thorns.",
+    "fr": "Son apparence partage des similarités avec celle qu'auront les Tyranocif dans un milliard d'années, selon une revue douteuse.",
+    "de": "Es hat Ähnlichkeit mit einem Pokémon, das eine fragwürdige Zeitschrift als ein Despotar vorstellte, das eine Milliarde Jahre aus der Zukunft stammt.",
+    "ko": "10억 년 후의 마기라스라며 괴상한 잡지에서 다뤘던 포켓몬과 닮은 점이 있다.",
+    "jap": "１０億年後の　バンギラスと　怪しい　雑誌が　取り上げていた　ポケモンに　似た　部分が　ある。"
   },
   {
-    "en": "This Pokémon lives in forests and craggy areas. Using the power of its dorsal fin, it cools the inside of its nest like a refrigerator."
+    "en": "This Pokémon lives in forests and craggy areas. Using the power of its dorsal fin, it cools the inside of its nest like a refrigerator.",
+    "fr": "Sa crête dorsale absorbe la chaleur et la convertit en énergie de type Glace. Plus la chaleur est intense, plus il emmagasine de l'énergie.",
+    "de": "Mit seiner Rückenflosse absorbiert es Wärme und wandelt diese in Eis-Energie um. Je wärmer es ist, desto mehr Energie kann es speichern.",
+    "ko": "등지느러미로 열을 흡수해서 얼음 에너지로 변환한다. 고온일수록 에너지가 많이 모인다.",
+    "jap": "背びれで　熱を　吸収して　氷エネルギーに　変換する。　高温ほど　エネルギーが　溜まる。"
   },
   {
-    "en": "It attacks with the blade of its frozen dorsal fin by doing a front flip in the air. Arctibax’s strong back and legs allow it to pull off this technique."
+    "en": "It attacks with the blade of its frozen dorsal fin by doing a front flip in the air. Arctibax’s strong back and legs allow it to pull off this technique.",
+    "fr": "Il gèle l'air alentour pour protéger son visage avec un masque de glace et doter sa crête dorsale de lames gelées.",
+    "de": "Es friert die Luft ringsum ein, um sein Gesicht mit einer Maske aus Eis zu schützen und seine Rückenflosse in Eisklingen zu verwandeln.",
+    "ko": "주변의 공기를 얼려서 얼음 마스크로 얼굴을 보호하고 등지느러미를 얼음 검으로 바꾼다.",
+    "jap": "まわりの　空気を　凍らせて　氷のマスクで　顔を　守り　背びれを　氷の剣に　変える。"
   },
   {
-    "en": "It launches itself into battle by flipping upside down and spewing frigid air from its mouth. It finishes opponents off with its dorsal blade."
+    "en": "It launches itself into battle by flipping upside down and spewing frigid air from its mouth. It finishes opponents off with its dorsal blade.",
+    "fr": "L'air qu'il crache est tellement froid qu'il peut geler instantanément du magma en fusion.",
+    "de": "Aus seinem Maul stößt es unfassbare Kälte aus, die sogar glühendes Magma augenblicklich gefrieren lässt.",
+    "ko": "극저온의 냉기를 입에서 분사한다. 작열하는 마그마조차도 순식간에 얼려 버린다.",
+    "jap": "極低温の　冷気を　口から　噴射。　灼熱の　マグマでも　瞬時に　凍りつかせてしまう。"
   },
   {
-    "en": "It lives inside an old treasure chest. Sometimes it gets left in shop corners since no one realizes it’s actually a Pokémon."
+    "en": "It lives inside an old treasure chest. Sometimes it gets left in shop corners since no one realizes it’s actually a Pokémon.",
+    "fr": "Ce Pokémon est né dans un coffre au trésor, il y a environ 1 500 ans. Il absorbe l'énergie vitale des voyous qui osent voler son magot.",
+    "de": "Es entstand vor etwa 1500 Jahren in einer Schatztruhe. Wenn Diebe versuchen, den Schatz zu stehlen, saugt es ihnen die Lebensenergie aus.",
+    "ko": "약 1500년 전의 보물 상자 안에서 태어났다. 보물을 훔치려 드는 괘씸한 자의 생기를 흡수한다.",
+    "jap": "およそ１５００年前　宝箱の中で　生まれた。　宝を　盗む　不埒者の　生気を　吸い取る。"
   },
   {
-    "en": "It has a sturdy body made up of stacked coins. Gholdengo overwhelms its enemies by firing coin after coin at them in quick succession."
+    "en": "It has a sturdy body made up of stacked coins. Gholdengo overwhelms its enemies by firing coin after coin at them in quick succession.",
+    "fr": "Son corps serait composé de 1 000 pièces. Sociable, il peut se lier d'amitié très rapidement avec n'importe qui.",
+    "de": "Sein Körper soll aus 1000 Münzen bestehen. Es ist sehr umgänglich und schließt mit jedem rasch Freundschaft.",
+    "ko": "몸은 1000개의 코인으로 이뤄져 있다고 한다. 붙임성이 좋아서 누구와도 금방 친해진다.",
+    "jap": "１０００枚の　コインで　体が　できているらしい。　人懐こく　だれとでも　すぐに　仲良くなれる。"
   },
   {
-    "en": "It drains the life-force from vegetation, causing nearby forests to instantly wither and fields to turn barren."
+    "en": "It drains the life-force from vegetation, causing nearby forests to instantly wither and fields to turn barren.",
+    "fr": "La rancœur d'un être humain puni pour avoir noté les méfaits d'un roi sur des tablettes en bois s'est mêlée à des feuilles mortes et a pris vie.",
+    "de": "Der Groll einer Person, die dafür bestraft wurde, die Missetaten des Königs auf Tafeln festzuhalten, hüllte sich in Laub und wurde zu diesem Pokémon.",
+    "ko": "왕의 악행을 목간에 기록했다는 이유로 처벌을 받은 사람의 원한이 마른 잎을 두르고 포켓몬이 되었다.",
+    "jap": "王の　悪事を　木簡に　記し　処罰された　人の　恨みが　枯葉を　まとい　ポケモンとなった。"
   },
   {
-    "en": "The hatred of those who perished by the sword long ago has clad itself in snow and become a Pokémon."
+    "en": "The hatred of those who perished by the sword long ago has clad itself in snow and become a Pokémon.",
+    "fr": "Ce Pokémon peut contrôler 100 tonnes de neige tombée. Il s'amuse en sautant joyeusement dans les avalanches qu'il provoque.",
+    "de": "Baojian kann bis zu 100 t Schnee kontrollieren. In den Lawinen, die es auslöst, tollt es ganz arglos herum.",
+    "ko": "100t의 눈을 조종한다. 눈사태를 일으키고는 그 안을 드나들며 천진난만하게 논다.",
+    "jap": "１００トンの　積雪を　操る。　雪崩を　起こして　その中を　出入りして　無邪気に　遊ぶ。"
   },
   {
-    "en": "It slowly brings its exceedingly heavy head down upon the ground, splitting the earth open with huge fissures that run over 160 feet deep."
+    "en": "It slowly brings its exceedingly heavy head down upon the ground, splitting the earth open with huge fissures that run over 160 feet deep.",
+    "fr": "La peur déversée dans un réceptacle utilisé lors de rites anciens s'est mêlée à de la terre et à des pierres et a pris vie.",
+    "de": "Die Angst, die in ein Gefäß für uralte Rituale gegossen wurde, hüllte sich in Steine und Erde und wurde zu diesem Pokémon.",
+    "ko": "옛날 의식에 사용되었던 그릇에 공포가 깃들게 되었고 이것이 흙과 돌을 둘러 포켓몬이 되었다.",
+    "jap": "古の　儀式で　使われた　器に　注がれた　恐怖が　土石を　まとい　ポケモンとなった。"
   },
   {
-    "en": "The envy accumulated within curved beads that sparked multiple conflicts has clad itself in fire and become a Pokémon."
+    "en": "The envy accumulated within curved beads that sparked multiple conflicts has clad itself in fire and become a Pokémon.",
+    "fr": "Ce Pokémon manipule des flammes à 3 000°C. Il nage tranquillement dans une mer de magma qu'il a créée en faisant fondre de la roche et du gravier.",
+    "de": "Es kontrolliert Flammen von 3000 ℃. Mühelos schwimmt es durch das Meer aus Lava, das es durch Schmelzen von Gestein und Kies erzeugt.",
+    "ko": "3000도의 불꽃을 조종한다. 바위와 자갈을 녹여서 만든 마그마의 바다를 유유히 헤엄친다.",
+    "jap": "３０００度の　炎を　操る。　岩や　砂利を　溶かして　作った　マグマの海を　ゆうゆうと　泳ぐ。"
   },
   {
-    "en": "According to an article in a dubious magazine, this Pokémon has some connection to a phenomenon that occurs in a certain region."
+    "en": "According to an article in a dubious magazine, this Pokémon has some connection to a phenomenon that occurs in a certain region.",
+    "fr": "Il pourrait s'agir de la créature nommée « Rugit-Lune », qui apparaît dans un récit d'exploration très mystérieux.",
+    "de": "Möglicherweise handelt es sich hierbei um jene Kreatur, die in einem rätselhaften Expeditionsbericht als Donnersichel erwähnt wurde.",
+    "ko": "수수께끼로 가득한 탐험기에 \"고동치는달\"이라는 이름으로 기록된 생물일 가능성이 있다.",
+    "jap": "謎の　多い　探検記の中で　トドロクツキという　名で　記された　生物の　可能性が　ある。"
   },
   {
-    "en": "It’s possible that this is the object listed as Iron Valiant in a certain expedition journal."
+    "en": "It’s possible that this is the object listed as Iron Valiant in a certain expedition journal.",
+    "fr": "Il ressemble un peu à l'invention d'un cerveau dément mentionnée dans une revue consacrée aux phénomènes paranormaux.",
+    "de": "Es weist einige Ähnlichkeiten mit der Erfindung eines verrückten Wissenschaftlers auf, die in einer esoterischen Zeitschrift erwähnt wurde.",
+    "ko": "오컬트 잡지의 기사에 실렸던 매드 사이언티스트의 발명품과 비슷한 특징이 몇 가지 존재한다.",
+    "jap": "オカルト雑誌の　記事に　あった　マッドサイエンティストの　発明と　近い　特徴が　いくつかある。"
   },
   {
-    "en": "This Pokémon resembles Cyclizar, but it is far burlier and more ferocious. Nothing is known about its ecology or other features."
+    "en": "This Pokémon resembles Cyclizar, but it is far burlier and more ferocious. Nothing is known about its ecology or other features.",
+    "fr": "Il s'agirait d'« Ailes-Royales », une créature qui, d'après un vieux récit d'exploration, aurait fendu la terre par la force de ses poings.",
+    "de": "Offenbar ist dies die Kreatur Schwingenkönig, von der es in einem alten Expeditionsbericht hieß, sie habe die Erde mit bloßen Fäusten gespalten.",
+    "ko": "주먹으로 대지를 갈랐다고 오래된 탐험기에 기록된 \"날개의왕\"의 정체인 듯하다.",
+    "jap": "拳で　大地を　引き裂いたと　古い　探検記に　記された　ツバサノオウの　正体らしい。"
   },
   {
-    "en": "This seems to be the Iron Serpent mentioned in an old book. The Iron Serpent is said to have turned the land to ash with its lightning."
+    "en": "This seems to be the Iron Serpent mentioned in an old book. The Iron Serpent is said to have turned the land to ash with its lightning.",
+    "fr": "On manque d'informations à son sujet. Il ressemble à Motorizard, mais en bien plus fort et cruel.",
+    "de": "Es sind kaum Einzelheiten zu diesem Wesen bekannt, welches zwar Mopex ähnelt, aber weitaus stärker und grausamer ist.",
+    "ko": "자세한 것은 잘 알려지지 않았다. 모토마를 닮았지만 그보다 훨씬 강하고 냉혹하다.",
+    "jap": "詳細は　よく　わかっていない。　モトトカゲに　似た　印象だが　はるかに　強く　冷酷なのだ。"
   },
   {
-    "en": "It resembles an illustration published in a paranormal magazine, said to be a depiction of a super-ancient Suicune."
+    "en": "It resembles an illustration published in a paranormal magazine, said to be a depiction of a super-ancient Suicune.",
+    "fr": "Cette créature violente entourée de mystère tire son nom d'un monstre aquatique évoqué dans un vieux récit d'exploration.",
+    "de": "Diese rätselhafte und wilde Kreatur ist nach einem Wassermonster benannt, das in einem alten Expeditionsbericht beschrieben wurde.",
+    "ko": "초고대의 스이쿤이라며 오컬트 잡지에 게재됐던 일러스트와 비슷한 모습을 하고 있다.",
+    "jap": "謎多き　凶暴な　生物。　古い　探検記に　記された　水の　怪物から　名付けられた。"
   },
   {
-    "en": "According to the few eyewitness accounts that exist, it used its shining blades to julienne large trees and boulders."
+    "en": "According to the few eyewitness accounts that exist, it used its shining blades to julienne large trees and boulders.",
+    "fr": "D'après de rares témoins, il aurait coupé en lamelles des arbres et des rochers immenses à l'aide de ses épées lumineuses.",
+    "de": "Viele seiner Merkmale entsprechen denen eines Viridium aus der Zukunft, welches in einer esoterischen Zeitschrift vorgestellt wurde.",
+    "ko": "오컬트 잡지에서 다뤘던 미래 비리디온의 모습과 많은 특징이 일치한다.",
+    "jap": "オカルト雑誌が　取り上げた　未来の　ビリジオンの　姿と　多くの　特徴が　一致する。"
   },
   {
-    "en": "The head sticking out belongs to the fore-wyrm, while the tail belongs to the core-wyrm. The two share one apple and help each other out."
+    "en": "The head sticking out belongs to the fore-wyrm, while the tail belongs to the core-wyrm. The two share one apple and help each other out.",
+    "fr": "Ce Pokémon est composé de deux individus. Il a évolué grâce à une pomme spéciale qui n'est cultivée que dans une certaine région.",
+    "de": "Dieses Pokémon besteht aus zwei Individuen. Es hat sich mithilfe eines Apfels entwickelt, der nur in einer bestimmten Gegend angebaut wird.",
+    "ko": "머리를 내밀고 있는 외미르와 꼬리를 내밀고 있는 내미르가 사과 안에서 서로 도우며 지낸다.",
+    "jap": "ある　地域だけで　栽培される　特別な　りんごで　進化した。　２匹で　１匹の　ポケモンなのだ。"
   },
   {
-    "en": "Poltchageist looks like a regional form of Sinistea, but it was recently discovered that the two Pokémon are entirely unrelated."
+    "en": "Poltchageist looks like a regional form of Sinistea, but it was recently discovered that the two Pokémon are entirely unrelated.",
+    "fr": "Ce Pokémon serait l'incarnation, sous la forme d'un pot de matcha, des regrets d'une personne décédée avant d'avoir maîtrisé l'art du thé.",
+    "de": "Es soll entstanden sein, als ein Teemeister starb, bevor er sein Handwerk perfektioniert hatte, und sein Gram von einer Tasse Matcha Besitz ergriff.",
+    "ko": "상당한 고가의 차통에 깃든 모습. 저렴한 차통과는 차이가 있지만 아마추어는 구분할 수 없다.",
+    "jap": "茶の道を　極めきれず　死んだ　茶道家の　無念が　抹茶に　宿り　ポケモンになったらしい。"
   },
   {
-    "en": "It prefers cool, dark places, such as the back of a shelf or the space beneath a home's floorboards. It wanders in search of prey after sunset."
+    "en": "It prefers cool, dark places, such as the back of a shelf or the space beneath a home's floorboards. It wanders in search of prey after sunset.",
+    "fr": "Il se fait passer pour un bol de thé afin d'aspirer la force vitale de quiconque ferait l'erreur de le boire, mais en général, personne n'est dupe.",
+    "de": "Es gibt sich als Tee aus und versucht jenen, die es versehentlich trinken, die Lebensenergie auszusaugen. Allerdings wird es oft durchschaut.",
+    "ko": "민가의 마루 밑이나 선반 구석 등 서늘하고 어두운 곳을 선호한다. 일몰 후에 먹이를 찾아 돌아다닌다.",
+    "jap": "お茶の　ふりをして　間違えて　飲んでしまった　相手の　生気を　吸い取ろうとするが　ばれがちだ。"
   },
   {
-    "en": "Okidogi is a ruffian with a short temper. It can pulverize anything by swinging around the chain on its neck."
+    "en": "Okidogi is a ruffian with a short temper. It can pulverize anything by swinging around the chain on its neck.",
+    "fr": "Les toxines de la chaîne empoisonnée autour de son cou ont stimulé tous ses muscles et son corps est devenu massif.",
+    "de": "Die Giftstoffe aus der Kette um seinen Hals haben all seine Muskeln stimuliert und ihm einen kräftigen Körper verliehen.",
+    "ko": "목에 달린 독소로 된 사슬에 의해 온몸의 근육이 자극을 받아 듬직한 체격으로 변했다.",
+    "jap": "首に　ついた　毒素の　鎖で　全身の　筋肉が　刺激され　たくましい　体に　変貌した。"
   },
   {
-    "en": "Munkidori keeps itself somewhere safe while it toys with its foes, using psychokinesis to induce intense dizziness."
+    "en": "Munkidori keeps itself somewhere safe while it toys with its foes, using psychokinesis to induce intense dizziness.",
+    "fr": "Les toxines de sa chaîne sont capables de révéler un potentiel latent. En stimulant son cerveau, elles lui ont conféré des pouvoirs psychiques.",
+    "de": "Die Potenzial entfaltenden Giftstoffe in der Kette haben sein Gehirn stimuliert und seine Psycho-Kräfte aufblühen lassen.",
+    "ko": "능력을 끌어올리는 독소로 된 사슬에 뇌가 자극을 받아 사이코 파워가 개화했다.",
+    "jap": "能力を　引き出す　毒素で　できた　鎖に　脳を　刺激され　サイコパワーが　開花した。"
   },
   {
-    "en": "Fezandipiti beats its glossy wings to scatter pheromones that captivate people and Pokémon."
+    "en": "Fezandipiti beats its glossy wings to scatter pheromones that captivate people and Pokémon.",
+    "fr": "Il doit son apparence et sa voix majestueuses à la stimulation provoquée par les toxines qui s'échappent de la chaîne autour de son corps.",
+    "de": "Die Kette an seinem Körper sondert Gift ab, durch dessen Stimulation es ein schönes Äußeres und eine bezaubernde Stimme erhalten hat.",
+    "ko": "몸을 휘감고 있는 사슬에서 나오는 독소에 자극을 받아 아름다운 모습과 소리를 손에 넣었다.",
+    "jap": "体に　巻きついた　鎖から　出る　毒素の　刺激で　美しい　姿と　声を　手に入れた。"
   },
   {
-    "en": "This mischief-loving Pokémon is full of curiosity. It battles by drawing out the type-based energy contained within its masks."
+    "en": "This mischief-loving Pokémon is full of curiosity. It battles by drawing out the type-based energy contained within its masks.",
+    "fr": "Son type change selon le masque qu'il porte. Son agilité et ses coups de pied habiles lui permettent de malmener ses adversaires.",
+    "de": "Sein Typ ändert sich je nach aufgesetzter Maske. Es führt Gegner mit seinen flinken Bewegungen und Tritten an der Nase herum.",
+    "ko": "쓰고 있는 가면에 따라 타입이 변한다. 날렵한 움직임과 발차기 기술로 상대를 농락한다.",
+    "jap": "身に着ける　仮面によって　タイプが　変わる。　俊敏な　身のこなしと　蹴り技で　敵を　翻弄する。"
   },
   {
-    "en": "It digs holes on mountains, searching for food. It’s so durable that being caught in a cave-in won’t faze it."
+    "en": "It digs holes on mountains, searching for food. It’s so durable that being caught in a cave-in won’t faze it.",
+    "fr": "Il accumule l'électricité statique alentour. Le rayon qu'il tire quand il se met à quatre pattes est d'une puissance colossale.",
+    "de": "Es sammelt statische Elektrizität aus der Umgebung. Die Strahlen, die es auf allen Vieren abfeuert, sind extrem stark.",
+    "ko": "주위로부터 정전기를 모은다. 네발로 엎드려서 발사하는 빔은 절대적인 위력을 자랑한다.",
+    "jap": "まわりから　静電気を　集める。　四つん這いの　体勢で　撃ち出す　ビームは　絶大な　威力。"
   },
   {
-    "en": "These capricious syrpents have banded together. On the rare occasion that their moods align, their true power is unleashed."
+    "en": "These capricious syrpents have banded together. On the rare occasion that their moods align, their true power is unleashed.",
+    "fr": "Sept « Verochi » vivent dans une pomme composée de nectar. Celui qui se trouve au centre est le chef du groupe.",
+    "de": "Sieben sogenannte „Schlangel“ leben in einem Apfel aus Nektar. Das Exemplar in der Mitte ist der Anführer.",
+    "ko": "7마리의 미드라가 꿀엿으로 만든 사과 안에서 지낸다. 가운데에 있는 미드라가 사령탑이다.",
+    "jap": "７匹の　オロチュが　蜜飴で　作った　りんごのなかで　暮らす。　真ん中の　オロチュが　司令塔。"
   },
   {
-    "en": "It resembles an eerie Pokémon once shown in a paranormal magazine. That Pokémon was said to be an Entei regenerated from a fossil."
+    "en": "It resembles an eerie Pokémon once shown in a paranormal magazine. That Pokémon was said to be an Entei regenerated from a fossil.",
+    "fr": "Cette créature n'a été que rarement aperçue, mais elle apparaît dans une courte vidéo où on la voit enrager et faire jaillir des piliers de feu.",
+    "de": "Es gibt nur sehr wenige bestätigte Sichtungen, doch es existiert ein kurzes Video, auf dem es umherwütet und Flammensäulen ausspeit.",
+    "ko": "목격 보고는 매우 드물다. 불기둥을 뿜어내며 날뛰는 모습이 담긴 짧은 영상이 존재한다.",
+    "jap": "目撃報告は　ごくわずか。　火柱を　噴き　暴れる　姿の　短い　映像が　存在する。"
   },
   {
-    "en": "It bears resemblance to a Pokémon that became a hot topic for a short while after a paranormal magazine touted it as Raikou's ancestor."
+    "en": "It bears resemblance to a Pokémon that became a hot topic for a short while after a paranormal magazine touted it as Raikou's ancestor.",
+    "fr": "On raconte que la foudre qui s'échappe de sa fourrure peut brûler tout ce qui l'entoure, mais on en sait peu sur lui.",
+    "de": "Man sagt, dass es mit den Blitzen, die es aus seinem Fell abfeuert, alles in seiner Umgebung zu Asche verbrennt. Genaueres ist nicht bekannt.",
+    "ko": "\t털에서 내뿜는 벼락으로 주변을 모조리 태워 버린다고 전해진다. 자세한 정보는 밝혀진 것이 없다.",
+    "jap": "体毛から　放つ　雷で　あたりを　焼きつくすと　いわれる。　詳しいことは　わかっていない。"
   },
   {
-    "en": "It was named after a mysterious object recorded in an old book. Its body seems to be metallic."
+    "en": "It was named after a mysterious object recorded in an old book. Its body seems to be metallic.",
+    "fr": "Il ressemble à un Terrakium qui, selon une revue douteuse, aurait été modifié par une organisation maléfique.",
+    "de": "Es ähnelt einem Pokémon, das eine fragwürdige Zeitschrift als ein Terrakium vorstellte, das von einer bösartigen Organisation modifiziert wurde.",
+    "ko": "몸은 금속질로 되어 있다고 한다. 이름은 오래된 책에 기록된 정체불명의 물체에서 유래됐다.",
+    "jap": "悪の　組織に　改造された　テラキオン　と　怪しい雑誌が　とりあげた　ポケモンに　似ている。"
   },
   {
-    "en": "There was supposedly an incident in which it launched shining blades to cut everything around it to pieces. Little else is known about it."
+    "en": "There was supposedly an incident in which it launched shining blades to cut everything around it to pieces. Little else is known about it.",
+    "fr": "Il ressemble à une entité mystérieuse qui, selon une revue sur les phénomènes paranormaux, serait une arme de pointe à l'effigie de Cobaltium.",
+    "de": "Es ähnelt einem rätselhaften Objekt, das einer esoterischen Zeitschrift nach eine ultramoderne Waffe sein soll, die wie Kobalium aussieht.",
+    "ko": "코바르온 형태의 최신 병기라며 오컬트 잡지에 소개됐던 정체불명의 물체를 닮았다.",
+    "jap": "コバルオン型の　最新　兵器　と　オカルト雑誌が　紹介した　謎の　物体に　似ている。"
   },
   {
-    "en": "It’s thought that this Pokémon lived in ancient Paldea until it got caught in seismic shifts and went extinct."
+    "en": "It’s thought that this Pokémon lived in ancient Paldea until it got caught in seismic shifts and went extinct.",
+    "fr": "Il se protège en transformant de l'énergie en cristal solide. Ce Pokémon est à l'origine du phénomène de Téracristallisation.",
+    "de": "Es schützt sich, indem es Energie in harten Kristall umwandelt. Dieses Pokémon ist der Ursprung der Terakristallisierung.",
+    "ko": "에너지를 단단한 결정으로 바꾸는 능력으로 몸을 지킨다. 테라스탈의 근원이 되는 포켓몬이다.",
+    "jap": "エネルギーを　硬い　結晶に　変える　能力で　身を　守る。　テラスタルの　おおもとの　ポケモン。"
   },
   {
-    "en": "Its peach-shaped shell serves as storage for a potent poison. It makes poisonous mochi and serves them to people and Pokémon."
+    "en": "Its peach-shaped shell serves as storage for a potent poison. It makes poisonous mochi and serves them to people and Pokémon.",
+    "fr": "Il conserve du poison dans sa carapace en forme de pêche. Il s'en sert pour préparer des mochis qu'il donne aux êtres humains et aux Pokémon.",
+    "de": "Es gibt anderen giftige Mochi zu essen, die Kräfte und Begierden wecken, kettet sie so an sich und kontrolliert sie.",
+    "ko": "욕망과 능력을 끌어올리는 독소로 된 떡을 먹이고 먹은 상대를 사슬로 조종한다.",
+    "jap": "欲望と　能力を　引き出す　毒素の　餅を　食べさせて　食べた　相手を　鎖で　操るのだ。"
   }
 ]
