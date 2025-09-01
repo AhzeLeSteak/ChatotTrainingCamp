@@ -67,24 +67,46 @@ export class PixelizedImgComponent {
       const row: Row = [];
       pixels_res.push(row);
       for (let x = 0; x < original_width; x += chunk_width) {
-        let r = 0, g = 0, b = 0, a = 0;
-        let pixel_count = 0;
+        const mapColorToCount = new Map<number, number>();
+        mapColorToCount.set(-1, 0);
         for (let y_chunk = 0; y_chunk < chunk_height; y_chunk++) {
           for (let x_chunk = 0; x_chunk < chunk_width; x_chunk++) {
             const pixel = origImg.pixels[y_chunk + y][x_chunk + x];
-            if (pixel[3] === 0) continue;
-            r += pixel[0];
-            g += pixel[1];
-            b += pixel[2];
-            a += pixel[3];
-            pixel_count++;
+            if (pixel[3] === 0) {
+              mapColorToCount.set(-1, mapColorToCount.get(-1)!);
+              continue;
+            }
+            let color = pixel[0]; //r
+            color <<= 8;
+            color += pixel[1]; //g
+            color <<= 8;
+            color += pixel[2]; //b
+            if(mapColorToCount.has(color))
+              mapColorToCount.set(color, mapColorToCount.get(color)! + 1);
+            else
+              mapColorToCount.set(color, 1);
           }
         }
+        let [mostRepresentedColor] = mapColorToCount.keys()
+          .toArray()
+          .map(key => [key, mapColorToCount.get(key)!] as const)
+          .toSorted(([_, a], [__, b]) => b - a)
+          [0];
+
+        const a = mostRepresentedColor === -1 ? 0 : 255;
+
+        if(mostRepresentedColor === -1)
+          mostRepresentedColor = 0;
+
+        const r = (mostRepresentedColor >> 16) & 255;
+        const g = (mostRepresentedColor >> 8) & 255;
+        const b = (mostRepresentedColor >> 0) & 255;
+
         row.push([
-          Math.floor(r / pixel_count),
-          Math.floor(g / pixel_count),
-          Math.floor(b / pixel_count),
-          Math.floor(a / pixel_count)
+          Math.floor(r),
+          Math.floor(g),
+          Math.floor(b),
+          Math.floor(a)
         ]);
       }
     }
