@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input, resource, signal,} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {SearchStatus} from '../daily/daily.component';
@@ -7,6 +7,7 @@ import {LanguageService} from '../../../services/language.service';
 import {TYPES} from '../../../consts/pokemon-types';
 import {BMP, Pixel, Row, SizedBMP} from '../pixelized-img/types';
 import {PixelizedImgComponent} from '../pixelized-img/pixelized-img.component';
+import {httpResource} from '@angular/common/http';
 
 
 @Component({
@@ -20,7 +21,7 @@ import {PixelizedImgComponent} from '../pixelized-img/pixelized-img.component';
   styleUrl: './daily-hints.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DailyHintsComponent implements AfterViewInit {
+export class DailyHintsComponent {
 
   protected readonly SearchStatus = SearchStatus;
   protected readonly TYPES = TYPES;
@@ -30,15 +31,26 @@ export class DailyHintsComponent implements AfterViewInit {
 
   languageManager = inject(LanguageService);
   loaded = signal(false);
-  img = signal<SizedBMP>(undefined!);
 
   tries = inject(SaveManagerService).tries;
 
-  imgUrl = computed(() => `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId()}.png`);
+  imgUrl = computed(() => `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.dexId()}.png`)
+  imgBlob = httpResource.blob(() => this.imgUrl())
+  img = resource({
+    params: () => this.imgBlob.value(),
+    loader: async ({params}) => {
+      if(!params) return undefined;
+      const base64 = await this.blobToBase64(params);
+      this.loaded.set(true);
+      return await this.base64ToPixels(base64);
+    }
+  })
+
+
   levelsToDisplay = computed(() =>
-    this.searchStatus() !== SearchStatus.Searching || !this.img()
+    this.searchStatus() !== SearchStatus.Searching || !this.img.value()
       ? []
-      : [this.tries().length-1, this.tries().length]
+      : [this.tries().length - 1, this.tries().length]
   );
 
   over = computed(() => this.searchStatus() !== SearchStatus.Searching);
@@ -49,17 +61,9 @@ export class DailyHintsComponent implements AfterViewInit {
   displayTypes = this.computeDisplayForStep(3);
   displayFlavor = this.computeDisplayForStep(4)
 
-  private computeDisplayForStep(n: number){
+  private computeDisplayForStep(n: number) {
     return computed(() => this.over() || this.tries().length > n);
   }
-
-  async ngAfterViewInit() {
-    const blob = await fetch(this.imgUrl()).then(response => response.blob());
-    const base64 = await this.blobToBase64(blob);
-    this.img.set(await this.base64ToPixels(base64));
-    this.loaded.set(true);
-  }
-
 
   private blobToBase64(blob: Blob) {
     return new Promise<string>((resolve, reject) => {

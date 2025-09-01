@@ -19,7 +19,7 @@
       <div class="pk-picture">
         <div id="pk_canvas" [class.displayNone]="!loaded || tries().length === 0">
           @for (level of levelsToDisplay(); track level; let first = $first) {
-            <app-pixelized-img [img]="img()" [level]="level" [disabled]="!first"/>
+            <app-pixelized-img [img]="img.value()!" [level]="level" [disabled]="!first"/>
           }
           <img [src]="imgUrl()" width="96" [class.displayNone]="searchStatus() === SearchStatus.Searching">
         </div>
@@ -68,3 +68,9 @@
   </div>
 
 </div>
+<!--
+@for(level of [1, 2, 3, 4, 5, 6]; track level){
+  <app-pixelized-img [img]="img.value()!" [level]="level"/>
+
+}
+-->
