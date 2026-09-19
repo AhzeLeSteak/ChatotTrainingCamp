@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {SelectButtonComponent} from '../../common/select-button/select-button.component';
 import {HubService} from '../../../services/hub.service';
-import {RoomParams} from '../../../models/room-params';
+import {GameMode, RoomParams} from '../../../models/room-params';
 
 
 @Component({
@@ -65,4 +65,5 @@ export class RoomLobbyComponent implements OnInit{
     return this.room().players.some(p => p.connectionId !== this.room().currentPlayer.connectionId && p.profilePicture === pp);
   }
 
+  protected readonly GameMode = GameMode;
 }

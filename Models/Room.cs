@@ -43,10 +43,11 @@ public class Room
         this.Players = this.Players.Where(p => p.Connected).ToList();
 
         var pool = Params.GetPokemonPool();
-        var pouet = RandomService.GetNRandomElementsFromList(pool, this.Params.NbRounds * 4);
+        var possibleAnswersPerQuestion = Params.GameMode == GameMode.Silhouette ? 1 : 4;
+        var shuffledIds = RandomService.GetNRandomElementsFromList(pool, this.Params.NbRounds * possibleAnswersPerQuestion);
         for(int i = 0; i < Params.NbRounds; i++)
         {
-            this.Questions.Add(new Question(pouet.Slice(i*4, 4)));
+            this.Questions.Add(new Question(shuffledIds.Slice(i*possibleAnswersPerQuestion, possibleAnswersPerQuestion)));
         }
         this.Players = this.Players.Where(p => p.Connected).ToList();
         foreach(var player  in this.Players)

@@ -1,10 +1,18 @@
 ﻿namespace ChatotTrainingCamp.Models;
 
+public enum GameMode
+{
+    Cry,
+    Silhouette
+}
+
 public class RoomParams
 {
     public int NbRounds { get; set; } = 10;
     public List<int> Generations { get; set; } = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     public int RoundDurationSeconds { get; set; } = 15;
+    
+    public GameMode GameMode { get; set; } = GameMode.Cry;
 
     public List<int> GetPokemonPool()
     {

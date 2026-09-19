@@ -1,10 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import {SnackbarService} from '../../services/snackbar.service';
 import {HubService, PLAYER_NAME} from '../../services/hub.service';
 import {SelectButtonComponent} from '../common/select-button/select-button.component';
+import {SearchStatus} from '../solo/daily/daily.component';
 
 @Component({
   selector: 'app-home',
@@ -40,4 +41,5 @@ export class HomeComponent {
       this.snackbar.onNewMessage$.next(`Unable to join room`);
   }
 
+  protected readonly SearchStatus = SearchStatus;
 }
