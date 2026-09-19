@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+
 import {ChangeDetectionStrategy, Component, inject, OnInit, signal} from '@angular/core';
 import {Router, RouterOutlet} from '@angular/router';
 import {FormsModule} from '@angular/forms';
@@ -12,7 +12,7 @@ import {SoundSettingsComponent} from './common/sound-settings/sound-settings.com
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, FormsModule, SnackbarComponent, LanguageSettingsComponent, SoundSettingsComponent],
+  imports: [RouterOutlet, FormsModule, SnackbarComponent, LanguageSettingsComponent, SoundSettingsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
