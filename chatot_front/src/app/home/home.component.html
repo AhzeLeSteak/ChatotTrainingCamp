@@ -30,3 +30,9 @@
   </button>
 </div>
 
+
+@if (base64.hasValue()){
+  <div class="box">
+    <img [src]="base64.value()" />
+  </div>
+}
