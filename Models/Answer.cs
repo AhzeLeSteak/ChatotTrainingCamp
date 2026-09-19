@@ -1,8 +1,7 @@
-﻿namespace ChatotTrainingCamp.Models
+﻿namespace ChatotTrainingCamp.Models;
+
+public class Answer
 {
-    public class Answer
-    {
-        public int PkId { get; set; }
-        public int TimeInMs { get; set; }
-    }
+    public int PkId { get; set; }
+    public int TimeInMs { get; set; }
 }
