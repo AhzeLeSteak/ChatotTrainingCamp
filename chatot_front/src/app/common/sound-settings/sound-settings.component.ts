@@ -1,4 +1,4 @@
-import {Component, computed, inject} from '@angular/core';
+import {Component, computed, inject, ChangeDetectionStrategy} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {VolumeBinderDirective} from '../../volume-binder.directive';
 import {SoundManagerService} from '../../../services/sound-manager.service';
@@ -13,6 +13,7 @@ import {CommonModule} from '@angular/common';
     FormsModule
   ],
   templateUrl: './sound-settings.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './sound-settings.component.scss'
 })
 export class SoundSettingsComponent {

@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {Component, computed, EventEmitter, inject, input, output, Output} from '@angular/core';
+import {Component, computed, EventEmitter, inject, input, output, Output, ChangeDetectionStrategy} from '@angular/core';
 import {LanguageService} from '../../../services/language.service';
 import {HubService} from '../../../services/hub.service';
 
@@ -7,6 +7,7 @@ import {HubService} from '../../../services/hub.service';
     selector: 'app-guess-card',
     imports: [CommonModule],
     templateUrl: './guess-card.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './guess-card.component.scss'
 })
 export class GuessCardComponent {
