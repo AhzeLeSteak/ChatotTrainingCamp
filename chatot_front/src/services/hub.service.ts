@@ -1,20 +1,18 @@
-import {inject, Injectable, signal} from '@angular/core';
+import {inject, Service, signal} from '@angular/core';
 import * as signalR from '@microsoft/signalr';
-import {BehaviorSubject, filter, map, Observable, pairwise, shareReplay, tap} from 'rxjs';
 import {Room} from '../models/room';
 import {RoomParams} from '../models/room-params';
 import {Router} from '@angular/router';
-import {toObservable} from '@angular/core/rxjs-interop';
+import {LanguageService} from './language.service';
 
 export const PLAYER_NAME = 'player_name';
 const ROOM_CODE = 'room_code';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class HubService {
 
-  private router = inject(Router);
+  private readonly router = inject(Router);
+  private readonly langageService = inject(LanguageService);
 
   private hub: signalR.HubConnection;
 
@@ -80,7 +78,8 @@ export class HubService {
   }
 
   public sendMessage(content: string) {
-    return this.hub.invoke<void>('SendMessage', content);
+    const pk_id = this.langageService.id_from_name(content)
+    return this.hub.invoke<void>('SendMessage', content, pk_id);
   }
 
   async tryRejoin() {

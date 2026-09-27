@@ -1,9 +1,7 @@
-import {Injectable, signal} from '@angular/core';
+import {inject, Service, signal} from '@angular/core';
 import {SaveManagerService} from './save-manager.service';
 
-@Injectable({
-  providedIn: 'platform'
-})
+@Service()
 export class DexIdService {
 
   public dexId = signal(-1);
@@ -14,7 +12,8 @@ export class DexIdService {
   private c = 12345;
   private state: number = 0;
 
-  constructor(sm: SaveManagerService) {
+  constructor() {
+    const sm = inject(SaveManagerService);
     this.seed(sm.daysSinceEpoch);
     this.dexId.set(this.nextRange(1, 1025 + 1));
   }

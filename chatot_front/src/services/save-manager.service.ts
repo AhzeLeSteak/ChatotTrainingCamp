@@ -1,11 +1,9 @@
-import {Injectable, signal} from '@angular/core';
+import {Service, signal} from '@angular/core';
 
 const DAYS_SINCE_EPOCH = 'DAYS_SINCE_EPOCH';
 const TRIES = 'TRIES';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class SaveManagerService {
 
   private tries$ = signal<number[]>(this.calc_tries());

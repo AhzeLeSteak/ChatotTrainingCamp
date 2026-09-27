@@ -1,36 +1,27 @@
-import {ChangeDetectionStrategy, Component, computed, effect, inject, linkedSignal, viewChild,} from '@angular/core';
-import {GuessCardComponent} from '../guess-card/guess-card.component';
-import {map, timer} from 'rxjs';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, computed, effect, viewChild,} from '@angular/core';
 import {SoundPlayerComponent} from '../../common/sound-player/sound-player.component';
-import {HubService} from '../../../services/hub.service';
 import {RoomStatus} from '../../../models/room';
-
+import {GameMode} from '../../../models/room-params';
+import {MCQComponent} from '../mcq/mcq.component';
+import {SilhouetteComponent} from '../silhouette/silhouette.component';
+import {room} from '../signals/room';
+import {timeElapsedInQuestion} from '../signals/timeElapsedInQuestion';
 
 @Component({
   selector: 'app-play',
-  imports: [GuessCardComponent, SoundPlayerComponent],
+  imports: [SoundPlayerComponent, MCQComponent, SilhouetteComponent],
   templateUrl: './play.component.html',
   styleUrl: './play.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlayComponent {
 
-  hub = inject(HubService);
   soundPlayer = viewChild(SoundPlayerComponent);
 
-  room = this.hub.room;
-  questionIndex = computed(() => this.room().questionIndex);
+  room = room();
   roomStatus = computed(() => this.room().status);
+  isMCQ = computed(() => this.room().params.gameMode == GameMode.Cry);
 
-  answer = linkedSignal({
-    source: () => this.questionIndex(),
-    computation: () => 0
-  }); // answer for current question, resets on new question
-  startTimer = linkedSignal({
-    source: () => this.questionIndex(),
-    computation: () => new Date(),
-  }); // starting time of current question, resets on new question
 
   _ = effect(() => {
     if(this.roomStatus() === RoomStatus.Playing) {
@@ -38,17 +29,14 @@ export class PlayComponent {
     }
   })
 
-  timer = toSignal(
-    timer(0, 100).pipe(map(() => new Date())),
-    {initialValue: new Date()}
-  );
-
   readonly barNb = 15;
+
+  timeElapsed = timeElapsedInQuestion();
 
   barsArray = computed(() => {
     const room = this.room();
     if (!room.currentQuestion) return null!
-    const elapsedMs = this.timer().getTime() - room.currentQuestion.startDate.getTime();
+    const elapsedMs = this.timeElapsed();
     const roomDurationMs = room.params.roundDurationSeconds * 1000;
     const ratio = 1 - Math.min(elapsedMs, roomDurationMs) / roomDurationMs; // € [0, 1]
     const step = Math.round(ratio * this.barNb);
@@ -56,11 +44,5 @@ export class PlayComponent {
       .fill(1, 0, step)
       .fill(0, step, this.barNb);
   });
-
-  sendAnwser(pkid: number) {
-    if (this.answer() > 0 || !this.room().IsPlaying) return;
-    this.hub.answer(pkid, new Date().getTime() - this.startTimer().getTime());
-    this.answer.set(pkid);
-  }
 
 }

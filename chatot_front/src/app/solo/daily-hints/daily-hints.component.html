@@ -17,11 +17,8 @@
 
 
       <div class="pk-picture">
-        <div id="pk_canvas" [ngClass]="{displayNone: !loaded || tries().length === 0}">
-          @for (level of levelsToDisplay(); track level; let first = $first) {
-            <app-pixelized-img [img]="img()" [level]="level" [disabled]="!first"/>
-          }
-          <img [src]="imgUrl()" width="96" [ngClass]="{displayNone: searchStatus() === SearchStatus.Searching}">
+        <div id="pk_canvas" [ngClass]="{displayNone: tries().length === 0}">
+          <app-pixelized-img [dexId]="dexId()" [pixelationLevel]="levelToDisplay()"></app-pixelized-img>
         </div>
         <img src="/questionmark.png" [ngClass]="{displayNone: tries().length > 0}">
       </div>

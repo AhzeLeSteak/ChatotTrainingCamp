@@ -1,7 +1,8 @@
 import {CommonModule} from '@angular/common';
-import {Component, computed, EventEmitter, inject, input, output, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input, output} from '@angular/core';
 import {LanguageService} from '../../../services/language.service';
-import {HubService} from '../../../services/hub.service';
+import {room} from '../signals/room';
+import {fontSize} from '../signals/fontSize';
 
 @Component({
     selector: 'app-guess-card',
@@ -20,7 +21,7 @@ export class GuessCardComponent {
   onClick = output<void>();
 
   languageManager = inject(LanguageService);
-  room = inject(HubService).room;
+  room = room();
 
   pk_name = computed(() =>
     this.room()?.isInTimer
@@ -40,9 +41,6 @@ export class GuessCardComponent {
       : `https://raw.githubusercontent.com/PokeAPI/sprites/refs/heads/master/sprites/pokemon/${this.pkid()}.png`);
 
 
-  fontSize = computed(() =>
-    'ko' === this.languageManager.selected_language()
-      ? '.8em'
-      : '1.2em');
+  fontSize = fontSize();
 
 }

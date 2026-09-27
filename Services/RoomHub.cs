@@ -4,30 +4,35 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace ChatotTrainingCamp.Services;
 
-public class RoomHub: Hub
+public class RoomHub : Hub
 {
     const string ROOM_CODE = "room_code";
     const string PLAYER = "player";
     private static SemaphoreSlim roomSemaphore = new(1, 1);
 
     private static Dictionary<string, Room> rooms = new();
+
     private Player? CurrentPlayer
     {
         get => Context.Items[PLAYER] as Player;
         set => Context.Items[PLAYER] = value;
     }
+
     private string CurrentRoomCode => Context.Items[ROOM_CODE] as string;
     private Room CurrentRoom => rooms[CurrentRoomCode];
 
     private IHubContext<RoomHub> HubContext;
 
-    public RoomHub(IHubContext<RoomHub> hubContext) {
+    public RoomHub(IHubContext<RoomHub> hubContext)
+    {
         HubContext = hubContext;
     }
 
 
     #region Create/join room management
-    public async Task<Room> CreateRoom(string playerName){
+
+    public async Task<Room> CreateRoom(string playerName)
+    {
         await roomSemaphore.WaitAsync();
         var room = new Room(RandomService.GenerateRoomCode(rooms.Values.ToList()));
         roomSemaphore.Release();
@@ -39,9 +44,10 @@ public class RoomHub: Hub
 
     public async Task<Room?> JoinRoom(string roomCode, string playerName, bool rejoin = false)
     {
-        if(!rooms.TryGetValue(roomCode, out Room? room) || (!rejoin && (room.Status != RoomStatus.Lobby || room.Players.Count > 15)))
+        if (!rooms.TryGetValue(roomCode, out Room? room) ||
+            (!rejoin && (room.Status != RoomStatus.Lobby || room.Players.Count > 15)))
             return null;
-            
+
         Context.Items[ROOM_CODE] = roomCode;
         if (rejoin)
         {
@@ -52,7 +58,8 @@ public class RoomHub: Hub
             player.Connected = true;
             CurrentPlayer = player;
         }
-        else{
+        else
+        {
             await room.Semaphore.WaitAsync();
             CurrentPlayer = new Player()
             {
@@ -76,7 +83,8 @@ public class RoomHub: Hub
         return room;
     }
 
-    public async Task Quit(){
+    public async Task Quit()
+    {
         var room = CurrentRoom;
         var player = CurrentPlayer;
         Context.Items.Clear();
@@ -100,10 +108,11 @@ public class RoomHub: Hub
     }
 
 
-    public async Task UpdateRoom(Room? room= null)
+    public async Task UpdateRoom(Room? room = null)
     {
         room ??= CurrentRoom;
-        var tasks = room.Players.Select(player => HubContext.Clients.Client(player.ConnectionId).SendCoreAsync("UpdateRoom", [room]));
+        var tasks = room.Players.Select(player =>
+            HubContext.Clients.Client(player.ConnectionId).SendCoreAsync("UpdateRoom", [room]));
         await Task.WhenAll(tasks);
         //await Clients.Groups(roomCode ?? CurrentRoomCode).SendCoreAsync("UpdateRoom", [CurrentRoom]);
     }
@@ -111,38 +120,62 @@ public class RoomHub: Hub
 
     public override async Task OnDisconnectedAsync(Exception? exception)
     {
-        if (CurrentPlayer != null && CurrentRoom != null){
+        if (CurrentPlayer != null && CurrentRoom != null)
+        {
             var room = CurrentRoom;
-            if (room.Status == RoomStatus.Lobby){
+            if (room.Status == RoomStatus.Lobby)
+            {
                 await Quit();
             }
             else
                 CurrentPlayer.Connected = false;
+
             await UpdateRoom(room);
         }
+
         Context.Items.Clear();
         await base.OnDisconnectedAsync(exception);
     }
+
     #endregion
 
     #region Room lobby
-    public async Task ChangePP(int pp){
+
+    public async Task ChangePP(int pp)
+    {
         await CurrentRoom.Semaphore.WaitAsync();
-        if(!CurrentRoom.Players.Any(p => p.ProfilePicture == pp))
+        if (!CurrentRoom.Players.Any(p => p.ProfilePicture == pp))
             CurrentPlayer.ProfilePicture = pp;
         CurrentRoom.Semaphore.Release();
         await UpdateRoom();
     }
 
-    public async Task SendMessage(string message)
+    public async Task SendMessage(string message, int? pkId)
+    {
+        var room = CurrentRoom;
+        if (room.Params.GameMode == GameMode.Silhouette
+            && room.CurrentQuestion != null
+            && pkId.HasValue
+            && room.CurrentQuestion.Answer == pkId.Value)
+        {
+            AddMessageSimple($"{CurrentPlayer.Name} found the answer !", true);
+            await this.Answer(pkId.Value, 0);
+        }
+        else
+        {
+            AddMessageSimple(message);
+            await UpdateRoom();
+        }
+    }
+
+    private void AddMessageSimple(string message, bool fromServer = false)
     {
         CurrentRoom.Messages.Insert(0, new Message()
         {
             PlayerName = CurrentPlayer.Name,
             Content = message,
-            FromServer = false,
+            FromServer = fromServer,
         });
-        await UpdateRoom();
     }
 
     public async Task UpdateParam(RoomParams param)
@@ -160,7 +193,7 @@ public class RoomHub: Hub
         CurrentPlayer.Ready = true;
         await UpdateRoom();
     }
-    
+
     public async Task StartRoom()
     {
         CurrentRoom.Reset();
@@ -224,6 +257,4 @@ public class RoomHub: Hub
     }
 
     #endregion
-
-
 }

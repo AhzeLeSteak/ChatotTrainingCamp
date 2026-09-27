@@ -53,7 +53,7 @@ export class DailyComponent {
 
   try() {
     const dexId = this.languageManager.id_from_name(this.input());
-    if (dexId <= 0) return this.snackService.onNewMessage$.next('Pokémon not found');
+    if (dexId === null) return this.snackService.onNewMessage$.next('Pokémon not found');
     if(!dexId || this.saveManager.tries().includes(dexId)) return;
 
     this.saveManager.addTry(dexId);

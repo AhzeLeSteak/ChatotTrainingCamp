@@ -1,0 +1,11 @@
+<div id="propositions">
+  @for (proposition of room().currentQuestion.propositions; track proposition) {
+    <app-guess-card
+      [pkid]="proposition"
+      [correct]="(answer() > 0 || room().isInAnswers) && proposition === room().currentQuestion.answer"
+      [wrong]="proposition === answer() && answer() !== room().currentQuestion.answer"
+      [disabled]="answer() > 0 || !room().IsPlaying"
+      (onClick)="sendAnwser(proposition)"
+    ></app-guess-card>
+  }
+</div>

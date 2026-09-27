@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HubService} from '../../../services/hub.service';
+import {room} from '../signals/room';
 
 @Component({
     selector: 'app-players-list',
@@ -11,7 +11,7 @@ import {HubService} from '../../../services/hub.service';
 })
 export class PlayersListComponent {
 
-  room = inject(HubService).room;
+  room = room();
   players = computed(() => this.room().players)
 
 }

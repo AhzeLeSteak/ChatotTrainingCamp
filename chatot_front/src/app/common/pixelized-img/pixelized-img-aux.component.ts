@@ -1,22 +1,22 @@
 import {ChangeDetectionStrategy, Component, computed, effect, ElementRef, input, viewChild} from '@angular/core';
-import {BMP, levels, Row, SizedBMP} from './types';
 import {NgClass} from '@angular/common';
+import {BMP, PIXELATION_LEVELS, PixelationLevel, Row, SizedBMP} from './imgHook';
 
 
 @Component({
-  selector: 'app-pixelized-img',
+  selector: 'app-pixelized-img-aux',
   imports: [
     NgClass
   ],
-  templateUrl: './pixelized-img.component.html',
-  styleUrl: './pixelized-img.component.scss',
+  templateUrl: './pixelized-img-aux.component.html',
+  styleUrl: './pixelized-img-aux.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PixelizedImgComponent {
+export class PixelizedImgAuxComponent {
 
   img = input.required<SizedBMP>();
-  level = input.required<number>();
-  disabled = input(false);
+  pixelationLevel = input.required<PixelationLevel>();
+  hidden = input(false);
 
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
   canvas = computed(() => this.canvasRef()?.nativeElement);
@@ -25,15 +25,14 @@ export class PixelizedImgComponent {
   _ = effect(() => {
     const canvas = this.canvas();
     if(canvas && this.img()){
-      console.log('drawing level', this.level());
-      this.drawSplitImageWithLevel(canvas, this.level());
+      //console.log('drawing level', this.level());
+      this.drawSplitImageWithLevel(canvas, this.pixelationLevel());
     }
   });
 
-  drawSplitImageWithLevel(canvas: HTMLCanvasElement, i: number) {
-    const lvl = levels[i];
+  drawSplitImageWithLevel(canvas: HTMLCanvasElement, i: PixelationLevel) {
+    const lvl = PIXELATION_LEVELS[i];
     if (!lvl || !this.img()) return;
-    console.log('draw', i)
     const newImg = this.split(this.img(), lvl);
     if (!newImg) return;
 

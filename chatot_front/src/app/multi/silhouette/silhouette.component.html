@@ -1,0 +1,11 @@
+<div class="guess-card">
+  <div id="background"></div>
+  <span id="name" [ngStyle]="{'font-size' : fontSize()}">{{ pk_name() }}</span>
+  <div id="pk">
+    <img id="window" src="/ui/window.png" alt="">
+    <app-pixelized-img
+      [dexId]="currentQuestion().propositions[0]"
+      [pixelationLevel]="levelOfPixelization()"
+    ></app-pixelized-img>
+  </div>
+</div>

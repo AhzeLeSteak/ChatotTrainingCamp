@@ -16,7 +16,7 @@ import {SoundSettingsComponent} from './common/sound-settings/sound-settings.com
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [DexIdService, LanguageService, SoundManagerService]
+  providers: []
 })
 export class AppComponent implements OnInit {
 

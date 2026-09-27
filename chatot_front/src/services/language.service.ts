@@ -1,4 +1,4 @@
-import {computed, effect, inject, Injectable, linkedSignal, signal} from '@angular/core';
+import {computed, effect, inject, linkedSignal, Service, signal} from '@angular/core';
 import {NAMES_JAP} from '../consts/pokemon-names-jap';
 import {NAMES_EN} from '../consts/pokemon-names-en';
 import {NAMES_FR} from '../consts/pokemon-names-fr';
@@ -19,9 +19,7 @@ type Units = 'mKg' | 'lbsFt';
 
 let unitsTrick = 0;
 
-@Injectable({
-  providedIn: 'root'
-})
+@Service()
 export class LanguageService {
 
   language_id = signal(parseInt(localStorage.getItem(language_key) ?? '1'));
@@ -88,14 +86,15 @@ export class LanguageService {
   }
 
   public id_from_name(name: string){
-    name = name.toLowerCase();
-    name = this.pokemon_names_for_selected_language().find(n => n.toLowerCase() === name) ?? '';
+    name = normalize_accents(name);
+    name = this.pokemon_names_for_selected_language().find(n => normalize_accents(n) === name)!;
+    if(!name) return null;
     return this.pokemon_names_for_selected_language().indexOf(name) + 1;
   }
 
   public proposition_from_query(query: string){
-    query = query.toLowerCase();
-    return this.pokemon_names_for_selected_language().filter(n => n.toLowerCase().includes(query));
+    query = normalize_accents(query);
+    return this.pokemon_names_for_selected_language().filter(n => normalize_accents(n).includes(query));
   }
 
 }
@@ -103,4 +102,8 @@ export class LanguageService {
 
 function* chunk(str: string, size = 3) {
   for(let i = 0; i < str.length; i+= size ) yield str.slice(i, i + size);
+}
+
+function normalize_accents(str: string){
+  return str.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()
 }
