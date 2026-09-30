@@ -19,6 +19,13 @@
   }
 
 
+  &.disabled:not(.correct) {
+    & #background, & #window{
+      filter: grayscale(100%);
+    }
+  }
+
+
   @media (max-aspect-ratio: 1.4) {
     & {
       aspect-ratio: unset;
@@ -34,6 +41,10 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     filter: brightness(0);
+  }
+
+  app-pixelized-img.show-answer{
+    filter: unset;
   }
 
   span#name{

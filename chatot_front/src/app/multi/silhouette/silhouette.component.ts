@@ -3,15 +3,17 @@ import {room} from '../signals/room';
 import {currentQuestion} from '../signals/currentQuestion';
 import {PixelizedImgComponent} from '../../common/pixelized-img/pixelized-img.component';
 import {timeElapsedInQuestion} from '../signals/timeElapsedInQuestion';
-import {PixelationLevel} from '../../common/pixelized-img/imgHook';
-import {NgStyle} from '@angular/common';
+import {PIXELATION_LEVELS, PixelationLevel} from '../../common/pixelized-img/imgHook';
+import {NgClass, NgStyle} from '@angular/common';
 import {LanguageService} from '../../../services/language.service';
 import {fontSize} from '../signals/fontSize';
+import {RoomStatus} from '../../../models/room';
 
 @Component({
   imports: [
     PixelizedImgComponent,
-    NgStyle
+    NgStyle,
+    NgClass
   ],
   selector: 'app-silhouette',
   styleUrl: './silhouette.component.scss',
@@ -25,6 +27,7 @@ export class SilhouetteComponent {
 
   readonly levelOfPixelization = computed(() => {
     const room = this.room();
+    if(room.status == RoomStatus.Answers) return PIXELATION_LEVELS.MAX;
     const elapsedMs = this.timeElapsed();
     const roomDurationMs = room.params.roundDurationSeconds * 750;
     let ratio = Math.min(elapsedMs, roomDurationMs) / roomDurationMs; // € [0, 1]

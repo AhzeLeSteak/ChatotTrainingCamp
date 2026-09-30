@@ -1,11 +1,16 @@
-<div class="guess-card">
+<div class="guess-card" [ngClass]="{disabled: room().isInTimer}">
   <div id="background"></div>
   <span id="name" [ngStyle]="{'font-size' : fontSize()}">{{ pk_name() }}</span>
   <div id="pk">
     <img id="window" src="/ui/window.png" alt="">
-    <app-pixelized-img
-      [dexId]="currentQuestion().propositions[0]"
-      [pixelationLevel]="levelOfPixelization()"
-    ></app-pixelized-img>
+    @if (!room().isInTimer) {
+      <app-pixelized-img
+        [dexId]="currentQuestion().propositions[0]"
+        [pixelationLevel]="levelOfPixelization()"
+        [ngClass]="{'show-answer': room().isInAnswers}"
+      ></app-pixelized-img>
+    } @else {
+      <img src="/questionmark.png" alt="">
+    }
   </div>
 </div>

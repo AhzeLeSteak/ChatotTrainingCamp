@@ -154,7 +154,7 @@ public class RoomHub : Hub
     {
         var room = CurrentRoom;
         if (room.Params.GameMode == GameMode.Silhouette
-            && room.CurrentQuestion != null
+            && room is { CurrentQuestion: not null, Status: RoomStatus.Playing }
             && pkId.HasValue
             && room.CurrentQuestion.Answer == pkId.Value)
         {
