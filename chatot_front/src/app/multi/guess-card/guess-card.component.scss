@@ -87,11 +87,19 @@
     --d: 10px;
     bottom: var(--d);
     right: var(--d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     & > *{
       width: 100%;
       aspect-ratio: 1 / 1 ;
       position: absolute;
+    }
+
+    #pk_img{
+      display: flex;
+      width: 90%;
     }
   }
 

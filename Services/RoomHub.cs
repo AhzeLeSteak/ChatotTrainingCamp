@@ -47,6 +47,7 @@ public class RoomHub : Hub
         if (!rooms.TryGetValue(roomCode, out Room? room) ||
             (!rejoin && (room.Status != RoomStatus.Lobby || room.Players.Count > 15)))
             return null;
+        playerName = playerName.Substring(0, 12);
 
         Context.Items[ROOM_CODE] = roomCode;
         if (rejoin)

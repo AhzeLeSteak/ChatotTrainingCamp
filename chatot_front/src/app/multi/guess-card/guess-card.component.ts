@@ -3,10 +3,12 @@ import {ChangeDetectionStrategy, Component, computed, inject, input, output} fro
 import {LanguageService} from '../../../services/language.service';
 import {room} from '../signals/room';
 import {fontSize} from '../signals/fontSize';
+import {PIXELATION_LEVELS, PixelationLevel} from '../../common/pixelized-img/imgHook';
+import {PixelizedImgComponent} from '../../common/pixelized-img/pixelized-img.component';
 
 @Component({
     selector: 'app-guess-card',
-    imports: [CommonModule],
+  imports: [CommonModule, PixelizedImgComponent],
     templateUrl: './guess-card.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,
     styleUrl: './guess-card.component.scss'
@@ -17,6 +19,12 @@ export class GuessCardComponent {
   correct = input(false);
   wrong = input(false);
   disabled = input(false);
+  levelOfPixelization = input<PixelationLevel>(PIXELATION_LEVELS.MAX);
+  hideName = input(false);
+  pk_style = input('');
+
+
+  shouldBePixeled = computed(() => this.levelOfPixelization() !== PIXELATION_LEVELS.MAX);
 
   onClick = output<void>();
 
@@ -24,7 +32,7 @@ export class GuessCardComponent {
   room = room();
 
   pk_name = computed(() =>
-    this.room()?.isInTimer
+    this.hideName()
       ? '?'
       : this.languageManager.name_from_id(this.pkid()));
 

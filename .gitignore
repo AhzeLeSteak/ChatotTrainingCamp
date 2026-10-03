@@ -9,7 +9,7 @@ publish
 .vs
 obj
 bin
-*.pubxml.user
+*.user
 
 # Node
 /node_modules
