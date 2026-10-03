@@ -5,7 +5,7 @@ import {HubService} from '../../../services/hub.service';
 
 @Component({
     selector: 'app-chatbox',
-    imports: [FormsModule],
+  imports: [FormsModule],
     templateUrl: './chatbox.component.html',
     styleUrl: './chatbox.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

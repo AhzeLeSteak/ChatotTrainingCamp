@@ -47,7 +47,7 @@ public class RoomHub : Hub
         if (!rooms.TryGetValue(roomCode, out Room? room) ||
             (!rejoin && (room.Status != RoomStatus.Lobby || room.Players.Count > 15)))
             return null;
-        playerName = playerName.Substring(0, 12);
+        playerName = playerName.Substring(0, Math.Min(12, playerName.Length));
 
         Context.Items[ROOM_CODE] = roomCode;
         if (rejoin)
@@ -73,6 +73,7 @@ public class RoomHub : Hub
             {
                 Content = $"{playerName} joined the room",
                 FromServer = true,
+                Color = ChatColor.Blue
             });
             room.Semaphore.Release();
         }
@@ -94,11 +95,7 @@ public class RoomHub : Hub
         if (room.Players.Any())
         {
             room.Players[0].IsCreator = true;
-            room.Messages.Add(new Message
-            {
-                FromServer = true,
-                Content = $"{player.Name} left the room"
-            });
+            AddMessageSimple($"{player.Name} left the room", ChatColor.Red);
             await UpdateRoom(room);
         }
         else
@@ -159,7 +156,7 @@ public class RoomHub : Hub
             && pkId.HasValue
             && room.CurrentQuestion.Answer == pkId.Value)
         {
-            AddMessageSimple($"{CurrentPlayer.Name} found the answer !", true);
+            AddMessageSimple($"{CurrentPlayer.Name} found the answer !", ChatColor.Green);
             await this.Answer(pkId.Value, 0);
         }
         else
@@ -169,13 +166,14 @@ public class RoomHub : Hub
         }
     }
 
-    private void AddMessageSimple(string message, bool fromServer = false)
+    private void AddMessageSimple(string message, ChatColor? color = null)
     {
         CurrentRoom.Messages.Insert(0, new Message()
         {
             PlayerName = CurrentPlayer.Name,
             Content = message,
-            FromServer = fromServer,
+            FromServer = color.HasValue,
+            Color = color
         });
     }
 
@@ -228,6 +226,9 @@ public class RoomHub : Hub
     {
         room ??= CurrentRoom;
         room.NextQuestion();
+        if(!room.IsOver)
+            AddMessageSimple("A new round is starting soon", ChatColor.Blue);
+        
         await UpdateRoom(room);
         if (room.Status == RoomStatus.Timer)
         {
@@ -242,6 +243,11 @@ public class RoomHub : Hub
     {
         room ??= CurrentRoom;
         room.Status = RoomStatus.Answers;
+        foreach (var player in room.Players)
+        {
+            if (player.Emotion == Emotion.Normal)
+                player.Emotion = Emotion.Sad;
+        }
         await UpdateRoom(room);
         await Task.Delay(3000);
         await NextQuestion(room);

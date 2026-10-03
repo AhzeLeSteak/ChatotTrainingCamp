@@ -25,7 +25,7 @@ export class PlayComponent {
 
   _ = effect(() => {
     if(this.roomStatus() === RoomStatus.Playing) {
-      this.soundPlayer()?.play()
+      this.soundPlayer()?.playAudio()
     }
   })
 

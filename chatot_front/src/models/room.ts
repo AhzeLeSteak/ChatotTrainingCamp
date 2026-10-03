@@ -1,7 +1,7 @@
 import { Message } from "./message";
 import { Player } from "./player";
 import { Question } from "./question";
-import { RoomParams } from "./room-params";
+import {GameMode, RoomParams} from "./room-params";
 
 export class Room {
     code: string;
@@ -18,6 +18,7 @@ export class Room {
     constructor(obj: object, currentPlayerConnectionId: string){
         Object.assign(this, obj);
         this.players = (this.players ?? []).map(p => new Player(p));
+        this.messages = (this.messages ?? []).map(m => new Message(m));
         this.currentQuestion = this.currentQuestion ? new Question(this.currentQuestion) : null!;
         this.currentPlayer = this.players.find(p => p.connectionId === currentPlayerConnectionId)!;
     }
@@ -44,6 +45,10 @@ export class Room {
 
     get url(){
       return `${window.location.origin}/join/${this.code}`
+    }
+
+    get shouldPlaySoundWherePlayerFindsAnswer(){
+      return this.params.gameMode == GameMode.Silhouette;
     }
 }
 

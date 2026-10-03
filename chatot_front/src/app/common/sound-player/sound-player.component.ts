@@ -23,6 +23,7 @@ export class SoundPlayerComponent {
   //  I/O
   dexId = input.required<number>();
   disabled = input(false);
+  play = input(false);
 
   //  View
   audio = viewChild<ElementRef<HTMLAudioElement>>('audio');
@@ -32,13 +33,19 @@ export class SoundPlayerComponent {
   audioSrc = computed(() => `/sounds/${this.dexId().toString().padStart(4, '0')}.ogg`);
   hide = signal(false);
 
-  _ = effect(() => {
-    this.dexId();
-    this.hide.set(true);
-    setTimeout(() => this.hide.set(false), 1);
-  })
+  constructor() {
+    effect(() => {
+      this.dexId();
+      this.hide.set(true);
+      setTimeout(() => this.hide.set(false), 1);
+    });
+    effect(() => {
+      if(this.play())
+        this.playAudio()
+    });
+  }
 
-  public play(){
+  public playAudio(){
     this.audio()?.nativeElement?.play();
   }
 

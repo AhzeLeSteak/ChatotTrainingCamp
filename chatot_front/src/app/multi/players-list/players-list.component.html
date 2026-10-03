@@ -7,6 +7,14 @@
       <div class="pp_name">
         <img style="border-radius: 4px;" [src]="player.profilePictureSrc"/>
         <span [ngClass]="{player_name: true, creator: player.isCreator}">{{player.name}}</span>
+
+        @if(room().shouldPlaySoundWherePlayerFindsAnswer){
+          <app-sound-player
+            [dexId]="player.profilePicture"
+            [play]="player.emotion === 1"
+            [hidden]="true"
+          />
+        }
       </div>
       @if (room().inLobby) {
         @if (player.isCreator) {

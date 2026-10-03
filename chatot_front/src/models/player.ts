@@ -11,7 +11,7 @@ export class Player{
   emotion: number;
 
   constructor(obj: object){
-    Object.assign(this ,obj);
+    Object.assign(this, obj);
   }
 
   public profilePictureSrcWithEmotion(emotion: string){

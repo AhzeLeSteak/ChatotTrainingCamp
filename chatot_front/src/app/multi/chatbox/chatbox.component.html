@@ -8,7 +8,7 @@
   <div class="flex flex-column-reverse h-full" style="overflow-y: scroll; scrollbar-width: none; max-height: 490px;">
     @for (message of messages(); track message) {
       @if (message.fromServer) {
-        <div><span>{{message.content}}</span></div>
+        <div><span [class]="message.chatColor">{{message.content}}</span></div>
       } @else {
         <div><span>{{message.playerName}}</span> : {{message.content}}</div>
       }
